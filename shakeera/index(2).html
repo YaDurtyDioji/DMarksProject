@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Haafidh Sajjaad &amp; Shakeera — Save the Date</title>
+<meta property="og:title" content="Save the Date — Haafidh Sajjaad &amp; Shakeera">
+<meta property="og:description" content="05 · 12 · 2026 — formal invitation to follow.">
+<meta property="og:image" content="save-the-date.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+  :root{--berry:#9b1d56;--blush:#f7c9d3;--olive:#76803f;--cream:#f7f3ea;}
+  html,body{height:100%}
+  body{background:var(--cream);font-family:'Montserrat',sans-serif;color:var(--olive);overflow-x:hidden}
+  .serif{font-family:'Playfair Display',serif}
+  .script{font-family:'Great Vibes',cursive}
+  .blob{position:fixed;border-radius:50%;z-index:0;pointer-events:none}
+  .b1{width:70vmax;height:70vmax;background:var(--berry);top:-48vmax;left:-40vmax}
+  .b2{width:55vmax;height:55vmax;background:var(--blush);top:-34vmax;right:-34vmax}
+  .b3{width:60vmax;height:60vmax;background:var(--blush);bottom:-44vmax;left:-38vmax}
+  .b4{width:55vmax;height:55vmax;background:var(--olive);bottom:-38vmax;right:-30vmax}
+  .layer{position:relative;z-index:1}
+  /* Envelope screen */
+  #cover{position:fixed;inset:0;z-index:5;display:flex;align-items:center;justify-content:center;
+    background:var(--cream);transition:opacity .8s ease,transform .8s ease;cursor:pointer;text-align:center;padding:1.5rem}
+  #cover.open{opacity:0;transform:scale(1.08);pointer-events:none}
+  .envelope{position:relative;width:min(320px,80vw);aspect-ratio:1.5;background:#fff;border:1px solid var(--blush);
+    border-radius:.5rem;box-shadow:0 1rem 2.5rem rgba(155,29,86,.18);margin:0 auto 1.5rem}
+  .envelope::before{content:"";position:absolute;inset:0;
+    background:linear-gradient(to bottom right,transparent 49.5%,var(--blush) 50%) left/50% 100% no-repeat,
+               linear-gradient(to bottom left,transparent 49.5%,var(--blush) 50%) right/50% 100% no-repeat;opacity:.6;border-radius:.5rem}
+  .seal{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;
+    background:var(--berry);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.6rem;
+    box-shadow:0 .4rem 1rem rgba(155,29,86,.4);animation:pulse 2s infinite}
+  @keyframes pulse{50%{transform:translate(-50%,-50%) scale(1.1)}}
+  .berry{color:var(--berry)}
+  .tap{letter-spacing:.3em;font-size:.75rem;text-transform:uppercase;animation:fade 2s infinite}
+  @keyframes fade{50%{opacity:.35}}
+  /* Main */
+  .card-img{max-width:520px;border-radius:.75rem;box-shadow:0 1.25rem 3rem rgba(155,29,86,.22)}
+  .reveal{opacity:0;transform:translateY(24px);transition:all .9s ease}
+  .shown .reveal{opacity:1;transform:none}
+  .shown .reveal:nth-child(2){transition-delay:.2s}
+  .shown .reveal:nth-child(3){transition-delay:.4s}
+  .count{background:rgba(255,255,255,.75);border:1px solid var(--blush);border-radius:.75rem;min-width:70px}
+  .count .n{font-family:'Playfair Display',serif;font-size:1.9rem;color:var(--berry);line-height:1.1}
+  .count small{letter-spacing:.2em;font-size:.6rem;text-transform:uppercase}
+  .btn-berry{background:var(--berry);border-color:var(--berry);color:#fff;letter-spacing:.15em;font-size:.8rem;text-transform:uppercase}
+  .btn-berry:hover{background:#7d1745;border-color:#7d1745;color:#fff}
+  .btn-outline-berry{border-color:var(--berry);color:var(--berry);letter-spacing:.15em;font-size:.8rem;text-transform:uppercase}
+  .btn-outline-berry:hover{background:var(--berry);color:#fff}
+</style>
+</head>
+<body>
+<div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div>
+
+<!-- Tap to open -->
+<div id="cover" role="button" tabindex="0" aria-label="Tap to open the invitation">
+  <div>
+    <p class="tap mb-3">The wedding of</p>
+    <div class="envelope"><div class="seal serif">S&amp;S</div></div>
+    <h1 class="serif berry fs-2 mb-0">Haafidh Sajjaad</h1>
+    <p class="script fs-1 mb-0" style="color:#e9a3b5">&amp;</p>
+    <h1 class="serif berry fs-2 mb-4">Shakeera</h1>
+    <p class="tap mb-0">Tap to open</p>
+  </div>
+</div>
+
+<!-- Invitation -->
+<main class="layer" id="main">
+  <div class="container py-5 text-center">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-6">
+        <div class="reveal">
+          <img src="save-the-date.jpg" alt="Save the date for the wedding of Haafidh Sajjaad and Shakeera, 05 December 2026" class="img-fluid card-img mb-4">
+        </div>
+
+        <div class="reveal">
+          <p class="script fs-2 mb-2 berry">Save the date</p>
+          <h2 class="serif berry mb-1">5 December 2026</h2>
+          <p class="small text-uppercase mb-4" style="letter-spacing:.25em">Formal invitation to follow</p>
+          <div class="d-flex justify-content-center gap-2 gap-sm-3 mb-4" id="countdown">
+            <div class="count p-2"><div class="n" id="d">0</div><small>Days</small></div>
+            <div class="count p-2"><div class="n" id="h">0</div><small>Hours</small></div>
+            <div class="count p-2"><div class="n" id="m">0</div><small>Mins</small></div>
+            <div class="count p-2"><div class="n" id="s">0</div><small>Secs</small></div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <a id="cal" class="btn btn-berry px-4 py-2" href="#" download="Haafidh-and-Shakeera-Wedding.ics">Add to calendar</a>
+            <a class="btn btn-outline-berry px-4 py-2" href="#" id="share">Share</a>
+          </div>
+          <p class="small mt-4 mb-0" style="letter-spacing:.2em">WITH LOVE · H &amp; S</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  const cover=document.getElementById('cover'), main=document.getElementById('main');
+  function openCard(){cover.classList.add('open');main.classList.add('shown');}
+  cover.addEventListener('click',openCard);
+  cover.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')openCard();});
+
+  // Countdown to 5 Dec 2026 (SAST). Change the date here if needed.
+  const target=new Date('2026-12-05T00:00:00+02:00');
+  function tick(){
+    let t=Math.max(0,target-new Date());
+    const d=Math.floor(t/864e5);t%=864e5;
+    const h=Math.floor(t/36e5);t%=36e5;
+    const m=Math.floor(t/6e4);const s=Math.floor(t%6e4/1e3);
+    document.getElementById('d').textContent=d;
+    document.getElementById('h').textContent=String(h).padStart(2,'0');
+    document.getElementById('m').textContent=String(m).padStart(2,'0');
+    document.getElementById('s').textContent=String(s).padStart(2,'0');
+  }
+  tick();setInterval(tick,1000);
+
+  // Calendar file (all-day event)
+  const ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Save the Date//EN','BEGIN:VEVENT',
+    'UID:save-the-date-20261205@invitation','DTSTAMP:20261017T000000Z',
+    'DTSTART;VALUE=DATE:20261205','DTEND;VALUE=DATE:20261206',
+    'SUMMARY:Wedding of Haafidh Sajjaad & Shakeera',
+    'DESCRIPTION:Save the date - formal invitation to follow.','END:VEVENT','END:VCALENDAR'].join('\r\n');
+  document.getElementById('cal').href='data:text/calendar;charset=utf-8,'+encodeURIComponent(ics);
+
+  document.getElementById('share').addEventListener('click',async e=>{
+    e.preventDefault();
+    const data={title:document.title,text:'Save the date: 5 December 2026',url:location.href};
+    try{ if(navigator.share) await navigator.share(data); else {await navigator.clipboard.writeText(location.href);e.target.textContent='Link copied';} }catch(_){}
+  });
+</script>
+</body>
+</html>

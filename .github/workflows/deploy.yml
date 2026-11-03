@@ -1,0 +1,56 @@
+
+name: Deploy Website to cPanel
+
+on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: production-website-deployment
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy Website Files
+    runs-on: ubuntu-latest
+
+    # Only allow production deployments from main
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      # Get the latest repository contents
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+
+      # Upload repository files to cPanel
+      - name: Deploy to cPanel via FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+
+        with:
+          # FTP connection details
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: ${{ secrets.FTP_PORT }}
+
+          # Secure FTP connection
+          protocol: ftps
+
+          # Local GitHub repository directory
+          local-dir: ./
+
+          # cPanel public website directory
+          server-dir: /public_html/
+
+          # Files and folders to exclude
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            **/node_modules/**

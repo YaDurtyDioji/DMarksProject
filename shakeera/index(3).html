@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Save the Date — Haafidh Sajjaad &amp; Shakeera</title>
+<meta property="og:title" content="Save the Date — Haafidh Sajjaad &amp; Shakeera">
+<meta property="og:description" content="For the wedding of Haafidh Sajjaad &amp; Shakeera · 05 · 12 · 2026 · Formal invitation to follow">
+<meta property="og:image" content="save-the-date.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+:root{--berry:#9b1d56;--blush:#f7c9d3;--olive:#76803f;--cream:#f6f1eb}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--olive);font-family:'Montserrat',sans-serif;overflow-x:hidden}
+body.locked{overflow:hidden;height:100vh}
+.serif{font-family:'Playfair Display',serif}.script{font-family:'Great Vibes',cursive}
+.berry{color:var(--berry)}.pink{color:#f0aebd}
+.eyebrow{letter-spacing:.32em;font-size:.72rem;text-transform:uppercase}
+img.fl{mix-blend-mode:multiply;pointer-events:none;user-select:none}
+section{position:relative;overflow:hidden}
+
+/* colour blobs, as on the card */
+.blob{position:absolute;border-radius:50%;pointer-events:none}
+.bp-tr{width:90vmin;height:90vmin;background:var(--blush);top:-52vmin;right:-52vmin}
+.bp-bl{width:100vmin;height:100vmin;background:var(--blush);bottom:-62vmin;left:-48vmin}
+.bo-br{width:90vmin;height:90vmin;background:var(--olive);bottom:-62vmin;right:-34vmin}
+
+/* ---------- Cover ---------- */
+#cover{position:fixed;inset:0;z-index:50;background:var(--cream);display:flex;align-items:center;justify-content:center;text-align:center;
+  padding:1.5rem;cursor:pointer;overflow:hidden;transition:opacity 1s ease .9s,visibility 0s linear 1.9s}
+#cover.open{opacity:0;visibility:hidden}
+.cv-fl{position:absolute;transition:transform 1.4s cubic-bezier(.7,0,.3,1),opacity 1s ease}
+.cv-tl{top:0;left:0;width:min(62vw,340px)}.cv-br{bottom:0;right:0;width:min(40vw,200px)}
+#cover.open .cv-tl{transform:translate(-60%,-60%) rotate(-14deg);opacity:0}
+#cover.open .cv-br{transform:translate(60%,60%) rotate(14deg);opacity:0}
+.cv-inner{position:relative;z-index:2;transition:transform .9s ease,opacity .7s ease .5s}
+#cover.open .cv-inner{transform:scale(1.35);opacity:0}
+.env{position:relative;width:min(300px,76vw);aspect-ratio:1.45;margin:1.2rem auto 1.6rem;perspective:900px}
+.env .body{position:absolute;inset:0;background:#fff;border:1px solid var(--blush);border-radius:.4rem;box-shadow:0 1rem 2.5rem rgba(155,29,86,.2);overflow:hidden}
+.env .body::before{content:"";position:absolute;inset:0;
+  background:linear-gradient(to bottom right,transparent 49.4%,#fbe3e8 50%) left/50% 100% no-repeat,
+             linear-gradient(to bottom left,transparent 49.4%,#fbe3e8 50%) right/50% 100% no-repeat}
+.env .flap{position:absolute;left:0;right:0;top:0;height:56%;background:var(--blush);transform-origin:top;clip-path:polygon(0 0,100% 0,50% 100%);
+  transition:transform .9s ease;z-index:3}
+#cover.open .flap{transform:rotateX(180deg)}
+.env .letter{position:absolute;left:8%;right:8%;top:8%;bottom:8%;background:#fff;border:1px solid var(--blush);z-index:1;
+  transition:transform .9s ease .5s;display:flex;align-items:center;justify-content:center}
+#cover.open .letter{transform:translateY(-70%) scale(1.1)}
+.seal{position:absolute;left:50%;top:50%;width:62px;height:62px;margin:-31px 0 0 -31px;z-index:4;border-radius:50%;background:var(--cream);
+  box-shadow:0 .4rem 1rem rgba(155,29,86,.3);display:flex;align-items:center;justify-content:center;animation:pulse 2.2s infinite;transition:opacity .4s}
+.seal img{width:38px;mix-blend-mode:multiply}
+#cover.open .seal{opacity:0;animation:none}
+@keyframes pulse{50%{transform:scale(1.1)}}
+.tap{animation:blink 2s infinite}@keyframes blink{50%{opacity:.3}}
+.cv-name{font-size:clamp(1.5rem,6vw,2rem)}
+
+/* ---------- Hero (the card) ---------- */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:5rem 0 6.5rem}
+.hero .tl{position:absolute;top:0;left:0;width:min(52vw,380px);animation:sway 9s ease-in-out infinite;transform-origin:0 0}
+.hero .br{position:absolute;bottom:0;right:0;width:min(34vw,200px);animation:sway 11s ease-in-out infinite reverse;transform-origin:100% 100%}
+@keyframes sway{50%{transform:rotate(2.2deg)}}
+.hero .wrap{position:relative;z-index:2}
+.std{font-family:'Playfair Display',serif;font-weight:700;color:var(--berry);text-transform:uppercase;line-height:.95;font-size:clamp(3.4rem,15vw,6.2rem);margin:0}
+.std-the{font-family:'Great Vibes',cursive;color:#f0aebd;font-size:clamp(2.4rem,10vw,4rem);line-height:.6;display:block;margin:-.1em 0 .05em;position:relative;z-index:2}
+.for{letter-spacing:.34em;font-size:clamp(.6rem,2.4vw,.8rem);text-transform:uppercase;margin:2.2rem 0 .8rem}
+.names{font-family:'Playfair Display',serif;font-weight:500;text-transform:uppercase;color:var(--olive);font-size:clamp(1.7rem,7.2vw,3rem);line-height:1.15;margin:0}
+.names-amp{font-family:'Playfair Display',serif;color:#f0aebd;font-size:clamp(1.4rem,5vw,2rem);margin:.1rem 0}
+.date-row{display:flex;align-items:center;justify-content:center;gap:1rem;margin:2.2rem auto 1.4rem;max-width:520px}
+.date-row::before,.date-row::after{content:"";flex:1;height:1px;background:var(--blush);transform:scaleX(0);transition:transform 1.2s ease 1.6s}
+.date-row::before{transform-origin:right}.date-row::after{transform-origin:left}
+.date-row.in::before,.date-row.in::after{transform:scaleX(1)}
+.date{font-family:'Playfair Display',serif;font-weight:500;color:var(--berry);font-size:clamp(1.4rem,6vw,2.2rem);letter-spacing:.08em;white-space:nowrap}
+.follow{letter-spacing:.3em;font-size:clamp(.58rem,2.2vw,.76rem);text-transform:uppercase}
+.mono{width:62px;mix-blend-mode:multiply}
+.scroll{position:absolute;left:50%;bottom:1.4rem;transform:translateX(-50%);text-align:center;z-index:3;color:var(--berry)}
+.scroll i{display:block;width:1px;height:34px;margin:.5rem auto 0;background:var(--berry);animation:drop 1.8s infinite;transform-origin:top}
+@keyframes drop{0%{transform:scaleY(0)}60%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+
+/* ---------- Other sections ---------- */
+.sec{padding:5.5rem 0}
+.tint{background:linear-gradient(180deg,#fbe6ea,#f7d6de)}
+.card-soft{background:rgba(255,255,255,.8);border:1px solid var(--blush);border-radius:1rem;box-shadow:0 1rem 2.5rem rgba(155,29,86,.1)}
+.count{background:#fff;border:1px solid var(--blush);border-radius:.9rem;min-width:72px;padding:.7rem .4rem}
+.count .n{font-family:'Playfair Display',serif;font-size:2rem;color:var(--berry);line-height:1.1}
+.count small{letter-spacing:.2em;font-size:.58rem;text-transform:uppercase}
+.btn-berry{background:var(--berry);border-color:var(--berry);color:#fff}.btn-berry:hover{background:#7d1745;color:#fff}
+.btn-outline-berry{border-color:var(--berry);color:var(--berry)}.btn-outline-berry:hover{background:var(--berry);color:#fff}
+.btn-berry,.btn-outline-berry{letter-spacing:.15em;font-size:.76rem;text-transform:uppercase;padding:.7rem 1.6rem;border-radius:50rem}
+.divider{display:flex;align-items:center;justify-content:center;gap:.8rem;color:#f0aebd}
+.divider::before,.divider::after{content:"";width:60px;height:1px;background:var(--blush)}
+.foot{padding:5.5rem 0 11rem;text-align:center}
+.foot .tl2{position:absolute;top:0;right:0;width:min(44vw,250px);transform:scaleX(-1)}
+.foot .br2{position:absolute;bottom:0;left:0;width:min(44vw,250px);transform:scale(-1,-1)}
+
+/* scroll reveal */
+[data-r]{opacity:0;transition:opacity 1s ease,transform 1s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+[data-r=up]{transform:translateY(40px)}[data-r=left]{transform:translateX(-50px)}[data-r=right]{transform:translateX(50px)}
+[data-r=zoom]{transform:scale(.85)}[data-r=fade]{transform:none}
+[data-r].in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){[data-r]{opacity:1;transform:none;transition:none}.hero .tl,.hero .br,.seal,.tap{animation:none}}
+</style>
+</head>
+<body class="locked">
+
+<!-- Tap to open -->
+<div id="cover" role="button" tabindex="0" aria-label="Tap to open the invitation">
+  <img class="fl cv-fl cv-tl" src="floral-tl.jpg" alt="">
+  <img class="fl cv-fl cv-br" src="floral-br.jpg" alt="">
+  <div class="cv-inner">
+    <p class="eyebrow mb-1">For the wedding of</p>
+    <div class="env">
+      <div class="body"><div class="letter"><img class="mono" src="monogram.jpg" alt=""></div></div>
+      <div class="flap"></div>
+      <div class="seal"><img src="monogram.jpg" alt=""></div>
+    </div>
+    <h2 class="serif cv-name berry text-uppercase mb-0">Haafidh Sajjaad</h2>
+    <div class="serif pink fs-4 my-1">&amp;</div>
+    <h2 class="serif cv-name berry text-uppercase mb-4">Shakeera</h2>
+    <p class="eyebrow tap mb-0">Tap to open</p>
+  </div>
+</div>
+
+<!-- The card -->
+<section class="hero" id="hero">
+  <div class="blob bp-tr"></div><div class="blob bp-bl"></div><div class="blob bo-br"></div>
+  <img class="fl tl" src="floral-tl.jpg" alt="">
+  <img class="fl br" src="floral-br.jpg" alt="">
+  <div class="container wrap">
+    <h1 class="std" data-r="up">Save</h1>
+    <span class="std-the" data-r="zoom" style="--d:.25s">the</span>
+    <div class="std" data-r="up" style="--d:.4s" aria-hidden="true">Date</div>
+    <p class="for" data-r="fade" style="--d:.8s">For the wedding of</p>
+    <p class="names" data-r="up" style="--d:1s">Haafidh Sajjaad</p>
+    <div class="names-amp" data-r="zoom" style="--d:1.15s">&amp;</div>
+    <p class="names" data-r="up" style="--d:1.3s">Shakeera</p>
+    <div class="date-row" id="dateRow" data-r="fade" style="--d:1.5s"><span class="date">05 • 12 • 2026</span></div>
+    <p class="follow mb-4" data-r="fade" style="--d:1.9s">Formal invitation to follow</p>
+    <img class="mono" src="monogram.jpg" alt="S &amp; S monogram" data-r="zoom" style="--d:2.2s">
+  </div>
+  <div class="scroll eyebrow" data-r="fade" style="--d:2.8s">Scroll<i></i></div>
+</section>
+
+<!-- Countdown -->
+<section class="sec tint text-center">
+  <div class="container"><div class="row justify-content-center"><div class="col-11 col-md-8 col-lg-5">
+    <p class="script fs-1 berry mb-2" data-r="up">Counting down</p>
+    <p class="eyebrow mb-4" data-r="up" style="--d:.1s">to the wedding of Haafidh &amp; Shakeera</p>
+    <div class="d-flex justify-content-center gap-2 gap-sm-3" data-r="zoom" style="--d:.2s">
+      <div class="count"><div class="n" id="d">0</div><small>Days</small></div>
+      <div class="count"><div class="n" id="h">00</div><small>Hours</small></div>
+      <div class="count"><div class="n" id="m">00</div><small>Mins</small></div>
+      <div class="count"><div class="n" id="s">00</div><small>Secs</small></div>
+    </div>
+  </div></div></div>
+</section>
+
+<!-- Save it -->
+<section class="sec text-center">
+  <div class="container"><div class="row justify-content-center"><div class="col-11 col-md-8 col-lg-5">
+    <div class="card-soft p-4 p-md-5" data-r="zoom">
+      <img class="mono mb-3" src="monogram.jpg" alt="" data-r="fade" style="--d:.2s">
+      <h2 class="serif berry mb-1 text-uppercase" data-r="up" style="--d:.25s">Saturday</h2>
+      <p class="serif fs-3 berry mb-3" data-r="up" style="--d:.3s">5 December 2026</p>
+      <div class="divider mb-3" data-r="fade" style="--d:.4s">♡</div>
+      <p class="mb-4" style="line-height:1.9;--d:.45s" data-r="up">Please keep this day free. Further details will follow with our formal invitation.</p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center" data-r="up" style="--d:.55s">
+        <a class="btn btn-berry" id="cal" download="Haafidh-and-Shakeera-Wedding.ics" href="#">Add to calendar</a>
+        <a class="btn btn-outline-berry" id="share" href="#">Share</a>
+      </div>
+    </div>
+  </div></div></div>
+</section>
+
+<!-- Closing -->
+<section class="foot tint">
+  <img class="fl tl2" src="floral-tl.jpg" alt="">
+  <img class="fl br2" src="floral-br.jpg" alt="">
+  <div class="container position-relative">
+    <img class="mono mb-3" src="monogram.jpg" alt="" data-r="zoom">
+    <p class="eyebrow mb-1" data-r="up" style="--d:.15s">With love</p>
+    <p class="script fs-1 berry mb-0" data-r="up" style="--d:.3s">Haafidh &amp; Shakeera</p>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  const cover=document.getElementById('cover'), hero=document.getElementById('hero');
+  function reveal(el){el.classList.add('in');}
+  function openCard(){
+    if(cover.classList.contains('open'))return;
+    cover.classList.add('open');
+    // Card animates in as the cover fades away
+    setTimeout(()=>{hero.querySelectorAll('[data-r]').forEach(reveal);document.getElementById('dateRow').classList.add('in');},1100);
+    setTimeout(()=>{document.body.classList.remove('locked');window.scrollTo(0,0);},1900);
+  }
+  cover.addEventListener('click',openCard);
+  cover.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openCard();}});
+
+  // Scroll animations for everything below the card
+  const io=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){reveal(e.target);io.unobserve(e.target);}
+  }),{threshold:.18,rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('[data-r]').forEach(el=>{if(!hero.contains(el))io.observe(el);});
+
+  // Countdown to 5 December 2026 (SAST)
+  const target=new Date('2026-12-05T00:00:00+02:00');
+  const pad=n=>String(n).padStart(2,'0');
+  function tick(){
+    let t=Math.max(0,target-new Date());
+    const d=Math.floor(t/864e5);t%=864e5;
+    const h=Math.floor(t/36e5);t%=36e5;
+    document.getElementById('d').textContent=d;
+    document.getElementById('h').textContent=pad(h);
+    document.getElementById('m').textContent=pad(Math.floor(t/6e4));
+    document.getElementById('s').textContent=pad(Math.floor(t%6e4/1e3));
+  }
+  tick();setInterval(tick,1000);
+
+  // Calendar file (all-day)
+  const ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Save the Date//EN','BEGIN:VEVENT',
+    'UID:save-the-date-20261205@invitation','DTSTAMP:20261017T000000Z',
+    'DTSTART;VALUE=DATE:20261205','DTEND;VALUE=DATE:20261206',
+    'SUMMARY:Wedding of Haafidh Sajjaad & Shakeera',
+    'DESCRIPTION:Save the date - formal invitation to follow.','END:VEVENT','END:VCALENDAR'].join('\r\n');
+  document.getElementById('cal').href='data:text/calendar;charset=utf-8,'+encodeURIComponent(ics);
+
+  document.getElementById('share').addEventListener('click',async e=>{
+    e.preventDefault();
+    const data={title:document.title,text:'Save the date: 5 December 2026',url:location.href};
+    try{if(navigator.share)await navigator.share(data);else{await navigator.clipboard.writeText(location.href);e.target.textContent='Link copied';}}catch(_){}
+  });
+</script>
+</body>
+</html>
