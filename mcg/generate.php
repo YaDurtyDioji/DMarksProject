@@ -6,8 +6,14 @@
  * Creates ./ADMIN2/ with all files, folders, and public HTML.
  * ============================================================
  */
+// Write files into a folder PHP can create itself.
 $base = __DIR__ . '/ADMIN2';
-@mkdir($base, 0755, true);
+if (!is_dir($base) && !mkdir($base, 0755, true)) {
+    die("Cannot create $base — /mcg/ is not writable by PHP either.\n");
+}
+if (!is_writable($base)) {
+    die("Cannot write to $base — try chmod 777 $base via File Manager.\n");
+}
 @mkdir($base . '/uploads', 0755, true);
 @mkdir($base . '/assets', 0755, true);
 
@@ -1627,17 +1633,13 @@ header h1{margin:0;font-size:20px}
 </html>
 EOT;
 
-/* ---------------- WRITE ALL FILES ---------------- */
+$fail = 0;
 foreach ($files as $path => $content) {
     $full = $base . '/' . $path;
     @mkdir(dirname($full), 0755, true);
-    file_put_contents($full, $content);
-    echo "Created: $path\n";
+    $n = @file_put_contents($full, $content);
+    if ($n === false) { echo "FAILED : $path\n"; $fail++; }
+    else              { echo "Created: $path ($n bytes)\n"; }
 }
-
-echo "\nDone! Generated " . count($files) . " files in: $base\n\n";
-echo "Next steps:\n";
-echo "  1. Run database.sql in MySQL (creates db 'admin2').\n";
-echo "  2. Edit ADMIN2/config.php with your DB credentials.\n";
-echo "  3. Open /ADMIN2/login.php — you will be prompted to create the first Super Admin.\n";
-echo "  4. Public pages: /ADMIN2/Services.html  and  /ADMIN2/Gallery.html\n";
+if ($fail) { echo "\n$fail file(s) failed.\n"; exit(1); }
+echo "\nDone — " . count($files) . " files in $base\n";
