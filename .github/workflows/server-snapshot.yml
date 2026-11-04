@@ -1,0 +1,93 @@
+
+name: Create Server Snapshot
+
+on:
+  workflow_run:
+    workflows:
+      - Deploy Website to cPanel
+    types:
+      - completed
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  snapshot:
+    name: Backup Live Website
+    runs-on: ubuntu-latest
+
+    # Only snapshot after a successful deployment
+    if: github.event.workflow_run.conclusion == 'success'
+
+    env:
+      FTP_SERVER: ${{ secrets.FTP_SERVER }}
+      FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+      FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+      FTP_PORT: ${{ secrets.FTP_PORT }}
+
+      SITE_DOMAIN: example.co.za
+
+    steps:
+      # Checkout repository
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      # Install FTP download utility
+      - name: Install lftp
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lftp
+
+      # Download live website
+      - name: Download cPanel Website
+        run: |
+          mkdir -p /tmp/server-snapshot
+
+          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" \
+            "ftp://$FTP_SERVER:$FTP_PORT" \
+            -e "
+              set ftp:ssl-force true;
+              set ftp:ssl-protect-data true;
+              mirror --verbose --parallel=4 \
+                /public_html/ \
+                /tmp/server-snapshot/;
+              bye
+            "
+
+      # Generate timestamped branch name
+      - name: Generate Snapshot Branch
+        id: snapshot
+        run: |
+          TIMESTAMP=$(TZ=Africa/Johannesburg date +'%Y-%m-%d_%H-%M-%S')
+
+          BRANCH="${SITE_DOMAIN}_${TIMESTAMP}"
+
+          echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
+
+          echo "Creating snapshot: $BRANCH"
+
+      # Create a clean branch containing server files
+      - name: Create Snapshot Branch
+        run: |
+          git switch --orphan "${{ steps.snapshot.outputs.branch }}"
+
+          git rm -rf . || true
+
+          cp -a /tmp/server-snapshot/. .
+
+          git add -f -A
+
+          git config user.name "github-actions[bot]"
+          git config user.email \
+            "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git commit -m "Server snapshot: ${{ steps.snapshot.outputs.branch }}"
+
+      # Push snapshot to GitHub
+      - name: Push Snapshot Branch
+        run: |
+          git push origin "${{ steps.snapshot.outputs.branch }}"
