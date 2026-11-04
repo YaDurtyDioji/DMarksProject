@@ -1,0 +1,3 @@
+# Private admin data — do not commit messages or credentials.
+*.json
+secret.txt
