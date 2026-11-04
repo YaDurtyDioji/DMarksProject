@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INSY6212W Exam Prep - The Ultimate Study Guide</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --secondary-color: #6c757d;
+            --success-color: #198754;
+            --danger-color: #dc3545;
+            --bg-color: #f8f9fa;
+            --sidebar-bg: #212529;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            scroll-behavior: smooth;
+        }
+
+        /* Navbar & Search */
+        .navbar {
+            background: linear-gradient(135deg, #0d6efd, #0dcaf0);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .navbar-brand {
+            font-weight: 700;
+            color: white !important;
+        }
+        .search-container {
+            position: relative;
+            max-width: 400px;
+            width: 100%;
+        }
+        .search-container i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+        }
+        .search-container input {
+            padding-left: 40px;
+            border-radius: 50px;
+            border: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 56px;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+            padding: 20px 0 0;
+            box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+            background-color: var(--sidebar-bg);
+            overflow-y: auto;
+        }
+        .sidebar .nav-link {
+            font-weight: 500;
+            color: #adb5bd;
+            padding: 10px 20px;
+            transition: all 0.3s;
+        }
+        .sidebar .nav-link:hover, .sidebar .nav-link.active {
+            color: #fff;
+            background-color: rgba(255,255,255,0.1);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        /* Main Content */
+        main {
+            padding-top: 70px;
+            margin-left: 16.666667%;
+        }
+
+        /* Cards & Accordions */
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+        }
+        .card-header {
+            background-color: white;
+            border-bottom: 1px solid #eee;
+            border-radius: 15px 15px 0 0 !important;
+            padding: 20px;
+            cursor: pointer;
+        }
+        .card-header h4 {
+            margin: 0;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        .accordion-button:not(.collapsed) {
+            background-color: #e7f1ff;
+            color: var(--primary-color);
+            box-shadow: none;
+        }
+
+        /* Tables */
+        table {
+            font-size: 0.9rem;
+        }
+        th {
+            background-color: #e9ecef;
+            color: #333;
+        }
+
+        /* Callouts / Tips */
+        .exam-tip {
+            background-color: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            font-size: 0.95rem;
+        }
+        .memory-hook {
+            background-color: #d1e7dd;
+            border-left: 5px solid #198754;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            font-size: 0.95rem;
+        }
+        .joke-box {
+            background-color: #f8d7da;
+            border-left: 5px solid #dc3545;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+
+        /* Formulas */
+        .formula-box {
+            background-color: #212529;
+            color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            text-align: center;
+            font-size: 1.1rem;
+            margin: 10px 0;
+        }
+
+        /* Documents Hub */
+        .doc-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            height: 100%;
+        }
+        .doc-card:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: scale(1.05);
+        }
+        .doc-card i {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .doc-card a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        /* Search Highlighting */
+        .searchable {
+            transition: all 0.3s;
+        }
+        .hidden {
+            display: none !important;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar { display: none; }
+            main { margin-left: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><i class="fas fa-project-diagram me-2"></i>INSY6212W Study Guide</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" class="form-control" placeholder="Search topics, definitions, formulas...">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item"><a class="nav-link" href="#documents"><i class="fas fa-file-alt me-2"></i>14 Documents Hub</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#framework"><i class="fas fa-layer-group me-2"></i>Framework Overview</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#lu1"><i class="fas fa-rocket me-2"></i>LU1: Intro to PM</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#lu2"><i class="fas fa-bullseye me-2"></i>LU2: Selecting Projects</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#lu3"><i class="fas fa-file-signature me-2"></i>LU3: Proposals & Contracts</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#lu4"><i class="fas fa-sitemap me-2"></i>LU4: Scope & WBS</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#lu5"><i class="fas fa-laptop-code me-2"></i>LU5: PMIS</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#lu6"><i class="fas fa-calendar-alt me-2"></i>LU6: The Schedule</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#lu7"><i class="fas fa-money-bill-wave me-2"></i>LU7: Costs & EV</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#lu8"><i class="fas fa-exclamation-triangle me-2"></i>LU8: Managing Risk</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#lu9"><i class="fas fa-flag-checkered me-2"></i>LU9: Closing the Project</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#formulas"><i class="fas fa-calculator me-2"></i>Formula Sheet</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#checklist"><i class="fas fa-clipboard-check me-2"></i>Exam Checklist</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                
+                <!-- Hero Section -->
+                <div class="p-5 mb-4 bg-white rounded-3 shadow-sm border">
+                    <div class="container-fluid py-2">
+                        <h1 class="display-5 fw-bold text-primary">Exam-Focused Study Guide</h1>
+                        <p class="col-md-10 fs-5 text-muted">A structured, exam-focused guide integrating PMBOK® Guide - Seventh Edition and Successful Project Management. Definitions • Explanations • Memory hooks • Worked examples • Exam practice.</p>
+                        <div class="alert alert-info d-inline-block mt-2">
+                            <i class="fas fa-lightbulb me-2"></i> <strong>How to use this guide:</strong> Don't just memorize. Understand the logic, learn the bold terms and formulas, use the memory hooks, and practice explaining concepts using the examples.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Joke 1 -->
+                <div class="joke-box">
+                    <i class="fas fa-laugh-squint me-2"></i> <strong>PM Joke #1:</strong> Why did the project manager go to the beach? To manage the sandbox. (Okay, we promise the content is better than the jokes).
+                </div>
+
+                <!-- 14 Documents Hub -->
+                <section id="documents" class="mb-5 searchable">
+                    <h2 class="border-bottom pb-2 mb-4 text-primary"><i class="fas fa-folder-open me-2"></i>Your 14 Documents Hub</h2>
+                    <p class="text-muted">Quick access to all prescribed materials and summaries. (Note: Links are mock placeholders for your actual files).</p>
+                    <div class="row g-4">
+                        <!-- Document 1 -->
+                        <div class="col-md-3 col-sm-6">
+                            <div class="doc-card">
+                                <a href="LU1 - Introduction to PM - The_Digital_Project_Blueprint.pptx" target="_blank">
+                                    <i class="fas fa-file-pdf text-danger"></i>
+                                    <h6>LU1 - Intro to PM</h6>
+                                    <small>PDF Document</small>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Document 2 -->
+                        <div class="col-md-3 col-sm-6">
+                            <div class="doc-card">
+                                <a href="LU2.pdf" target="_blank">
+                                    <i class="fas fa-file-pdf text-danger"></i>
+                                    <h6>LU2 - Selecting Projects</h6>
+                                    <small>PDF Document</small>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Document 3 -->
+                        <div class="col-md-3 col-sm-6">
+                            <div class="doc-card">
+                                <a href="LU3.pdf" target="_blank">
+                                    <i class="fas fa-file-pdf text-danger"></i>
+                                    <h6>LU3 - Proposals</h6>
+                                    <small>PDF Document</small>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Document 4 -->
+                        <div class="col-md-3 col-sm-6">
+                            <div class="doc-card">
+                                <a href="LU4.pdf" target="_blank">
+                                    <i class="fas fa-file-pdf text-danger"></i>
+                                    <h6>LU4 - Scope & WBS</h6>
+                                    <small>PDF Document</small>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Document 5 -->
+                        <div class="col-md-3 col-sm-6">
+                            <div class="doc-card">
+                                <a href="LU5.pdf" target="_blank">
+                                    <i class="fas fa-file-pdf text-danger"></i>
+                                    <h6>LU5 - PMIS</h6>
+                                    <small>PDF Document</small>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Document 6.1 -->
+                        <div class="col-md-3 col-sm-6">
+                            <div class="doc-card">
+                                <a href="LU6 - Chapter 5.pdf" target="_blank">
+                                    <i class="fas fa-file-pdf text-danger"></i>
+                                    <h6>LU6 - Chapter 5</h6>
+                                    <small>PDF Document</small>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Document 6.2 -->
+                        <div class="col-md-3 col-sm-6">
+                            <div class="doc-card">
+                                <a href="LU6 - Chapter 6.pdf" target="_blank">
+                                    <i class="fas fa-file-pdf text-danger"></i>
+                                    <h6>LU9 - Chapter 6</h6>
+                                    <small>PDF Document</small>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Document 7 -->
+                        <div class="col-md-3 col-sm-6">
+                            <div class="doc-card">
+                                <a href="LU7.pptx" target="_blank">
+                                    <i class="fas fa-file-pdf text-danger"></i>
+                                    <h6>LU7 - Costs & EV</h6>
+                                    <small>PDF Document</small>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Document 8 -->
+                        <div class="col-md-3 col-sm-6">
+                            <div class="doc-card">
+                                <a href="LU8.pptx" target="_blank">
+                                    <i class="fas fa-file-pdf text-danger"></i>
+                                    <h6>LU8 - Managing Risk</h6>
+                                    <small>PDF Document</small>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Document 9 -->
+                        <div class="col-md-3 col-sm-6">
+                            <div class="doc-card">
+                                <a href="Learning Unit 9 - Chapter 10 11 and 13.pptx" target="_blank">
+                                    <i class="fas fa-file-pdf text-danger"></i>
+                                    <h6>LU9 - Chapters 10, 11, 13</h6>
+                                    <small>PDF Document</small>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Document 10 -->
+                        <div class="col-md-3 col-sm-6">
+                            <div class="doc-card">
+                                <a href="PMBOK 7th Edition (iBIMOne.com).pdf" target="_blank">
+                                    <i class="fas fa-book text-primary"></i>
+                                    <h6>PMBOK 7th Edition</h6>
+                                    <small>PDF Book</small>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Document 11 -->
+                        <div class="col-md-3 col-sm-6">
+                            <div class="doc-card">
+                                <a href="Successful Project Management - Textbook.pdf" target="_blank">
+                                    <i class="fas fa-book text-primary"></i>
+                                    <h6>Successful PM Textbook</h6>
+                                    <small>PDF Book</small>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Document 12 -->
+                        <div class="col-md-3 col-sm-6">
+                            <div class="doc-card">
+                                <a href="INSY6212w Past Papers.pptx" target="_blank">
+                                    <i class="fas fa-file-alt text-warning"></i>
+                                    <h6>Past Papers</h6>
+                                    <small>PPTX</small>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Document 13 -->
+                        <div class="col-md-3 col-sm-6">
+                            <div class="doc-card">
+                                <a href="Assignment 2 - LU1 to LU6 - Copy.pptx" target="_blank" >
+                                    <i class="fas fa-file-alt text-warning"></i>
+                                    <h6>Assignment 2</h6>
+                                    <small>PPTX</small>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Document 14 -->
+                        <div class="col-md-3 col-sm-6">
+                            <div class="doc-card">
+                                <a href="#" target="_blank">
+                                    <i class="fas fa-calculator text-success"></i>
+                                    <h6>Formula Cheat Sheet</h6>
+                                    <small>PDF</small>
+                                </a>
+                            </div>
+                        </div>
+                                                                        <!-- Document 15 -->
+                        <div class="col-md-3 col-sm-6">
+                            <div class="doc-card">
+                                <a href="INSY6212 MOCK EXAM - Question Paper.docx" target="_blank">
+                                    <i class="fas fa-calculator text-success"></i>
+                                    <h6>Mock Exam</h6>
+                                    <small>PDF</small>
+                                </a>
+                            </div>
+                        </div> 
+                                                <!-- Document 15 -->
+                        <div class="col-md-3 col-sm-6">
+                            <div class="doc-card">
+                                <a href="INSY6212 MOCK EXAM - Answers.docx" target="_blank">
+                                    <i class="fas fa-calculator text-success"></i>
+                                    <h6>Mock Exam Answers</h6>
+                                    <small>PDF</small>
+                                </a>
+                            </div>
+                        </div>                        <!-- Document 16 -->
+                        <div class="col-md-3 col-sm-6">
+                            <div class="doc-card">
+                                <a href="2025 Past Paper.pdf" target="_blank">
+                                    <i class="fas fa-calculator text-success"></i>
+                                    <h6>Past Paper 1</h6>
+                                    <small>PDF</small>
+                                </a>
+                            </div>
+                        </div>
+                                                <!-- Document 17 -->
+                        <div class="col-md-3 col-sm-6">
+                            <div class="doc-card">
+                                <a href="2025 Past Paper 1.pdf" target="_blank">
+                                    <i class="fas fa-calculator text-success"></i>
+                                    <h6>Past Paper 2</h6>
+                                    <small>PDF</small>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Framework Overview -->
+                <section id="framework" class="mb-5 searchable">
+                    <h2 class="border-bottom pb-2 mb-4 text-primary"><i class="fas fa-layer-group me-2"></i>Framework Overview</h2>
+                    <p>The textbook (Gido et al.) organises practical teaching around the project life cycle. The PMBOK® 7 presents a broader system for delivering value through principles and eight interacting performance domains.</p>
+                    
+                    <h4 class="mt-4">The 12 Project Management Principles (PMBOK 7)</h4>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr><th>Principle</th><th>Meaning in practice</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1. Stewardship</td><td>Act responsibly, ethically and with care for the project, people, resources and wider impacts.</td></tr>
+                                <tr><td>2. Team</td><td>Create a collaborative environment in which people can contribute and work effectively.</td></tr>
+                                <tr><td>3. Stakeholders</td><td>Engage stakeholders proactively and constructively; understand their needs and influence.</td></tr>
+                                <tr><td>4. Value</td><td>Focus on the intended benefits and usefulness of the project, not merely producing outputs.</td></tr>
+                                <tr><td>5. Systems thinking</td><td>Recognise that project components interact; a change in one area can affect the whole.</td></tr>
+                                <tr><td>6. Leadership</td><td>Demonstrate leadership behaviours appropriate to the people and situation.</td></tr>
+                                <tr><td>7. Tailoring</td><td>Adapt the approach, governance, methods and controls to the project's context.</td></tr>
+                                <tr><td>8. Quality</td><td>Build quality into processes and deliverables rather than relying only on final inspection.</td></tr>
+                                <tr><td>9. Complexity</td><td>Navigate complexity by understanding its sources and responding appropriately.</td></tr>
+                                <tr><td>10. Risk</td><td>Optimise risk responses by considering threats and opportunities.</td></tr>
+                                <tr><td>11. Adaptability and resiliency</td><td>Remain able to adjust to change and recover from setbacks.</td></tr>
+                                <tr><td>12. Change</td><td>Enable the transition from the current state to the envisioned future state.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4 class="mt-4">The 8 Project Performance Domains (PMBOK 7)</h4>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr><th>Performance domain</th><th>What it focuses on</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Stakeholders</td><td>Build productive relationships and engagement with people or groups affected by, or able to affect, the project.</td></tr>
+                                <tr><td>Team</td><td>Establish a high-performing team through leadership, collaboration, development and a healthy team culture.</td></tr>
+                                <tr><td>Development approach and life cycle</td><td>Choose and adapt predictive, adaptive or hybrid approaches, delivery cadence and project phases.</td></tr>
+                                <tr><td>Planning</td><td>Organise and coordinate project work, estimates, resources, communications, procurement, changes and measures.</td></tr>
+                                <tr><td>Project work</td><td>Coordinate the people and processes that perform the work, manage resources and procurement, and handle changes.</td></tr>
+                                <tr><td>Delivery</td><td>Produce outputs that meet requirements and enable intended outcomes and value.</td></tr>
+                                <tr><td>Measurement</td><td>Assess performance using meaningful measures, forecasts and information that support decisions.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="memory-hook">
+                        <strong>Remember the distinction:</strong> Principles guide how people behave. Performance domains describe broad areas of project work that must be managed together.
+                    </div>
+
+                    <h4 class="mt-4">Predictive, Adaptive and Hybrid Approaches</h4>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr><th>Approach</th><th>Typical characteristics</th><th>Example</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>Predictive</strong></td><td>Requirements and scope are substantially understood early; planning and control are more upfront; work often proceeds through defined phases.</td><td>Constructing a standard building to approved plans.</td></tr>
+                                <tr><td><strong>Adaptive</strong></td><td>Requirements evolve; work is delivered in short iterations; feedback informs priorities and the next increment.</td><td>Developing a new app where users test releases and refine features.</td></tr>
+                                <tr><td><strong>Hybrid</strong></td><td>Combines predictive and adaptive elements where different parts of the project need different approaches.</td><td>Fixed infrastructure rollout with iterative software configuration.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Joke 2 -->
+                <div class="joke-box">
+                    <i class="fas fa-laugh-squint me-2"></i> <strong>PM Joke #2:</strong> How many project managers does it take to change a lightbulb? None. They just document the lack of light as a risk, put it on the issue log, and schedule a meeting to discuss it next Tuesday.
+                </div>
+
+                <!-- LU1 -->
+                <section id="lu1" class="mb-5 searchable">
+                    <h2 class="border-bottom pb-2 mb-4 text-primary"><i class="fas fa-rocket me-2"></i>LU1 - Introduction to Project Management</h2>
+                    
+                    <h4>1. What is a project?</h4>
+                    <p>A project is a <strong>temporary endeavour</strong> undertaken to create a <strong>unique</strong> product, service or result. It has a defined purpose and an identifiable beginning and end. A project is different from ongoing operations, which are repetitive activities that sustain the organisation.</p>
+                    
+                    <table class="table table-bordered table-sm mt-3">
+                        <thead><tr><th>Project</th><th>Operation</th></tr></thead>
+                        <tbody>
+                            <tr><td>Build and launch a new online booking platform.</td><td>Process bookings every day using the live platform.</td></tr>
+                            <tr><td>Open a new restaurant branch.</td><td>Prepare and serve meals at an established branch.</td></tr>
+                            <tr><td>Implement a new network at a campus.</td><td>Provide routine network support and maintenance.</td></tr>
+                        </tbody>
+                    </table>
+                    <div class="memory-hook"><i class="fas fa-brain me-2"></i><strong>Memory hook:</strong> A project changes or creates something; operations keep the existing business running.</div>
+
+                    <h4 class="mt-4">2. Common project attributes</h4>
+                    <ul>
+                        <li><strong>Clear objective:</strong> A defined result or outcome that explains what the project is intended to achieve.</li>
+                        <li><strong>Interdependent activities:</strong> Activities are linked by logical or technical dependencies; some must precede others.</li>
+                        <li><strong>Resources:</strong> People, skills, equipment, materials, facilities, information and money are required.</li>
+                        <li><strong>Time frame:</strong> The work is temporary, with a start and an intended completion point.</li>
+                        <li><strong>Uniqueness:</strong> The combination of context, stakeholders, requirements and constraints makes the endeavour distinct.</li>
+                        <li><strong>Sponsor/customer:</strong> A sponsor provides direction or authorisation; a customer or end user receives or uses the result.</li>
+                        <li><strong>Uncertainty:</strong> Estimates, assumptions and conditions may change; threats and opportunities must be managed.</li>
+                    </ul>
+
+                    <h4 class="mt-4">3. Balancing project constraints</h4>
+                    <p>The textbook highlights <strong>scope, quality, schedule, budget, resources, risk and customer satisfaction</strong> as constraints that need to be balanced. Scope, time and cost are often taught as the traditional 'triple constraint', but they are not the only constraints. A change to one variable can affect several others.</p>
+                    <p><em>Example: adding two extra features to a booking system may increase development time, testing effort, cost and delivery risk.</em></p>
+                    <div class="exam-tip"><i class="fas fa-graduation-cap me-2"></i><strong>Exam-ready explanation:</strong> Project constraints compete. The project manager must make trade-offs while protecting quality, stakeholder expectations and the intended project outcome.</div>
+
+                    <h4 class="mt-4">4. Project life cycle</h4>
+                    <table class="table table-bordered table-sm mt-3">
+                        <thead><tr><th>Textbook phase</th><th>Main purpose</th><th>Typical work / evidence</th></tr></thead>
+                        <tbody>
+                            <tr><td>Initiating</td><td>Recognise the need and authorise the project.</td><td>Identify need; evaluate/choose project; appoint project manager; prepare or approve the project charter.</td></tr>
+                            <tr><td>Planning</td><td>Decide how the objective will be achieved.</td><td>Define scope; develop WBS; assign responsibility; sequence and estimate activities; prepare schedule, budget and risk plans.</td></tr>
+                            <tr><td>Performing</td><td>Carry out the planned work and manage delivery.</td><td>Coordinate people and resources; produce deliverables; communicate; monitor progress and manage approved changes.</td></tr>
+                            <tr><td>Closing</td><td>Formally complete or terminate the work.</td><td>Confirm acceptance; make final payments; evaluate performance; capture lessons learned; archive records and release resources.</td></tr>
+                        </tbody>
+                    </table>
+                    <p><em>Note: Monitoring and controlling is not merely a single isolated phase: the textbook discusses monitoring progress and controlling changes as work is performed.</em></p>
+
+                    <h4 class="mt-4">5. Project management and value</h4>
+                    <p>Project management involves applying knowledge, skills, tools and techniques to project work to meet requirements and achieve intended outcomes. PMBOK® 7 places particular emphasis on <strong>value</strong>: completing a deliverable is not enough if the deliverable does not produce the benefit that justified the project.</p>
+                    <p><em>Example: a new student portal is an output. Faster registration, fewer administrative errors and improved student experience are intended outcomes.</em></p>
+
+                    <h4 class="mt-4">6. Stakeholders</h4>
+                    <p>A stakeholder is an individual, group or organisation that can affect, be affected by, or perceive itself to be affected by a project. Identify stakeholders early, understand their expectations and influence, and maintain appropriate two-way communication.</p>
+                    <div class="exam-tip"><i class="fas fa-graduation-cap me-2"></i><strong>Exam tip:</strong> When asked to explain a project life cycle, name each phase, state its purpose and give one or two typical activities. Add that monitoring, communication and change management continue during delivery.</div>
+                </section>
+
+                <!-- Joke 3 -->
+                <div class="joke-box">
+                    <i class="fas fa-laugh-squint me-2"></i> <strong>PM Joke #3:</strong> "I'll fix it in testing." - Famous last words of a doomed project.
+                </div>
+
+                <!-- LU2 -->
+                <section id="lu2" class="mb-5 searchable">
+                    <h2 class="border-bottom pb-2 mb-4 text-primary"><i class="fas fa-bullseye me-2"></i>LU2 - Identifying and Selecting Projects</h2>
+                    
+                    <h4>1. Why organisations select projects</h4>
+                    <p>Organisations have limited funding, time, skills and capacity. Project selection helps them choose work that best supports strategic objectives and offers an acceptable balance of benefits, costs, risks and resource demands.</p>
+                    <ul>
+                        <li><strong>Strategic alignment:</strong> does the project support organisational goals?</li>
+                        <li><strong>Expected benefits and value:</strong> what financial or non-financial improvement is expected?</li>
+                        <li><strong>Cost and affordability:</strong> can the organisation fund the work and its ongoing consequences?</li>
+                        <li><strong>Risk and feasibility:</strong> are the technical, legal, operational and commercial uncertainties acceptable?</li>
+                        <li><strong>Resource availability:</strong> are the necessary people, skills and equipment available?</li>
+                        <li><strong>Timing and dependencies:</strong> is the project needed now, and does it depend on other work?</li>
+                    </ul>
+                    <p>PMBOK® 7 links project justification to the business need, cost-benefit reasoning and business strategy. The justification should be revisited if circumstances change or the project is no longer expected to provide value.</p>
+
+                    <h4 class="mt-4">2. Project charter</h4>
+                    <p>A project charter is a high-level authorising document. It records the project purpose, objectives, funding, major deliverables, milestones, assumptions, constraints, risks and approval requirements.</p>
+                    <table class="table table-bordered table-sm mt-3">
+                        <thead><tr><th>Typical charter element</th><th>What it answers</th></tr></thead>
+                        <tbody>
+                            <tr><td>Project title</td><td>What is the project called?</td></tr>
+                            <tr><td>Purpose / business need</td><td>Why is the project being undertaken?</td></tr>
+                            <tr><td>High-level description</td><td>What broad work or solution is envisaged?</td></tr>
+                            <tr><td>Objective</td><td>What measurable result, by when and within what budget?</td></tr>
+                            <tr><td>Success criteria</td><td>How will success be judged?</td></tr>
+                            <tr><td>Funding / budget authority</td><td>What funding is authorised?</td></tr>
+                            <tr><td>Major deliverables</td><td>What significant outputs must be produced?</td></tr>
+                            <tr><td>Acceptance criteria</td><td>What standards must the outputs meet to be accepted?</td></tr>
+                            <tr><td>Milestone schedule</td><td>What are the key dates or decision points?</td></tr>
+                            <tr><td>Assumptions</td><td>What conditions are being treated as true for planning?</td></tr>
+                            <tr><td>Constraints</td><td>What limits must the project respect?</td></tr>
+                            <tr><td>Major risks</td><td>What significant uncertainties are already known?</td></tr>
+                            <tr><td>Approval / authority</td><td>Who authorises the project and accepts accountability?</td></tr>
+                        </tbody>
+                    </table>
+                    <div class="memory-hook"><i class="fas fa-brain me-2"></i><strong>Memory hook:</strong> The charter is the project's authorisation and high-level direction—not the detailed day-to-day project plan.</div>
+
+                    <h4 class="mt-4">3. Request for Proposal (RFP)</h4>
+                    <p>An RFP is a formal request issued to potential suppliers or contractors. It describes the customer's need and asks respondents to propose a solution, explain how they would perform the work, identify relevant capability and provide schedule and pricing information.</p>
+                    <p>A clear RFP describes the required outcome, scope, specifications, deliverables and acceptance expectations. Ambiguous requirements create a risk of inconsistent bids, misunderstandings, disputes and later change requests.</p>
+
+                    <h4 class="mt-4">4. Project charter versus RFP</h4>
+                    <table class="table table-bordered table-sm mt-3">
+                        <thead><tr><th>Project charter</th><th>RFP</th></tr></thead>
+                        <tbody>
+                            <tr><td>Authorises and frames a project within the sponsoring organisation.</td><td>Invites external suppliers/contractors to propose how they would meet a customer's need.</td></tr>
+                            <tr><td>Usually prepared or approved by the sponsor/initiating organisation.</td><td>Issued by a customer or procuring organisation to potential providers.</td></tr>
+                            <tr><td>Focuses on why the project exists, its high-level objective, authority and boundaries.</td><td>Focuses on what the customer needs and what bidders must submit.</td></tr>
+                        </tbody>
+                    </table>
+                    <div class="exam-tip"><i class="fas fa-graduation-cap me-2"></i><strong>Exam tip:</strong> A charter authorises the project. An RFP solicits proposals from potential providers. Do not describe them as interchangeable documents.</div>
+                </section>
+
+                <!-- LU3 -->
+                <section id="lu3" class="mb-5 searchable">
+                    <h2 class="border-bottom pb-2 mb-4 text-primary"><i class="fas fa-file-signature me-2"></i>LU3 - Developing Project Proposals</h2>
+                    
+                    <h4>1. Bid / no-bid decision</h4>
+                    <p>A contractor should assess whether responding to an RFP is commercially and operationally sensible before investing effort in a proposal.</p>
+                    <ul>
+                        <li><strong>Strategic fit:</strong> does the opportunity align with the contractor's business and expertise?</li>
+                        <li><strong>Customer and funding:</strong> is the customer credible, committed and able to fund the project?</li>
+                        <li><strong>Resources and capability:</strong> can the contractor provide the required people, skills, technology and capacity?</li>
+                        <li><strong>Risk:</strong> are the technical, schedule, legal, financial and contractual risks manageable?</li>
+                        <li><strong>Competition:</strong> can the contractor offer a credible and differentiated solution?</li>
+                        <li><strong>Probability of success and cost of bidding:</strong> is the potential return worth the proposal effort?</li>
+                    </ul>
+
+                    <h4 class="mt-4">2. Proposal contents</h4>
+                    <p>A proposal is a persuasive response to the customer's requirements. It must show that the contractor understands the need, can deliver the work and has priced it credibly.</p>
+                    <table class="table table-bordered table-sm mt-3">
+                        <thead><tr><th>Section</th><th>What it should demonstrate</th></tr></thead>
+                        <tbody>
+                            <tr><td>Technical</td><td>Understanding of the customer's problem; proposed solution; scope and deliverables; technical approach; how requirements and acceptance criteria will be met.</td></tr>
+                            <tr><td>Management</td><td>Project organisation; named roles and responsibilities; relevant experience; schedule and milestones; resources; communication, quality and risk arrangements.</td></tr>
+                            <tr><td>Cost</td><td>Price and cost basis; assumptions; resource or cost breakdown where appropriate; payment approach; exclusions and other pricing conditions.</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h4 class="mt-4">3. Contracts</h4>
+                    <p>A contract is an agreement between the customer and contractor. It should make the deliverables, specifications, responsibilities, price or payment basis, schedule, acceptance requirements and relevant terms clear.</p>
+                    <table class="table table-bordered table-sm mt-3">
+                        <thead><tr><th>Feature</th><th>Fixed-price contract</th><th>Cost-reimbursement contract</th></tr></thead>
+                        <tbody>
+                            <tr><td>Payment basis</td><td>Agreed price for the defined work; changes require agreement.</td><td>Customer pays allowable actual costs plus an agreed fee/profit.</td></tr>
+                            <tr><td>Customer risk</td><td>Generally lower cost risk if scope is stable and clearly specified.</td><td>Generally higher: actual costs can exceed the original estimate.</td></tr>
+                            <tr><td>Contractor risk</td><td>Generally higher: overruns can reduce profit or create a loss.</td><td>Generally lower for reimbursable costs, subject to contract terms and performance obligations.</td></tr>
+                            <tr><td>Best fit</td><td>Well-defined work with relatively low uncertainty.</td><td>Work with substantial uncertainty, where costs cannot be estimated reliably upfront.</td></tr>
+                            <tr><td>Example</td><td>Producing a brochure to detailed specifications.</td><td>Research and development where the amount of testing is uncertain.</td></tr>
+                        </tbody>
+                    </table>
+                    <div class="memory-hook"><i class="fas fa-brain me-2"></i><strong>Exam memory hook:</strong> Fixed price: the contractor carries more cost-overrun risk. Cost reimbursement: the customer carries more cost-overrun risk.</div>
+                    <p><em>Important qualification: actual risk depends on the contract wording, scope clarity, change provisions, incentives, caps and governance.</em></p>
+
+                    <h4 class="mt-4">4. Proposal quality</h4>
+                    <p>Respond directly to the RFP and make compliance easy to verify. Explain the solution rather than merely repeating the customer's wording. Use realistic estimates and state assumptions and exclusions. Show that the proposed team, schedule and resources are credible.</p>
+                </section>
+
+                <!-- Joke 4 -->
+                <div class="joke-box">
+                    <i class="fas fa-laugh-squint me-2"></i> <strong>PM Joke #4:</strong> What's the difference between a project manager and a pizza? A pizza can feed a family of four. (Harsh, but sometimes true when the budget is tight).
+                </div>
+
+                <!-- LU4 -->
+                <section id="lu4" class="mb-5 searchable">
+                    <h2 class="border-bottom pb-2 mb-4 text-primary"><i class="fas fa-sitemap me-2"></i>LU4 - Defining Scope, Quality, Responsibility and Sequence</h2>
+                    
+                    <h4>1. Project objective and SMART thinking</h4>
+                    <p>The project objective states the result the project is expected to accomplish. It should be clear enough that the customer and project team share the same understanding of success. <strong>SMART</strong> is a useful memory aid: Specific, Measurable, Achievable, Relevant/Realistic and Time-bound.</p>
+                    <table class="table table-bordered table-sm mt-3">
+                        <thead><tr><th>Weak objective</th><th>Stronger objective</th></tr></thead>
+                        <tbody>
+                            <tr><td>Build a website.</td><td>Launch a 10-page e-commerce website with an agreed payment gateway, user acceptance testing and handover by 1 December, within the approved R150,000 budget.</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h4 class="mt-4">2. Project scope and scope creep</h4>
+                    <p>Project scope describes the work that must be performed to produce the agreed deliverables and meet the acceptance criteria.</p>
+                    <ul>
+                        <li><strong>In scope:</strong> explicitly included features, services, work and deliverables.</li>
+                        <li><strong>Out of scope:</strong> work or features that are not included in the approved project.</li>
+                        <li><strong>Acceptance criteria:</strong> measurable or testable conditions used to determine whether a deliverable is acceptable.</li>
+                        <li><strong>Scope creep:</strong> uncontrolled expansion of work, often through small additions that are not assessed or formally approved.</li>
+                    </ul>
+                    <p><strong>How to control scope creep:</strong> Record the request, assess its effect on scope, schedule, cost, quality, resources and risk, obtain the appropriate approval, then update the relevant plans and communicate the decision.</p>
+
+                    <h4 class="mt-4">3. Work Breakdown Structure (WBS)</h4>
+                    <p>A WBS is a hierarchical decomposition of the total project scope into manageable components, organised around deliverables or work.</p>
+                    <div class="memory-hook"><i class="fas fa-pizza-slice me-2"></i><strong>Memory hook:</strong> Break a large pizza into slices, then divide each slice into manageable portions. The smallest planned WBS component is commonly called a <strong>work package</strong>.</div>
+                    <table class="table table-bordered table-sm mt-3">
+                        <thead><tr><th>Level</th><th>Example: Campus booking system</th></tr></thead>
+                        <tbody>
+                            <tr><td>Project</td><td>Campus booking system</td></tr>
+                            <tr><td>Major deliverable</td><td>Booking website</td></tr>
+                            <tr><td>Sub-deliverable</td><td>Booking interface</td></tr>
+                            <tr><td>Work package</td><td>Approved booking form design and specification</td></tr>
+                        </tbody>
+                    </table>
+                    <p><em>Important distinction: A WBS is not simply a chronological to-do list. It organises the scope into components/deliverables. Activities describe the work needed to create those components.</em></p>
+
+                    <h4 class="mt-4">4. Responsibility Assignment Matrix (RAM)</h4>
+                    <p>A RAM links WBS work packages or activities to the people or roles responsible for performing or supporting them.</p>
+                    <table class="table table-bordered table-sm mt-3">
+                        <thead><tr><th>Work package</th><th>Project manager</th><th>Developer</th><th>Tester</th><th>Customer rep</th></tr></thead>
+                        <tbody>
+                            <tr><td>Requirements approval</td><td>S</td><td>S</td><td>S</td><td>P</td></tr>
+                            <tr><td>Build booking form</td><td>S</td><td>P</td><td>S</td><td>—</td></tr>
+                            <tr><td>Test booking flow</td><td>S</td><td>S</td><td>P</td><td>S</td></tr>
+                            <tr><td>Accept final release</td><td>S</td><td>S</td><td>S</td><td>P</td></tr>
+                        </tbody>
+                    </table>
+                    <p><strong>P = Primary responsibility; S = Support.</strong> The study-note convention is one clearly accountable primary owner for each work package. In practice, a RACI matrix may be used instead (Responsible, Accountable, Consulted, Informed).</p>
+
+                    <h4 class="mt-4">5. Quality planning</h4>
+                    <p>Quality planning identifies the standards and acceptance requirements that deliverables and work processes must satisfy. Quality should be built into how work is performed, not left until the final inspection.</p>
+
+                    <h4 class="mt-4">6. Activities, dependencies and network diagrams</h4>
+                    <p>Activities are the work tasks required to produce project deliverables. A network diagram represents the logical sequence and dependencies between activities.</p>
+                    <ul>
+                        <li><strong>Finish-to-start dependency:</strong> the successor activity cannot start until its predecessor finishes.</li>
+                        <li><strong>Parallel activities:</strong> tasks that can proceed at the same time because they do not depend on one another.</li>
+                        <li><strong>Laddering:</strong> a scheduling technique for repetitive work where a following activity can begin on an earlier completed portion before the preceding activity has finished everywhere.</li>
+                    </ul>
+                    <div class="exam-tip"><i class="fas fa-graduation-cap me-2"></i><strong>Exam tip:</strong> Explain the relationship between WBS, RAM and network diagram: WBS breaks down scope; RAM assigns ownership; network diagram shows activity sequence and dependencies.</div>
+                </section>
+
+                <!-- LU5 -->
+                <section id="lu5" class="mb-5 searchable">
+                    <h2 class="border-bottom pb-2 mb-4 text-primary"><i class="fas fa-laptop-code me-2"></i>LU5 - Project Management Information Systems (PMIS)</h2>
+                    
+                    <h4>1. What is a PMIS?</h4>
+                    <p>A project management information system is a collection of tools and information used to plan, organise, monitor and control project work. Examples include Microsoft Project, Jira, Asana and other scheduling, collaboration or portfolio tools.</p>
+                    <ul>
+                        <li>Store activities, durations, dependencies, resources and cost information.</li>
+                        <li>Generate schedules, Gantt charts, network views and reports.</li>
+                        <li>Compare actual performance with baselines and highlight variances.</li>
+                        <li>Support resource allocation, forecasting and what-if analysis.</li>
+                        <li>Improve visibility and communication among project participants.</li>
+                    </ul>
+
+                    <h4 class="mt-4">2. Why project software is useful</h4>
+                    <p>Project software can automate calculations and help the project manager understand the consequences of changes. For example, changing an activity duration may cause dependent dates, slack and the critical path to be recalculated.</p>
+                    <p><em>Technical accuracy: It is safer to say that Microsoft Project stores linked project data and automatically recalculates schedule information when relevant inputs change.</em></p>
+
+                    <h4 class="mt-4">3. Advantages and limitations</h4>
+                    <table class="table table-bordered table-sm mt-3">
+                        <thead><tr><th>Advantages</th><th>Limitations / concerns</th></tr></thead>
+                        <tbody>
+                            <tr><td>Fast recalculation and reporting.</td><td>Incorrect input produces misleading output (garbage in, garbage out).</td></tr>
+                            <tr><td>Improved visibility of dates, dependencies and resources.</td><td>A polished chart can create false confidence if assumptions are weak.</td></tr>
+                            <tr><td>Supports baseline-versus-actual comparisons.</td><td>Software cannot replace judgement, communication or leadership.</td></tr>
+                            <tr><td>Helps model schedule and resource scenarios.</td><td>Complex tools require training, configuration and maintenance.</td></tr>
+                            <tr><td>Provides a shared source of project information.</td><td>Poor update discipline makes reports stale or unreliable.</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h4 class="mt-4">4. PMIS and PMBOK® 7</h4>
+                    <p>PMBOK® 7 does not prescribe a particular software package. It emphasises selecting methods and artefacts that suit the project. A Gantt chart, schedule, dashboard, risk register or backlog is useful only when it helps the team make decisions and achieve the intended outcomes.</p>
+                </section>
+
+                <!-- LU6 -->
+                <section id="lu6" class="mb-5 searchable">
+                    <h2 class="border-bottom pb-2 mb-4 text-primary"><i class="fas fa-calendar-alt me-2"></i>LU6 - Developing the Schedule</h2>
+                    
+                    <h4>1. Build a credible schedule</h4>
+                    <p>A schedule is developed from defined activities, logical dependencies, resource needs and duration estimates. It should be updated as actual performance and new information become available. The schedule is a model of the plan, not a guarantee that the future will unfold exactly as predicted.</p>
+
+                    <h4 class="mt-4">2. Forward pass: earliest times</h4>
+                    <table class="table table-bordered table-sm mt-3">
+                        <thead><tr><th>Term</th><th>Meaning / rule</th></tr></thead>
+                        <tbody>
+                            <tr><td>ES – Earliest Start</td><td>Earliest time an activity can begin after its predecessors are complete.</td></tr>
+                            <tr><td>EF – Earliest Finish</td><td><strong>EF = ES + Duration</strong></td></tr>
+                            <tr><td>Forward pass</td><td>Move from the start of the network to the finish. Where there are multiple predecessors, use the latest predecessor EF as the successor ES.</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h4 class="mt-4">3. Backward pass: latest times</h4>
+                    <table class="table table-bordered table-sm mt-3">
+                        <thead><tr><th>Term</th><th>Meaning / rule</th></tr></thead>
+                        <tbody>
+                            <tr><td>LF – Latest Finish</td><td>Latest time an activity can finish without delaying the project completion date.</td></tr>
+                            <tr><td>LS – Latest Start</td><td><strong>LS = LF – Duration</strong></td></tr>
+                            <tr><td>Backward pass</td><td>Move from the end of the network towards the start. Where there are multiple successors, use the earliest successor LS as the predecessor LF.</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h4 class="mt-4">4. Total slack (float)</h4>
+                    <p>Total slack is the amount of time an activity can be delayed without delaying the planned project completion date, assuming the network logic and project finish constraint remain unchanged.</p>
+                    <div class="formula-box">
+                        Total Slack = LF - EF, or Total Slack = LS - ES
+                    </div>
+
+                    <h4 class="mt-4">5. Critical path</h4>
+                    <p>The critical path is the <strong>longest-duration path</strong> through the activity network and determines the <strong>shortest possible project duration</strong> for the stated logic and estimates. Activities on a critical path have <strong>zero total slack</strong> in a standard unconstrained critical-path calculation. A delay to a critical activity can delay the project finish unless corrective action is taken.</p>
+                    <div class="memory-hook"><i class="fas fa-brain me-2"></i><strong>Memory hook:</strong> The project cannot finish until its longest chain of dependent activities is complete. That longest chain is the critical path.</div>
+
+                    <h4 class="mt-4">6. Mini worked example</h4>
+                    <p>Assume a simple network: A (3 days) starts first. B (4 days) and C (2 days) both depend on A. D (3 days) depends on both B and C.</p>
+                    <table class="table table-bordered table-sm mt-3">
+                        <thead><tr><th>Activity</th><th>Duration</th><th>Predecessor</th><th>ES</th><th>EF</th><th>LS</th><th>LF</th><th>Slack</th></tr></thead>
+                        <tbody>
+                            <tr><td>A</td><td>3</td><td>—</td><td>0</td><td>3</td><td>0</td><td>3</td><td>0</td></tr>
+                            <tr><td>B</td><td>4</td><td>A</td><td>3</td><td>7</td><td>3</td><td>7</td><td>0</td></tr>
+                            <tr><td>C</td><td>2</td><td>A</td><td>3</td><td>5</td><td>5</td><td>7</td><td>2</td></tr>
+                            <tr><td>D</td><td>3</td><td>B, C</td><td>7</td><td>10</td><td>7</td><td>10</td><td>0</td></tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Forward pass:</strong> A finishes at day 3. B finishes at day 7; C finishes at day 5. D cannot start until both predecessors are complete, so D starts at day 7 and finishes at day 10. <br><strong>Backward pass:</strong> gives C two days of slack. <br><strong>Critical path:</strong> A → B → D. <br><strong>Project duration:</strong> 10 days.</p>
+
+                    <h4 class="mt-4">7. Resource scheduling</h4>
+                    <table class="table table-bordered table-sm mt-3">
+                        <thead><tr><th>Technique</th><th>What stays fixed?</th><th>What can change?</th><th>Purpose</th></tr></thead>
+                        <tbody>
+                            <tr><td>Resource leveling / smoothing</td><td>Required project completion time (deadline)</td><td>Resource use / timing of activities</td><td>Reduce peaks and fluctuations in resource demand without extending the required finish date.</td></tr>
+                            <tr><td>Resource-limited scheduling</td><td>Available resource quantities</td><td>Project completion time may extend</td><td>Create the shortest feasible schedule without exceeding fixed resource limits.</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h4 class="mt-4">8. Schedule control</h4>
+                    <ul>
+                        <li>Compare actual dates and progress with the approved schedule baseline.</li>
+                        <li>Identify the cause and effect of variances.</li>
+                        <li>Assess proposed changes and their impact on dependencies, resources, cost and risk.</li>
+                        <li>Agree corrective action, update the schedule where authorised and communicate the change.</li>
+                        <li>Reforecast completion and monitor whether the corrective action works.</li>
+                    </ul>
+                </section>
+
+                <!-- LU7 -->
+                <section id="lu7" class="mb-5 searchable">
+                    <h2 class="border-bottom pb-2 mb-4 text-primary"><i class="fas fa-money-bill-wave me-2"></i>LU7 - Determining Costs, Budget and Earned Value</h2>
+                    
+                    <h4>1. Budget terminology</h4>
+                    <table class="table table-bordered table-sm mt-3">
+                        <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+                        <tbody>
+                            <tr><td>Total Budgeted Cost (TBC)</td><td>The sum of the estimated/budgeted costs assigned to the project's work packages or activities.</td></tr>
+                            <tr><td>Cumulative Budgeted Cost (CBC)</td><td>The time-phased cumulative budget: how much should have been budgeted/spent by a given point in the schedule. It is comparable to planned value (PV).</td></tr>
+                            <tr><td>Cumulative Actual Cost (CAC)</td><td>The cumulative actual amount spent to perform work up to the status date; comparable to actual cost (AC).</td></tr>
+                            <tr><td>Cumulative Earned Value (CEV)</td><td>The budgeted value of the work actually completed by the status date; comparable to earned value (EV).</td></tr>
+                        </tbody>
+                    </table>
+                    <p>Earned value compares the budgeted value of completed work with the actual cost of that work. It is more informative than looking at spending alone.</p>
+
+                    <h4 class="mt-4">2. Core earned-value formulas</h4>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-sm mt-3">
+                            <thead><tr><th>Measure</th><th>Formula</th><th>Interpretation</th></tr></thead>
+                            <tbody>
+                                <tr><td>Cost Performance Index (CPI)</td><td><strong>CPI = CEV ÷ CAC (EV ÷ AC)</strong></td><td>Efficiency of cost use. Below 1.0 = over budget for the work performed; above 1.0 = under budget for the work performed.</td></tr>
+                                <tr><td>Cost Variance (CV)</td><td><strong>CV = CEV - CAC (EV - AC)</strong></td><td>Negative = over budget; positive = under budget; zero = exactly on budget for work performed.</td></tr>
+                                <tr><td>Forecast cost at completion (FCAC / EAC)</td><td><strong>FCAC = TBC ÷ CPI</strong></td><td>Forecast if current cost efficiency continues for the remaining work.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4 class="mt-4">3. Worked example</h4>
+                    <p>Suppose the budgeted value of completed work (CEV) is R80,000, actual cost (CAC) is R100,000 and the total budget (TBC) is R200,000.</p>
+                    <div class="formula-box">
+                        CPI = R80,000 ÷ R100,000 = 0.80<br>
+                        CV = R80,000 - R100,000 = -R20,000<br>
+                        FCAC = R200,000 ÷ 0.80 = R250,000
+                    </div>
+                    <p><strong>Interpretation:</strong> The project earns R0.80 of budgeted value for every R1.00 spent. It is currently over budget for the work completed. If the same cost efficiency continues, the forecast final cost is R250,000, which is R50,000 above the original R200,000 budget.</p>
+                    <div class="exam-tip"><i class="fas fa-graduation-cap me-2"></i><strong>Exam method:</strong> Write the formula → substitute the figures → calculate → state what the result means. Never leave a CPI or CV answer uninterpreted.</div>
+
+                    <h4 class="mt-4">4. Common errors to avoid</h4>
+                    <ul>
+                        <li>Do not confuse actual cost with the budgeted value of work completed.</li>
+                        <li>A project can spend less than planned simply because work is behind schedule; low spending alone does not prove good cost performance.</li>
+                        <li>CPI below 1.0 means poor cost efficiency; it does not mean the project is 0.8% over budget.</li>
+                        <li>The FCAC/EAC formula assumes current cost performance is a reasonable forecast for the remaining work. Other forecasting assumptions may produce different estimates.</li>
+                    </ul>
+                </section>
+
+                <!-- LU8 -->
+                <section id="lu8" class="mb-5 searchable">
+                    <h2 class="border-bottom pb-2 mb-4 text-primary"><i class="fas fa-exclamation-triangle me-2"></i>LU8 - Managing Risk</h2>
+                    
+                    <h4>1. What is project risk?</h4>
+                    <p>A project risk is an uncertain event or condition that, if it occurs, can affect one or more project objectives. A negative risk is a <strong>threat</strong>; a positive risk is an <strong>opportunity</strong>. Risk management is not limited to preventing problems—it also includes identifying and increasing beneficial opportunities.</p>
+
+                    <h4 class="mt-4">2. Risk management process</h4>
+                    <table class="table table-bordered table-sm mt-3">
+                        <thead><tr><th>Step</th><th>What the team does</th><th>Example</th></tr></thead>
+                        <tbody>
+                            <tr><td>1. Identify</td><td>Identify possible sources/events that could affect objectives. Consider technical, schedule, cost, people, procurement, legal and external factors.</td><td>A key developer may leave before system testing.</td></tr>
+                            <tr><td>2. Assess</td><td>Estimate likelihood and impact; prioritise risks that deserve attention.</td><td>High likelihood and high impact.</td></tr>
+                            <tr><td>3. Plan responses</td><td>Choose a suitable strategy, owner, action and trigger/contingency where appropriate.</td><td>Cross-train another developer and document critical components.</td></tr>
+                            <tr><td>4. Monitor</td><td>Track known risks, identify new risks, check triggers and assess whether responses work.</td><td>Review staff availability at each project checkpoint.</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h4 class="mt-4">3. Risk assessment matrix</h4>
+                    <p>A risk matrix combines likelihood (how probable the event is) and impact (how serious the effect would be).</p>
+                    <table class="table table-bordered table-sm text-center mt-3">
+                        <thead><tr><th>Likelihood \ Impact</th><th>Low impact</th><th>Medium impact</th><th>High impact</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>High likelihood</strong></td><td>Medium</td><td>High</td><td>Very high</td></tr>
+                            <tr><td><strong>Medium likelihood</strong></td><td>Low/medium</td><td>Medium</td><td>High</td></tr>
+                            <tr><td><strong>Low likelihood</strong></td><td>Low</td><td>Low/medium</td><td>Medium</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h4 class="mt-4">4. Threat response strategies</h4>
+                    <table class="table table-bordered table-sm mt-3">
+                        <thead><tr><th>Strategy</th><th>Meaning</th><th>Example</th></tr></thead>
+                        <tbody>
+                            <tr><td>Avoid</td><td>Change the plan or conditions so the threat is eliminated or bypassed.</td><td>Move the installation away from a known flood zone.</td></tr>
+                            <tr><td>Mitigate</td><td>Reduce the likelihood and/or impact of the threat.</td><td>Back up data and test restoration to reduce the impact of data loss.</td></tr>
+                            <tr><td>Transfer</td><td>Shift financial or other consequences to a third party, usually through an agreement.</td><td>Insurance or a suitable contractual allocation of risk.</td></tr>
+                            <tr><td>Accept</td><td>Acknowledge the risk and decide not to take proactive action beyond monitoring or a contingency, as appropriate.</td><td>Accept a low-impact delay risk and monitor it.</td></tr>
+                        </tbody>
+                    </table>
+                    <p>For opportunities, common response options include exploiting, enhancing, sharing or accepting the opportunity.</p>
+                    <div class="memory-hook"><i class="fas fa-brain me-2"></i><strong>Avoid versus mitigate:</strong> Avoid = change the plan so the threat no longer applies. Mitigate = keep the activity or exposure but reduce the chance of the event and/or the damage it could cause.</div>
+
+                    <h4 class="mt-4">5. Risk register and ongoing monitoring</h4>
+                    <p>A risk register (called a risk assessment matrix in the textbook's terminology) can record the risk description, cause, likelihood, impact, priority, response, owner, trigger and status. Risk management is continuous because new information and changing conditions can alter the risk profile.</p>
+                </section>
+
+                <!-- LU9 -->
+                <section id="lu9" class="mb-5 searchable">
+                    <h2 class="border-bottom pb-2 mb-4 text-primary"><i class="fas fa-flag-checkered me-2"></i>LU9 - The Project Manager and Closing the Project</h2>
+                    
+                    <h4>1. Project manager responsibilities</h4>
+                    <table class="table table-bordered table-sm mt-3">
+                        <thead><tr><th>Responsibility</th><th>What it involves</th></tr></thead>
+                        <tbody>
+                            <tr><td>Planning</td><td>Establish objectives and scope; coordinate estimates, schedule, resources, budget and risk responses.</td></tr>
+                            <tr><td>Organising</td><td>Arrange people, roles, resources, communication and work structures.</td></tr>
+                            <tr><td>Monitoring and controlling</td><td>Compare actual performance with plans; identify variances; manage issues and approved changes.</td></tr>
+                            <tr><td>Leading</td><td>Build commitment, resolve conflict, support the team, communicate and guide decisions.</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h4 class="mt-4">2. Project manager skills</h4>
+                    <ul>
+                        <li><strong>Leadership:</strong> provide direction, motivate people and adapt leadership style to the situation.</li>
+                        <li><strong>Communication:</strong> explain objectives, listen, share information and manage expectations.</li>
+                        <li><strong>Interpersonal skills:</strong> build trust, collaborate and handle relationships constructively.</li>
+                        <li><strong>Problem-solving:</strong> define issues, analyse causes, generate options and implement solutions.</li>
+                        <li><strong>Negotiation:</strong> reach workable agreements with customers, suppliers and team members.</li>
+                        <li><strong>Stress and time management:</strong> prioritise, remain composed and use time effectively.</li>
+                        <li><strong>Developing people and delegation:</strong> match work to capability, provide support and grow team competence.</li>
+                    </ul>
+                    <div class="memory-hook"><i class="fas fa-brain me-2"></i><strong>Memory hook:</strong> The project manager is like a coach: the coach does not perform every task, but creates the conditions, direction and coordination that help the team perform.</div>
+
+                    <h4 class="mt-4">3. Closing the project</h4>
+                    <p>Closing is a planned part of project management, not simply the moment the team stops working. The textbook identifies five key closing actions.</p>
+                    <table class="table table-bordered table-sm mt-3">
+                        <thead><tr><th>Closing action</th><th>What to do</th><th>Why it matters</th></tr></thead>
+                        <tbody>
+                            <tr><td>1. Final payments</td><td>Collect amounts due; pay suppliers, subcontractors and other parties; close accounts.</td><td>Completes financial obligations and enables final cost review.</td></tr>
+                            <tr><td>2. Staff recognition and evaluation</td><td>Recognise contributions and evaluate performance.</td><td>Acknowledges effort and supports learning and team morale.</td></tr>
+                            <tr><td>3. Post-project evaluation</td><td>Review the project's results, performance and customer feedback.</td><td>Determines what worked and what did not.</td></tr>
+                            <tr><td>4. Lessons learned</td><td>Document useful knowledge, decisions, problems and recommendations.</td><td>Improves future projects and prevents repeated mistakes.</td></tr>
+                            <tr><td>5. Archive project documents</td><td>Organise and retain relevant records, approvals, plans, changes and deliverables.</td><td>Supports future reference, audits, legal needs and organisational learning.</td></tr>
+                        </tbody>
+                    </table>
+                    <div class="exam-tip"><i class="fas fa-graduation-cap me-2"></i><strong>Exam favourite:</strong> Lessons learned are captured so that knowledge gained during the project can be reused. They should be documented and communicated—not left as informal memories.</div>
+
+                    <h4 class="mt-4">4. Early project termination</h4>
+                    <p>A project may be terminated before completion if its business need disappears, strategic priorities change, funding is withdrawn, costs or delays become unacceptable, serious risks emerge, or the customer no longer wants the outcome. PMBOK® 7 similarly notes that a project may be ended when it is no longer aligned with the business need or is unlikely to deliver intended value.</p>
+
+                    <h4 class="mt-4">5. Formal acceptance and transition</h4>
+                    <p>Before closing, confirm that agreed deliverables have been provided and meet the acceptance criteria. Depending on the project, this may include customer sign-off, handover, training, operational support arrangements, contract closure and release of project resources.</p>
+
+                    <h4 class="mt-4">6. Leadership in PMBOK® 7</h4>
+                    <p>PMBOK® 7 treats leadership as a behaviour that can be demonstrated by different people, not merely as authority attached to a job title. The project manager should foster collaboration, engage stakeholders, tailor leadership style and help the team respond to change.</p>
+                </section>
+
+                <!-- Formula Sheet & Exam Checklist -->
+                <section id="formulas" class="mb-5 searchable">
+                    <h2 class="border-bottom pb-2 mb-4 text-primary"><i class="fas fa-calculator me-2"></i>Formula Sheet and Exam Checklist</h2>
+                    
+                    <h4>Scheduling formulas</h4>
+                    <table class="table table-bordered table-sm mt-3">
+                        <thead><tr><th>Measure</th><th>Formula / rule</th></tr></thead>
+                        <tbody>
+                            <tr><td>Earliest Finish (EF)</td><td><strong>EF = ES + Duration</strong></td></tr>
+                            <tr><td>Latest Start (LS)</td><td><strong>LS = LF - Duration</strong></td></tr>
+                            <tr><td>Total Slack</td><td><strong>Slack = LF - EF = LS - ES</strong></td></tr>
+                            <tr><td>Forward pass</td><td>ES is based on the latest EF of predecessor activities.</td></tr>
+                            <tr><td>Backward pass</td><td>LF is based on the earliest LS of successor activities.</td></tr>
+                            <tr><td>Critical path</td><td>Longest-duration path; standard critical activities have zero total slack.</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h4>Earned-value formulas</h4>
+                    <table class="table table-bordered table-sm mt-3">
+                        <thead><tr><th>Measure</th><th>Formula</th><th>Quick interpretation</th></tr></thead>
+                        <tbody>
+                            <tr><td>CPI</td><td><strong>CEV ÷ CAC</strong></td><td>&lt; 1.0 = over budget; &gt; 1.0 = under budget.</td></tr>
+                            <tr><td>CV</td><td><strong>CEV - CAC</strong></td><td>Negative = over budget; positive = under budget.</td></tr>
+                            <tr><td>FCAC / EAC</td><td><strong>TBC ÷ CPI</strong></td><td>Forecast final cost if current cost efficiency continues.</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h4 id="checklist" class="mt-5">High-priority revision checklist</h4>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-sm mt-3">
+                            <thead><tr><th>Unit</th><th>Can you do this without notes?</th></tr></thead>
+                            <tbody>
+                                <tr><td>LU1</td><td>Explain project versus operation; project attributes; constraints; life cycle; stakeholders; value.</td></tr>
+                                <tr><td>LU2</td><td>Explain project selection; list charter contents; distinguish charter from RFP.</td></tr>
+                                <tr><td>LU3</td><td>Explain bid/no-bid; proposal sections; compare fixed-price and cost-reimbursement contracts by risk.</td></tr>
+                                <tr><td>LU4</td><td>Write a clear objective; define scope and scope creep; explain WBS, work package, RAM, quality and dependencies.</td></tr>
+                                <tr><td>LU5</td><td>Explain PMIS benefits, limitations and the need for accurate inputs and human judgement.</td></tr>
+                                <tr><td>LU6</td><td>Calculate ES, EF, LS, LF and slack; identify the critical path; distinguish resource leveling from resource-limited scheduling.</td></tr>
+                                <tr><td>LU7</td><td>Calculate CPI, CV and forecast cost at completion; interpret each result in words.</td></tr>
+                                <tr><td>LU8</td><td>Explain risk identification, assessment, response planning and monitoring; distinguish avoid from mitigate.</td></tr>
+                                <tr><td>LU9</td><td>Explain project manager responsibilities and skills; list and explain the five closing actions.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Final Study Advice -->
+                <div class="card mb-5 bg-light">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary"><i class="fas fa-star me-2"></i>A Reliable Structure for Written Exam Answers</h4>
+                        <ol>
+                            <li><strong>Define</strong> the concept accurately in one or two sentences.</li>
+                            <li><strong>Explain</strong> its purpose: why does a project manager use it?</li>
+                            <li><strong>Describe</strong> the main elements, steps or categories.</li>
+                            <li><strong>Apply</strong> it to the scenario with a concrete example.</li>
+                            <li><strong>State the implication</strong> or recommendation, including effects on scope, time, cost, quality, resources, risk or stakeholders where relevant.</li>
+                        </ol>
+                        <div class="alert alert-success mt-3">
+                            <strong>Final study advice:</strong> Prioritise understanding the logic of the tools. For a calculation, show every step. For a theory question, define, explain, apply and conclude.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- References -->
+                <section class="mb-5 text-muted small">
+                    <h5>References</h5>
+                    <p>Gido, J., Clements, J. and Baker, R. (2018) <em>Successful Project Management</em>. 7th edn. Boston, MA: Cengage Learning.</p>
+                    <p>Project Management Institute (PMI) (2021) <em>A Guide to the Project Management Body of Knowledge (PMBOK® Guide) - Seventh Edition and The Standard for Project Management</em>. Newtown Square, PA: Project Management Institute.</p>
+                    <p><em>Source alignment: The LU structure and detailed practical techniques follow Successful Project Management, Seventh Edition. PMBOK® 7 integration draws on the 12 principles, eight performance domains, development approaches, tailoring and value-delivery concepts.</em></p>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS for Search Functionality & Smooth Scrolling -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const sections = document.querySelectorAll('.searchable');
+            
+            // Search functionality
+            searchInput.addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase().trim();
+                
+                sections.forEach(section => {
+                    const text = section.innerText.toLowerCase();
+                    if (text.includes(searchTerm)) {
+                        section.classList.remove('hidden');
+                    } else {
+                        section.classList.add('hidden');
+                    }
+                });
+
+                // If search is empty, show everything
+                if (searchTerm === '') {
+                    sections.forEach(section => section.classList.remove('hidden'));
+                }
+            });
+
+            // Smooth scrolling for sidebar links
+            document.querySelectorAll('.sidebar .nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 70, // Offset for fixed navbar
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
