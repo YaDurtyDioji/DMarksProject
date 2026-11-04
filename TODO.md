@@ -37,3 +37,8 @@ End of feb deadline
 
 
 https://www.dmarksproject.co.za/test/website%202/index.html#
+
+
+Newsletters. 
+
+Set up the 3 emails
