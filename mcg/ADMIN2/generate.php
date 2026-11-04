@@ -1367,4 +1367,277 @@ h1{margin:10px 0 16px}
 .stack{display:flex;flex-direction:column;gap:8px}
 .stack>label{font-weight:600;font-size:13px;margin-top:8px}
 .stack input,.stack textarea,.stack select{padding:8px;border:1px solid #ccc;border-radius:4px;font-size:14px;width:100%}
-.grid
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;background:#fff;padding:14px;border-radius:6px;margin:10px 0}
+.grid input,.grid textarea,.grid select{padding:8px;border:1px solid #ccc;border-radius:4px;font-size:14px}
+.img-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin:10px 0}
+.img-card{background:#fff;padding:8px;border-radius:6px;border:1px solid #e2e6ea;cursor:move}
+.img-card img,.img-card video{width:100%;height:120px;object-fit:cover;border-radius:4px;display:block}
+.card-edit{display:flex;gap:10px;background:#fff;padding:10px;border-radius:6px;margin:6px 0;align-items:flex-start}
+.card-edit form{display:flex;flex-direction:column;gap:6px;flex:1}
+.handle{cursor:move;font-size:20px;padding:6px;color:#888;user-select:none}
+.cat-row{display:flex;gap:8px;align-items:center;background:#fff;padding:8px;border-radius:6px;margin:4px 0}
+.cat-row form{display:flex;gap:6px}
+.flash{background:#d4edda;border:1px solid #c3e6cb;color:#155724;padding:10px;border-radius:5px;margin:10px 0}
+.error{background:#f8d7da;border:1px solid #f5c6cb;color:#721c24;padding:10px;border-radius:5px;margin:10px 0}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.card{background:#fff;padding:16px;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.06);color:#222}
+.card h3{margin:0 0 8px}
+.login-page{display:flex;justify-content:center;align-items:center;min-height:100vh;background:#212529}
+.login-box{background:#fff;padding:30px;border-radius:8px;width:340px;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.login-box h1{margin-top:0;font-size:20px}
+.login-box label{display:block;margin:12px 0 4px;font-weight:600;font-size:13px}
+.login-box input{width:100%;padding:8px;border:1px solid #ccc;border-radius:4px}
+.login-box button{width:100%;margin-top:16px;padding:10px;background:#007bff;color:#fff;border:none;border-radius:5px;cursor:pointer}
+.row{display:flex;gap:6px}
+.row input{flex:1;padding:6px;border:1px solid #ccc;border-radius:4px}
+EOT;
+
+/* ---------------- Services.html (public) ---------------- */
+$files['Services.html'] = <<<'EOT'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Services</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,sans-serif;background:#f4f6f9;color:#222}
+header{background:#212529;color:#fff;padding:16px 24px}
+header h1{margin:0;font-size:20px}
+.layout{display:grid;grid-template-columns:240px 1fr;min-height:calc(100vh - 60px)}
+nav#menu{background:#fff;border-right:1px solid #e2e6ea;padding:14px}
+nav#menu a{display:block;padding:10px 12px;border-radius:6px;color:#333;text-decoration:none;margin-bottom:4px;font-size:14px}
+nav#menu a:hover{background:#f1f3f5}
+nav#menu a.active{background:#007bff;color:#fff}
+main#content{padding:24px}
+main#content h1{margin-top:0}
+main#content img{max-width:100%;border-radius:6px;margin:8px 8px 8px 0;max-height:320px}
+main#content video,main#content iframe{max-width:100%;border-radius:6px;margin:10px 0}
+.buttons{margin-top:16px}
+.buttons .btn{display:inline-block;padding:10px 18px;background:#007bff;color:#fff;text-decoration:none;border-radius:6px;margin:4px 8px 4px 0}
+.buttons .btn:hover{background:#0056b3}
+.gallery{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.gallery img{width:auto;height:180px;object-fit:cover;margin:0}
+@media(max-width:700px){.layout{grid-template-columns:1fr}nav#menu{border-right:none;border-bottom:1px solid #e2e6ea}}
+</style>
+</head>
+<body>
+<header><h1>Our Services</h1></header>
+<div class="layout">
+  <nav id="menu"></nav>
+  <main id="content"><p>Loading…</p></main>
+</div>
+<script>
+(function(){
+  const menu = document.getElementById('menu');
+  const content = document.getElementById('content');
+  let active = null;
+
+  function renderService(s) {
+    let html = '<h1>' + escapeHtml(s.menu_title) + '</h1>';
+    if (s.content_html) html += s.content_html;
+    if (s.video_url) {
+      const u = s.video_url;
+      if (/youtube\.com|youtu\.be/i.test(u)) {
+        const m = u.match(/(?:v=|youtu\.be\/)([\w-]{6,})/);
+        if (m) html += '<iframe width="640" height="360" src="https://www.youtube.com/embed/' + m[1] + '" frameborder="0" allowfullscreen></iframe>';
+      } else if (/vimeo\.com/i.test(u)) {
+        const m = u.match(/vimeo\.com\/(\d+)/);
+        if (m) html += '<iframe src="https://player.vimeo.com/video/' + m[1] + '" width="640" height="360" frameborder="0" allowfullscreen></iframe>';
+      } else {
+        html += '<video src="' + escapeAttr(u) + '" controls></video>';
+      }
+    }
+    if (s.images && s.images.length) {
+      html += '<div class="gallery">';
+      s.images.forEach(function(i){ html += '<img src="' + escapeAttr(i.url) + '" alt="' + escapeAttr(i.alt||'') + '">'; });
+      html += '</div>';
+    }
+    if (s.buttons && s.buttons.length) {
+      html += '<div class="buttons">';
+      s.buttons.forEach(function(b){ html += '<a class="btn" href="' + escapeAttr(b.href) + '">' + escapeHtml(b.text) + '</a>'; });
+      html += '</div>';
+    }
+    content.innerHTML = html;
+  }
+
+  function escapeHtml(s){ return String(s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  function escapeAttr(s){ return escapeHtml(s); }
+
+  fetch('api.php?action=services')
+    .then(function(r){ return r.json(); })
+    .then(function(services){
+      menu.innerHTML = '';
+      if (!services.length) { content.innerHTML = '<p>No services yet.</p>'; return; }
+      services.forEach(function(s){
+        const a = document.createElement('a');
+        a.href = '#';
+        a.textContent = s.menu_title;
+        a.onclick = function(e){
+          e.preventDefault();
+          if (active) active.classList.remove('active');
+          a.classList.add('active');
+          active = a;
+          renderService(s);
+        };
+        menu.appendChild(a);
+      });
+      const first = menu.querySelector('a');
+      if (first) first.click();
+    })
+    .catch(function(err){ content.innerHTML = '<p>Error loading services: ' + err.message + '</p>'; });
+})();
+</script>
+</body>
+</html>
+EOT;
+
+/* ---------------- Gallery.html (public) ---------------- */
+$files['Gallery.html'] = <<<'EOT'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gallery</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,sans-serif;background:#f4f6f9;color:#222}
+header{background:#212529;color:#fff;padding:16px 24px}
+header h1{margin:0;font-size:20px}
+.toolbar{padding:14px 24px;display:flex;flex-wrap:wrap;gap:8px}
+.toolbar button{padding:8px 14px;border:1px solid #ccc;background:#fff;border-radius:20px;cursor:pointer;font-size:14px}
+.toolbar button.active{background:#007bff;color:#fff;border-color:#007bff}
+#grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;padding:0 24px 40px}
+.item{background:#fff;border-radius:8px;overflow:hidden;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,.06);transition:transform .15s}
+.item:hover{transform:translateY(-2px)}
+.item img,.item video{width:100%;height:180px;object-fit:cover;display:block}
+.cap{padding:8px 10px;font-size:13px;color:#555}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);align-items:center;justify-content:center;padding:20px;z-index:10}
+.modal img,.modal video{max-width:92vw;max-height:88vh;border-radius:6px}
+.close{position:fixed;top:16px;right:20px;color:#fff;font-size:32px;cursor:pointer;user-select:none}
+</style>
+</head>
+<body>
+<header><h1>Gallery</h1></header>
+<div class="toolbar" id="cats"></div>
+<div id="grid"></div>
+<div class="modal" id="modal" onclick="closeModal()">
+  <span class="close" onclick="closeModal()">×</span>
+  <img id="modalImg" style="display:none">
+  <video id="modalVid" controls style="display:none"></video>
+</div>
+<script>
+(function(){
+  const catsEl = document.getElementById('cats');
+  const grid = document.getElementById('grid');
+  const modal = document.getElementById('modal');
+  const modalImg = document.getElementById('modalImg');
+  const modalVid = document.getElementById('modalVid');
+  let data = [];
+
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+
+  function makeTile(item){
+    const div = document.createElement('div');
+    div.className = 'item';
+    if (item.type === 'video') {
+      const v = document.createElement('video');
+      v.src = item.url;
+      v.muted = true;
+      v.preload = 'metadata';
+      div.appendChild(v);
+    } else {
+      const img = document.createElement('img');
+      img.src = item.url;
+      img.alt = item.caption || '';
+      img.loading = 'lazy';
+      div.appendChild(img);
+    }
+    if (item.caption) {
+      const c = document.createElement('div');
+      c.className = 'cap';
+      c.textContent = item.caption;
+      div.appendChild(c);
+    }
+    div.onclick = function(){ openModal(item); };
+    return div;
+  }
+
+  function render(items){
+    grid.innerHTML = '';
+    if (!items.length){ grid.innerHTML = '<p style="padding:20px">No items.</p>'; return; }
+    items.forEach(function(i){ grid.appendChild(makeTile(i)); });
+  }
+
+  function renderAll(){
+    const all = [];
+    data.forEach(function(c){ c.items.forEach(function(i){ all.push(i); }); });
+    render(all);
+  }
+
+  function renderCat(cat){ render(cat.items); }
+
+  function setActive(btn){
+    Array.from(catsEl.children).forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+  }
+
+  function openModal(item){
+    if (item.type === 'video'){
+      modalImg.style.display = 'none';
+      modalVid.style.display = 'block';
+      modalVid.src = item.url;
+      modalVid.play();
+    } else {
+      modalVid.style.display = 'none';
+      modalVid.pause();
+      modalImg.style.display = 'block';
+      modalImg.src = item.url;
+    }
+    modal.style.display = 'flex';
+  }
+  window.closeModal = function(){
+    modal.style.display = 'none';
+    modalVid.pause();
+  };
+
+  fetch('api.php?action=gallery')
+    .then(function(r){ return r.json(); })
+    .then(function(json){
+      data = json || [];
+      const allBtn = document.createElement('button');
+      allBtn.textContent = 'All';
+      allBtn.onclick = function(){ setActive(allBtn); renderAll(); };
+      catsEl.appendChild(allBtn);
+      data.forEach(function(c){
+        const b = document.createElement('button');
+        b.textContent = c.name;
+        b.onclick = function(){ setActive(b); renderCat(c); };
+        catsEl.appendChild(b);
+      });
+      setActive(allBtn);
+      renderAll();
+    })
+    .catch(function(err){ grid.innerHTML = '<p style="padding:20px">Error: ' + err.message + '</p>'; });
+})();
+</script>
+</body>
+</html>
+EOT;
+
+/* ---------------- WRITE ALL FILES ---------------- */
+foreach ($files as $path => $content) {
+    $full = $base . '/' . $path;
+    @mkdir(dirname($full), 0755, true);
+    file_put_contents($full, $content);
+    echo "Created: $path\n";
+}
+
+echo "\nDone! Generated " . count($files) . " files in: $base\n\n";
+echo "Next steps:\n";
+echo "  1. Run database.sql in MySQL (creates db 'admin2').\n";
+echo "  2. Edit ADMIN2/config.php with your DB credentials.\n";
+echo "  3. Open /ADMIN2/login.php — you will be prompted to create the first Super Admin.\n";
+echo "  4. Public pages: /ADMIN2/Services.html  and  /ADMIN2/Gallery.html\n";
