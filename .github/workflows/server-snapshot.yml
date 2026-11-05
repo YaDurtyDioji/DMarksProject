@@ -27,7 +27,7 @@ jobs:
       FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
       FTP_PORT: ${{ secrets.FTP_PORT }}
 
-      SITE_DOMAIN: example.co.za
+      SITE_DOMAIN: dmarksproject.co.za
 
     steps:
       # Checkout repository
