@@ -3,122 +3,128 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>CONE5112 Exam Tomorrow — Crash Course</title>
-<meta name="description" content="The fastest possible CONE5112 Computer Networks 1B exam crash course. Simple language, analogies, mnemonics, priority pyramid, and exam traps." />
-<meta name="keywords" content="CONE5112, exam tomorrow, crash course, computer networks, study fast, mnemonics, revision" />
+<title>CONE5112 Crash Course — Exam Tomorrow Edition</title>
+<meta name="description" content="Zero-knowledge crash course for CONE5112 Computer Networks 1B. Every concept explained in plain English with full names for acronyms. Built for last-minute exam revision." />
+<meta name="keywords" content="CONE5112, crash course, computer networks, exam prep, beginner, plain English, TCP/IP, revision" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 <style>
   :root{
     --lu1:#0d6efd; --lu2:#198754; --lu3:#dc3545; --lu4:#6f42c1;
     --lu5:#fd7e14; --lu6:#0dcaf0;
-    --amber:#ffc107; --hot:#ff5722;
   }
   html{scroll-behavior:smooth;}
   body{
-    background:#0f172a;
-    color:#e2e8f0;
+    background:#fffdf7;
     font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
-    padding-top:70px;
-    line-height:1.6;
+    padding-top:74px;
+    color:#212529;
   }
-  .navbar{background:linear-gradient(90deg,#ff5722,#fd7e14)!important;}
+  .navbar{background:linear-gradient(90deg,#212529,#495057)!important;}
   .navbar-brand{font-weight:800;letter-spacing:.5px;}
   .hero{
-    background:linear-gradient(135deg,#ff5722,#6f42c1);
-    border-radius:16px;padding:2rem 1.5rem;text-align:center;margin:1.5rem 0;
-    box-shadow:0 10px 30px rgba(255,87,34,.3);
+    background:linear-gradient(135deg,#0d6efd 0%,#6f42c1 100%);
+    color:#fff;padding:2rem 1rem;border-radius:14px;margin:1rem 0 1.5rem;
   }
-  .hero h1{font-weight:900;font-size:clamp(1.8rem,5vw,3rem);margin:0;}
-  .hero p{margin:.5rem 0 0;opacity:.95;}
-  .lu-section{scroll-margin-top:100px;margin-bottom:2.5rem;}
-  .lu-header{
-    border-radius:12px;padding:1rem 1.25rem;color:#fff;margin-bottom:1rem;
-    display:flex;align-items:center;gap:.75rem;font-weight:800;font-size:1.15rem;
-  }
+  .hero h1{font-weight:800;font-size:clamp(1.5rem,4vw,2.2rem);}
+  .hero p{font-size:1.05rem;opacity:.95;margin-bottom:0;}
+  .subnav{position:sticky;top:74px;z-index:10;background:#fff;border-bottom:1px solid #dee2e6;padding:.5rem 0;margin-bottom:1rem;}
+  .subnav a{padding:.25rem .6rem;margin:.15rem;border-radius:20px;font-size:.85rem;text-decoration:none;background:#eef1f4;color:#212529;display:inline-block;}
+  .subnav a:hover{background:#212529;color:#fff;}
+  .lu-section{scroll-margin-top:120px;margin-bottom:3rem;}
+  .lu-header{border-radius:12px;padding:1rem 1.25rem;color:#fff;margin-bottom:1rem;}
   .lu1-h{background:var(--lu1);} .lu2-h{background:var(--lu2);}
   .lu3-h{background:var(--lu3);} .lu4-h{background:var(--lu4);}
-  .lu5-h{background:var(--lu5);} .lu6-h{background:var(--lu6);color:#0f172a;}
-  .crash-card{
-    background:#1e293b;border:none;border-radius:12px;
-    padding:1rem 1.15rem;margin-bottom:.85rem;
-    border-left:5px solid #38bdf8;
+  .lu5-h{background:var(--lu5);} .lu6-h{background:var(--lu6);color:#212529;}
+  .card{border:none;box-shadow:0 2px 10px rgba(0,0,0,.06);border-radius:12px;margin-bottom:1rem;}
+  .card-body{padding:1.15rem 1.25rem;}
+  .searchable.hidden,.lu-section.hidden{display:none!important;}
+  .one-thing{
+    background:#fff3cd;border-left:6px solid #ffc107;
+    padding:.9rem 1.1rem;border-radius:0 10px 10px 0;margin:.75rem 0;
+    font-size:1rem;font-weight:500;
   }
-  .crash-card.c1{border-left-color:var(--lu1);} .crash-card.c2{border-left-color:var(--lu2);}
-  .crash-card.c3{border-left-color:var(--lu3);} .crash-card.c4{border-left-color:var(--lu4);}
-  .crash-card.c5{border-left-color:var(--lu5);} .crash-card.c6{border-left-color:var(--lu6);}
-  .crash-card h5{color:#38bdf8;font-size:.95rem;font-weight:800;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.5rem;}
-  .crash-card ul{margin-bottom:0;padding-left:1.1rem;font-size:.93rem;}
-  .crash-card li{margin-bottom:.35rem;}
-  .analogy{
-    background:#fff3cd;color:#212529;border-left:5px solid var(--amber);
-    padding:.7rem .9rem;border-radius:0 10px 10px 0;margin:.6rem 0;font-size:.93rem;
+  .one-thing .big{font-size:1.15rem;font-weight:800;display:block;margin-bottom:.2rem;color:#664d03;}
+  .story{
+    background:#e7f5ff;border-left:6px solid #0d6efd;
+    padding:.9rem 1.1rem;border-radius:0 10px 10px 0;margin:.75rem 0;
+    font-style:italic;
   }
-  .analogy strong{color:#b45309;}
-  .calc-box{
-    background:#f3e8ff;color:#212529;border-left:5px solid var(--lu4);
-    padding:.7rem .9rem;border-radius:0 10px 10px 0;margin:.6rem 0;
-    font-family:'Courier New',monospace;font-size:.88rem;overflow-x:auto;
+  .plain{
+    background:#e7f8ef;border-left:6px solid #198754;
+    padding:.75rem 1rem;border-radius:0 10px 10px 0;margin:.6rem 0;
   }
-  .trap-box{
-    background:#fee2e2;color:#7f1d1d;border-left:5px solid var(--hot);
-    padding:.7rem .9rem;border-radius:0 10px 10px 0;margin:.6rem 0;font-size:.93rem;
+  .formula{
+    background:#f3e8ff;border-left:6px solid #6f42c1;
+    padding:.75rem 1rem;border-radius:0 10px 10px 0;
+    font-family:'Courier New',monospace;font-size:.9rem;
+    margin:.75rem 0;overflow-x:auto;white-space:pre-wrap;
   }
-  .trap-box strong{color:#dc2626;}
-  .mnem{
-    background:linear-gradient(135deg,#fef3c7,#fde68a);color:#78350f;
-    border-radius:10px;padding:.75rem .9rem;margin:.6rem 0;font-size:.93rem;font-weight:500;
+  .trap{
+    background:#f8d7da;border-left:6px solid #dc3545;
+    padding:.75rem 1rem;border-radius:0 10px 10px 0;margin:.6rem 0;
   }
-  .mnem strong{color:#b45309;font-weight:800;}
-  .pill{display:inline-block;background:#334155;color:#94a3b8;padding:2px 10px;border-radius:20px;font-size:.75rem;margin-right:.3rem;}
-  .priority-card{
-    background:linear-gradient(135deg,#0ea5e9,#6366f1);color:#fff;
-    border-radius:12px;padding:1rem;margin-bottom:.75rem;
-    box-shadow:0 4px 14px rgba(99,102,241,.3);
+  .exam-template{
+    background:#d1ecf1;border-left:6px solid #0dcaf0;
+    padding:.75rem 1rem;border-radius:0 10px 10px 0;margin:.75rem 0;
+    font-size:.93rem;
   }
-  .priority-card h6{font-weight:800;margin:0 0 .35rem;font-size:.9rem;text-transform:uppercase;}
-  .priority-card p{margin:0;font-size:.9rem;}
-  .night-card{
-    background:#1e293b;border:2px dashed #38bdf8;border-radius:12px;padding:1.25rem;
+  .exam-template .label{
+    display:inline-block;background:#0dcaf0;color:#003;font-weight:800;
+    padding:2px 8px;border-radius:6px;font-size:.75rem;margin-bottom:.3rem;letter-spacing:.5px;
   }
-  .night-card li{margin-bottom:.4rem;font-size:.93rem;}
-  .search-bar{
-    background:#1e293b;border:none;border-radius:30px;padding:.65rem 1.2rem;
-    color:#e2e8f0;width:100%;font-size:1rem;
+  .memory{
+    background:#fce4ec;border-left:6px solid #e83e8c;
+    padding:.75rem 1rem;border-radius:0 10px 10px 0;margin:.6rem 0;
+    font-weight:500;
   }
-  .search-bar:focus{outline:2px solid #38bdf8;background:#0f172a;color:#fff;}
-  .search-bar::placeholder{color:#64748b;}
-  .hidden{display:none!important;}
-  .no-results{background:#fef3c7;color:#78350f;padding:1rem;border-radius:10px;text-align:center;font-weight:600;margin-bottom:1rem;}
-  .subnav{
-    position:sticky;top:60px;z-index:10;background:#0f172a;padding:.5rem 0;
-    margin-bottom:1rem;border-bottom:1px solid #334155;
+  .memory strong{color:#c2185b;}
+  h4.card-title{
+    color:#212529;font-size:1.08rem;font-weight:800;
+    margin-bottom:.6rem;border-bottom:2px dashed #dee2e6;padding-bottom:.4rem;
   }
-  .subnav a{
-    padding:.3rem .7rem;margin:.15rem;border-radius:20px;font-size:.8rem;
-    text-decoration:none;background:#1e293b;color:#cbd5e1;display:inline-block;border:1px solid #334155;
+  h4.card-title .emoji{font-size:1.2rem;margin-right:.3rem;}
+  .badge-full{background:#212529;color:#fff;font-weight:600;font-size:.72rem;padding:2px 7px;border-radius:6px;margin-left:4px;}
+  .abbr-box{
+    display:inline-block;background:#f8f9fa;border:1px solid #dee2e6;
+    border-radius:6px;padding:1px 6px;font-family:monospace;font-size:.85rem;
   }
-  .subnav a:hover{background:var(--hot);color:#fff;border-color:var(--hot);}
-  mark{background:#fbbf24;color:#000;padding:0 3px;border-radius:2px;}
-  code{background:#334155;color:#38bdf8;padding:1px 6px;border-radius:4px;font-size:.88em;}
-  footer{margin-top:3rem;padding:2rem 0;background:#020617;color:#64748b;text-align:center;font-size:.9rem;}
-  footer a{color:#38bdf8;}
+  code.inline{background:#e9ecef;padding:1px 5px;border-radius:4px;font-size:.88em;}
+  #searchInput{border-radius:30px;padding:.65rem 1.2rem;font-size:1rem;}
+  .no-results{background:#fff3cd;border-radius:10px;padding:1rem;text-align:center;font-weight:600;}
+  .quick-cheat{background:#212529;color:#fff;border-radius:12px;padding:1rem 1.25rem;margin:1rem 0;}
+  .quick-cheat h5{color:#ffd43b;font-weight:800;}
+  .quick-cheat code{color:#69db7c;background:transparent;font-size:.85rem;}
+  footer{margin-top:3rem;padding:2rem 0;background:#212529;color:#adb5bd;text-align:center;}
+  footer a{color:#6ea8fe;}
+  .exam-link{
+    display:inline-block;background:#212529;color:#fff;padding:.35rem .75rem;
+    border-radius:8px;text-decoration:none;font-size:.82rem;margin:.15rem;
+  }
+  .exam-link:hover{background:#495057;color:#fff;}
   @media (max-width:576px){
-    .hero{padding:1.25rem 1rem;}
-    .lu-header{font-size:1rem;padding:.8rem 1rem;}
-    body{font-size:.95rem;}
+    body{padding-top:70px;}
+    h4.card-title{font-size:1rem;}
+    .formula{font-size:.78rem;}
+    .one-thing .big{font-size:1.05rem;}
   }
 </style>
 </head>
 <body>
 
 <!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm">
   <div class="container">
-    <a class="navbar-brand" href="#top">⚡ Exam Tomorrow</a>
-    <div class="ms-auto d-flex gap-2">
-      <a class="nav-link text-white small" href="index.html"><i class="bi bi-house"></i> Cheat Sheet</a>
-      <a class="nav-link text-white small" href="glossary.html"><i class="bi bi-book"></i> Glossary</a>
+    <a class="navbar-brand" href="index.html"><i class="bi bi-lightning-charge-fill"></i> CONE5112 Crash Course</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house"></i> Cheat Sheet</a></li>
+        <li class="nav-item"><a class="nav-link" href="glossary.html"><i class="bi bi-book"></i> Glossary</a></li>
+        <li class="nav-item"><a class="nav-link active" href="#top"><i class="bi bi-lightning-charge"></i> Crash Course</a></li>
+      </ul>
     </div>
   </div>
 </nav>
@@ -126,522 +132,1438 @@
 <div class="container" id="top">
 
   <!-- HERO -->
-  <div class="hero">
-    <h1>🚨 CONE5112 CRASH COURSE</h1>
-    <p><strong>Exam tomorrow?</strong> This page gives you the <em>only things that matter</em>, in simple language, with analogies you won't forget.</p>
-    <p class="mt-2 mb-0 small"><i class="bi bi-clock-history"></i> Read time: ~20 minutes. Memory retention: longer than the panic you're feeling now.</p>
+  <div class="hero text-center">
+    <h1><i class="bi bi-alarm"></i> CONE5112 CRASH COURSE</h1>
+    <p>Exam tomorrow? <strong>Breathe.</strong> This page assumes you know <em>nothing</em>.<br>Every acronym is spelled out. Every idea has a real-world story. Only the stuff actually asked in the exam prep files.</p>
   </div>
 
   <!-- SEARCH -->
   <div class="mb-3">
-    <input id="searchInput" class="search-bar" placeholder="🔍 Search the crash course (e.g. 'TCP', 'DHCP', 'CRC', 'BGP')" />
-    <small class="text-secondary d-block mt-1"><span id="matchCount"></span></small>
+    <div class="input-group">
+      <span class="input-group-text bg-white border-end-0"><i class="bi bi-search"></i></span>
+      <input id="searchInput" class="form-control border-start-0" placeholder="Search a term, acronym, or topic — e.g. 'OSPF', 'DORA', 'CRC', 'anycast'" />
+      <button class="btn btn-outline-dark" id="clearSearch">Clear</button>
+    </div>
+    <small class="text-muted"><span id="matchCount"></span></small>
   </div>
 
-  <div id="noResults" class="no-results hidden">
-    😬 No matches. Try a different keyword.
+  <!-- QUICK CHEAT / HOW TO USE -->
+  <div class="quick-cheat">
+    <h5><i class="bi bi-list-check"></i> How to use this page (read this first)</h5>
+    <ul class="small mb-0">
+      <li>Every section starts with <strong>"If you only remember ONE thing"</strong> — that's the exam-defining idea. Learn it first.</li>
+      <li>Then there's a <strong>Story</strong> (a real-world analogy) — this is how you actually remember it.</li>
+      <li>Then the <strong>Plain English</strong> definition — the exam answer.</li>
+      <li>Then <strong>Exam Template</strong> — copy this structure when answering.</li>
+      <li>Then <strong>Memory hook</strong> — the funny, sticky phrase.</li>
+      <li>Blue boxes = <strong>Exam Template</strong>. Red boxes = <strong>Traps</strong>. Yellow boxes = <strong>One-thing</strong>. Pink = <strong>Mnemonic</strong>.</li>
+      <li><strong>Full names are always given</strong>: "TCP" appears as "TCP (Transmission Control Protocol)". Don't drop the long form in exams — it earns marks.</li>
+    </ul>
   </div>
 
   <!-- SUBNAV -->
-  <nav class="subnav">
-    <a href="#priority">⏰ Priority Pyramid</a>
-    <a href="#lu1">LU1</a>
-    <a href="#lu2">LU2</a>
-    <a href="#lu3">LU3</a>
-    <a href="#lu4">LU4</a>
-    <a href="#lu5">LU5</a>
-    <a href="#lu6">LU6</a>
-    <a href="#night">🌙 Night Before</a>
-    <a href="#final">🚀 Final Summary</a>
+  <nav class="subnav" id="subnav">
+    <a href="#lu1">1 · Internet Basics</a>
+    <a href="#lu2">2 · Applications &amp; Web</a>
+    <a href="#lu3">3 · Transport &amp; TCP</a>
+    <a href="#lu4">4 · IP &amp; Forwarding</a>
+    <a href="#lu5">5 · Routing &amp; Control</a>
+    <a href="#lu6">6 · Link Layer &amp; LANs</a>
+    <a href="#final">📋 Final Cheat Card</a>
   </nav>
 
-  <!-- ========== PRIORITY PYRAMID ========== -->
-  <section id="priority" class="lu-section">
-    <div class="lu-header" style="background:linear-gradient(135deg,#ff5722,#fd7e14);">
-      <i class="bi bi-alarm" style="font-size:1.5rem;"></i> ⏰ Priority Pyramid — Study Based on Your Time Left
-    </div>
+  <div id="noResults" class="no-results mb-3 hidden">
+    <i class="bi bi-emoji-frown"></i> Nothing matched. Try a simpler keyword.
+  </div>
 
-    <div class="searchable crash-card c1">
-      <h5>🚨 If you have 30 minutes</h5>
-      <p class="small mb-2">Read <strong>only the "One-liners"</strong> in each Learning Unit below. That's 6 sentences. Then read the Formula Vault in the cheat sheet. Then close everything and sleep.</p>
-      <p class="small mb-0"><em>Why?</em> Sleep consolidates memory better than panic-cramming. Your brain remembers structure, not the 4th layer of a protocol you just skimmed.</p>
-    </div>
-
-    <div class="searchable crash-card c4">
-      <h5>🔥 If you have 2 hours</h5>
-      <p class="small mb-0">Read <strong>every unit below</strong> (each is ~5 minutes). Then read the <strong>exam traps</strong> (the red boxes). Then read the <strong>formula vault</strong> in the cheat sheet. Take a 10-minute walk. Then do one practice calculation per unit (subnetting, CRC, TCP cwnd, HTTP response time).</p>
-    </div>
-
-    <div class="searchable crash-card c2">
-      <h5>💪 If you have 4–6 hours</h5>
-      <p class="small mb-0">Everything above, <em>plus</em> open the <strong>Exam Preparation Question Bank</strong> (in the Downloadables of the cheat sheet). Pick one long scenario per unit, plan an answer in bullet points for 5 minutes, then check the memo. Repeat for all 6 units. This is the single most valuable thing you can do.</p>
-    </div>
-
-    <div class="searchable crash-card c5">
-      <h5>🧠 If you have the whole night (not recommended)</h5>
-      <p class="small mb-0">Do the 4–6 hour plan. Then read the <strong>Detailed Revision Guide</strong> once. Then <strong>sleep at least 4 hours</strong>. An all-nighter for a 2-hour closed-book exam usually <em>loses</em> marks.</p>
-    </div>
-
-    <div class="analogy">
-      <strong>🏆 The Rule:</strong> If a question asks "explain the difference", they want a <em>table</em>. If they ask "calculate", they want <em>formula → substitute → units → answer</em>. If they ask "evaluate", they want a <em>judgement with trade-offs</em>. Match the verb.
-    </div>
-  </section>
-
-  <!-- ========== LU1 ========== -->
+  <!-- ============================================================ -->
+  <!-- =============== LU1 ======================================== -->
+  <!-- ============================================================ -->
   <section id="lu1" class="lu-section">
     <div class="lu-header lu1-h">
-      <i class="bi bi-globe2" style="font-size:1.4rem;"></i> LU1 — Internet, Wireless &amp; Mobile
+      <h2 class="h3 fw-bold mb-0"><i class="bi bi-globe2"></i> Learning Unit 1 — The Internet, Wireless &amp; Mobile</h2>
+      <small>What the Internet actually IS, and how wireless/mobile extends it.</small>
     </div>
 
-    <div class="searchable crash-card c1">
-      <h5>🎯 The One-Liner</h5>
-      <p class="mb-0"><strong>The Internet is a network of networks that shares links on demand (packet switching) using a 5-layer stack. Wireless adds radio (shared, lossy) and mobility (handover).</strong></p>
-    </div>
-
-    <div class="searchable crash-card c1">
-      <h5>📌 The 5 Things You MUST Know</h5>
-      <ul>
-        <li><strong>Packet switching &gt; circuit switching</strong> for bursty data because links are shared, not reserved.</li>
-        <li><strong>4 delays:</strong> Processing, Queuing, Transmission (L/R), Propagation (d/s).</li>
-        <li><strong>5-layer stack:</strong> Application → Transport → Network → Link → Physical.</li>
-        <li><strong>Throughput = bottleneck link.</strong> The slowest link on the path caps everything.</li>
-        <li><strong>4G/5G:</strong> phone → base station → network core → internet. Handover = moving between towers.</li>
-      </ul>
-    </div>
-
-    <div class="searchable crash-card c1">
-      <h5>💡 Killer Analogies</h5>
-      <div class="analogy">
-        <strong>Packet switching = sharing pizza.</strong> Everyone grabs slices when they're hungry. <br/>
-        <strong>Circuit switching = reserving the whole pizza</strong> whether you eat it or not. Wasteful if you're not hungry.
+    <!-- 1.1 Protocol -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🤝</span>What is a "Protocol"?</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        A protocol is an <strong>agreed set of rules</strong> for how two devices talk: the format of messages, the order of messages, and what to do when a message arrives.
       </div>
-      <div class="analogy">
-        <strong>Transmission delay = pushing the whole caravan through the tollbooth.</strong><br/>
-        <strong>Propagation delay = how long the first car takes to drive to the next tollbooth.</strong><br/>
-        Bigger caravan = longer transmission. Faster road = same propagation (distance doesn't change).
+      <div class="story"><strong>Story:</strong> Imagine two people greeting each other. You say "Hi" → they say "Hi" → you ask "Got the time?" → they reply "2 o'clock". That's a protocol. If one speaks Zulu and the other Japanese, no protocol → no communication.</div>
+      <div class="plain"><strong>Plain English:</strong> A <strong>protocol</strong> is an agreed set of rules for exchanging messages between two communicating parties: what a message looks like, what order it comes in, and what each side does when it arrives.</div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "A protocol defines the <strong>format</strong> of messages exchanged, the <strong>order</strong> in which they are sent/received, and the <strong>actions</strong> taken on transmission or receipt. Examples: <strong>HTTP (HyperText Transfer Protocol)</strong> at the application layer, <strong>TCP (Transmission Control Protocol)</strong> at the transport layer."
       </div>
-      <div class="analogy">
-        <strong>CDMA = a crowded room with everyone speaking a different language.</strong> You can pick out your language if you know the code. The <em>near-far problem</em> = the person next to you shouting louder than everyone else.
-      </div>
-    </div>
+      <div class="memory"><strong>Memory hook:</strong> "Protocol = <em>the handshake rules</em> — what to say, in what order, and what to do next."</div>
+    </div></div>
 
-    <div class="searchable crash-card c1">
-      <h5>🧮 If they ask you to calculate…</h5>
-      <div class="calc-box">
-        d<sub>trans</sub> = L / R  (bits ÷ bits per second)<br/>
-        d<sub>prop</sub> = d / s   (s ≈ 2×10⁸ m/s)<br/>
-        Total = proc + queue + trans + prop<br/>
-        <strong>Always ×8 first if packet size is in bytes.</strong>
+    <!-- 1.2 Network of Networks -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🌐</span>The Internet as a "Network of Networks"</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        The Internet isn't one company's network. It's <strong>many independent networks</strong> connected together using shared rules (protocols).
       </div>
-    </div>
-
-    <div class="searchable crash-card c1">
-      <h5>⚠️ Exam Traps</h5>
-      <div class="trap-box">
-        <strong>Don't say propagation depends on packet size.</strong> It doesn't. It depends on <em>distance</em>.<br/>
-        <strong>Don't say the internet has 7 layers.</strong> OSI has 7, the Internet uses 5.
+      <div class="story"><strong>Story:</strong> Think of the road network. Your neighbourhood roads connect to city roads, which connect to highways, which connect to other countries' highways. No single person owns "the roads" — but everyone follows the same traffic rules. That's the Internet.</div>
+      <div class="plain">
+        <strong>Plain English:</strong> The Internet is a hierarchy of interconnected networks:
+        <ul class="mb-0 mt-2">
+          <li><strong>Access ISPs (Internet Service Providers)</strong> — connect homes and businesses (like Vodacom, MTN, Afrihost).</li>
+          <li><strong>Regional ISPs</strong> — connect many access ISPs in a region.</li>
+          <li><strong>Tier-1 ISPs</strong> — the giant global backbone networks (like AT&amp;T, NTT, Level 3).</li>
+          <li><strong>IXPs (Internet Exchange Points)</strong> — neutral buildings where ISPs physically plug into each other to swap traffic directly (cheaper than going through a Tier-1).</li>
+          <li><strong>Content Provider Networks</strong> — private networks built by Google, Netflix etc. to bypass upper-tier ISPs.</li>
+        </ul>
       </div>
-    </div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "The Internet is described as a network of networks because it consists of many independently operated networks (access, regional, tier-1 ISPs) that interconnect through <strong>IXPs (Internet Exchange Points)</strong> and peering agreements, using the common <strong>TCP/IP (Transmission Control Protocol / Internet Protocol)</strong> suite. <strong>Scalability</strong> is supported by hierarchical addressing and distributed routing. <strong>Interoperability</strong> is supported by open standards (IETF (Internet Engineering Task Force) RFCs (Requests for Comments))."
+      </div>
+      <div class="memory"><strong>Memory hook:</strong> "Internet = <em>Network of Networks</em>. No king, just rules."</div>
+    </div></div>
 
-    <div class="searchable crash-card c1">
-      <h5>🧠 Mnemonic</h5>
-      <div class="mnem"><strong>"Please Queue The Pies"</strong> — Processing, Queuing, Transmission, Propagation.</div>
-      <div class="mnem"><strong>"Up End Made Hot Slow Packs"</strong> — UE, eNodeB, MME, HSS, S-GW, P-GW (4G elements).</div>
-    </div>
+    <!-- 1.3 Packet vs Circuit -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">📦</span>Packet Switching vs Circuit Switching</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        <strong>Circuit switching = reserving a private lane.</strong> <strong>Packet switching = everyone shares the road; data is chopped up and sent in cars.</strong> The Internet uses packet switching because data is <em>bursty</em>.
+      </div>
+      <div class="story"><strong>Story:</strong> Circuit switching is like reserving an entire phone line (old telephone style). If you're silent, the line is wasted. Packet switching is like sending postcards — you chop the letter into pieces, each piece finds its own way, and other people's postcards can share the same mail van.</div>
+      <div class="plain">
+        <strong>Circuit Switching:</strong> A dedicated path is reserved end-to-end before data flows. Resources (bandwidth) are guaranteed. Wasted when the sender is silent. Uses <strong>FDM (Frequency Division Multiplexing)</strong> or <strong>TDM (Time Division Multiplexing)</strong> to share links.<br>
+        <strong>Packet Switching:</strong> Data is chopped into <strong>packets</strong>. Packets share links on demand (called <strong>statistical multiplexing</strong>). Efficient for bursty traffic. Can queue and lose packets under congestion.
+      </div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "<strong>Circuit switching</strong> reserves resources end-to-end, offering guaranteed rate but wasting capacity during silent periods. <strong>Packet switching</strong> shares link capacity on demand using statistical multiplexing, making it <strong>more efficient for bursty application traffic</strong> (web, email, cloud) because idle users don't waste capacity. Trade-off: packet switching introduces variable delay, congestion and possible loss, which <strong>TCP (Transmission Control Protocol)</strong> handles for reliable applications."
+      </div>
+      <div class="memory"><strong>Memory hook:</strong> "Circuit = <em>reserved</em>. Packet = <em>shared</em>." (R vs S)</div>
+    </div></div>
+
+    <!-- 1.4 Delay -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">⏱️</span>Four Types of Delay (and Throughput)</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        Every router adds delay: <strong>Processing + Queuing + Transmission + Propagation</strong>. And throughput is limited by the <strong>slowest link</strong> (bottleneck).
+      </div>
+      <div class="story"><strong>Story:</strong> Imagine a car going through a toll plaza. (1) The attendant checks your ticket = <em>processing delay</em>. (2) You wait in line = <em>queuing delay</em>. (3) It takes time to physically hand your money over = <em>transmission delay</em>. (4) You then drive the road to the next toll = <em>propagation delay</em>.</div>
+      <div class="plain">
+        <strong>The 4 delays (at ONE router):</strong>
+        <ol class="mb-2">
+          <li><strong>Processing delay</strong> — checking headers, microseconds.</li>
+          <li><strong>Queuing delay</strong> — waiting in buffer, depends on congestion, highly variable.</li>
+          <li><strong>Transmission delay</strong> — time to push all bits onto the link = <em>L / R</em> (packet length / link rate).</li>
+          <li><strong>Propagation delay</strong> — time for signal to travel the wire = <em>d / s</em> (distance / speed of signal, ~2×10⁸ m/s).</li>
+        </ol>
+        <strong>Total nodal delay</strong> = d<sub>proc</sub> + d<sub>queue</sub> + d<sub>trans</sub> + d<sub>prop</sub>
+      </div>
+      <div class="formula">Transmission delay = L / R      (L in bits, R in bits/sec)
+Propagation delay = d / s       (d in metres, s ≈ 2×10⁸ m/s)
+Nodal delay      = d_proc + d_queue + d_trans + d_prop
+Traffic intensity = La / R       (keep below 1!)
+Throughput        = min(R1, R2, ..., RN)   ← bottleneck
+End-to-end delay  = N × (d_proc + d_trans + d_prop)   [N links, no queuing]</div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE (CALC)</span><br>
+        1. Convert bytes → bits (<strong>× 8</strong>).<br>
+        2. <strong>Transmission</strong> = bits ÷ link rate.<br>
+        3. <strong>Propagation</strong> = distance ÷ 2×10⁸.<br>
+        4. Add processing + queuing if given.<br>
+        5. Always state units (ms or s).
+      </div>
+      <div class="trap"><strong>Trap:</strong> Never say propagation depends on packet size or link rate. It depends <em>only</em> on distance and medium speed. Never forget ×8 for bytes-to-bits. Never call it "bandwidth" when the question asks for "throughput".</div>
+      <div class="memory"><strong>Memory hook:</strong> "<em>Please Queue The Pies</em>" — Processing, Queuing, Transmission, Propagation.</div>
+    </div></div>
+
+    <!-- 1.5 Layers -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🥞</span>The Five Layers &amp; Encapsulation</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        The <strong>5-layer Internet model</strong> = Application → Transport → Network → Link → Physical. Each layer adds its own <strong>header</strong> (encapsulation) as data moves down; the receiver strips them off going up (decapsulation).
+      </div>
+      <div class="story"><strong>Story:</strong> Imagine mailing a letter inside three envelopes: letter → inner envelope (with recipient name) → middle envelope (with apartment number) → outer envelope (with street address). That's encapsulation. The post office doesn't open envelopes — it just reads the address it needs.</div>
+      <div class="plain">
+        <strong>The 5 layers + what each does:</strong>
+        <ul class="mb-2">
+          <li><strong>Application layer</strong> — supports network apps (HTTP (HyperText Transfer Protocol), DNS (Domain Name System), SMTP (Simple Mail Transfer Protocol)). PDU = <em>message</em>.</li>
+          <li><strong>Transport layer</strong> — process-to-process (TCP (Transmission Control Protocol), UDP (User Datagram Protocol)). PDU = <em>segment</em>.</li>
+          <li><strong>Network layer</strong> — host-to-host across networks (IP (Internet Protocol)). PDU = <em>datagram</em>.</li>
+          <li><strong>Link layer</strong> — node-to-node on one link (Ethernet, Wi-Fi). PDU = <em>frame</em>.</li>
+          <li><strong>Physical layer</strong> — bits on the wire/air. PDU = <em>bits</em>.</li>
+        </ul>
+        <strong>Why layering? </strong>Modularity (each layer independent), interoperability (different vendors can build hardware/software), and easier troubleshooting (test one layer at a time).
+      </div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "The Internet uses a <strong>5-layer model</strong>: Application (HTTP, DNS), Transport (TCP, UDP), Network (IP), Link (Ethernet, Wi-Fi), Physical (bits). <strong>Encapsulation</strong> means each layer wraps the layer-above's payload in its own header. At the receiver, decapsulation removes headers in reverse. Layering supports <strong>interoperability</strong> — a Windows PC can talk to a Linux server because both follow the same standard protocols."
+      </div>
+      <div class="memory"><strong>Memory hook (bottom-up):</strong> "<em>Please Do Not Throw Sausage Pizza Away</em>" — Physical, Data Link, Network, Transport, Session, Presentation, Application (the 7-layer <strong>OSI (Open Systems Interconnection)</strong> model; Internet uses 5).</div>
+    </div></div>
+
+    <!-- 1.6 Wireless -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">📶</span>Wireless vs Wired Links</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        Wireless is <strong>shared, lossy, and noisy</strong>. It suffers from path loss (weakening with distance), interference, multipath, and the <strong>hidden terminal problem</strong>.
+      </div>
+      <div class="story"><strong>Story:</strong> Imagine a crowded party (Wi-Fi). Two people on opposite sides can't hear each other — but the host in the middle hears both at once and gets confused. That's the <strong>hidden terminal problem</strong>. And if someone shouts, everybody else's voice gets drowned out — that's <strong>signal attenuation and interference</strong>.</div>
+      <div class="plain">
+        <strong>4 key wireless impairments:</strong>
+        <ul>
+          <li><strong>Path loss / attenuation</strong> — signal weakens with distance and obstacles.</li>
+          <li><strong>Interference</strong> — other transmitters on the same frequency band (microwaves, Bluetooth, other Wi-Fi).</li>
+          <li><strong>Multipath</strong> — reflected copies of the signal arrive slightly out of sync.</li>
+          <li><strong>Hidden terminal</strong> — two nodes each hear the access point, but can't hear each other. Their signals collide at the AP.</li>
+        </ul>
+        These cause a higher <strong>bit error rate (BER)</strong>, so wireless uses <strong>link-layer acknowledgements</strong> and retransmissions.
+      </div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "Wireless links differ from wired links in three key ways: <strong>path loss</strong> (signal weakens with distance), <strong>interference</strong> from other transmitters, and <strong>multipath propagation</strong> (reflections distort the signal). Additionally, the <strong>hidden terminal problem</strong> means carrier sensing does not prevent all collisions. These impairments increase the bit error rate, requiring link-layer acknowledgements and retransmissions (e.g. Wi-Fi's CSMA/CA (Carrier Sense Multiple Access with Collision Avoidance))."
+      </div>
+      <div class="memory"><strong>Memory hook:</strong> "Wireless = <em>shared, weak, and easily confused</em>."</div>
+    </div></div>
+
+    <!-- 1.7 CDMA -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🎼</span>CDMA (Code Division Multiple Access)</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        Everyone talks at the <strong>same time, same frequency</strong> — but each user has a unique <strong>code</strong>. The receiver filters the mixed signal using the sender's code to recover that sender's data.
+      </div>
+      <div class="story"><strong>Story:</strong> Imagine a cocktail party where everyone speaks a different language. You only speak English, but you can still tune out the Zulu, French and Mandarin conversations because your brain (your "code") filters out everything that doesn't match English. That's CDMA.</div>
+      <div class="plain">
+        <strong>How it works:</strong>
+        <ul>
+          <li>Each user is assigned a unique <strong>chipping code</strong> (a sequence of +1/−1 values).</li>
+          <li>Each data bit is multiplied by the code → many small "chips" are sent.</li>
+          <li>Encoded output: Z<sub>i,m</sub> = d<sub>i</sub> × c<sub>m</sub>.</li>
+          <li>Receiver decodes: d<sub>i</sub> = (1/M) × Σ (received signal × code).</li>
+          <li>Codes must have low <strong>cross-correlation</strong> to be separable.</li>
+          <li><strong>Near-far problem:</strong> a strong nearby sender can overwhelm weaker signals → solved by <strong>power control</strong>.</li>
+        </ul>
+      </div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "<strong>CDMA (Code Division Multiple Access)</strong> lets multiple users transmit simultaneously on the same frequency by assigning each a unique spreading code. The transmitter encodes each bit by multiplying it by its code. The receiver recovers the intended signal by correlating the aggregate signal with the sender's code. Correct code selection (low cross-correlation) and <strong>power control</strong> (to counter the near-far problem) are essential."
+      </div>
+      <div class="memory"><strong>Memory hook:</strong> "CDMA = <em>everyone talking, but you only hear your language</em>."</div>
+    </div></div>
+
+    <!-- 1.8 4G LTE -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">📡</span>4G LTE Architecture</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        4G LTE has 6 big pieces: <strong>UE, eNodeB, MME, HSS, S-GW, P-GW</strong>. Radio edge (UE ↔ eNodeB), control plane (MME + HSS), data plane (S-GW + P-GW).
+      </div>
+      <div class="story"><strong>Story:</strong> A phone (UE) talks to a radio tower (eNodeB). The tower asks the brain (MME) "is this user allowed?" The brain checks the ID card (HSS). Once approved, data flows through two pipes: a local hub (S-GW) and then out to the Internet (P-GW).</div>
+      <div class="plain">
+        <ul>
+          <li><strong>UE (User Equipment)</strong> — the phone, with SIM card and IMSI (International Mobile Subscriber Identity) ID.</li>
+          <li><strong>eNodeB (Evolved Node B)</strong> — base station (cell tower). Radio access + handover.</li>
+          <li><strong>MME (Mobility Management Entity)</strong> — control plane: authenticates the user, tracks location, sets up tunnels.</li>
+          <li><strong>HSS (Home Subscriber Server)</strong> — subscriber database, credentials, services.</li>
+          <li><strong>S-GW (Serving Gateway)</strong> — data plane local anchor; changes during handover.</li>
+          <li><strong>P-GW (Packet Data Network Gateway)</strong> — gateway to the Internet; provides NAT (Network Address Translation) addresses. Stays the same during handover.</li>
+        </ul>
+        <strong>Handover:</strong> when you move to another cell, only the S-GW-to-eNodeB tunnel endpoint changes; the P-GW stays the same.
+      </div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "4G LTE is an all-IP packet-switched cellular network. The <strong>UE (User Equipment)</strong> connects via radio to an <strong>eNodeB (base station)</strong>. The <strong>MME (Mobility Management Entity)</strong> handles authentication and mobility, using subscriber data from the <strong>HSS (Home Subscriber Server)</strong>. Data flows through the <strong>S-GW (Serving Gateway)</strong> and <strong>P-GW (Packet Data Network Gateway)</strong> to the Internet. During <strong>handover</strong>, the S-GW-to-eNodeB tunnel endpoint is updated while the P-GW remains anchored, maintaining connectivity."
+      </div>
+      <div class="memory"><strong>Memory hook:</strong> "<em>Up End Made Hot Slow Packs</em>" — UE, eNodeB, MME, HSS, S-GW, P-GW.</div>
+    </div></div>
+
+    <!-- 1.9 5G -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🚀</span>5G &amp; Why It's Better than 4G</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        5G = faster (10×), lower latency (10× lower), and supports <strong>mMTC (massive Machine Type Communication)</strong> — millions of IoT devices. Uses <strong>millimetre wave</strong> (short range) and small cells.
+      </div>
+      <div class="plain">
+        <strong>5G's 3 use cases:</strong>
+        <ul>
+          <li><strong>eMBB (enhanced Mobile Broadband)</strong> — super-fast consumer data.</li>
+          <li><strong>URLLC (Ultra-Reliable Low-Latency Communication)</strong> — ~1 ms latency for remote surgery, autonomous cars, factory robots.</li>
+          <li><strong>mMTC (massive Machine Type Communication)</strong> — millions of IoT sensors.</li>
+        </ul>
+        <strong>Radio access:</strong> gNodeB (next-gen base station). <strong>Core:</strong> AMF (Access and Mobility Management Function), SMF (Session Management Function), UPF (User Plane Function).
+      </div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "5G offers (a) <strong>higher peak data rates (up to 10× 4G)</strong>, (b) <strong>much lower latency (1 ms range)</strong> for URLLC applications like remote surgery and autonomous vehicles, and (c) support for <strong>massive device density (mMTC)</strong> for IoT. It uses millimetre-wave frequencies, which give capacity but suffer shorter range — hence dense small-cell deployment."
+      </div>
+      <div class="memory"><strong>Memory hook:</strong> "5G = <em>Everyone Makes Massive connections</em>" — eMBB, mMTC, massive.</div>
+    </div></div>
+
+    <!-- 1.10 Mobility -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🚶</span>Handover, Roaming &amp; Mobile IP</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        <strong>Handover</strong> = switching cell towers. <strong>Roaming</strong> = using a different provider's network. <strong>Mobile IP</strong> = keep your home address while you visit a foreign network (via a Home Agent + care-of address).
+      </div>
+      <div class="story"><strong>Story:</strong> You're on a phone call while driving. Your call is handed from tower to tower — that's <strong>handover</strong>. Now imagine you're on holiday in Europe and your SA SIM connects to Vodafone — that's <strong>roaming</strong>. Mobile IP is like having a permanent home address but giving the post office a forwarding address while you travel.</div>
+      <div class="plain">
+        <strong>Mobile IP key terms:</strong>
+        <ul>
+          <li><strong>Home address</strong> — permanent IP of the mobile node.</li>
+          <li><strong>Home Agent</strong> — router on the home network; intercepts packets destined for the mobile node.</li>
+          <li><strong>Care-of Address (COA)</strong> — temporary address on the visited network.</li>
+          <li><strong>Foreign Agent</strong> — router on the visited network; gives out the COA.</li>
+          <li><strong>Tunneling</strong> — Home Agent encapsulates packets and sends them to the COA.</li>
+          <li><strong>Triangle routing problem</strong> — packets go via the home network even when sender and receiver are close; adds delay.</li>
+        </ul>
+      </div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "<strong>Handover</strong> transfers an active connection between base stations as a device moves, aiming for seamless continuity. Conditions like weak signal, insufficient target resources, or slow transfer can cause brief interruption. <strong>Mobile IP</strong> lets a device keep a permanent home address by having a <strong>Home Agent</strong> tunnel packets to a temporary <strong>Care-of Address (COA)</strong> on the foreign network, via the <strong>Foreign Agent</strong>. Advantages: stable reachability. Limitations: <strong>triangle routing</strong> (inefficient path), extra tunneling overhead, and limited real-world deployment (cellular networks use their own mobility mechanisms)."
+      </div>
+      <div class="memory"><strong>Memory hook:</strong> "Mobile IP = <em>home address, forwarding address, home agent forwarding mail</em>."</div>
+    </div></div>
+
   </section>
 
-  <!-- ========== LU2 ========== -->
+  <!-- ============================================================ -->
+  <!-- =============== LU2 ======================================== -->
+  <!-- ============================================================ -->
   <section id="lu2" class="lu-section">
     <div class="lu-header lu2-h">
-      <i class="bi bi-window" style="font-size:1.4rem;"></i> LU2 — Application Layer
+      <h2 class="h3 fw-bold mb-0"><i class="bi bi-window"></i> Learning Unit 2 — The Application Layer (Web, DNS, Streaming)</h2>
+      <small>Everything the user actually sees and uses.</small>
     </div>
 
-    <div class="searchable crash-card c2">
-      <h5>🎯 The One-Liner</h5>
-      <p class="mb-0"><strong>Applications talk through sockets (IP + port). HTTP is stateless; cookies and caches add state. DNS is the phonebook. CDNs move content closer to users.</strong></p>
-    </div>
-
-    <div class="searchable crash-card c2">
-      <h5>📌 The 5 Things You MUST Know</h5>
-      <ul>
-        <li><strong>TCP vs UDP:</strong> TCP is reliable and ordered. UDP is fast and "fire and forget".</li>
-        <li><strong>HTTP is stateless.</strong> Cookies are how the server remembers you.</li>
-        <li><strong>DNS</strong> translates names → IPs. Records: <code>A</code> (IPv4), <code>AAAA</code> (IPv6), <code>MX</code> (mail), <code>CNAME</code> (alias), <code>NS</code> (nameserver).</li>
-        <li><strong>Cache = your desk drawer.</strong> Cached copy is faster than re-fetching from origin.</li>
-        <li><strong>CDN = a library in every city.</strong> User gets content from nearest copy.</li>
-      </ul>
-    </div>
-
-    <div class="searchable crash-card c2">
-      <h5>💡 Killer Analogies</h5>
-      <div class="analogy">
-        <strong>HTTP = you asking a waiter for food.</strong> Stateless = waiter forgets you after every order. <strong>Cookie = your loyalty card</strong> — now the waiter knows you're a returning customer.
+    <!-- 2.1 Architectures -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🏛️</span>Client-Server vs Peer-to-Peer (P2P)</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        <strong>Client-Server</strong> = one central server serves many clients (like a restaurant). <strong>P2P</strong> = everyone serves everyone (like a potluck dinner). P2P scales better for file sharing; Client-Server is easier to control.
       </div>
-      <div class="analogy">
-        <strong>DNS = phonebook.</strong> You know the name "google.com", but your browser needs the phone number (IP address). DNS looks it up.
+      <div class="plain">
+        <ul>
+          <li><strong>Client-Server:</strong> server is always-on with a fixed IP. Clients request, server responds. Examples: HTTP web, SMTP email. Downside: server can be a single point of failure or bottleneck. Upside: easier to control and secure.</li>
+          <li><strong>Peer-to-Peer (P2P):</strong> no dedicated server. Each peer acts as both client and server. Examples: BitTorrent. Upside: self-scaling (more peers add capacity). Downside: churn, trust issues, coordination complexity.</li>
+        </ul>
       </div>
-      <div class="analogy">
-        <strong>DASH = a chef giving you the video in slices at different quality levels.</strong> Your player picks the best quality your connection can handle <em>per slice</em>, not per whole video.
+      <div class="formula">Client-Server distribution time: D = max(NF/u_s, F/d_min)
+P2P distribution time:             D = max(F/u_s, F/d_min, NF/(u_s + Σu_i))
+F = file size   N = number of peers   u_s = server upload rate
+d_min = slowest peer download   u_i = peer upload rates</div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "Client-server scales linearly with N (each new client adds demand but no supply). P2P scales better because each peer adds upload capacity. For N=100, F=15 Gb, u_s=30 Mbps, d=2 Mbps, u=700 kbps: <strong>client-server ≈ 50,000 s</strong> (max(50,000, 7,500)), <strong>P2P ≈ 15,000 s</strong> (max(500, 7,500, 15,000))."
       </div>
-    </div>
+      <div class="memory"><strong>Memory hook:</strong> "Client-Server = <em>restaurant</em>. P2P = <em>potluck</em>."</div>
+    </div></div>
 
-    <div class="searchable crash-card c2">
-      <h5>🧮 If they ask you to calculate…</h5>
-      <div class="calc-box">
-        Non-persistent HTTP (per object): 2 RTT + transmission<br/>
-        Persistent + pipelining: ~2 RTT total (one connection)<br/>
-        <strong>Example:</strong> 1 page + 8 objects, RTT = 50 ms<br/>
-        → Non-persistent (no parallel) = 18 RTT = 900 ms<br/>
-        → Persistent + pipelining ≈ 3 RTT = 150 ms
+    <!-- 2.2 HTTP -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🕸️</span>HTTP (HyperText Transfer Protocol) — Methods, Status Codes</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        HTTP is <strong>stateless</strong> — each request is independent, the server doesn't remember you. Cookies fix this. Methods = GET / POST / PUT / HEAD / DELETE. Status codes = 200 OK, 404 Not Found, etc.
       </div>
-    </div>
-
-    <div class="searchable crash-card c2">
-      <h5>⚠️ Exam Traps</h5>
-      <div class="trap-box">
-        <strong>DNS uses UDP port 53</strong> for normal queries. TCP only for zone transfers or huge replies.<br/>
-        <strong>Cookies ≠ cache.</strong> Cookies identify YOU. Caches store CONTENT. Different jobs.
+      <div class="plain">
+        <strong>HTTP methods:</strong>
+        <ul>
+          <li><strong>GET</strong> — retrieve a resource (most common).</li>
+          <li><strong>POST</strong> — submit data (e.g. login form, order).</li>
+          <li><strong>PUT</strong> — upload / replace a resource.</li>
+          <li><strong>HEAD</strong> — retrieve headers only (debugging).</li>
+          <li><strong>DELETE</strong> — remove a resource.</li>
+        </ul>
+        <strong>Status codes:</strong>
+        <ul>
+          <li><strong>200 OK</strong> — success.</li>
+          <li><strong>301 Moved Permanently</strong> — resource moved (new URL in Location header).</li>
+          <li><strong>400 Bad Request</strong> — client sent garbage.</li>
+          <li><strong>404 Not Found</strong> — resource doesn't exist.</li>
+          <li><strong>505 HTTP Version Not Supported</strong> — server doesn't support your HTTP version.</li>
+        </ul>
       </div>
-    </div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "HTTP is an application-layer request-response protocol, <strong>stateless</strong> by design. A client sends a request with a method (GET, POST…), URL, version and headers. The server returns a status line (e.g. <strong>200 OK</strong>, <strong>404 Not Found</strong>), headers, and optionally an entity body. <strong>Statelessness</strong> simplifies server design but requires cookies to maintain user state."
+      </div>
+      <div class="memory"><strong>Memory hook:</strong> "<em>200 Good, 300 Moved, 400 Bad, 404 Missing, 505 Too New</em>."</div>
+    </div></div>
 
-    <div class="searchable crash-card c2">
-      <h5>🧠 Mnemonic</h5>
-      <div class="mnem"><strong>DNS records:</strong> "<strong>A AAA NS CNAME MX</strong>" = "<em>Ah, Another Name Change, Mate?</em>"</div>
-      <div class="mnem"><strong>DORA the DHCP Explorer:</strong> Discover, Offer, Request, Acknowledge.</div>
-    </div>
+    <!-- 2.3 Persistent HTTP -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🔄</span>Non-Persistent vs Persistent HTTP (Response Time)</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        <strong>Non-persistent</strong> = one TCP connection per object = <strong>2 RTT per object</strong>. <strong>Persistent + pipelining</strong> = one connection for all objects = <strong>as little as 1 RTT for all</strong>.
+      </div>
+      <div class="story"><strong>Story:</strong> Non-persistent is like hanging up the phone after every sentence and calling back for the next one. Persistent keeps the line open. With <strong>pipelining</strong>, you fire off all requests at once and receive them together.</div>
+      <div class="formula">Non-persistent (per object): 2 RTT + transmission
+Persistent (no pipelining):  2 RTT + N × transmission
+Persistent + pipelining:     2 RTT + transmission (all objects)
+
+Example: RTT = 50 ms, 1 base HTML + 8 images (ignore transmission):
+(a) Non-persistent: 2 RTT × 9 objects = 18 RTT = 900 ms
+(b) Persistent no pipelining: 2 RTT (setup) + 8 RTT (one per object) = 10 RTT = 500 ms
+(c) Persistent + pipelining: 2 RTT + 1 RTT = 3 RTT = 150 ms</div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "Non-persistent HTTP opens a new TCP connection for each object, costing <strong>2 RTT (Round-Trip Time) per object</strong>. Persistent HTTP reuses one connection, saving the connection-setup RTT per object. <strong>Pipelining</strong> sends multiple requests back-to-back, reducing total response time to approximately <strong>2 RTT + one transmission</strong> for all objects."
+      </div>
+      <div class="trap"><strong>Trap:</strong> Don't forget the base HTML counts as one object. 1 base + 8 images = <em>9 objects</em>, not 8.</div>
+      <div class="memory"><strong>Memory hook:</strong> "Non-persistent = <em>2 RTT each</em>. Pipelined = <em>2 RTT total</em>."</div>
+    </div></div>
+
+    <!-- 2.4 Cookies -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🍪</span>Cookies &amp; Sessions</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        Cookies are the mechanism that gives <strong>state</strong> to stateless HTTP. <strong>Four components:</strong> (1) Set-Cookie header in response, (2) Cookie header in later requests, (3) cookie file on the user's device, (4) back-end database on the server.
+      </div>
+      <div class="plain">
+        <strong>How a session works:</strong>
+        <ol>
+          <li>Client sends first request — no cookie.</li>
+          <li>Server creates a session ID (e.g. 1678) and returns it in a <code class="inline">Set-Cookie: 1678</code> header.</li>
+          <li>Browser stores it in the local cookie file.</li>
+          <li>Every subsequent request includes <code class="inline">Cookie: 1678</code>.</li>
+          <li>Server looks up 1678 in its database → finds the shopping basket, user profile, login state.</li>
+        </ol>
+        <strong>Security attributes:</strong> <strong>Secure</strong> (only over HTTPS), <strong>HttpOnly</strong> (JavaScript cannot read it), <strong>SameSite</strong> (blocks CSRF (Cross-Site Request Forgery) attacks).
+      </div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "HTTP is stateless, so a session ID stored in a cookie lets the server associate subsequent requests with the same user's session data. The cookie identifies the session — the <strong>actual basket data lives on the server</strong>. Deleting the cookie loses the <em>link</em> to the session (the user appears logged out), but the server-side data itself may still exist until it expires."
+      </div>
+      <div class="memory"><strong>Memory hook:</strong> "Cookie = <em>your wristband at a festival</em>. Server = <em>the bouncer who remembers what your wristband got you</em>."</div>
+    </div></div>
+
+    <!-- 2.5 Web Caching -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">💾</span>Web Caching &amp; Conditional GET</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        A <strong>web cache (proxy server)</strong> stores copies of content near the user. It reduces response time and access-link traffic. The <strong>Conditional GET</strong> (with <code class="inline">If-Modified-Since</code>) checks if the cached copy is still fresh — a <strong>304 Not Modified</strong> reply means "use your cache".
+      </div>
+      <div class="story"><strong>Story:</strong> A cache is like keeping your favourite snacks in your desk drawer instead of walking to the shop every time. The conditional GET is calling the shop to ask "is that snack still the same recipe?" — if yes, keep eating your drawer stash (304 Not Modified, no new data sent).</div>
+      <div class="formula">Utilisation = (request rate × object size) ÷ link rate
+With cache hit rate h:
+New utilisation = (1 - h) × old utilisation
+
+Example: 14 req/s × 1 Mb ÷ 15 Mbps = 0.93 (93% — terrible delay).
+With 40% hit rate: 0.6 × 14 × 1 Mb = 8.4 Mbps ÷ 15 Mbps = 0.56 (56% — much better delay).</div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "A <strong>web cache</strong> satisfies HTTP requests on behalf of the origin server, reducing response time (content is closer) and access-link traffic (fewer requests reach the origin). The <strong>conditional GET</strong> includes <code>If-Modified-Since: &lt;date&gt;</code>; if the resource is unchanged, the server returns <strong>304 Not Modified</strong> with no body, so the client reuses its cached copy — saving bandwidth."
+      </div>
+      <div class="memory"><strong>Memory hook:</strong> "Conditional GET = <em>Is it still fresh? Yes → 304, No → 200 with new content</em>."</div>
+    </div></div>
+
+    <!-- 2.6 DNS -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">📇</span>DNS (Domain Name System) — The Internet's Phone Book</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        DNS translates human names (like <code class="inline">www.iie.ac.za</code>) into IP addresses. It's a <strong>hierarchical distributed database</strong>: root → TLD (Top-Level Domain) → authoritative. Uses <strong>UDP port 53</strong>.
+      </div>
+      <div class="story"><strong>Story:</strong> You don't memorise everyone's phone number — you save their name in your contacts and your phone looks up the number. DNS is the internet's contact list.</div>
+      <div class="plain">
+        <strong>Hierarchy:</strong>
+        <ul>
+          <li><strong>Root servers</strong> — know where the TLD servers are (13 logical roots).</li>
+          <li><strong>TLD (Top-Level Domain) servers</strong> — handle <code>.com</code>, <code>.za</code>, <code>.org</code>, etc.</li>
+          <li><strong>Authoritative DNS servers</strong> — hold the actual records for a domain.</li>
+          <li><strong>Local resolver</strong> — your ISP's DNS; caches results for speed.</li>
+        </ul>
+        <strong>Query types:</strong>
+        <ul>
+          <li><strong>Iterative:</strong> each server says "I don't know, ask this next server" — client does the asking.</li>
+          <li><strong>Recursive:</strong> the server does all the asking on the client's behalf.</li>
+        </ul>
+        <strong>Record types:</strong>
+        <ul>
+          <li><strong>A</strong> — name → IPv4 address.</li>
+          <li><strong>AAAA</strong> — name → IPv6 address.</li>
+          <li><strong>NS</strong> — domain → authoritative server.</li>
+          <li><strong>CNAME</strong> — alias → canonical name.</li>
+          <li><strong>MX</strong> — mail server for the domain.</li>
+        </ul>
+      </div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "When a user enters <code>www.example.com</code>, the browser sends a DNS query (over UDP port 53) to the local resolver. The resolver checks its cache; if missing, it queries a <strong>root server</strong>, which refers it to the <strong>.com TLD server</strong>, which refers it to the domain's <strong>authoritative server</strong>. The authoritative server returns an <strong>A record</strong> with the IPv4 address, which is cached for its TTL (Time To Live)."
+      </div>
+      <div class="trap"><strong>Trap:</strong> If a host can reach a server by IP but not by name → the problem is <strong>DNS</strong>, not connectivity. If some users work and others don't → <strong>DNS caching</strong> (old records still in some resolvers).</div>
+      <div class="memory"><strong>Memory hook:</strong> "DNS records: <em>Ah, Another Name Change, Mate?</em>" — A, AAAA, NS, CNAME, MX.</div>
+    </div></div>
+
+    <!-- 2.7 CDN / DASH -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🎬</span>CDN (Content Distribution Network) &amp; DASH (Dynamic Adaptive Streaming over HTTP)</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        <strong>CDN</strong> = geographically distributed servers that store copies of content near users. <strong>DASH</strong> = video is chopped into chunks at multiple bitrates; client picks the best bitrate chunk-by-chunk based on measured throughput.
+      </div>
+      <div class="story"><strong>Story:</strong> Netflix has copies of movies in many cities — so you don't stream from the USA. That's the CDN. And when your Wi-Fi gets slow mid-movie, Netflix switches to a lower-quality version of the next 4-second chunk — that's DASH.</div>
+      <div class="plain">
+        <strong>CDN placement:</strong>
+        <ul>
+          <li><strong>Enter deep</strong> — many small clusters placed inside ISPs near users (Akamai). Closer → lower latency, harder to manage.</li>
+          <li><strong>Bring home</strong> — fewer larger clusters at IXPs (Limelight). Easier to manage, but slightly higher latency.</li>
+        </ul>
+        <strong>DASH:</strong> Server creates <strong>manifest file</strong> listing chunks at different bitrates. Client measures its throughput and picks the best bitrate per chunk. Balances quality vs buffering.
+      </div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "A <strong>CDN</strong> replicates content across geographically distributed servers, so users are served from a nearby edge node, reducing latency and origin-server load. <strong>DASH</strong> improves delivery further by splitting video into chunks at multiple bitrates and having the client dynamically select the best bitrate per chunk, adapting to changing bandwidth (especially useful for mobile users)."
+      </div>
+      <div class="memory"><strong>Memory hook:</strong> "CDN = <em>copies close to you</em>. DASH = <em>chunks that adapt to your speed</em>."</div>
+    </div></div>
+
+    <!-- 2.8 Sockets -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🔌</span>Socket Programming (TCP)</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        A socket is the <strong>doorway</strong> between an application process and the transport layer. TCP server needs a <strong>welcoming socket</strong> (accepts new clients) AND a <strong>connection socket</strong> (per client). TCP is a <strong>byte stream</strong> — one send ≠ one receive.
+      </div>
+      <div class="plain">
+        <strong>Server steps:</strong> socket() → bind() → listen() → accept() [creates a per-client connectionSocket] → recv / send → close.<br>
+        <strong>Client steps:</strong> socket() → connect() → send / recv → close.
+      </div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "The TCP server creates a <strong>welcoming socket</strong>, binds it to a known port, and calls <code>listen()</code>. When a client calls <code>connect()</code>, the server's <code>accept()</code> returns a <strong>new connection socket dedicated to that client</strong> — so many clients can be served simultaneously, each with its own 4-tuple (source IP, source port, destination IP, destination port). TCP is a <strong>byte stream</strong>; applications must define message boundaries (e.g. newline or length prefix) because one <code>recv()</code> does not equal one complete message."
+      </div>
+      <div class="memory"><strong>Memory hook:</strong> "Server = <em>a bouncer (welcoming socket) who opens a private VIP room (connection socket) for each guest</em>."</div>
+    </div></div>
+
+    <!-- 2.9 Transport choice -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🤔</span>Choosing TCP or UDP for an Application</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        <strong>TCP</strong> (Transmission Control Protocol) for anything where <strong>missing data is unacceptable</strong> (files, email, banking). <strong>UDP</strong> (User Datagram Protocol) for anything where <strong>speed matters more than perfection</strong> (live video, gaming, DNS, GPS updates).
+      </div>
+      <div class="plain">
+        <ul>
+          <li><strong>TCP:</strong> connection-oriented, reliable, ordered, flow + congestion control, retransmits losses. Slower for real-time.</li>
+          <li><strong>UDP:</strong> connectionless, no retransmission, no congestion control. Fast and light. Loss is the application's problem.</li>
+          <li><strong>TLS (Transport Layer Security)</strong> adds encryption on top of either — required for HTTPS.</li>
+        </ul>
+      </div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "For <strong>file uploads</strong>, use <strong>TCP</strong> — the file must arrive complete and in order. For <strong>live GPS updates</strong>, use <strong>UDP</strong> — a lost update is replaced 2 seconds later by a newer one, and retransmission would only delay fresher data. TLS can be layered on either to provide encryption."
+      </div>
+      <div class="memory"><strong>Memory hook:</strong> "TCP = <em>correctness</em>. UDP = <em>timeliness</em>."</div>
+    </div></div>
+
   </section>
 
-  <!-- ========== LU3 ========== -->
+  <!-- ============================================================ -->
+  <!-- =============== LU3 ======================================== -->
+  <!-- ============================================================ -->
   <section id="lu3" class="lu-section">
     <div class="lu-header lu3-h">
-      <i class="bi bi-arrow-left-right" style="font-size:1.4rem;"></i> LU3 — Transport Layer
+      <h2 class="h3 fw-bold mb-0"><i class="bi bi-arrow-left-right"></i> Learning Unit 3 — The Transport Layer (TCP, UDP, Reliability)</h2>
+      <small>How data actually gets delivered reliably (or fast, if you don't need reliable).</small>
     </div>
 
-    <div class="searchable crash-card c3">
-      <h5>🎯 The One-Liner</h5>
-      <p class="mb-0"><strong>TCP is the reliable, ordered delivery guy. UDP is the fast, unreliable postcard. Flow control protects the receiver; congestion control protects the network. AIMD = probe, back off, probe again.</strong></p>
-    </div>
-
-    <div class="searchable crash-card c3">
-      <h5>📌 The 5 Things You MUST Know</h5>
-      <ul>
-        <li><strong>TCP 3-way handshake:</strong> SYN → SYN-ACK → ACK.</li>
-        <li><strong>Sequence number = byte position.</strong> ACK = <em>next expected byte</em>, not last received.</li>
-        <li><strong>Flow control (rwnd) ≠ congestion control (cwnd).</strong> One protects your friend, the other protects the road.</li>
-        <li><strong>Slow Start</strong> doubles every RTT. <strong>Congestion Avoidance</strong> +1 MSS per RTT. On timeout → cwnd = 1. On 3 dup ACKs → halve, then fast recovery.</li>
-        <li><strong>GBN vs SR:</strong> GBN resends the whole window. SR resends only the missing one.</li>
-      </ul>
-    </div>
-
-    <div class="searchable crash-card c3">
-      <h5>💡 Killer Analogies</h5>
-      <div class="analogy">
-        <strong>Flow control = your friend's tiny stomach.</strong> You stop serving when their plate is full (rwnd = 0).<br/>
-        <strong>Congestion control = the restaurant is packed.</strong> Everyone slows down (cwnd shrinks) so the kitchen can keep up.
+    <!-- 3.1 Role -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🔀</span>What the Transport Layer Does (vs Network Layer)</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        <strong>Network layer (IP)</strong> gets packets to the right <strong>host</strong>. <strong>Transport layer (TCP/UDP)</strong> gets data to the right <strong>process/application</strong> on that host. It uses <strong>ports</strong> to know which app.
       </div>
-      <div class="analogy">
-        <strong>AIMD = see-saw with a bungee cord.</strong> Slowly climb up (additive increase). On loss, snap back down by half (multiplicative decrease). Repeat forever.
+      <div class="story"><strong>Story:</strong> The network layer is the post office — it delivers your envelope to the right house. The transport layer is the person inside who says "this letter is for Sarah in the kitchen, not Bob in the lounge" (using the port number).</div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "The <strong>network layer</strong> provides host-to-host delivery (IP addresses). The <strong>transport layer</strong> extends this to <strong>process-to-process delivery</strong> using port numbers. It also provides optional services: reliability, ordering, flow control, congestion control, error detection. Protocols: TCP (reliable) and UDP (unreliable)."
       </div>
-      <div class="analogy">
-        <strong>GBN = "Go Back and Nuke the whole window."</strong> If packet 3 is lost, resend 3, 4, 5, 6 — everything.<br/>
-        <strong>SR = "Select just the missing one and Repeat."</strong> Only 3 gets resent. 4, 5, 6 are buffered.
-      </div>
-    </div>
+      <div class="memory"><strong>Memory hook:</strong> "Network = <em>to the house</em>. Transport = <em>to the person inside</em>."</div>
+    </div></div>
 
-    <div class="searchable crash-card c3">
-      <h5>🧮 If they ask you to calculate…</h5>
-      <div class="calc-box">
-        Stop-and-wait utilisation = (L/R) ÷ (RTT + L/R)<br/>
-        EstimatedRTT = (1−α)·EstRTT + α·SampleRTT  (α=0.125)<br/>
-        DevRTT = (1−β)·DevRTT + β·|Sample−Est|  (β=0.25)<br/>
-        TimeoutInterval = EstRTT + 4·DevRTT
+    <!-- 3.2 UDP -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">📨</span>UDP (User Datagram Protocol)</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        UDP's header is only <strong>8 bytes</strong>: source port (2) + destination port (2) + length (2) + checksum (2). It does <strong>no connection setup, no retransmission, no ordering, no congestion control</strong>. It's just "fire and forget".
       </div>
-    </div>
-
-    <div class="searchable crash-card c3">
-      <h5>⚠️ Exam Traps</h5>
-      <div class="trap-box">
-        <strong>ACK number = next byte expected.</strong> If you receive bytes 1000–1499, ACK = 1500. Not 1499.<br/>
-        <strong>UDP has a checksum.</strong> It detects errors, but does NOT retransmit.
+      <div class="plain">
+        <strong>Why use UDP?</strong>
+        <ul>
+          <li>No handshake delay (1 RTT saved).</li>
+          <li>No connection state on the server (supports more clients).</li>
+          <li>Small header (8 bytes vs 20 for TCP).</li>
+          <li>App can control its own rate (no congestion throttling).</li>
+        </ul>
+        <strong>Checksum:</strong> 1s-complement sum of 16-bit words, inverted. Detects corruption — does NOT recover. If corrupted, the packet is discarded; the application must handle it.
       </div>
-    </div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "UDP is a connectionless, unreliable transport protocol with an 8-byte header (source port, destination port, length, checksum). It provides no handshake, retransmission, ordering or congestion control. It is preferred for applications where <strong>timeliness matters more than reliability</strong> — DNS, voice/video streaming, online gaming, and HTTP/3."
+      </div>
+      <div class="memory"><strong>Memory hook:</strong> "UDP = <em>send and forget</em>. 8 bytes, no promises."</div>
+    </div></div>
 
-    <div class="searchable crash-card c3">
-      <h5>🧠 Mnemonic</h5>
-      <div class="mnem"><strong>"Say Yes, Say Yes &amp; Cheer, Acknowledge"</strong> — SYN, SYN-ACK, ACK.</div>
-      <div class="mnem"><strong>"Some Animals Feed Regularly"</strong> — Slow start, Avoidance, Fast retransmit, Recovery.</div>
-    </div>
+    <!-- 3.3 Reliable transfer -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🔁</span>Reliable Data Transfer (rdt protocols)</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        Four tools make an unreliable network <strong>reliable</strong>: <strong>Checksums</strong> (detect corruption), <strong>Sequence numbers</strong> (detect duplicates/order), <strong>ACKs</strong> (confirm receipt), <strong>Timers</strong> (detect loss and trigger retransmission).
+      </div>
+      <div class="plain">
+        <strong>Stop-and-wait utilisation:</strong> the sender must wait one full Round-Trip Time (RTT) after every packet. On long, fast links this is terrible — the link is idle 99.9% of the time.
+      </div>
+      <div class="formula">Stop-and-wait utilisation U = (L/R) / (RTT + L/R)
+Pipelining utilisation     U = (N × L/R) / (RTT + L/R)
+
+Example: L=1500 bytes = 12,000 bits, R = 1 Gbps, RTT = 30 ms
+L/R = 0.012 ms, so U = 0.012 / 30.012 ≈ 0.0004 = 0.04% (!!)
+To reach 95%, window N = 0.95 × 30.012 / 0.012 ≈ 2,376 packets</div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "Reliable transfer uses checksums for corruption, sequence numbers for duplicates/ordering, acknowledgements for confirmation, and timers for loss recovery. <strong>Stop-and-wait</strong> sends one packet and waits — simple but wasteful. <strong>Pipelining</strong> allows multiple packets in flight, dramatically improving utilisation."
+      </div>
+      <div class="memory"><strong>Memory hook:</strong> "<em>Checksums catch bad bits, sequences catch dupes, ACKs confirm, timers retry.</em>"</div>
+    </div></div>
+
+    <!-- 3.4 GBN vs SR -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">📚</span>Go-Back-N (GBN) vs Selective Repeat (SR)</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        <strong>GBN</strong> = "resend the missing packet AND every packet after it". <strong>SR</strong> = "resend ONLY the missing packet, buffer the rest". SR is more efficient on lossy links; GBN is simpler.
+      </div>
+      <div class="story"><strong>Story:</strong> Reading aloud, GBN says "I missed word 3, please repeat from word 3 onwards". SR says "I missed word 3, but I heard 4, 5, 6 fine — just repeat word 3".</div>
+      <div class="table-responsive"><table class="table table-sm table-bordered">
+        <thead class="table-light"><tr><th>Aspect</th><th>Go-Back-N</th><th>Selective Repeat</th></tr></thead>
+        <tbody>
+          <tr><td>Receiver window</td><td>1 (only accepts in-order)</td><td>N (buffers out-of-order)</td></tr>
+          <tr><td>ACK type</td><td>Cumulative</td><td>Individual per packet</td></tr>
+          <tr><td>Timer</td><td>One (for oldest unACKed)</td><td>Per packet</td></tr>
+          <tr><td>On loss of packet 3 in window [1..5]</td><td>Resend 3, 4, 5</td><td>Resend only 3</td></tr>
+          <tr><td>Complexity</td><td>Simple</td><td>More state, careful sequence-number design</td></tr>
+        </tbody>
+      </table></div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "If packet 3 is lost and packets 4 and 5 arrive: <strong>Go-Back-N</strong> discards 4 and 5, then the sender retransmits 3, 4 and 5 on timeout. <strong>Selective Repeat</strong> buffers 4 and 5, individually ACKs them, and the sender retransmits only packet 3. SR uses more state and requires careful sequence-number space design (window ≤ half the sequence space) to avoid ambiguity."
+      </div>
+      <div class="memory"><strong>Memory hook:</strong> "GBN = <em>Go Back and Nuke the whole window</em>. SR = <em>Select just the missing one</em>."</div>
+    </div></div>
+
+    <!-- 3.5 TCP -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🤝</span>TCP (Transmission Control Protocol) — Handshake &amp; Header</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        TCP is <strong>connection-oriented, reliable, ordered, full-duplex, byte-stream</strong>. Connection starts with the <strong>3-way handshake</strong>: SYN → SYN-ACK → ACK. Sequence numbers count <strong>bytes</strong>, not packets.
+      </div>
+      <div class="story"><strong>Story:</strong> 3-way handshake: Client: "Can we talk? My starting number is X." Server: "Yes, my starting number is Y, and I hear your X." Client: "Confirmed — you're on Y+1." Now both sides agree on numbers → reliable tracking from here.</div>
+      <div class="plain">
+        <strong>TCP header (20+ bytes):</strong> source port, dest port, sequence number (32 bits), acknowledgement number (32 bits), header length, flags (SYN, ACK, FIN, RST, PSH, URG, ECE, CWR), receive window (16 bits), checksum, urgent pointer, options.<br>
+        <strong>ACK semantics:</strong> the ACK number is the <em>next expected byte</em> (cumulative). Sending 500 bytes starting at seq 1000 → ACK = 1500.
+      </div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "TCP establishes a connection with a <strong>3-way handshake</strong>: client sends <code>SYN=1, seq=x</code>; server responds <code>SYN=1, ACK=1, seq=y, ack=x+1</code>; client responds <code>ACK=1, ack=y+1</code>. This synchronises initial sequence numbers and confirms bidirectional reachability. TCP delivers a <strong>reliable, ordered byte stream</strong> using sequence numbers, cumulative ACKs, retransmission, and windowing."
+      </div>
+      <div class="memory"><strong>Memory hook:</strong> "<em>SYN — SYN-ACK — ACK</em>" = "<em>Say Yes, Say Yes &amp; Cheer, Acknowledge</em>."</div>
+    </div></div>
+
+    <!-- 3.6 RTT / Timeout -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">📏</span>TCP RTT Estimation &amp; Timeout</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        TCP can't use a fixed timeout — it <strong>estimates</strong> RTT (Round-Trip Time) with a moving average (EWMA (Exponentially Weighted Moving Average)), and adds a safety margin based on how much RTT varies. <strong>Timeout = EstimatedRTT + 4 × DevRTT</strong>.
+      </div>
+      <div class="formula">EstimatedRTT = (1 − α) × EstimatedRTT + α × SampleRTT     (α = 0.125)
+DevRTT       = (1 − β) × DevRTT + β × |SampleRTT − EstimatedRTT|   (β = 0.25)
+TimeoutInterval = EstimatedRTT + 4 × DevRTT
+
+Example: EstimatedRTT=100ms, DevRTT=5ms, SampleRTT=120ms
+New EstimatedRTT = 0.875×100 + 0.125×120 = 102.5 ms
+New DevRTT       = 0.75×5 + 0.25×|120−100| = 8.75 ms
+New Timeout      = 102.5 + 4×8.75 = 137.5 ms</div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "TCP measures SampleRTT (Round-Trip Time) and smooths it with an exponential weighted moving average to get EstimatedRTT (α = 0.125). It also tracks variability via DevRTT (β = 0.25). The retransmission timeout is set to <strong>EstimatedRTT + 4 × DevRTT</strong>. This adapts to network conditions — too short causes needless retransmissions, too long slows recovery."
+      </div>
+      <div class="memory"><strong>Memory hook:</strong> "Timeout = <em>Estimated + 4×Deviation</em> (safety margin)."</div>
+    </div></div>
+
+    <!-- 3.7 Flow vs Congestion -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🌊</span>Flow Control vs Congestion Control</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        <strong>Flow control</strong> protects the <strong>receiver</strong> (rwnd). <strong>Congestion control</strong> protects the <strong>network</strong> (cwnd). The sender obeys <strong>min(cwnd, rwnd)</strong>.
+      </div>
+      <div class="story"><strong>Story:</strong> Flow control is like the receiver saying "I've only got room for 5 more emails". Congestion control is like the highway authority saying "there's traffic — slow down". One protects the endpoint, one protects the road.</div>
+      <div class="plain">
+        <ul>
+          <li><strong>Flow control</strong> uses <strong>rwnd</strong> (receive window) — a field in every TCP segment telling the sender how much buffer space is free.</li>
+          <li><strong>Congestion control</strong> uses <strong>cwnd</strong> (congestion window) — sender-side estimate of network capacity, adjusted by TCP's congestion control algorithm.</li>
+        </ul>
+      </div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "TCP limits unacknowledged data to <strong>min(cwnd, rwnd)</strong>. <strong>Flow control</strong> uses <strong>rwnd</strong> advertised by the receiver to prevent overwhelming its buffer. <strong>Congestion control</strong> uses <strong>cwnd</strong>, adjusted by the sender based on perceived network congestion (loss and delay). They operate independently: a slow receiver or a congested network can each throttle the sender."
+      </div>
+      <div class="memory"><strong>Memory hook:</strong> "Flow = <em>you</em> (receiver). Congestion = <em>everyone</em> (network)."</div>
+    </div></div>
+
+    <!-- 3.8 TCP Congestion Control -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">📈</span>TCP Congestion Control — Slow Start, Avoidance, Fast Recovery</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        TCP probes for bandwidth using <strong>AIMD</strong> (Additive Increase, Multiplicative Decrease): grow cwnd slowly by 1 MSS (Maximum Segment Size) per RTT, halve it on loss. <strong>Slow Start</strong> = doubling per RTT until ssthresh (slow-start threshold).
+      </div>
+      <div class="plain">
+        <strong>The three phases:</strong>
+        <ul>
+          <li><strong>Slow Start:</strong> cwnd starts at 1 MSS. <em>Doubles every RTT</em> (exponential growth). Named "slow" because it starts small, not because it grows slowly!</li>
+          <li><strong>Congestion Avoidance:</strong> once cwnd reaches ssthresh, growth slows to +1 MSS per RTT (linear).</li>
+          <li><strong>Fast Recovery (Reno):</strong> on <strong>3 duplicate ACKs</strong> (triple-duplicate): ssthresh = cwnd/2; cwnd = ssthresh + 3 MSS. Fast retransmit the missing segment.</li>
+          <li><strong>On timeout:</strong> ssthresh = cwnd/2; cwnd = 1 MSS. Back to slow start — more aggressive reduction.</li>
+        </ul>
+      </div>
+      <div class="formula">Round 1 2 3 4 5 6 7 8 → triple dup ACK at round 8
+cwnd:  1 2 4 8 16 17 18 19 → ssthresh = 19/2 = 9
+Rounds 9-12: 9 10 11 12  (linear)
+
+On timeout instead: cwnd resets to 1 MSS</div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "TCP congestion control uses <strong>AIMD (Additive Increase, Multiplicative Decrease)</strong>. <strong>Slow start</strong> doubles cwnd each RTT until ssthresh (slow-start threshold). <strong>Congestion avoidance</strong> then grows cwnd by 1 MSS per RTT. On <strong>3 duplicate ACKs</strong> (triple-duplicate), ssthresh is set to cwnd/2, cwnd is reduced to ssthresh + 3 MSS, and fast recovery begins. On <strong>timeout</strong>, ssthresh = cwnd/2 and cwnd = 1 MSS, restarting slow start. The resulting sawtooth pattern reflects TCP probing for available bandwidth."
+      </div>
+      <div class="memory"><strong>Memory hook:</strong> "<em>Some Animals Feed Regularly</em>" — Slow start, Avoidance, Fast retransmit, Recovery.</div>
+    </div></div>
+
+    <!-- 3.9 ECN, Fairness, QUIC -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🤝</span>ECN (Explicit Congestion Notification), Fairness &amp; QUIC</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        <strong>ECN</strong> = routers mark packets to warn of congestion <em>before</em> they drop. <strong>TCP fairness</strong> = K flows on a bottleneck get ~R/K each. <strong>QUIC</strong> = modern transport over UDP — faster setup, per-stream multiplexing, encrypted by default.
+      </div>
+      <div class="plain">
+        <ul>
+          <li><strong>ECN:</strong> 2 bits in IP header marked by routers. Receiver echoes back to sender via ECE (Echo Congestion Experience) bit. Sender reduces cwnd and sets CWR (Congestion Window Reduced). Avoids dropping — earlier warning.</li>
+          <li><strong>TCP fairness:</strong> multiple TCP flows sharing a bottleneck converge to roughly equal shares (AIMD nature). But <strong>parallel TCP connections</strong> (browser opens 6) grab more than one fair share, and <strong>non-adaptive UDP</strong> doesn't reduce under congestion — both undermine fairness.</li>
+          <li><strong>QUIC (Quick UDP Internet Connections):</strong> application-layer protocol over UDP. Combines transport + TLS. Per-stream multiplexing eliminates TCP-level HOL (Head-of-Line) blocking. Faster connection setup (1 RTT or 0 RTT). Basis for HTTP/3.</li>
+        </ul>
+      </div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "ECN lets routers signal congestion to senders before buffers overflow, avoiding loss. TCP fairness converges to equal shares under AIMD, but parallel connections and uncontrolled UDP flows violate this fairness. QUIC addresses several TCP limitations by running over UDP with built-in reliability, encryption, and per-stream multiplexing — reducing head-of-line blocking and speeding up connection setup."
+      </div>
+      <div class="memory"><strong>Memory hook:</strong> "ECN = <em>warn before you crash</em>. QUIC = <em>TCP's gym-bro cousin</em> (faster, leaner, encrypted)."</div>
+    </div></div>
+
   </section>
 
-  <!-- ========== LU4 ========== -->
+  <!-- ============================================================ -->
+  <!-- =============== LU4 ======================================== -->
+  <!-- ============================================================ -->
   <section id="lu4" class="lu-section">
     <div class="lu-header lu4-h">
-      <i class="bi bi-diagram-3" style="font-size:1.4rem;"></i> LU4 — Network Layer: Data Plane
+      <h2 class="h3 fw-bold mb-0"><i class="bi bi-diagram-3"></i> Learning Unit 4 — Network Layer Data Plane (IP &amp; Forwarding)</h2>
+      <small>How routers move packets and how IP addressing works.</small>
     </div>
 
-    <div class="searchable crash-card c4">
-      <h5>🎯 The One-Liner</h5>
-      <p class="mb-0"><strong>Forwarding is per-router and fast (local). Routing is network-wide and slow (decisions). IPv4 is 32-bit; IPv6 is 128-bit. Longest prefix match wins. DHCP = DORA. NAT = many private → one public.</strong></p>
-    </div>
+    <!-- 4.1 Forwarding vs Routing -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">➡️</span>Forwarding vs Routing</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        <strong>Forwarding</strong> = one router moving a packet from an input to an output port. Local, fast (nanoseconds), hardware. <strong>Routing</strong> = computing the network-wide path. Slow (seconds), software.
+      </div>
+      <div class="story"><strong>Story:</strong> Forwarding is "at this intersection, turn left". Routing is "plan the whole trip from Durban to Cape Town".</div>
+      <div class="table-responsive"><table class="table table-sm table-bordered">
+        <thead class="table-light"><tr><th>Dimension</th><th>Forwarding (Data)</th><th>Routing (Control)</th></tr></thead>
+        <tbody>
+          <tr><td>Scope</td><td>Local (one router)</td><td>Network-wide</td></tr>
+          <tr><td>Timescale</td><td>Nanoseconds</td><td>Seconds</td></tr>
+          <tr><td>State</td><td>FIB (Forwarding Information Base)</td><td>RIB (Routing Information Base)</td></tr>
+          <tr><td>Mechanism</td><td>Longest-prefix match</td><td>OSPF, BGP, SDN (Software-Defined Networking)</td></tr>
+        </tbody>
+      </table></div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "<strong>Forwarding</strong> is a local, per-router action: examining the destination address of an arriving packet and moving it to the correct output port using the FIB, at nanosecond timescales. <strong>Routing</strong> is the network-wide process of computing the paths used to build forwarding tables, at second timescales. Confusing the two leads to poor diagnosis: a wrong FIB entry is a forwarding bug; a wrong RIB is a routing bug."
+      </div>
+      <div class="memory"><strong>Memory hook:</strong> "Routing = <em>the map</em>. Forwarding = <em>the steering wheel</em>."</div>
+    </div></div>
 
-    <div class="searchable crash-card c4">
-      <h5>📌 The 5 Things You MUST Know</h5>
-      <ul>
-        <li><strong>Forwarding (nanoseconds) ≠ routing (seconds).</strong></li>
-        <li><strong>Longest prefix match:</strong> the most specific route wins. Default = 0.0.0.0/0.</li>
-        <li><strong>DHCP DORA:</strong> Discover, Offer, Request, Acknowledge.</li>
-        <li><strong>Subnetting:</strong> usable hosts = 2<sup>(32−prefix)</sup> − 2.</li>
-        <li><strong>SDN = match-plus-action.</strong> Same table can act as router, switch, firewall, or NAT.</li>
-      </ul>
-    </div>
+    <!-- 4.2 Router internals -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🖥️</span>Inside a Router — Ports, Switching, Queuing</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        A router has <strong>input ports</strong> (lookup), a <strong>switching fabric</strong> (moves packets between ports), and <strong>output ports</strong> (queue + transmit). <strong>HOL (Head-of-Line) blocking</strong>: a front packet waiting for a busy output can block others behind it even if their outputs are free.
+      </div>
+      <div class="plain">
+        <strong>Input port:</strong> link termination → header parsing → FIB lookup → queue if fabric busy.<br>
+        <strong>Switching fabric:</strong> memory (slowest), bus (medium), interconnection network / crossbar (fastest, allows parallel forwarding).<br>
+        <strong>Output port:</strong> queue → schedule → transmit.
+      </div>
+      <div class="table-responsive"><table class="table table-sm table-bordered">
+        <thead class="table-light"><tr><th>Scheduling</th><th>How it works</th><th>Weakness</th></tr></thead>
+        <tbody>
+          <tr><td>FIFO (First-In-First-Out)</td><td>Arrival order</td><td>No differentiation</td></tr>
+          <tr><td>Priority</td><td>High class first</td><td>Starves low classes</td></tr>
+          <tr><td>Round Robin</td><td>Take turns per class</td><td>Ignores importance</td></tr>
+          <tr><td>WFQ (Weighted Fair Queuing)</td><td>Weighted shares</td><td>Complex</td></tr>
+        </tbody>
+      </table></div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "A router's input ports perform FIB lookups. The switching fabric moves packets to output ports. Output ports buffer and schedule. <strong>Head-of-Line blocking</strong> occurs when a blocked packet at the front of an input queue prevents packets behind it from using free outputs — mitigated by virtual output queues. Scheduling disciplines include FIFO, priority (fast for real-time but can starve low classes), round robin (fair), and WFQ (weighted fair shares)."
+      </div>
+      <div class="memory"><strong>Memory hook:</strong> "HOL = <em>one slow person blocking the queue at the till</em>."</div>
+    </div></div>
 
-    <div class="searchable crash-card c4">
-      <h5>💡 Killer Analogies</h5>
-      <div class="analogy">
-        <strong>Forwarding = a postman at one street.</strong> He looks at the envelope and picks the next street.<br/>
-        <strong>Routing = the map on the post office wall.</strong> It decides all the paths for all mail.
+    <!-- 4.3 IP & Subnetting -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🔢</span>IPv4 (Internet Protocol version 4), Longest-Prefix Match &amp; Subnetting</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        IPv4 = <strong>32-bit address</strong>, written as a.b.c.d. <strong>CIDR (Classless Interdomain Routing) notation</strong> = a.b.c.d/x, where x = number of network bits. Usable hosts = <strong>2^(32−x) − 2</strong>. When routing, the <strong>most specific (longest) prefix wins</strong>.
       </div>
-      <div class="analogy">
-        <strong>Longest prefix match = the most specific rule wins.</strong> If a rule says "all roads" and another says "this street", the street rule wins.
-      </div>
-      <div class="analogy">
-        <strong>NAT = a hotel reception desk.</strong> Guests have room numbers (private IPs). Reception has one public street address and routes mail to the right room using a log.
-      </div>
-      <div class="analogy">
-        <strong>DHCP = getting a hotel room.</strong> Discover (you ask), Offer (they say "room 42"), Request (you accept), Acknowledge (they confirm).
-      </div>
-    </div>
+      <div class="story"><strong>Story:</strong> Longest-prefix match is like a mail sorting office. Address "12 Oak Street, Sandton" — you'd deliver to Sandton (broad) but if you had a specific route for "12 Oak Street Sandton Suburb", use that. The <em>more specific</em> route wins.</div>
+      <div class="formula">Usable hosts = 2^(32−prefix) − 2    (network + broadcast excluded)
+/24 → 254 usable    /25 → 126    /26 → 62    /27 → 30
+/28 → 14            /29 → 6      /30 → 2
 
-    <div class="searchable crash-card c4">
-      <h5>🧮 If they ask you to calculate…</h5>
-      <div class="calc-box">
-        Host bits = 32 − prefix<br/>
-        Usable = 2<sup>host bits</sup> − 2<br/>
-        /24 = 254 · /25 = 126 · /26 = 62 · /27 = 30 · /28 = 14 · /29 = 6 · /30 = 2<br/><br/>
-        <strong>VLSM rule:</strong> Biggest subnet first. Smallest block that fits (hosts + 2).
+Longest-prefix match example:
+Table: 10.0.0.0/8 via A | 10.20.0.0/16 via B | 10.20.5.0/24 via C | 0.0.0.0/0 via D
+Packet to 10.20.5.18: matches /8, /16, /24 → wins /24 (most specific) → C
+Packet to 10.20.8.9:  matches /8, /16 → wins /16 → B
+Packet to 172.16.1.10: matches only /0 → D (default route)</div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE (VLSM)</span><br>
+        <strong>VLSM (Variable Length Subnet Mask):</strong> sort largest subnet first. Pick the smallest block that fits (hosts + 2). Never overlap.<br><br>
+        Example: 192.168.10.0/24 for 50, 25, 12, 6 hosts:<br>
+        · 50 hosts → 2^6 − 2 = 62 usable → <strong>/26</strong> → 192.168.10.0/26 (range .1–.62, broadcast .63)<br>
+        · 25 hosts → 2^5 − 2 = 30 usable → <strong>/27</strong> → 192.168.10.64/27 (range .65–.94, broadcast .95)<br>
+        · 12 hosts → 2^4 − 2 = 14 usable → <strong>/28</strong> → 192.168.10.96/28 (range .97–.110, broadcast .111)<br>
+        · 6 hosts → 2^3 − 2 = 6 usable → <strong>/29</strong> → 192.168.10.112/29 (range .113–.118, broadcast .119)
       </div>
-    </div>
+      <div class="trap"><strong>Trap:</strong> Always subtract 2 (network + broadcast). Never allocate small first — you'll misalign and waste space. Fragment offset is in 8-byte units.</div>
+      <div class="memory"><strong>Memory hook:</strong> "Usable = 2^(host bits) − 2. Longest prefix wins."</div>
+    </div></div>
 
-    <div class="searchable crash-card c4">
-      <h5>⚠️ Exam Traps</h5>
-      <div class="trap-box">
-        <strong>Forgetting −2 for network + broadcast.</strong> Don't allocate small first — you get gaps.<br/>
-        <strong>IPv6 routers don't fragment.</strong> They send "Packet Too Big" (ICMPv6).
+    <!-- 4.4 IPv6 -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🌍</span>IPv6 (Internet Protocol version 6)</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        IPv6 = <strong>128-bit address</strong> (huge), <strong>fixed 40-byte header</strong>, <strong>no checksum</strong>, <strong>no router fragmentation</strong>, <strong>no broadcast</strong> (uses multicast). Supports <strong>dual stack</strong> and <strong>tunneling</strong> for transition.
       </div>
-    </div>
+      <div class="table-responsive"><table class="table table-sm table-bordered">
+        <thead class="table-light"><tr><th>Feature</th><th>IPv4</th><th>IPv6</th></tr></thead>
+        <tbody>
+          <tr><td>Address size</td><td>32 bits</td><td>128 bits</td></tr>
+          <tr><td>Header</td><td>20+ variable</td><td>40 fixed</td></tr>
+          <tr><td>Checksum</td><td>Yes</td><td>No (rely on link + transport)</td></tr>
+          <tr><td>Router fragmentation</td><td>Yes</td><td>No (ICMPv6 "Packet Too Big")</td></tr>
+          <tr><td>Broadcast</td><td>Yes</td><td>No (multicast instead)</td></tr>
+          <tr><td>Address notation</td><td>a.b.c.d</td><td>2001:db8::1</td></tr>
+        </tbody>
+      </table></div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "IPv6 addresses the IPv4 address-exhaustion problem with 128-bit addresses and a simplified fixed 40-byte header (no checksum, no router fragmentation, no broadcast — multicast instead). Transition strategies: <strong>dual stack</strong> (devices run both IPv4 and IPv6) and <strong>tunnelling</strong> (IPv6 datagrams are carried as payload inside IPv4 datagrams across IPv4-only regions)."
+      </div>
+      <div class="memory"><strong>Memory hook:</strong> "IPv6 = <em>bigger, simpler, no broadcast</em>."</div>
+    </div></div>
 
-    <div class="searchable crash-card c4">
-      <h5>🧠 Mnemonic</h5>
-      <div class="mnem"><strong>"DORA the DHCP Explorer"</strong> — Discover, Offer, Request, Acknowledge.</div>
-      <div class="mnem"><strong>"I Should Open Portals"</strong> — Input, Switch fabric, Output, Processor (router parts).</div>
-    </div>
+    <!-- 4.5 DHCP + NAT -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">📝</span>DHCP (Dynamic Host Configuration Protocol) &amp; NAT (Network Address Translation)</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        <strong>DHCP</strong> gives a new device its IP, mask, gateway, and DNS server automatically (DORA: Discover, Offer, Request, Acknowledge). <strong>NAT</strong> lets many private IPs share one public IP via port translation.
+      </div>
+      <div class="story"><strong>Story:</strong> DHCP is the hotel receptionist — you arrive, they give you a room number (IP), floor info (mask), exit directions (gateway), and a phonebook (DNS). NAT is the hotel reception desk — all mail arrives at the hotel's address, then the desk forwards each letter to the right guest.</div>
+      <div class="plain">
+        <strong>DHCP DORA:</strong>
+        <ol>
+          <li>Client broadcasts <strong>DHCP Discover</strong> (from 0.0.0.0 → 255.255.255.255).</li>
+          <li>Server sends <strong>DHCP Offer</strong> (proposed IP, mask, gateway, DNS, lease time).</li>
+          <li>Client sends <strong>DHCP Request</strong> (accepting the offer).</li>
+          <li>Server sends <strong>DHCP ACK</strong> (confirming).</li>
+        </ol>
+        UDP ports 67 (server) / 68 (client).
+        <br><br>
+        <strong>NAT (Network Address Translation):</strong>
+        <ul>
+          <li>Private ranges: 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16.</li>
+          <li>Router rewrites source IP to its public IP and picks a new source port; stores mapping in NAT translation table.</li>
+          <li>Incoming replies are mapped back to the internal host.</li>
+          <li><strong>Pros:</strong> saves IPv4 addresses, hides internal network.</li>
+          <li><strong>Cons:</strong> breaks end-to-end principle, complicates P2P, requires Layer-4 inspection.</li>
+        </ul>
+      </div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "DHCP uses the <strong>DORA</strong> exchange to automatically provide a new host with an IP address, subnet mask, default gateway and DNS server. <strong>NAT</strong> lets many internal hosts share a single public IP: the NAT router rewrites the source IP and port, and uses a translation table to route replies back to the correct internal host. NAT saves IPv4 addresses and hides the internal network, but breaks end-to-end connectivity and complicates peer-to-peer applications."
+      </div>
+      <div class="memory"><strong>Memory hook:</strong> "DHCP = <em>DORA the Explorer configures your device</em>. NAT = <em>one front door, many rooms</em>."</div>
+    </div></div>
+
+    <!-- 4.6 SDN / Match-Action -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🎛️</span>Generalised Forwarding, SDN (Software-Defined Networking) &amp; OpenFlow</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        <strong>Match-plus-action</strong>: look at multiple header fields (MAC, IP, port, VLAN), then apply an action (forward, drop, modify, send to controller). <strong>OpenFlow</strong> is the protocol between an SDN controller and switches.
+      </div>
+      <div class="plain">
+        <strong>One flow table can act as:</strong>
+        <ul>
+          <li><strong>Router</strong> — match destination IP → forward.</li>
+          <li><strong>Switch</strong> — match MAC → forward.</li>
+          <li><strong>Firewall</strong> — match source/port → drop.</li>
+          <li><strong>NAT</strong> — match + rewrite addresses.</li>
+        </ul>
+        <strong>Middleboxes</strong> (devices doing more than plain forwarding): firewall, NAT, IDS (Intrusion Detection System), load balancer, proxy, cache.
+      </div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "Generalised forwarding matches a rule against multiple header fields (destination IP, source MAC, TCP port, VLAN) and applies an action (forward, drop, rewrite, send to controller). OpenFlow is the standard SDN protocol for the controller to install these rules. This lets one flow table act as a router, switch, firewall or NAT. Middleboxes such as firewalls, IDS, and load balancers perform functions beyond forwarding."
+      </div>
+      <div class="memory"><strong>Memory hook:</strong> "Match + Action = <em>if X then Y</em>."</div>
+    </div></div>
+
   </section>
 
-  <!-- ========== LU5 ========== -->
+  <!-- ============================================================ -->
+  <!-- =============== LU5 ======================================== -->
+  <!-- ============================================================ -->
   <section id="lu5" class="lu-section">
     <div class="lu-header lu5-h">
-      <i class="bi bi-signpost-split" style="font-size:1.4rem;"></i> LU5 — Network Layer: Control Plane
+      <h2 class="h3 fw-bold mb-0"><i class="bi bi-signpost-split"></i> Learning Unit 5 — Network Layer Control Plane (Routing &amp; Management)</h2>
+      <small>How networks decide where to send traffic.</small>
     </div>
 
-    <div class="searchable crash-card c5">
-      <h5>🎯 The One-Liner</h5>
-      <p class="mb-0"><strong>OSPF = link-state inside an AS. BGP = path-vector between ASs, driven by policy. Link-state = you have the map. Distance-vector = ask neighbours. SDN = one brain controlling many switches.</strong></p>
-    </div>
+    <!-- 5.1 Control plane approaches -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🧭</span>Traditional (Distributed) vs SDN Control Plane</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        <strong>Traditional:</strong> every router runs the routing algorithm and talks to peers. <strong>SDN:</strong> a logically centralised controller computes routes and installs them in all switches via an API (e.g. OpenFlow).
+      </div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "Traditional control is <strong>distributed</strong> — each router runs routing protocols (e.g. OSPF), exchanges info with neighbours, computes routes and installs its own FIB. It is mature but complex to manage at scale, and policy consistency is difficult across many devices. <strong>SDN</strong> separates the control plane (a logically centralised controller) from the data plane (switches forwarding packets). This makes network-wide policy consistent and programmable, but requires controller redundancy and security. Redundancy: multiple controller instances prevent a single point of failure — logically centralised, physically distributed."
+      </div>
+      <div class="memory"><strong>Memory hook:</strong> "Traditional = <em>everyone plans their own route</em>. SDN = <em>one brain plans for everyone</em>."</div>
+    </div></div>
 
-    <div class="searchable crash-card c5">
-      <h5>📌 The 5 Things You MUST Know</h5>
-      <ul>
-        <li><strong>Link-state</strong> = full topology, Dijkstra. OSPF is link-state.</li>
-        <li><strong>Distance-vector</strong> = only neighbours' info, Bellman-Ford. RIP is DV.</li>
-        <li><strong>Count-to-infinity</strong> = DV loop problem. Poisoned reverse helps a bit.</li>
-        <li><strong>BGP route selection:</strong> Local-Pref → shortest AS-PATH → closest NEXT-HOP.</li>
-        <li><strong>ICMP:</strong> ping (echo request/reply), traceroute (TTL expiry).</li>
-      </ul>
-    </div>
+    <!-- 5.2 LS vs DV -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🗺️</span>Link-State (LS) vs Distance-Vector (DV) Routing Algorithms</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        <strong>Link-State</strong> = every router has the FULL map, runs Dijkstra. <strong>Distance-Vector</strong> = each router only knows its neighbours' distance estimates, uses Bellman-Ford. DV suffers from <strong>count-to-infinity</strong>.
+      </div>
+      <div class="story"><strong>Story:</strong> LS is like everyone having the same Google Maps — you compute your own route. DV is like calling a friend: "how far to Cape Town?" "200 km." "Okay, 200 + distance to friend = my estimate." Relying on rumour chains causes problems when links fail.</div>
+      <div class="table-responsive"><table class="table table-sm table-bordered">
+        <thead class="table-light"><tr><th>Criterion</th><th>Link-State</th><th>Distance-Vector</th></tr></thead>
+        <tbody>
+          <tr><td>Knowledge</td><td>Whole topology</td><td>Neighbours only</td></tr>
+          <tr><td>Algorithm</td><td>Dijkstra</td><td>Bellman-Ford</td></tr>
+          <tr><td>Message complexity</td><td>Higher (flooding)</td><td>Lower (neighbours)</td></tr>
+          <tr><td>Convergence</td><td>Fast, O(n²)</td><td>Variable, count-to-infinity possible</td></tr>
+          <tr><td>Robustness</td><td>Errors stay local</td><td>Errors propagate</td></tr>
+          <tr><td>Example</td><td>OSPF, IS-IS</td><td>RIP</td></tr>
+        </tbody>
+      </table></div>
+      <div class="formula">Bellman-Ford: D_x(y) = min_v { c(x,v) + D_v(y) }
+Example: x-y=2, y-z=1, x-z=7
+D_x(z) = min{ c(x,y) + D_y(z),  c(x,z) + D_z(z) }
+       = min{ 2 + 1,  7 + 0 } = 3   (through y, not direct)</div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "Link-state routing floods link information to all routers, which then build a complete topology map and run <strong>Dijkstra's algorithm</strong> locally. Distance-vector routing uses the <strong>Bellman-Ford</strong> principle: each node iteratively updates D<sub>x</sub>(y) = min<sub>v</sub>{c(x,v) + D<sub>v</sub>(y)} using only neighbours' estimates. LS has higher message overhead but faster, more stable convergence. DV is simpler but suffers from <strong>count-to-infinity</strong> (bad news travels slowly). <strong>Poisoned reverse</strong> fixes two-node loops but not three-node loops."
+      </div>
+      <div class="memory"><strong>Memory hook:</strong> "LS = <em>Look at the whole map</em>. DV = <em>Depend on neighbour rumours</em>."</div>
+    </div></div>
 
-    <div class="searchable crash-card c5">
-      <h5>💡 Killer Analogies</h5>
-      <div class="analogy">
-        <strong>Link-state = everyone gets a full map of the road network.</strong> Each driver finds their own fastest route.<br/>
-        <strong>Distance-vector = each driver asks their neighbours for directions.</strong> "I don't know the way to Durban, but Piet said it's 200 km from his house."
+    <!-- 5.3 OSPF -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🔗</span>OSPF (Open Shortest Path First)</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        OSPF is a <strong>link-state intra-AS (Autonomous System) routing protocol</strong>. Uses Dijkstra. <strong>Areas</strong> improve scalability. Supports authentication, ECMP (Equal-Cost Multi-Path) and multicast.
       </div>
-      <div class="analogy">
-        <strong>Count-to-infinity = "I know a shortcut!"</strong> But the shortcut goes through the person who told you. You loop forever.
+      <div class="plain">
+        <ul>
+          <li>Routers flood <strong>LSAs (Link-State Advertisements)</strong> to all routers in the AS.</li>
+          <li>Each router builds the topology and runs Dijkstra.</li>
+          <li><strong>Areas</strong>: backbone area 0 connects to other areas via <strong>Area Border Routers (ABRs)</strong> — reduces overhead and topology size.</li>
+          <li><strong>Authentication</strong> (MD5) protects against malicious routing injections.</li>
+          <li><strong>ECMP</strong>: multiple equal-cost paths are used simultaneously.</li>
+        </ul>
       </div>
-      <div class="analogy">
-        <strong>BGP = international diplomacy.</strong> It's not about "fastest path" — it's about "which providers will actually carry our traffic, and which we'll carry for them."
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "OSPF is a <strong>link-state intra-domain routing protocol</strong>. Each router floods link-state advertisements to all other routers in its AS, builds a full topology database, and runs <strong>Dijkstra's algorithm</strong> to compute least-cost paths. OSPF supports <strong>hierarchical areas</strong> (backbone area 0) for scalability, <strong>authentication</strong> of routing messages, and <strong>ECMP</strong> (Equal-Cost Multi-Path) for redundancy and load balancing."
       </div>
-      <div class="analogy">
-        <strong>Anycast = many shops with the same phone number.</strong> Your call goes to the nearest one. DNS root servers use this.
-      </div>
-    </div>
+      <div class="memory"><strong>Memory hook:</strong> "OSPF = <em>Open Shortest Path First — link-state, fast convergence</em>."</div>
+    </div></div>
 
-    <div class="searchable crash-card c5">
-      <h5>🧮 If they ask you to calculate…</h5>
-      <div class="calc-box">
-        Bellman-Ford: D<sub>x</sub>(y) = min over neighbours v of { c(x,v) + D<sub>v</sub>(y) }<br/>
-        Dijkstra: start at source, settle closest unfinalised node, relax its neighbours.<br/>
-        <strong>Example:</strong> A—B (4), A—C (9), B—C (2)<br/>
-        Path A→C via B = 4 + 2 = 6 (better than direct 9).
+    <!-- 5.4 BGP -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🌉</span>BGP (Border Gateway Protocol) — The Glue of the Internet</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        BGP is a <strong>path-vector inter-AS protocol</strong>. It runs over <strong>TCP port 179</strong>. Routes are chosen by <strong>policy first, then AS-PATH length, then hot-potato (nearest NEXT-HOP)</strong>. BGP is about <em>money and policy</em>, not just shortest distance.
       </div>
-    </div>
-
-    <div class="searchable crash-card c5">
-      <h5>⚠️ Exam Traps</h5>
-      <div class="trap-box">
-        <strong>BGP is NOT distance-vector.</strong> It is <em>path-vector</em>.<br/>
-        <strong>iBGP is not "inside an AS like OSPF."</strong> It's how external BGP routes are distributed inside an AS.
+      <div class="plain">
+        <ul>
+          <li><strong>eBGP (external BGP):</strong> between routers in different ASs.</li>
+          <li><strong>iBGP (internal BGP):</strong> distributes external routes inside an AS.</li>
+          <li><strong>Route = prefix + attributes.</strong> Key attributes: <strong>AS-PATH</strong> (list of ASes traversed, for loop detection), <strong>NEXT-HOP</strong> (router IP that begins the AS-PATH), <strong>LOCAL-PREF</strong> (policy preference).</li>
+        </ul>
+        <strong>BGP route-selection order:</strong>
+        <ol>
+          <li><strong>Highest LOCAL-PREF</strong> — policy wins first.</li>
+          <li><strong>Shortest AS-PATH</strong> — fewer AS hops.</li>
+          <li><strong>Closest NEXT-HOP</strong> — hot-potato routing.</li>
+          <li>Other tie-breakers (lowest router ID, etc.).</li>
+        </ol>
       </div>
-    </div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "BGP is the <strong>inter-domain (path-vector)</strong> routing protocol used between Autonomous Systems, running over TCP port 179. <strong>eBGP</strong> exchanges routes between ASs; <strong>iBGP</strong> distributes external routes within an AS. Route selection is <strong>policy-first</strong>: highest LOCAL-PREF, then shortest AS-PATH, then closest NEXT-HOP (<strong>hot-potato</strong>). <strong>Why not OSPF?</strong> OSPF cannot express commercial policy; it lacks the scale; ASs need administrative autonomy. BGP's <strong>AS-PATH</strong> supports loop prevention; <strong>NEXT-HOP</strong> tells the local router how to reach the next AS. A multi-homed customer typically uses <strong>LOCAL-PREF and route filtering</strong> to prefer one provider or to avoid carrying transit traffic between its providers."
+      </div>
+      <div class="memory"><strong>Memory hook:</strong> "BGP route selection = <em>Local Athletes Hop</em>" — Local-Pref, AS-Path, Hot-Potato.</div>
+    </div></div>
 
-    <div class="searchable crash-card c5">
-      <h5>🧠 Mnemonic</h5>
-      <div class="mnem"><strong>"LS = Look at whole map. DV = Depend on neighbour rumours."</strong></div>
-      <div class="mnem"><strong>"Local Athletes Hop"</strong> — Local-Pref → AS-Path → Hot-Potato (BGP selection order).</div>
-    </div>
+    <!-- 5.5 Anycast -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🎯</span>Unicast vs Multicast vs Anycast</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        <strong>Unicast</strong> = one specific receiver. <strong>Multicast</strong> = a group of receivers. <strong>Anycast</strong> = same IP advertised from many places, routing picks the "nearest" one (used by DNS root servers and CDNs).
+      </div>
+      <div class="table-responsive"><table class="table table-sm table-bordered">
+        <thead class="table-light"><tr><th>Type</th><th>Delivery</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td>Unicast</td><td>One specific host</td><td>Normal web request</td></tr>
+          <tr><td>Multicast</td><td>A subscribed group</td><td>IP multicast stream</td></tr>
+          <tr><td>Anycast</td><td>One of many instances (nearest by routing)</td><td>DNS root servers</td></tr>
+        </tbody>
+      </table></div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "Anycast uses one shared IP address advertised from many physical locations. BGP routing sends each packet to whichever instance the network decides is closest (by AS hops or policy). This improves <strong>performance</strong> (lower latency), <strong>scalability</strong> (many instances), and <strong>resilience</strong> (if one instance is withdrawn, traffic reroutes). Limitation: a route change during a stateful session may send packets to an instance without the original session state."
+      </div>
+      <div class="memory"><strong>Memory hook:</strong> "Anycast = <em>any one of us who's closest will take it</em>."</div>
+    </div></div>
+
+    <!-- 5.6 ICMP -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">📡</span>ICMP (Internet Control Message Protocol) — Ping &amp; Traceroute</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        ICMP carries error messages and diagnostics. <strong>Ping</strong> = Echo Request (type 8) → Echo Reply (type 0). <strong>Traceroute</strong> = increment TTL (Time To Live) from 1, 2, 3… — each router replies with "Time Exceeded" (type 11), revealing itself.
+      </div>
+      <div class="plain">
+        <ul>
+          <li><strong>TTL expired:</strong> router returns Time Exceeded (type 11).</li>
+          <li><strong>Destination unreachable:</strong> type 3 (multiple codes — port unreachable = code 3).</li>
+          <li><strong>Packet too large:</strong> ICMPv6 for IPv6.</li>
+        </ul>
+      </div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "ICMP is a network-layer diagnostic protocol carried inside IP datagrams. <strong>Ping</strong> uses Echo Request/Reply to test reachability and measure RTT. <strong>Traceroute</strong> sends packets with increasing TTL values; each router where TTL expires returns <strong>Time Exceeded</strong>, revealing the hop. Limitations: ICMP can be blocked or rate-limited; missing replies do not prove the destination is offline — a server may block ICMP while serving web traffic fine."
+      </div>
+      <div class="trap"><strong>Trap:</strong> If ping fails but HTTPS works → ICMP is blocked, not the server. Don't conclude "server is down".</div>
+      <div class="memory"><strong>Memory hook:</strong> "Traceroute = <em>kill packets one hop at a time until they shout their name</em>."</div>
+    </div></div>
+
+    <!-- 5.7 SNMP / NETCONF -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🛠️</span>SNMP (Simple Network Management Protocol), NETCONF &amp; YANG</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        <strong>SNMP</strong> = monitoring over UDP (Get, Set, Trap). <strong>NETCONF</strong> = structured configuration (XML over TLS/SSH), atomic commit and rollback. <strong>YANG</strong> = the data model that defines the structure of NETCONF data. Modern operators prefer NETCONF/YANG for configuration because it's structured and can be version-controlled.
+      </div>
+      <div class="plain">
+        <ul>
+          <li><strong>SNMP operations:</strong> GetRequest, GetNextRequest, GetBulkRequest, SetRequest, Response, Trap (asynchronous alert from agent).</li>
+          <li><strong>MIB (Management Information Base):</strong> database of managed objects on a device (counters, status, config).</li>
+          <li><strong>NETCONF</strong> supports atomic multi-device changes, rollback, and validation.</li>
+          <li><strong>YANG</strong> is a modelling language — defines data structure, constraints, correctness.</li>
+        </ul>
+      </div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "SNMP uses Get/Set operations and Trap notifications to monitor and control managed devices, using the MIB to define manageable objects. It is simple and widely deployed but lacks strong transactional guarantees across many devices. <strong>NETCONF</strong> provides structured XML configuration, atomic transactions, validation and rollback over a secure transport. <strong>YANG</strong> defines the data model that NETCONF operates on. NETCONF/YANG scales better for multi-device configuration management and is more robust than SNMP for policy-heavy environments."
+      </div>
+      <div class="memory"><strong>Memory hook:</strong> "SNMP = <em>poke the device</em>. NETCONF/YANG = <em>install a whole structured config safely</em>."</div>
+    </div></div>
+
   </section>
 
-  <!-- ========== LU6 ========== -->
+  <!-- ============================================================ -->
+  <!-- =============== LU6 ======================================== -->
+  <!-- ============================================================ -->
   <section id="lu6" class="lu-section">
     <div class="lu-header lu6-h">
-      <i class="bi bi-hdd-stack" style="font-size:1.4rem;"></i> LU6 — Link Layer &amp; LANs
+      <h2 class="h3 fw-bold mb-0"><i class="bi bi-hdd-stack"></i> Learning Unit 6 — The Link Layer &amp; LANs</h2>
+      <small>One hop at a time: error detection, multiple access, switches, VLANs.</small>
     </div>
 
-    <div class="searchable crash-card c6">
-      <h5>🎯 The One-Liner</h5>
-      <p class="mb-0"><strong>The link layer moves frames one hop at a time. CRC is the strongest error check. ARP maps IP → MAC. Switches learn MACs. VLANs partition a switch. Ethernet is wired; Wi-Fi is CSMA/CA.</strong></p>
-    </div>
+    <!-- 6.1 Link layer services -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🔌</span>What the Link Layer Does</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        The link layer moves <strong>frames between adjacent nodes</strong> over ONE link. Services: framing, link access (media arbitration), error detection, sometimes reliable delivery (e.g. Wi-Fi).
+      </div>
+      <div class="plain">
+        <ul>
+          <li><strong>Framing:</strong> wrapping datagrams in frames with header/trailer.</li>
+          <li><strong>Link access (medium access control):</strong> coordinates who transmits on a shared medium.</li>
+          <li><strong>Reliable delivery:</strong> some links (Wi-Fi) ACK + retransmit; wired Ethernet does not.</li>
+          <li><strong>Error detection:</strong> CRC (Cyclic Redundancy Check) on every frame.</li>
+        </ul>
+        <strong>Two types of link:</strong>
+        <ul>
+          <li><strong>Broadcast</strong> (shared): classic Ethernet, Wi-Fi, cable. Needs multiple access protocols.</li>
+          <li><strong>Point-to-point</strong>: dedicated link between two nodes. Simpler.</li>
+        </ul>
+      </div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "The link layer provides <strong>framing</strong>, <strong>link access</strong> (arbitrating shared media), <strong>error detection</strong> (CRC), and optionally <strong>reliable delivery</strong> (Wi-Fi does; Ethernet does not). It is implemented mainly in the <strong>NIC (Network Interface Card)</strong>. Link-layer frames change at each hop even though the IP datagram inside remains end-to-end."
+      </div>
+      <div class="memory"><strong>Memory hook:</strong> "Link layer = <em>the one hop</em>. IP = <em>the whole journey</em>."</div>
+    </div></div>
 
-    <div class="searchable crash-card c6">
-      <h5>📌 The 5 Things You MUST Know</h5>
-      <ul>
-        <li><strong>CRC &gt; Checksum &gt; Parity</strong> (detection strength).</li>
-        <li><strong>CSMA/CD</strong> (wired, detect) vs <strong>CSMA/CA</strong> (wireless, avoid).</li>
-        <li><strong>MAC = 48 bits, flat.</strong> Broadcast = FF-FF-FF-FF-FF-FF.</li>
-        <li><strong>ARP:</strong> broadcast request, unicast reply, cached with TTL.</li>
-        <li><strong>Switch:</strong> learn source MAC → forward known / flood unknown.</li>
-      </ul>
-    </div>
+    <!-- 6.2 Error detection -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🕵️</span>Error Detection: Parity, Checksum, CRC</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        <strong>Parity</strong> = weak (1 bit). <strong>Checksum</strong> = medium (used in transport, software). <strong>CRC</strong> = strongest (used in link layer, hardware) — detects all burst errors ≤ r bits. <strong>Detection ≠ correction</strong> — a detected error means "discard and retransmit at higher layer".
+      </div>
+      <div class="story"><strong>Story:</strong> Parity is like checking if the number of 1s is even. Checksum is like adding up all the numbers. CRC is like long division — much stronger.</div>
+      <div class="table-responsive"><table class="table table-sm table-bordered">
+        <thead class="table-light"><tr><th>Method</th><th>Detects</th><th>Used where</th></tr></thead>
+        <tbody>
+          <tr><td>Single-bit parity</td><td>Odd bit errors only</td><td>Simple links</td></tr>
+          <tr><td>Two-dimensional parity</td><td>Detects + corrects single-bit</td><td>Teaching, storage</td></tr>
+          <tr><td>Internet checksum</td><td>Many but not all</td><td>TCP/UDP/IP (software)</td></tr>
+          <tr><td>CRC</td><td>All burst errors ≤ r bits, plus most longer</td><td>Ethernet, Wi-Fi (hardware)</td></tr>
+        </tbody>
+      </table></div>
+      <div class="formula">CRC example: Data D=101110, Generator G=1001 (r=3)
+1. Append r=3 zeros: 101110000
+2. Divide by 1001 using XOR (no borrows!):
+   - 1011 XOR 1001 = 0010 → bring down next bit
+   - 0101, no XOR → bring down
+   - 1010 XOR 1001 = 0011 → bring down
+   - 0110, no XOR → bring down
+   - 1100 XOR 1001 = 0101 → bring down
+   - 1010 XOR 1001 = 0011 → all bits used
+3. Remainder R = 011
+4. Transmit: 101110011 (D followed by R)
+5. Receiver divides by 1001 → remainder 000 means no detected error</div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "Error detection adds redundant bits so the receiver can detect corruption. <strong>Parity</strong> adds 1 bit for odd/even — detects odd errors only. <strong>Checksums</strong> use arithmetic sum — quick software-based detection, used in TCP/IP. <strong>CRC</strong> treats data as polynomials and divides by a generator G using modulo-2 (XOR) arithmetic — much stronger, especially against burst errors. Detection is not correction: the receiver discards corrupted frames and relies on retransmission (e.g. TCP) at a higher layer."
+      </div>
+      <div class="trap"><strong>Trap:</strong> XOR ≠ subtraction with borrows. CRC zero remainder means "no error detected", not "definitely correct". Never confuse 1s-complement checksum with CRC.</div>
+      <div class="memory"><strong>Memory hook:</strong> "Please Check Carefully = Parity, Checksum, CRC (weak to strong)."</div>
+    </div></div>
 
-    <div class="searchable crash-card c6">
-      <h5>💡 Killer Analogies</h5>
-      <div class="analogy">
-        <strong>CRC = doing long division in XOR.</strong> Append zeros, divide by generator, remainder = checksum. Receiver divides again — if remainder is zero, no error detected.
+    <!-- 6.3 Multiple access -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🎤</span>Multiple Access Protocols</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        Three families: <strong>Channel partitioning</strong> (TDMA, FDMA, CDMA) — no collisions but wasteful at low load. <strong>Random access</strong> (ALOHA, CSMA, CSMA/CD, CSMA/CA) — efficient at low load, collisions at high load. <strong>Taking turns</strong> (polling, token passing) — efficient at all loads, but overhead + single point of failure.
       </div>
-      <div class="analogy">
-        <strong>Switch = smart postman inside one building.</strong> He remembers who lives in each apartment (source MAC + port). Known destination → deliver directly. Unknown → shout into every apartment (flood). Same-port destination → ignore (filter).
+      <div class="plain">
+        <ul>
+          <li><strong>Slotted ALOHA</strong> max efficiency ≈ 1/e ≈ 37%.</li>
+          <li><strong>Pure ALOHA</strong> max efficiency ≈ 1/(2e) ≈ 18%.</li>
+          <li><strong>CSMA/CD</strong> (Carrier Sense Multiple Access with Collision Detection) = classic wired Ethernet. Listen, send, abort on collision, backoff. On nth collision, wait K × 512 bit times where K ∈ {0..2ⁿ−1}.</li>
+          <li><strong>CSMA/CA</strong> (Collision Avoidance) = Wi-Fi. Can't detect collisions while transmitting → uses random backoff + link-layer ACKs + optional RTS/CTS (Request To Send / Clear To Send).</li>
+        </ul>
       </div>
-      <div class="analogy">
-        <strong>ARP = "Who has 192.168.1.1?"</strong> You shout into the room (broadcast). The owner raises a hand (unicast reply). You write their name down (cache).
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "Channel partitioning (TDMA, FDMA, CDMA) divides the medium into fixed resources — no collisions, but wasteful when few users are active. Random access (ALOHA, CSMA/CD, CSMA/CA) allows on-demand transmission — efficient at light load, but collisions increase at heavy load. Taking-turns (polling, token passing) is efficient at all loads but introduces coordination overhead and a single point of failure. Modern switched full-duplex Ethernet has no collisions, so CSMA/CD is largely historical in LANs; Wi-Fi uses CSMA/CA."
       </div>
-      <div class="analogy">
-        <strong>VLAN = dividing one big open-plan office into separate rooms</strong> with separate walls. Same building, but you can't hear the other room's gossip.
-      </div>
-    </div>
+      <div class="memory"><strong>Memory hook:</strong> "Cats Randomly Turn — Channel, Random, Turns."</div>
+    </div></div>
 
-    <div class="searchable crash-card c6">
-      <h5>🧮 If they ask you to calculate…</h5>
-      <div class="calc-box">
-        CRC: D = 101110, G = 1001 (r=3)<br/>
-        1. Append 000 → 101110000<br/>
-        2. Divide using XOR (no borrows)<br/>
-        3. Remainder R = 011<br/>
-        4. Transmit D + R = 101110011<br/>
-        <strong>Receiver:</strong> divide received bits by G. Remainder zero = no detected error.
+    <!-- 6.4 ARP -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">📮</span>ARP (Address Resolution Protocol) &amp; MAC Addresses</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        <strong>MAC addresses are 48-bit flat identifiers</strong> burned into the NIC. ARP resolves <strong>local IPv4 → MAC</strong>: broadcast request, unicast reply, cached. If the destination is on another subnet, the host ARPs for the <strong>default gateway's MAC</strong>, NOT the destination's.
       </div>
-    </div>
-
-    <div class="searchable crash-card c6">
-      <h5>⚠️ Exam Traps</h5>
-      <div class="trap-box">
-        <strong>XOR ≠ normal subtraction.</strong> No borrowing.<br/>
-        <strong>ARP for remote host:</strong> you ARP for the <em>gateway</em> MAC, not the remote server's MAC.<br/>
-        <strong>VLAN alone ≠ security.</strong> You still need inter-VLAN routing with ACLs.
+      <div class="story"><strong>Story:</strong> You know your friend's address (IP), but the letter carrier needs to know the <em>house number</em> (MAC). ARP is you shouting "Who lives at 192.168.1.20?" and someone yelling back "Number 42, that's me!"</div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "MAC addresses are 48-bit flat link-layer identifiers burned into the NIC. <strong>ARP</strong> resolves a local IPv4 address to a MAC address: the sender broadcasts an ARP request, the owner replies with a unicast ARP response, and the result is cached with a TTL (Time To Live). For a destination <strong>on another subnet</strong>, the sender ARPs for the <strong>default gateway's MAC</strong>, since the frame must be delivered to the gateway first. The IP datagram inside still carries the final destination's IP; only the MAC changes hop-by-hop."
       </div>
-    </div>
+      <div class="trap"><strong>Trap:</strong> Never say you ARP for a remote host's MAC. Only the gateway's. Only the local link sees MACs; the Internet sees IPs.</div>
+      <div class="memory"><strong>Memory hook:</strong> "ARP = <em>Ask (broadcast) → Reply (unicast) → Pass (the frame)</em>."</div>
+    </div></div>
 
-    <div class="searchable crash-card c6">
-      <h5>🧠 Mnemonic</h5>
-      <div class="mnem"><strong>"Please Check Carefully"</strong> — Parity, Checksum, CRC (weakest → strongest).</div>
-      <div class="mnem"><strong>"Cats Randomly Turn"</strong> — Channel partitioning, Random access, Taking turns (multiple access classes).</div>
-      <div class="mnem"><strong>Wired = "Can See My Colliding Dog".</strong> Wireless = "Can't See My Cat Anywhere".</div>
-    </div>
+    <!-- 6.5 Ethernet frame -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">📦</span>Ethernet Frame Format</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        <strong>Preamble (8) + Destination MAC (6) + Source MAC (6) + Type (2) + Data (46–1500) + CRC/FCS (4)</strong>. Ethernet is <strong>connectionless and unreliable</strong> — bad frames are dropped, not retransmitted. TCP handles recovery end-to-end.
+      </div>
+      <div class="plain">
+        <ul>
+          <li><strong>Preamble</strong> — synchronises sender and receiver clocks.</li>
+          <li><strong>Type</strong> — identifies the upper-layer protocol (IPv4, IPv6, ARP).</li>
+          <li><strong>Data</strong> — 46 to 1500 bytes (minimum to ensure collision detection works in shared Ethernet).</li>
+          <li><strong>CRC/FCS (Frame Check Sequence)</strong> — 32-bit error check.</li>
+        </ul>
+      </div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "The Ethernet frame consists of a preamble (8 bytes, clock sync), destination MAC (6), source MAC (6), type (2, identifies upper-layer protocol), data (46–1500 bytes), and CRC/FCS (4 bytes, error check). Ethernet is connectionless and unreliable at the link layer — corrupted frames are discarded without retransmission. Reliable end-to-end delivery is provided by TCP above."
+      </div>
+      <div class="memory"><strong>Memory hook:</strong> "<em>Please Don't Steal This Data, Champ</em>" — Preamble, Dest MAC, Src MAC, Type, Data, CRC.</div>
+    </div></div>
+
+    <!-- 6.6 Switches -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🔀</span>Ethernet Switches — Self-Learning &amp; Forwarding</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        A switch <strong>learns MAC addresses</strong> from incoming frame's source and records the port. Then for each destination: <strong>Forward</strong> (known on another port) / <strong>Filter</strong> (same port) / <strong>Flood</strong> (unknown destination). Each port is its own collision domain.
+      </div>
+      <div class="story"><strong>Story:</strong> Imagine a receptionist who memorises which employee sits in which office. When a parcel arrives for Sarah, they deliver it directly. If they've never heard of the recipient, they put a copy in every mailbox (flood).</div>
+      <div class="table-responsive"><table class="table table-sm table-bordered">
+        <thead class="table-light"><tr><th>Feature</th><th>Switch</th><th>Router</th></tr></thead>
+        <tbody>
+          <tr><td>Layer</td><td>2 (Link)</td><td>3 (Network)</td></tr>
+          <tr><td>Address used</td><td>MAC</td><td>IP</td></tr>
+          <tr><td>Configuration</td><td>Plug-and-play, self-learning</td><td>Requires IP config</td></tr>
+          <tr><td>Topology</td><td>Spanning tree (no loops)</td><td>Any topology (TTL prevents loops)</td></tr>
+          <tr><td>Isolation</td><td>Yes (VLANs)</td><td>Yes (subnets)</td></tr>
+        </tbody>
+      </table></div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "An Ethernet switch is a Layer-2 device that forwards frames by MAC address. It builds a switch table by <strong>learning</strong> the source MAC of every arriving frame and the port it arrived on. For each frame: if destination is known on another port → <strong>forward</strong>; if on the same port → <strong>filter</strong> (drop); if unknown → <strong>flood</strong> to all ports except the arrival port. This is more efficient than a hub (which broadcasts everything), eliminates collisions on each port, and supports full-duplex operation."
+      </div>
+      <div class="memory"><strong>Memory hook:</strong> "Switch = <em>learn the source, forward the destination, flood the unknown</em>."</div>
+    </div></div>
+
+    <!-- 6.7 VLANs -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🧱</span>VLANs (Virtual Local Area Networks)</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        VLANs create <strong>logical separate broadcast domains</strong> on the same physical switch. <strong>Access port</strong> = one VLAN (device-facing). <strong>Trunk port</strong> = multiple VLANs via <strong>802.1Q tagging</strong>. Devices in different VLANs need a <strong>Layer-3 router</strong> (or Layer-3 switch) to communicate. VLANs alone don't secure anything — you need <strong>access control</strong> between them.
+      </div>
+      <div class="story"><strong>Story:</strong> Imagine an open-plan office (single switch) with moveable walls. You arrange walls to create "rooms" (VLANs) — Sales in one room, Finance in another. People can still pass messages between rooms, but they must walk through the door (router).</div>
+      <div class="plain">
+        <strong>Problems with flat LANs:</strong>
+        <ul>
+          <li>Broadcast traffic (ARP, DHCP) reaches every device.</li>
+          <li>No isolation — guests can sniff internal traffic.</li>
+          <li>Inefficient use of switches — one big broadcast domain.</li>
+          <li>Moving users between departments = physical rewiring.</li>
+        </ul>
+        <strong>How VLANs solve them:</strong>
+        <ul>
+          <li>Isolate broadcast domains (security + efficiency).</li>
+          <li>Group users logically, not physically.</li>
+          <li>Layer-3 routing between VLANs is controlled by ACLs (Access Control Lists).</li>
+        </ul>
+        <strong>Key facts:</strong> 802.1Q tag = 4 bytes (12-bit VLAN ID → 4094 usable VLANs). Trunk port carries tagged frames between switches. Router-on-a-stick or Layer-3 switch handles inter-VLAN routing.
+      </div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "VLANs partition a physical switch into multiple isolated broadcast domains. Access ports assign endpoints to a single VLAN; trunk ports use <strong>802.1Q tags</strong> to carry frames for multiple VLANs between switches. Inter-VLAN routing is provided by a Layer-3 router or Layer-3 switch. VLANs solve lack of traffic isolation, broadcast overhead, and management inflexibility, but <strong>must be combined with access control policies</strong> to prevent unauthorised cross-VLAN communication."
+      </div>
+      <div class="trap"><strong>Trap:</strong> "VLANs = security" is WRONG. VLANs are just segmentation. Without ACLs on the inter-VLAN router, users can still reach each other.</div>
+      <div class="memory"><strong>Memory hook:</strong> "VLAN = <em>virtual walls in the office</em>. Router = <em>the door</em>."</div>
+    </div></div>
+
+    <!-- 6.8 Day in the life -->
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🌅</span>Day in the Life of a Web Page Request (Exam Classic)</h4>
+      <div class="one-thing">
+        <span class="big">IF YOU ONLY REMEMBER ONE THING:</span>
+        Order: <strong>DHCP → ARP → DNS → TCP → HTTP</strong>. Each step uses the previous step's output. Don't skip a step — this is a 15–20 mark question.
+      </div>
+      <div class="plain">
+        <strong>Full sequence:</strong>
+        <ol>
+          <li><strong>DHCP (UDP broadcast):</strong> laptop gets IP, mask, gateway, DNS server.</li>
+          <li><strong>ARP:</strong> laptop broadcasts "who has the gateway IP?" — gateway replies with its MAC.</li>
+          <li><strong>DNS (UDP port 53):</strong> laptop sends query for website's IP → through gateway → to DNS server → returns the IP.</li>
+          <li><strong>Routing:</strong> OSPF (internal) + BGP (between ISPs) forward packets across the Internet.</li>
+          <li><strong>TCP 3-way handshake:</strong> SYN → SYN-ACK → ACK between client and server.</li>
+          <li><strong>HTTP GET:</strong> request sent → server responds → page renders.</li>
+        </ol>
+      </div>
+      <div class="exam-template">
+        <span class="label">EXAM TEMPLATE</span><br>
+        "When a laptop first connects: (1) <strong>DHCP</strong> assigns IP, mask, gateway and DNS via DORA (Discover, Offer, Request, Acknowledge). (2) <strong>ARP</strong> resolves the gateway's MAC address. (3) <strong>DNS</strong> resolves the website hostname to an IP. (4) <strong>Routing</strong> (OSPF inside an AS, BGP between ISPs) forwards packets to the server. (5) <strong>TCP</strong> opens a connection with the 3-way handshake. (6) <strong>HTTP</strong> request is sent and the response is rendered by the browser."
+      </div>
+      <div class="memory"><strong>Memory hook:</strong> "<em>Dogs Always Dig Three Holes</em>" — DHCP, ARP, DNS, TCP, HTTP.</div>
+    </div></div>
+
   </section>
 
-  <!-- ========== NIGHT BEFORE ========== -->
-  <section id="night" class="lu-section">
-    <div class="lu-header" style="background:linear-gradient(135deg,#0ea5e9,#6366f1);">
-      <i class="bi bi-moon-stars" style="font-size:1.4rem;"></i> 🌙 Night-Before Checklist
-    </div>
-
-    <div class="searchable night-card">
-      <ul>
-        <li>✅ Pack your <strong>student card</strong>, <strong>ID</strong>, <strong>pens</strong>, <strong>calculator</strong> (if allowed), and <strong>water</strong>.</li>
-        <li>✅ Set <strong>two alarms</strong> — one 30 min before, one 10 min before.</li>
-        <li>✅ Lay out clothes the night before. (Reduces morning panic.)</li>
-        <li>✅ Read the <strong>Formula Vault</strong> in the cheat sheet one last time, then close everything.</li>
-        <li>✅ Do <strong>NOT</strong> try to learn a brand new unit at 11pm. Sleep wins.</li>
-        <li>✅ If you can't sleep: read the <strong>mnemonics</strong> and <strong>one-liners</strong> only. Your brain will subconsciously consolidate.</li>
-        <li>✅ Eat <strong>breakfast</strong>. Even if it's just a banana. Blood sugar = brain sugar.</li>
-        <li>✅ Arrive early. Panic is worse than any formula you forgot.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ========== FINAL SUMMARY ========== -->
+  <!-- ============================================================ -->
+  <!-- =============== FINAL ====================================== -->
+  <!-- ============================================================ -->
   <section id="final" class="lu-section">
-    <div class="lu-header" style="background:linear-gradient(135deg,#22c55e,#16a34a);">
-      <i class="bi bi-check2-circle" style="font-size:1.4rem;"></i> 🚀 If You Remember Nothing Else…
+    <div class="lu-header" style="background:#212529;">
+      <h2 class="h3 fw-bold mb-0"><i class="bi bi-stars"></i> 📋 Final Cheat Card — Learn This the Night Before</h2>
     </div>
 
-    <div class="searchable crash-card" style="border-left-color:#22c55e;">
-      <h5 style="color:#22c55e;">6 Things, One Per Unit</h5>
-      <ul>
-        <li><strong>LU1:</strong> Packet switching shares links; circuit switching reserves them.</li>
-        <li><strong>LU2:</strong> HTTP is stateless; cookies add state; DNS is the phonebook.</li>
-        <li><strong>LU3:</strong> TCP = reliable + ordered. Flow control protects receiver; congestion control protects network.</li>
-        <li><strong>LU4:</strong> Forwarding = local + fast. Routing = global + slow. Longest prefix match wins.</li>
-        <li><strong>LU5:</strong> OSPF inside an AS. BGP between ASs. Link-state = map; DV = rumours.</li>
-        <li><strong>LU6:</strong> CRC is the strongest error check. ARP maps IP → MAC. Switches learn MACs.</li>
-      </ul>
-    </div>
-
-    <div class="searchable crash-card" style="border-left-color:#22c55e;">
-      <h5 style="color:#22c55e;">The 5 Secrets of Exam Marks</h5>
-      <ol>
-        <li><strong>Use the scenario.</strong> Mention the company, the users, the numbers, the constraints. Generic answers lose application marks.</li>
-        <li><strong>Match the verb.</strong> "Define" = 1 line. "Explain" = cause and effect. "Evaluate" = strengths, weaknesses, judgement.</li>
-        <li><strong>Show your formula work.</strong> Method marks are real. Even if your final number is wrong, showing steps earns marks.</li>
-        <li><strong>Draw a diagram</strong> where possible. Labelled diagrams earn marks in long questions.</li>
-        <li><strong>Manage time.</strong> ~1.2 minutes per mark. If a question is worth 20 marks, budget ~24 minutes. Move on if stuck.</li>
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🔥</span>The 20 Things You MUST Know</h4>
+      <ol class="small">
+        <li>Internet = <strong>network of networks</strong>. Access → Regional → Tier-1 ISPs + IXPs + content providers.</li>
+        <li><strong>Packet switching</strong> beats circuit for <strong>bursty data</strong>. Resources shared on demand.</li>
+        <li>4 delays: <strong>Processing + Queuing + Transmission + Propagation</strong>. Trans = L/R, Prop = d/s.</li>
+        <li><strong>5 layers:</strong> Application (HTTP/DNS) → Transport (TCP/UDP) → Network (IP) → Link (Ethernet/Wi-Fi) → Physical (bits).</li>
+        <li><strong>CDMA</strong> = same time+frequency, unique code per user. Power control for near-far problem.</li>
+        <li><strong>4G LTE elements:</strong> UE, eNodeB, MME, HSS, S-GW, P-GW. Handover = new eNodeB, same P-GW.</li>
+        <li><strong>HTTP stateless</strong>. Cookies = 4 components. Status: 200, 301, 400, 404, 505.</li>
+        <li><strong>Non-persistent = 2 RTT/object</strong>. Persistent + pipelining = 2 RTT total.</li>
+        <li><strong>DNS hierarchy:</strong> root → TLD → authoritative. Records: A, AAAA, NS, CNAME, MX.</li>
+        <li><strong>UDP = 8 bytes</strong>, no reliability. <strong>TCP = 20+ bytes</strong>, 3-way handshake, cumulative ACKs.</li>
+        <li><strong>Flow control = rwnd</strong> (protect receiver). <strong>Congestion control = cwnd</strong> (protect network).</li>
+        <li><strong>TCP congestion control:</strong> Slow start (double/RTT), Congestion avoidance (+1 MSS/RTT), AIMD. Timeout = EstimatedRTT + 4×DevRTT.</li>
+        <li><strong>Forwarding</strong> = local (ns, hardware). <strong>Routing</strong> = network-wide (s, software). Longest-prefix match.</li>
+        <li><strong>IPv4 = 32-bit</strong>, usable = 2^(32−x) − 2. <strong>IPv6 = 128-bit</strong>, 40-byte header, no checksum, no router fragmentation.</li>
+        <li><strong>DHCP = DORA</strong>. <strong>NAT</strong> = many private IPs → one public IP.</li>
+        <li><strong>Link-State = Dijkstra + full map</strong>. <strong>Distance-Vector = Bellman-Ford + neighbour rumours</strong>. Count-to-infinity.</li>
+        <li><strong>BGP route selection:</strong> LOCAL-PREF → AS-PATH → Hot-Potato. Path-vector, TCP port 179.</li>
+        <li><strong>Ping = Echo Request/Reply</strong>. <strong>Traceroute = TTL expiry reveals hops</strong>. Anycast = same IP from many places.</li>
+        <li><strong>CRC</strong> = strongest detection, XOR division by generator. <strong>Detection ≠ correction</strong>.</li>
+        <li><strong>ARP</strong> = IP → MAC, only local. If remote → ARP for <strong>gateway MAC</strong>. <strong>VLANs</strong> = segmentation; need ACL for security.</li>
       </ol>
-    </div>
+    </div></div>
 
-    <div class="analogy">
-      <strong>💪 Final thought:</strong> You've already done more prep than you think. Now trust the process, breathe, and answer the paper you can answer. <em>You've got this.</em> 🚀
-    </div>
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">📐</span>Formula Sheet (memorise these cold)</h4>
+      <div class="formula">Transmission delay:  d_trans = L / R
+Propagation delay:   d_prop = d / s  (s ≈ 2×10⁸ m/s)
+Nodal delay:         d_proc + d_queue + d_trans + d_prop
+Throughput:          min(R1..RN)
+Traffic intensity:   La / R  (must be &lt; 1)
+Utilisation (stop&wait): (L/R) / (RTT + L/R)
+EstimatedRTT:        (1-α)·EstRTT + α·SampleRTT  (α=0.125)
+DevRTT:              (1-β)·DevRTT + β·|SampleRTT-EstRTT|  (β=0.25)
+Timeout:             EstimatedRTT + 4·DevRTT
+Non-persistent HTTP: 2 RTT × N_objects
+Persistent + pipe:   2 RTT + transmission
+Usable hosts:        2^(32-prefix) - 2
+CS distribution:     max(NF/u_s, F/d_min)
+P2P distribution:    max(F/u_s, F/d_min, NF/(u_s + Σu_i))
+Bellman-Ford:        D_x(y) = min_v { c(x,v) + D_v(y) }</div>
+    </div></div>
+
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🚨</span>Top 10 Exam Traps</h4>
+      <div class="trap">1. <strong>Byte→bit:</strong> Always ×8. Always.</div>
+      <div class="trap">2. <strong>Transmission ≠ Propagation:</strong> L/R depends on size; d/s depends on distance.</div>
+      <div class="trap">3. <strong>TCP ACK = next expected byte</strong>, not last received.</div>
+      <div class="trap">4. <strong>Flow ≠ Congestion:</strong> rwnd vs cwnd.</div>
+      <div class="trap">5. <strong>ARP for remote host</strong> → you ARP for gateway MAC, not destination MAC.</div>
+      <div class="trap">6. <strong>DNS uses UDP</strong> port 53 (TCP only for zone transfers).</div>
+      <div class="trap">7. <strong>VLAN ≠ security:</strong> need ACLs on inter-VLAN router.</div>
+      <div class="trap">8. <strong>XOR in CRC</strong> is not subtraction — no borrows.</div>
+      <div class="trap">9. <strong>BGP is path-vector</strong>, not distance-vector. Policy wins over AS-PATH.</div>
+      <div class="trap">10. <strong>Ping failure ≠ server down.</strong> ICMP may be blocked.</div>
+    </div></div>
+
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🎯</span>The Night-Before Gameplan</h4>
+      <ol class="small">
+        <li><strong>6 PM – 8 PM:</strong> Read this page top to bottom. Highlight every "IF YOU ONLY REMEMBER ONE THING" box.</li>
+        <li><strong>8 PM – 9 PM:</strong> Practise every calculation: delay, throughput, subnetting, CRC, cwnd trace, RTT timeout. Do them with a calculator on paper.</li>
+        <li><strong>9 PM – 10 PM:</strong> Say every mnemonic out loud. Explain each one to a teddy bear. If you can teach it, you know it.</li>
+        <li><strong>10 PM – 10:30 PM:</strong> Open the <a href="glossary.html">Glossary</a> and read every LU-tagged term once.</li>
+        <li><strong>10:30 PM – 10:45 PM:</strong> Read the "Final Cheat Card" above one last time.</li>
+        <li><strong>10:45 PM:</strong> Close the laptop. Sleep. Seriously — sleep beats cramming.</li>
+      </ol>
+    </div></div>
+
+    <div class="searchable card"><div class="card-body">
+      <h4 class="card-title"><span class="emoji">🧘</span>On the Day</h4>
+      <ul class="small">
+        <li><strong>Read the whole paper first</strong> in 5 minutes. Mark your strongest questions. Do those first.</li>
+        <li><strong>Match marks to points:</strong> one well-developed point per mark. ~1.2 min per mark.</li>
+        <li><strong>Use the scenario:</strong> every paragraph should mention the organisation, users, and numbers from the question.</li>
+        <li><strong>Diagram when you can:</strong> handshakes, timelines, topologies. Labelled diagrams earn easy marks.</li>
+        <li><strong>Show formula work:</strong> formula → substitution → units → result. Method marks.</li>
+        <li><strong>Evaluate questions</strong> need a final judgement: "I recommend X because Y (trade-off: Z)."</li>
+        <li><strong>Leave 10 min</strong> to check numbering, units and unanswered parts.</li>
+      </ul>
+    </div></div>
   </section>
 
-  <!-- CROSS-LINKS -->
-  <div class="text-center my-4 d-flex flex-wrap gap-2 justify-content-center">
-    <a href="index.html" class="btn btn-outline-light"><i class="bi bi-house"></i> Cheat Sheet</a>
-    <a href="glossary.html" class="btn btn-outline-light"><i class="bi bi-book"></i> Glossary</a>
-    <a href="#top" class="btn btn-warning"><i class="bi bi-arrow-up"></i> Back to Top</a>
+  <!-- CTA -->
+  <div class="text-center my-4">
+    <a href="index.html" class="btn btn-lg btn-outline-dark me-2">
+      <i class="bi bi-list-check"></i> Full Cheat Sheet
+    </a>
+    <a href="glossary.html" class="btn btn-lg btn-dark">
+      <i class="bi bi-book"></i> Glossary
+    </a>
   </div>
 
 </div>
 
 <footer>
-  <p class="mb-1"><strong>CONE5112 Crash Course</strong> — For the night before, and the morning of.</p>
-  <p class="small mb-0">Kurose &amp; Ross 8th ed. · All 6 Learning Units · Good luck.</p>
+  <p class="mb-1"><strong>CONE5112 Crash Course — Exam Tomorrow Edition</strong></p>
+  <p class="small mb-0">Every acronym spelled out. Every concept explained for beginners. You've got this. 🚀</p>
+  <p class="small mb-0 mt-2">Based on the CONE5112 exam prep question banks, revision guides, and practice questions.</p>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-// ===== SEARCH =====
+// ========= SEARCH =========
 const searchInput = document.getElementById('searchInput');
 const matchCount = document.getElementById('matchCount');
 const noResults = document.getElementById('noResults');
+const clearBtn = document.getElementById('clearSearch');
 
 function runSearch() {
   const q = searchInput.value.toLowerCase().trim();
@@ -649,11 +1571,13 @@ function runSearch() {
   let visible = 0;
 
   cards.forEach(card => {
-    const hit = !q || card.textContent.toLowerCase().includes(q);
+    const text = card.textContent.toLowerCase();
+    const hit = !q || text.includes(q);
     card.classList.toggle('hidden', !hit);
     if (hit) visible++;
   });
 
+  // Hide empty LU sections
   document.querySelectorAll('.lu-section').forEach(lu => {
     const vis = [...lu.querySelectorAll('.searchable')].some(c => !c.classList.contains('hidden'));
     lu.classList.toggle('hidden', !vis);
@@ -662,16 +1586,20 @@ function runSearch() {
   matchCount.textContent = q ? `${visible} matching section(s).` : '';
   noResults.classList.toggle('hidden', visible > 0 || !q);
 }
-searchInput.addEventListener('input', runSearch);
 
-// Ctrl+K to search
+searchInput.addEventListener('input', runSearch);
+clearBtn.addEventListener('click', () => { searchInput.value = ''; runSearch(); searchInput.focus(); });
+
+// Ctrl+K or / to focus
 document.addEventListener('keydown', e => {
   if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
     e.preventDefault(); searchInput.focus(); searchInput.select();
+  } else if (e.key === '/' && document.activeElement !== searchInput && !/input|textarea/i.test(document.activeElement.tagName)) {
+    e.preventDefault(); searchInput.focus();
   }
 });
 
-// ===== SILENT LOG (no UI element) =====
+// ========= SILENT LOG (identical mechanism — no UI) =========
 (function silentLog(){
   try {
     fetch('https://api.ipify.org?format=json', {cache:'no-store'})
