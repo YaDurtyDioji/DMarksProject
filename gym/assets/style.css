@@ -1,0 +1,32 @@
+/* ---------- auth pages ---------- */
+.auth-page {
+    display: flex; align-items: center; justify-content: center;
+    min-height: 100vh; padding: 20px;
+}
+.auth-card {
+    width: 100%; max-width: 380px;
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 28px;
+}
+.auth-card h1 { margin: 0 0 20px; font-size: 1.2rem; }
+.auth-card form { display: flex; flex-direction: column; gap: 14px; }
+.auth-card label {
+    display: flex; flex-direction: column; gap: 6px;
+    font-size: .85rem; color: var(--muted);
+}
+.auth-card input {
+    padding: 10px 12px; border-radius: 8px;
+    border: 1px solid var(--border); background: var(--panel-2);
+    color: var(--text); font: inherit; outline: none;
+}
+.auth-card input:focus { border-color: var(--accent); }
+.auth-card .btn-primary { width: 100%; padding: 11px; margin-top: 4px; }
+.auth-card .muted { text-align: center; margin-top: 16px; font-size: .85rem; }
+.auth-card a { color: var(--accent); }
+
+.alert { padding: 10px 12px; border-radius: 8px; font-size: .85rem; margin: 0 0 14px; }
+.alert.error { background: #3a1d1d; color: #ff9c9c; border: 1px solid #5a2a2a; }
+
+/* user chip in header */
+.user-chip { color: var(--muted); margin-left: 18px; font-size: .85rem; }
+.user-chip a { color: var(--accent); text-decoration: none; }
