@@ -1,0 +1,8 @@
+[11-Nov-2026 22:17:39 UTC] [openGym] Catalogue import failed — no JSONs and download failed.
+[11-Nov-2026 22:20:39 UTC] [openGym] Catalogue import failed — no JSONs and download failed.
+[11-Nov-2026 22:28:00 UTC] PHP Warning:  require_once(/home/zywyftbo/public_html/gym/functions.php): Failed to open stream: No such file or directory in /home/zywyftbo/public_html/gym/bootstrap.php on line 6
+[11-Nov-2026 22:28:00 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/zywyftbo/public_html/gym/functions.php' (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/zywyftbo/public_html/gym/bootstrap.php:6
+Stack trace:
+#0 /home/zywyftbo/public_html/gym/login.php(2): require_once()
+#1 {main}
+  thrown in /home/zywyftbo/public_html/gym/bootstrap.php on line 6
