@@ -150,3 +150,7 @@ code { color: var(--bs-code-color); }
 .set-row .set-num { font-size: 0.8rem; color: var(--bs-secondary-color); font-weight: bold; text-align: center; }
 .exercise-card { cursor: default; }
 .exercise-header { cursor: grab; }
+/* Forces Sortable to recognize empty blocks */
+.sortable-nested {
+    min-height: 50px;
+}
