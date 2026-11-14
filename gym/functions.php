@@ -1,9 +1,7 @@
 <?php
 declare(strict_types=1);
 
-/* ---------- exercises (global, shared by everyone) ------------------- */
-
-function search_exercises(string $q = '', string $bodyPart = '', string $equipment = '', int $limit = 100): array
+function search_exercises(string $q = '', string $bodyPart = '', string $equipment = '', string $category = '', int $limit = 100): array
 {
     $pdo = get_db();
     $sql = 'SELECT id, name, body_part, equipment, target, category, demo_url
@@ -13,6 +11,7 @@ function search_exercises(string $q = '', string $bodyPart = '', string $equipme
     if ($q !== '')        { $sql .= ' AND name LIKE :q';    $params[':q']  = '%' . $q . '%'; }
     if ($bodyPart !== '') { $sql .= ' AND body_part = :bp'; $params[':bp'] = $bodyPart; }
     if ($equipment !== ''){ $sql .= ' AND equipment = :eq'; $params[':eq'] = $equipment; }
+    if ($category !== '') { $sql .= ' AND category = :cat'; $params[':cat'] = $category; }
 
     $sql .= ' ORDER BY name LIMIT :lim';
 
@@ -33,6 +32,9 @@ function get_filter_options(): array
         'equipment' => $pdo->query("SELECT DISTINCT equipment FROM exercises
                                     WHERE equipment IS NOT NULL AND equipment <> ''
                                     ORDER BY equipment")->fetchAll(PDO::FETCH_COLUMN),
+        'categories'=> $pdo->query("SELECT DISTINCT category FROM exercises
+                                    WHERE category IS NOT NULL AND category <> ''
+                                    ORDER BY category")->fetchAll(PDO::FETCH_COLUMN),
     ];
 }
 

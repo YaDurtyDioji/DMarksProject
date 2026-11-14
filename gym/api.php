@@ -1,23 +1,18 @@
 <?php
 declare(strict_types=1);
-
 require_once __DIR__ . '/bootstrap.php';
 
-$user = require_login();          // every API call requires a session
-
+$user = require_login();
 header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store');
-
 $action = $_GET['action'] ?? '';
 
-// CSRF only on state-changing verbs.
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     verify_csrf($_SERVER['HTTP_X_CSRF_TOKEN'] ?? null);
 }
 
 try {
     switch ($action) {
-
         case 'filters':
             echo json_encode(get_filter_options());
             break;
@@ -26,7 +21,8 @@ try {
             echo json_encode(search_exercises(
                 trim((string) ($_GET['q'] ?? '')),
                 trim((string) ($_GET['bodyPart'] ?? '')),
-                trim((string) ($_GET['equipment'] ?? ''))
+                trim((string) ($_GET['equipment'] ?? '')),
+                trim((string) ($_GET['category'] ?? ''))
             ));
             break;
 
@@ -45,11 +41,6 @@ try {
             break;
 
         case 'save-routine':
-            if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-                http_response_code(405);
-                echo json_encode(['error' => 'POST required']);
-                break;
-            }
             $payload = json_decode((string) file_get_contents('php://input'), true);
             if (!is_array($payload) || empty($payload['name']) || !isset($payload['exercises'])) {
                 http_response_code(400);
@@ -66,11 +57,6 @@ try {
             break;
 
         case 'delete-routine':
-            if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-                http_response_code(405);
-                echo json_encode(['error' => 'POST required']);
-                break;
-            }
             $ok = delete_routine((int) ($_GET['id'] ?? 0), (int) $user['id']);
             echo json_encode(['deleted' => $ok]);
             break;
@@ -82,5 +68,4 @@ try {
 } catch (Throwable $e) {
     http_response_code(500);
     echo json_encode(['error' => 'Server error']);
-    error_log('[openGym] API error: ' . $e->getMessage());
 }
