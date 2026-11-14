@@ -104,8 +104,8 @@ function save_routine(string $name, array $exercises, int $userId, ?int $id = nu
         }
 
         $ins = $pdo->prepare(
-            'INSERT INTO routine_exercises (routine_id, exercise_id, position, sets, reps, rest_sec)
-             VALUES (?, ?, ?, ?, ?, ?)'
+            'INSERT INTO routine_exercises (routine_id, exercise_id, position, sets_data, notes)
+             VALUES (?, ?, ?, ?, ?)'
         );
 
         foreach ($exercises as $pos => $ex) {
@@ -113,9 +113,8 @@ function save_routine(string $name, array $exercises, int $userId, ?int $id = nu
                 $routineId,
                 (string) $ex['id'],
                 $pos,
-                (int) ($ex['sets'] ?? 3),
-                (string) ($ex['reps'] ?? '8-12'),
-                (int) ($ex['rest_sec'] ?? 90),
+                json_encode($ex['sets_data'] ?? []), // Stores the weight/reps/RPE array
+                $ex['notes'] ?? null,
             ]);
         }
 
