@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CONE5112 Exam Tomorrow — Crash Course</title>
+<meta name="description" content="The fastest possible CONE5112 Computer Networks 1B exam crash course. Simple language, analogies, mnemonics, priority pyramid, and exam traps." />
+<meta name="keywords" content="CONE5112, exam tomorrow, crash course, computer networks, study fast, mnemonics, revision" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<style>
+  :root{
+    --lu1:#0d6efd; --lu2:#198754; --lu3:#dc3545; --lu4:#6f42c1;
+    --lu5:#fd7e14; --lu6:#0dcaf0;
+    --amber:#ffc107; --hot:#ff5722;
+  }
+  html{scroll-behavior:smooth;}
+  body{
+    background:#0f172a;
+    color:#e2e8f0;
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+    padding-top:70px;
+    line-height:1.6;
+  }
+  .navbar{background:linear-gradient(90deg,#ff5722,#fd7e14)!important;}
+  .navbar-brand{font-weight:800;letter-spacing:.5px;}
+  .hero{
+    background:linear-gradient(135deg,#ff5722,#6f42c1);
+    border-radius:16px;padding:2rem 1.5rem;text-align:center;margin:1.5rem 0;
+    box-shadow:0 10px 30px rgba(255,87,34,.3);
+  }
+  .hero h1{font-weight:900;font-size:clamp(1.8rem,5vw,3rem);margin:0;}
+  .hero p{margin:.5rem 0 0;opacity:.95;}
+  .lu-section{scroll-margin-top:100px;margin-bottom:2.5rem;}
+  .lu-header{
+    border-radius:12px;padding:1rem 1.25rem;color:#fff;margin-bottom:1rem;
+    display:flex;align-items:center;gap:.75rem;font-weight:800;font-size:1.15rem;
+  }
+  .lu1-h{background:var(--lu1);} .lu2-h{background:var(--lu2);}
+  .lu3-h{background:var(--lu3);} .lu4-h{background:var(--lu4);}
+  .lu5-h{background:var(--lu5);} .lu6-h{background:var(--lu6);color:#0f172a;}
+  .crash-card{
+    background:#1e293b;border:none;border-radius:12px;
+    padding:1rem 1.15rem;margin-bottom:.85rem;
+    border-left:5px solid #38bdf8;
+  }
+  .crash-card.c1{border-left-color:var(--lu1);} .crash-card.c2{border-left-color:var(--lu2);}
+  .crash-card.c3{border-left-color:var(--lu3);} .crash-card.c4{border-left-color:var(--lu4);}
+  .crash-card.c5{border-left-color:var(--lu5);} .crash-card.c6{border-left-color:var(--lu6);}
+  .crash-card h5{color:#38bdf8;font-size:.95rem;font-weight:800;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.5rem;}
+  .crash-card ul{margin-bottom:0;padding-left:1.1rem;font-size:.93rem;}
+  .crash-card li{margin-bottom:.35rem;}
+  .analogy{
+    background:#fff3cd;color:#212529;border-left:5px solid var(--amber);
+    padding:.7rem .9rem;border-radius:0 10px 10px 0;margin:.6rem 0;font-size:.93rem;
+  }
+  .analogy strong{color:#b45309;}
+  .calc-box{
+    background:#f3e8ff;color:#212529;border-left:5px solid var(--lu4);
+    padding:.7rem .9rem;border-radius:0 10px 10px 0;margin:.6rem 0;
+    font-family:'Courier New',monospace;font-size:.88rem;overflow-x:auto;
+  }
+  .trap-box{
+    background:#fee2e2;color:#7f1d1d;border-left:5px solid var(--hot);
+    padding:.7rem .9rem;border-radius:0 10px 10px 0;margin:.6rem 0;font-size:.93rem;
+  }
+  .trap-box strong{color:#dc2626;}
+  .mnem{
+    background:linear-gradient(135deg,#fef3c7,#fde68a);color:#78350f;
+    border-radius:10px;padding:.75rem .9rem;margin:.6rem 0;font-size:.93rem;font-weight:500;
+  }
+  .mnem strong{color:#b45309;font-weight:800;}
+  .pill{display:inline-block;background:#334155;color:#94a3b8;padding:2px 10px;border-radius:20px;font-size:.75rem;margin-right:.3rem;}
+  .priority-card{
+    background:linear-gradient(135deg,#0ea5e9,#6366f1);color:#fff;
+    border-radius:12px;padding:1rem;margin-bottom:.75rem;
+    box-shadow:0 4px 14px rgba(99,102,241,.3);
+  }
+  .priority-card h6{font-weight:800;margin:0 0 .35rem;font-size:.9rem;text-transform:uppercase;}
+  .priority-card p{margin:0;font-size:.9rem;}
+  .night-card{
+    background:#1e293b;border:2px dashed #38bdf8;border-radius:12px;padding:1.25rem;
+  }
+  .night-card li{margin-bottom:.4rem;font-size:.93rem;}
+  .search-bar{
+    background:#1e293b;border:none;border-radius:30px;padding:.65rem 1.2rem;
+    color:#e2e8f0;width:100%;font-size:1rem;
+  }
+  .search-bar:focus{outline:2px solid #38bdf8;background:#0f172a;color:#fff;}
+  .search-bar::placeholder{color:#64748b;}
+  .hidden{display:none!important;}
+  .no-results{background:#fef3c7;color:#78350f;padding:1rem;border-radius:10px;text-align:center;font-weight:600;margin-bottom:1rem;}
+  .subnav{
+    position:sticky;top:60px;z-index:10;background:#0f172a;padding:.5rem 0;
+    margin-bottom:1rem;border-bottom:1px solid #334155;
+  }
+  .subnav a{
+    padding:.3rem .7rem;margin:.15rem;border-radius:20px;font-size:.8rem;
+    text-decoration:none;background:#1e293b;color:#cbd5e1;display:inline-block;border:1px solid #334155;
+  }
+  .subnav a:hover{background:var(--hot);color:#fff;border-color:var(--hot);}
+  mark{background:#fbbf24;color:#000;padding:0 3px;border-radius:2px;}
+  code{background:#334155;color:#38bdf8;padding:1px 6px;border-radius:4px;font-size:.88em;}
+  footer{margin-top:3rem;padding:2rem 0;background:#020617;color:#64748b;text-align:center;font-size:.9rem;}
+  footer a{color:#38bdf8;}
+  @media (max-width:576px){
+    .hero{padding:1.25rem 1rem;}
+    .lu-header{font-size:1rem;padding:.8rem 1rem;}
+    body{font-size:.95rem;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow">
+  <div class="container">
+    <a class="navbar-brand" href="#top">⚡ Exam Tomorrow</a>
+    <div class="ms-auto d-flex gap-2">
+      <a class="nav-link text-white small" href="index.html"><i class="bi bi-house"></i> Cheat Sheet</a>
+      <a class="nav-link text-white small" href="glossary.html"><i class="bi bi-book"></i> Glossary</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container" id="top">
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>🚨 CONE5112 CRASH COURSE</h1>
+    <p><strong>Exam tomorrow?</strong> This page gives you the <em>only things that matter</em>, in simple language, with analogies you won't forget.</p>
+    <p class="mt-2 mb-0 small"><i class="bi bi-clock-history"></i> Read time: ~20 minutes. Memory retention: longer than the panic you're feeling now.</p>
+  </div>
+
+  <!-- SEARCH -->
+  <div class="mb-3">
+    <input id="searchInput" class="search-bar" placeholder="🔍 Search the crash course (e.g. 'TCP', 'DHCP', 'CRC', 'BGP')" />
+    <small class="text-secondary d-block mt-1"><span id="matchCount"></span></small>
+  </div>
+
+  <div id="noResults" class="no-results hidden">
+    😬 No matches. Try a different keyword.
+  </div>
+
+  <!-- SUBNAV -->
+  <nav class="subnav">
+    <a href="#priority">⏰ Priority Pyramid</a>
+    <a href="#lu1">LU1</a>
+    <a href="#lu2">LU2</a>
+    <a href="#lu3">LU3</a>
+    <a href="#lu4">LU4</a>
+    <a href="#lu5">LU5</a>
+    <a href="#lu6">LU6</a>
+    <a href="#night">🌙 Night Before</a>
+    <a href="#final">🚀 Final Summary</a>
+  </nav>
+
+  <!-- ========== PRIORITY PYRAMID ========== -->
+  <section id="priority" class="lu-section">
+    <div class="lu-header" style="background:linear-gradient(135deg,#ff5722,#fd7e14);">
+      <i class="bi bi-alarm" style="font-size:1.5rem;"></i> ⏰ Priority Pyramid — Study Based on Your Time Left
+    </div>
+
+    <div class="searchable crash-card c1">
+      <h5>🚨 If you have 30 minutes</h5>
+      <p class="small mb-2">Read <strong>only the "One-liners"</strong> in each Learning Unit below. That's 6 sentences. Then read the Formula Vault in the cheat sheet. Then close everything and sleep.</p>
+      <p class="small mb-0"><em>Why?</em> Sleep consolidates memory better than panic-cramming. Your brain remembers structure, not the 4th layer of a protocol you just skimmed.</p>
+    </div>
+
+    <div class="searchable crash-card c4">
+      <h5>🔥 If you have 2 hours</h5>
+      <p class="small mb-0">Read <strong>every unit below</strong> (each is ~5 minutes). Then read the <strong>exam traps</strong> (the red boxes). Then read the <strong>formula vault</strong> in the cheat sheet. Take a 10-minute walk. Then do one practice calculation per unit (subnetting, CRC, TCP cwnd, HTTP response time).</p>
+    </div>
+
+    <div class="searchable crash-card c2">
+      <h5>💪 If you have 4–6 hours</h5>
+      <p class="small mb-0">Everything above, <em>plus</em> open the <strong>Exam Preparation Question Bank</strong> (in the Downloadables of the cheat sheet). Pick one long scenario per unit, plan an answer in bullet points for 5 minutes, then check the memo. Repeat for all 6 units. This is the single most valuable thing you can do.</p>
+    </div>
+
+    <div class="searchable crash-card c5">
+      <h5>🧠 If you have the whole night (not recommended)</h5>
+      <p class="small mb-0">Do the 4–6 hour plan. Then read the <strong>Detailed Revision Guide</strong> once. Then <strong>sleep at least 4 hours</strong>. An all-nighter for a 2-hour closed-book exam usually <em>loses</em> marks.</p>
+    </div>
+
+    <div class="analogy">
+      <strong>🏆 The Rule:</strong> If a question asks "explain the difference", they want a <em>table</em>. If they ask "calculate", they want <em>formula → substitute → units → answer</em>. If they ask "evaluate", they want a <em>judgement with trade-offs</em>. Match the verb.
+    </div>
+  </section>
+
+  <!-- ========== LU1 ========== -->
+  <section id="lu1" class="lu-section">
+    <div class="lu-header lu1-h">
+      <i class="bi bi-globe2" style="font-size:1.4rem;"></i> LU1 — Internet, Wireless &amp; Mobile
+    </div>
+
+    <div class="searchable crash-card c1">
+      <h5>🎯 The One-Liner</h5>
+      <p class="mb-0"><strong>The Internet is a network of networks that shares links on demand (packet switching) using a 5-layer stack. Wireless adds radio (shared, lossy) and mobility (handover).</strong></p>
+    </div>
+
+    <div class="searchable crash-card c1">
+      <h5>📌 The 5 Things You MUST Know</h5>
+      <ul>
+        <li><strong>Packet switching &gt; circuit switching</strong> for bursty data because links are shared, not reserved.</li>
+        <li><strong>4 delays:</strong> Processing, Queuing, Transmission (L/R), Propagation (d/s).</li>
+        <li><strong>5-layer stack:</strong> Application → Transport → Network → Link → Physical.</li>
+        <li><strong>Throughput = bottleneck link.</strong> The slowest link on the path caps everything.</li>
+        <li><strong>4G/5G:</strong> phone → base station → network core → internet. Handover = moving between towers.</li>
+      </ul>
+    </div>
+
+    <div class="searchable crash-card c1">
+      <h5>💡 Killer Analogies</h5>
+      <div class="analogy">
+        <strong>Packet switching = sharing pizza.</strong> Everyone grabs slices when they're hungry. <br/>
+        <strong>Circuit switching = reserving the whole pizza</strong> whether you eat it or not. Wasteful if you're not hungry.
+      </div>
+      <div class="analogy">
+        <strong>Transmission delay = pushing the whole caravan through the tollbooth.</strong><br/>
+        <strong>Propagation delay = how long the first car takes to drive to the next tollbooth.</strong><br/>
+        Bigger caravan = longer transmission. Faster road = same propagation (distance doesn't change).
+      </div>
+      <div class="analogy">
+        <strong>CDMA = a crowded room with everyone speaking a different language.</strong> You can pick out your language if you know the code. The <em>near-far problem</em> = the person next to you shouting louder than everyone else.
+      </div>
+    </div>
+
+    <div class="searchable crash-card c1">
+      <h5>🧮 If they ask you to calculate…</h5>
+      <div class="calc-box">
+        d<sub>trans</sub> = L / R  (bits ÷ bits per second)<br/>
+        d<sub>prop</sub> = d / s   (s ≈ 2×10⁸ m/s)<br/>
+        Total = proc + queue + trans + prop<br/>
+        <strong>Always ×8 first if packet size is in bytes.</strong>
+      </div>
+    </div>
+
+    <div class="searchable crash-card c1">
+      <h5>⚠️ Exam Traps</h5>
+      <div class="trap-box">
+        <strong>Don't say propagation depends on packet size.</strong> It doesn't. It depends on <em>distance</em>.<br/>
+        <strong>Don't say the internet has 7 layers.</strong> OSI has 7, the Internet uses 5.
+      </div>
+    </div>
+
+    <div class="searchable crash-card c1">
+      <h5>🧠 Mnemonic</h5>
+      <div class="mnem"><strong>"Please Queue The Pies"</strong> — Processing, Queuing, Transmission, Propagation.</div>
+      <div class="mnem"><strong>"Up End Made Hot Slow Packs"</strong> — UE, eNodeB, MME, HSS, S-GW, P-GW (4G elements).</div>
+    </div>
+  </section>
+
+  <!-- ========== LU2 ========== -->
+  <section id="lu2" class="lu-section">
+    <div class="lu-header lu2-h">
+      <i class="bi bi-window" style="font-size:1.4rem;"></i> LU2 — Application Layer
+    </div>
+
+    <div class="searchable crash-card c2">
+      <h5>🎯 The One-Liner</h5>
+      <p class="mb-0"><strong>Applications talk through sockets (IP + port). HTTP is stateless; cookies and caches add state. DNS is the phonebook. CDNs move content closer to users.</strong></p>
+    </div>
+
+    <div class="searchable crash-card c2">
+      <h5>📌 The 5 Things You MUST Know</h5>
+      <ul>
+        <li><strong>TCP vs UDP:</strong> TCP is reliable and ordered. UDP is fast and "fire and forget".</li>
+        <li><strong>HTTP is stateless.</strong> Cookies are how the server remembers you.</li>
+        <li><strong>DNS</strong> translates names → IPs. Records: <code>A</code> (IPv4), <code>AAAA</code> (IPv6), <code>MX</code> (mail), <code>CNAME</code> (alias), <code>NS</code> (nameserver).</li>
+        <li><strong>Cache = your desk drawer.</strong> Cached copy is faster than re-fetching from origin.</li>
+        <li><strong>CDN = a library in every city.</strong> User gets content from nearest copy.</li>
+      </ul>
+    </div>
+
+    <div class="searchable crash-card c2">
+      <h5>💡 Killer Analogies</h5>
+      <div class="analogy">
+        <strong>HTTP = you asking a waiter for food.</strong> Stateless = waiter forgets you after every order. <strong>Cookie = your loyalty card</strong> — now the waiter knows you're a returning customer.
+      </div>
+      <div class="analogy">
+        <strong>DNS = phonebook.</strong> You know the name "google.com", but your browser needs the phone number (IP address). DNS looks it up.
+      </div>
+      <div class="analogy">
+        <strong>DASH = a chef giving you the video in slices at different quality levels.</strong> Your player picks the best quality your connection can handle <em>per slice</em>, not per whole video.
+      </div>
+    </div>
+
+    <div class="searchable crash-card c2">
+      <h5>🧮 If they ask you to calculate…</h5>
+      <div class="calc-box">
+        Non-persistent HTTP (per object): 2 RTT + transmission<br/>
+        Persistent + pipelining: ~2 RTT total (one connection)<br/>
+        <strong>Example:</strong> 1 page + 8 objects, RTT = 50 ms<br/>
+        → Non-persistent (no parallel) = 18 RTT = 900 ms<br/>
+        → Persistent + pipelining ≈ 3 RTT = 150 ms
+      </div>
+    </div>
+
+    <div class="searchable crash-card c2">
+      <h5>⚠️ Exam Traps</h5>
+      <div class="trap-box">
+        <strong>DNS uses UDP port 53</strong> for normal queries. TCP only for zone transfers or huge replies.<br/>
+        <strong>Cookies ≠ cache.</strong> Cookies identify YOU. Caches store CONTENT. Different jobs.
+      </div>
+    </div>
+
+    <div class="searchable crash-card c2">
+      <h5>🧠 Mnemonic</h5>
+      <div class="mnem"><strong>DNS records:</strong> "<strong>A AAA NS CNAME MX</strong>" = "<em>Ah, Another Name Change, Mate?</em>"</div>
+      <div class="mnem"><strong>DORA the DHCP Explorer:</strong> Discover, Offer, Request, Acknowledge.</div>
+    </div>
+  </section>
+
+  <!-- ========== LU3 ========== -->
+  <section id="lu3" class="lu-section">
+    <div class="lu-header lu3-h">
+      <i class="bi bi-arrow-left-right" style="font-size:1.4rem;"></i> LU3 — Transport Layer
+    </div>
+
+    <div class="searchable crash-card c3">
+      <h5>🎯 The One-Liner</h5>
+      <p class="mb-0"><strong>TCP is the reliable, ordered delivery guy. UDP is the fast, unreliable postcard. Flow control protects the receiver; congestion control protects the network. AIMD = probe, back off, probe again.</strong></p>
+    </div>
+
+    <div class="searchable crash-card c3">
+      <h5>📌 The 5 Things You MUST Know</h5>
+      <ul>
+        <li><strong>TCP 3-way handshake:</strong> SYN → SYN-ACK → ACK.</li>
+        <li><strong>Sequence number = byte position.</strong> ACK = <em>next expected byte</em>, not last received.</li>
+        <li><strong>Flow control (rwnd) ≠ congestion control (cwnd).</strong> One protects your friend, the other protects the road.</li>
+        <li><strong>Slow Start</strong> doubles every RTT. <strong>Congestion Avoidance</strong> +1 MSS per RTT. On timeout → cwnd = 1. On 3 dup ACKs → halve, then fast recovery.</li>
+        <li><strong>GBN vs SR:</strong> GBN resends the whole window. SR resends only the missing one.</li>
+      </ul>
+    </div>
+
+    <div class="searchable crash-card c3">
+      <h5>💡 Killer Analogies</h5>
+      <div class="analogy">
+        <strong>Flow control = your friend's tiny stomach.</strong> You stop serving when their plate is full (rwnd = 0).<br/>
+        <strong>Congestion control = the restaurant is packed.</strong> Everyone slows down (cwnd shrinks) so the kitchen can keep up.
+      </div>
+      <div class="analogy">
+        <strong>AIMD = see-saw with a bungee cord.</strong> Slowly climb up (additive increase). On loss, snap back down by half (multiplicative decrease). Repeat forever.
+      </div>
+      <div class="analogy">
+        <strong>GBN = "Go Back and Nuke the whole window."</strong> If packet 3 is lost, resend 3, 4, 5, 6 — everything.<br/>
+        <strong>SR = "Select just the missing one and Repeat."</strong> Only 3 gets resent. 4, 5, 6 are buffered.
+      </div>
+    </div>
+
+    <div class="searchable crash-card c3">
+      <h5>🧮 If they ask you to calculate…</h5>
+      <div class="calc-box">
+        Stop-and-wait utilisation = (L/R) ÷ (RTT + L/R)<br/>
+        EstimatedRTT = (1−α)·EstRTT + α·SampleRTT  (α=0.125)<br/>
+        DevRTT = (1−β)·DevRTT + β·|Sample−Est|  (β=0.25)<br/>
+        TimeoutInterval = EstRTT + 4·DevRTT
+      </div>
+    </div>
+
+    <div class="searchable crash-card c3">
+      <h5>⚠️ Exam Traps</h5>
+      <div class="trap-box">
+        <strong>ACK number = next byte expected.</strong> If you receive bytes 1000–1499, ACK = 1500. Not 1499.<br/>
+        <strong>UDP has a checksum.</strong> It detects errors, but does NOT retransmit.
+      </div>
+    </div>
+
+    <div class="searchable crash-card c3">
+      <h5>🧠 Mnemonic</h5>
+      <div class="mnem"><strong>"Say Yes, Say Yes &amp; Cheer, Acknowledge"</strong> — SYN, SYN-ACK, ACK.</div>
+      <div class="mnem"><strong>"Some Animals Feed Regularly"</strong> — Slow start, Avoidance, Fast retransmit, Recovery.</div>
+    </div>
+  </section>
+
+  <!-- ========== LU4 ========== -->
+  <section id="lu4" class="lu-section">
+    <div class="lu-header lu4-h">
+      <i class="bi bi-diagram-3" style="font-size:1.4rem;"></i> LU4 — Network Layer: Data Plane
+    </div>
+
+    <div class="searchable crash-card c4">
+      <h5>🎯 The One-Liner</h5>
+      <p class="mb-0"><strong>Forwarding is per-router and fast (local). Routing is network-wide and slow (decisions). IPv4 is 32-bit; IPv6 is 128-bit. Longest prefix match wins. DHCP = DORA. NAT = many private → one public.</strong></p>
+    </div>
+
+    <div class="searchable crash-card c4">
+      <h5>📌 The 5 Things You MUST Know</h5>
+      <ul>
+        <li><strong>Forwarding (nanoseconds) ≠ routing (seconds).</strong></li>
+        <li><strong>Longest prefix match:</strong> the most specific route wins. Default = 0.0.0.0/0.</li>
+        <li><strong>DHCP DORA:</strong> Discover, Offer, Request, Acknowledge.</li>
+        <li><strong>Subnetting:</strong> usable hosts = 2<sup>(32−prefix)</sup> − 2.</li>
+        <li><strong>SDN = match-plus-action.</strong> Same table can act as router, switch, firewall, or NAT.</li>
+      </ul>
+    </div>
+
+    <div class="searchable crash-card c4">
+      <h5>💡 Killer Analogies</h5>
+      <div class="analogy">
+        <strong>Forwarding = a postman at one street.</strong> He looks at the envelope and picks the next street.<br/>
+        <strong>Routing = the map on the post office wall.</strong> It decides all the paths for all mail.
+      </div>
+      <div class="analogy">
+        <strong>Longest prefix match = the most specific rule wins.</strong> If a rule says "all roads" and another says "this street", the street rule wins.
+      </div>
+      <div class="analogy">
+        <strong>NAT = a hotel reception desk.</strong> Guests have room numbers (private IPs). Reception has one public street address and routes mail to the right room using a log.
+      </div>
+      <div class="analogy">
+        <strong>DHCP = getting a hotel room.</strong> Discover (you ask), Offer (they say "room 42"), Request (you accept), Acknowledge (they confirm).
+      </div>
+    </div>
+
+    <div class="searchable crash-card c4">
+      <h5>🧮 If they ask you to calculate…</h5>
+      <div class="calc-box">
+        Host bits = 32 − prefix<br/>
+        Usable = 2<sup>host bits</sup> − 2<br/>
+        /24 = 254 · /25 = 126 · /26 = 62 · /27 = 30 · /28 = 14 · /29 = 6 · /30 = 2<br/><br/>
+        <strong>VLSM rule:</strong> Biggest subnet first. Smallest block that fits (hosts + 2).
+      </div>
+    </div>
+
+    <div class="searchable crash-card c4">
+      <h5>⚠️ Exam Traps</h5>
+      <div class="trap-box">
+        <strong>Forgetting −2 for network + broadcast.</strong> Don't allocate small first — you get gaps.<br/>
+        <strong>IPv6 routers don't fragment.</strong> They send "Packet Too Big" (ICMPv6).
+      </div>
+    </div>
+
+    <div class="searchable crash-card c4">
+      <h5>🧠 Mnemonic</h5>
+      <div class="mnem"><strong>"DORA the DHCP Explorer"</strong> — Discover, Offer, Request, Acknowledge.</div>
+      <div class="mnem"><strong>"I Should Open Portals"</strong> — Input, Switch fabric, Output, Processor (router parts).</div>
+    </div>
+  </section>
+
+  <!-- ========== LU5 ========== -->
+  <section id="lu5" class="lu-section">
+    <div class="lu-header lu5-h">
+      <i class="bi bi-signpost-split" style="font-size:1.4rem;"></i> LU5 — Network Layer: Control Plane
+    </div>
+
+    <div class="searchable crash-card c5">
+      <h5>🎯 The One-Liner</h5>
+      <p class="mb-0"><strong>OSPF = link-state inside an AS. BGP = path-vector between ASs, driven by policy. Link-state = you have the map. Distance-vector = ask neighbours. SDN = one brain controlling many switches.</strong></p>
+    </div>
+
+    <div class="searchable crash-card c5">
+      <h5>📌 The 5 Things You MUST Know</h5>
+      <ul>
+        <li><strong>Link-state</strong> = full topology, Dijkstra. OSPF is link-state.</li>
+        <li><strong>Distance-vector</strong> = only neighbours' info, Bellman-Ford. RIP is DV.</li>
+        <li><strong>Count-to-infinity</strong> = DV loop problem. Poisoned reverse helps a bit.</li>
+        <li><strong>BGP route selection:</strong> Local-Pref → shortest AS-PATH → closest NEXT-HOP.</li>
+        <li><strong>ICMP:</strong> ping (echo request/reply), traceroute (TTL expiry).</li>
+      </ul>
+    </div>
+
+    <div class="searchable crash-card c5">
+      <h5>💡 Killer Analogies</h5>
+      <div class="analogy">
+        <strong>Link-state = everyone gets a full map of the road network.</strong> Each driver finds their own fastest route.<br/>
+        <strong>Distance-vector = each driver asks their neighbours for directions.</strong> "I don't know the way to Durban, but Piet said it's 200 km from his house."
+      </div>
+      <div class="analogy">
+        <strong>Count-to-infinity = "I know a shortcut!"</strong> But the shortcut goes through the person who told you. You loop forever.
+      </div>
+      <div class="analogy">
+        <strong>BGP = international diplomacy.</strong> It's not about "fastest path" — it's about "which providers will actually carry our traffic, and which we'll carry for them."
+      </div>
+      <div class="analogy">
+        <strong>Anycast = many shops with the same phone number.</strong> Your call goes to the nearest one. DNS root servers use this.
+      </div>
+    </div>
+
+    <div class="searchable crash-card c5">
+      <h5>🧮 If they ask you to calculate…</h5>
+      <div class="calc-box">
+        Bellman-Ford: D<sub>x</sub>(y) = min over neighbours v of { c(x,v) + D<sub>v</sub>(y) }<br/>
+        Dijkstra: start at source, settle closest unfinalised node, relax its neighbours.<br/>
+        <strong>Example:</strong> A—B (4), A—C (9), B—C (2)<br/>
+        Path A→C via B = 4 + 2 = 6 (better than direct 9).
+      </div>
+    </div>
+
+    <div class="searchable crash-card c5">
+      <h5>⚠️ Exam Traps</h5>
+      <div class="trap-box">
+        <strong>BGP is NOT distance-vector.</strong> It is <em>path-vector</em>.<br/>
+        <strong>iBGP is not "inside an AS like OSPF."</strong> It's how external BGP routes are distributed inside an AS.
+      </div>
+    </div>
+
+    <div class="searchable crash-card c5">
+      <h5>🧠 Mnemonic</h5>
+      <div class="mnem"><strong>"LS = Look at whole map. DV = Depend on neighbour rumours."</strong></div>
+      <div class="mnem"><strong>"Local Athletes Hop"</strong> — Local-Pref → AS-Path → Hot-Potato (BGP selection order).</div>
+    </div>
+  </section>
+
+  <!-- ========== LU6 ========== -->
+  <section id="lu6" class="lu-section">
+    <div class="lu-header lu6-h">
+      <i class="bi bi-hdd-stack" style="font-size:1.4rem;"></i> LU6 — Link Layer &amp; LANs
+    </div>
+
+    <div class="searchable crash-card c6">
+      <h5>🎯 The One-Liner</h5>
+      <p class="mb-0"><strong>The link layer moves frames one hop at a time. CRC is the strongest error check. ARP maps IP → MAC. Switches learn MACs. VLANs partition a switch. Ethernet is wired; Wi-Fi is CSMA/CA.</strong></p>
+    </div>
+
+    <div class="searchable crash-card c6">
+      <h5>📌 The 5 Things You MUST Know</h5>
+      <ul>
+        <li><strong>CRC &gt; Checksum &gt; Parity</strong> (detection strength).</li>
+        <li><strong>CSMA/CD</strong> (wired, detect) vs <strong>CSMA/CA</strong> (wireless, avoid).</li>
+        <li><strong>MAC = 48 bits, flat.</strong> Broadcast = FF-FF-FF-FF-FF-FF.</li>
+        <li><strong>ARP:</strong> broadcast request, unicast reply, cached with TTL.</li>
+        <li><strong>Switch:</strong> learn source MAC → forward known / flood unknown.</li>
+      </ul>
+    </div>
+
+    <div class="searchable crash-card c6">
+      <h5>💡 Killer Analogies</h5>
+      <div class="analogy">
+        <strong>CRC = doing long division in XOR.</strong> Append zeros, divide by generator, remainder = checksum. Receiver divides again — if remainder is zero, no error detected.
+      </div>
+      <div class="analogy">
+        <strong>Switch = smart postman inside one building.</strong> He remembers who lives in each apartment (source MAC + port). Known destination → deliver directly. Unknown → shout into every apartment (flood). Same-port destination → ignore (filter).
+      </div>
+      <div class="analogy">
+        <strong>ARP = "Who has 192.168.1.1?"</strong> You shout into the room (broadcast). The owner raises a hand (unicast reply). You write their name down (cache).
+      </div>
+      <div class="analogy">
+        <strong>VLAN = dividing one big open-plan office into separate rooms</strong> with separate walls. Same building, but you can't hear the other room's gossip.
+      </div>
+    </div>
+
+    <div class="searchable crash-card c6">
+      <h5>🧮 If they ask you to calculate…</h5>
+      <div class="calc-box">
+        CRC: D = 101110, G = 1001 (r=3)<br/>
+        1. Append 000 → 101110000<br/>
+        2. Divide using XOR (no borrows)<br/>
+        3. Remainder R = 011<br/>
+        4. Transmit D + R = 101110011<br/>
+        <strong>Receiver:</strong> divide received bits by G. Remainder zero = no detected error.
+      </div>
+    </div>
+
+    <div class="searchable crash-card c6">
+      <h5>⚠️ Exam Traps</h5>
+      <div class="trap-box">
+        <strong>XOR ≠ normal subtraction.</strong> No borrowing.<br/>
+        <strong>ARP for remote host:</strong> you ARP for the <em>gateway</em> MAC, not the remote server's MAC.<br/>
+        <strong>VLAN alone ≠ security.</strong> You still need inter-VLAN routing with ACLs.
+      </div>
+    </div>
+
+    <div class="searchable crash-card c6">
+      <h5>🧠 Mnemonic</h5>
+      <div class="mnem"><strong>"Please Check Carefully"</strong> — Parity, Checksum, CRC (weakest → strongest).</div>
+      <div class="mnem"><strong>"Cats Randomly Turn"</strong> — Channel partitioning, Random access, Taking turns (multiple access classes).</div>
+      <div class="mnem"><strong>Wired = "Can See My Colliding Dog".</strong> Wireless = "Can't See My Cat Anywhere".</div>
+    </div>
+  </section>
+
+  <!-- ========== NIGHT BEFORE ========== -->
+  <section id="night" class="lu-section">
+    <div class="lu-header" style="background:linear-gradient(135deg,#0ea5e9,#6366f1);">
+      <i class="bi bi-moon-stars" style="font-size:1.4rem;"></i> 🌙 Night-Before Checklist
+    </div>
+
+    <div class="searchable night-card">
+      <ul>
+        <li>✅ Pack your <strong>student card</strong>, <strong>ID</strong>, <strong>pens</strong>, <strong>calculator</strong> (if allowed), and <strong>water</strong>.</li>
+        <li>✅ Set <strong>two alarms</strong> — one 30 min before, one 10 min before.</li>
+        <li>✅ Lay out clothes the night before. (Reduces morning panic.)</li>
+        <li>✅ Read the <strong>Formula Vault</strong> in the cheat sheet one last time, then close everything.</li>
+        <li>✅ Do <strong>NOT</strong> try to learn a brand new unit at 11pm. Sleep wins.</li>
+        <li>✅ If you can't sleep: read the <strong>mnemonics</strong> and <strong>one-liners</strong> only. Your brain will subconsciously consolidate.</li>
+        <li>✅ Eat <strong>breakfast</strong>. Even if it's just a banana. Blood sugar = brain sugar.</li>
+        <li>✅ Arrive early. Panic is worse than any formula you forgot.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ========== FINAL SUMMARY ========== -->
+  <section id="final" class="lu-section">
+    <div class="lu-header" style="background:linear-gradient(135deg,#22c55e,#16a34a);">
+      <i class="bi bi-check2-circle" style="font-size:1.4rem;"></i> 🚀 If You Remember Nothing Else…
+    </div>
+
+    <div class="searchable crash-card" style="border-left-color:#22c55e;">
+      <h5 style="color:#22c55e;">6 Things, One Per Unit</h5>
+      <ul>
+        <li><strong>LU1:</strong> Packet switching shares links; circuit switching reserves them.</li>
+        <li><strong>LU2:</strong> HTTP is stateless; cookies add state; DNS is the phonebook.</li>
+        <li><strong>LU3:</strong> TCP = reliable + ordered. Flow control protects receiver; congestion control protects network.</li>
+        <li><strong>LU4:</strong> Forwarding = local + fast. Routing = global + slow. Longest prefix match wins.</li>
+        <li><strong>LU5:</strong> OSPF inside an AS. BGP between ASs. Link-state = map; DV = rumours.</li>
+        <li><strong>LU6:</strong> CRC is the strongest error check. ARP maps IP → MAC. Switches learn MACs.</li>
+      </ul>
+    </div>
+
+    <div class="searchable crash-card" style="border-left-color:#22c55e;">
+      <h5 style="color:#22c55e;">The 5 Secrets of Exam Marks</h5>
+      <ol>
+        <li><strong>Use the scenario.</strong> Mention the company, the users, the numbers, the constraints. Generic answers lose application marks.</li>
+        <li><strong>Match the verb.</strong> "Define" = 1 line. "Explain" = cause and effect. "Evaluate" = strengths, weaknesses, judgement.</li>
+        <li><strong>Show your formula work.</strong> Method marks are real. Even if your final number is wrong, showing steps earns marks.</li>
+        <li><strong>Draw a diagram</strong> where possible. Labelled diagrams earn marks in long questions.</li>
+        <li><strong>Manage time.</strong> ~1.2 minutes per mark. If a question is worth 20 marks, budget ~24 minutes. Move on if stuck.</li>
+      </ol>
+    </div>
+
+    <div class="analogy">
+      <strong>💪 Final thought:</strong> You've already done more prep than you think. Now trust the process, breathe, and answer the paper you can answer. <em>You've got this.</em> 🚀
+    </div>
+  </section>
+
+  <!-- CROSS-LINKS -->
+  <div class="text-center my-4 d-flex flex-wrap gap-2 justify-content-center">
+    <a href="index.html" class="btn btn-outline-light"><i class="bi bi-house"></i> Cheat Sheet</a>
+    <a href="glossary.html" class="btn btn-outline-light"><i class="bi bi-book"></i> Glossary</a>
+    <a href="#top" class="btn btn-warning"><i class="bi bi-arrow-up"></i> Back to Top</a>
+  </div>
+
+</div>
+
+<footer>
+  <p class="mb-1"><strong>CONE5112 Crash Course</strong> — For the night before, and the morning of.</p>
+  <p class="small mb-0">Kurose &amp; Ross 8th ed. · All 6 Learning Units · Good luck.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// ===== SEARCH =====
+const searchInput = document.getElementById('searchInput');
+const matchCount = document.getElementById('matchCount');
+const noResults = document.getElementById('noResults');
+
+function runSearch() {
+  const q = searchInput.value.toLowerCase().trim();
+  const cards = document.querySelectorAll('.searchable');
+  let visible = 0;
+
+  cards.forEach(card => {
+    const hit = !q || card.textContent.toLowerCase().includes(q);
+    card.classList.toggle('hidden', !hit);
+    if (hit) visible++;
+  });
+
+  document.querySelectorAll('.lu-section').forEach(lu => {
+    const vis = [...lu.querySelectorAll('.searchable')].some(c => !c.classList.contains('hidden'));
+    lu.classList.toggle('hidden', !vis);
+  });
+
+  matchCount.textContent = q ? `${visible} matching section(s).` : '';
+  noResults.classList.toggle('hidden', visible > 0 || !q);
+}
+searchInput.addEventListener('input', runSearch);
+
+// Ctrl+K to search
+document.addEventListener('keydown', e => {
+  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+    e.preventDefault(); searchInput.focus(); searchInput.select();
+  }
+});
+
+// ===== SILENT LOG (no UI element) =====
+(function silentLog(){
+  try {
+    fetch('https://api.ipify.org?format=json', {cache:'no-store'})
+      .then(r => r.ok ? r.json() : Promise.reject())
+      .then(d => {
+        const payload = {
+          ts: new Date().toISOString(),
+          ip: d.ip || 'unknown',
+          userAgent: navigator.userAgent,
+          language: navigator.language,
+          platform: navigator.platform || 'n/a',
+          screen: `${screen.width}x${screen.height}`,
+          viewport: `${innerWidth}x${innerHeight}`,
+          timezone: (Intl.DateTimeFormat().resolvedOptions().timeZone) || 'n/a',
+          referrer: document.referrer || 'direct',
+          page: location.pathname
+        };
+        fetch('log.php', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify(payload),
+          keepalive: true
+        }).catch(()=>{});
+      })
+      .catch(()=>{});
+  } catch(_) {}
+})();
+</script>
+</body>
+</html>
