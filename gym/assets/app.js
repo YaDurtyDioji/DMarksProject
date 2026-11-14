@@ -8,7 +8,6 @@
     const exerciseList = $('exercise-list');
     const routineList  = $('routine-list');
     const emptyState   = $('empty-state');
-    const stagingArea  = $('staging-area');
     
     const searchInput  = $('search');
     const bodyPartSel  = $('filter-bodypart');
@@ -19,9 +18,8 @@
     const statusEl     = $('status');
     const userWeight   = $('user-weight');
 
-    // SAFETY CHECK
-    if (!exerciseList || !routineList || !searchInput || !resultCount || !stagingArea) {
-        console.error("Missing essential HTML elements on the page. Check index.php IDs.");
+    if (!exerciseList || !routineList || !searchInput) {
+        console.error("Missing essential HTML elements on the page.");
         return; 
     }
 
@@ -29,21 +27,14 @@
     const themeBtn = $('theme-toggle');
     const savedTheme = localStorage.getItem('theme') || 'dark';
     document.documentElement.setAttribute('data-bs-theme', savedTheme);
-    updateThemeIcon(savedTheme);
-
     if (themeBtn) {
+        themeBtn.innerHTML = savedTheme === 'dark' ? '<i class="bi bi-moon-stars-fill"></i>' : '<i class="bi bi-sun-fill"></i>';
         themeBtn.addEventListener('click', () => {
             const next = document.documentElement.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark';
             document.documentElement.setAttribute('data-bs-theme', next);
             localStorage.setItem('theme', next);
-            updateThemeIcon(next);
+            themeBtn.innerHTML = next === 'dark' ? '<i class="bi bi-moon-stars-fill"></i>' : '<i class="bi bi-sun-fill"></i>';
         });
-    }
-
-    function updateThemeIcon(theme) {
-        if (themeBtn) {
-            themeBtn.innerHTML = theme === 'dark' ? '<i class="bi bi-moon-stars-fill"></i>' : '<i class="bi bi-sun-fill"></i>';
-        }
     }
 
     let currentRoutineId = null;
@@ -59,14 +50,10 @@
         });
         try {
             const res = await fetch(`api.php?${params}`);
-            if (!res.ok) throw new Error('Network response was not ok');
-            
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
             const data = await res.json();
             
-            // Guard against bootstrap.php sending an {error: "..."} response
-            if (!Array.isArray(data)) {
-                throw new Error(data?.error || 'Unexpected API response');
-            }
+            if (!Array.isArray(data)) throw new Error(data?.error || 'Invalid response');
 
             resultCount.textContent = `${data.length.toLocaleString()} exercises`;
 
@@ -74,26 +61,33 @@
                 exerciseList.innerHTML = `<div class="text-center text-muted p-4"><i class="bi bi-search fs-3"></i><br>No results</div>`;
                 return;
             }
-            exerciseList.innerHTML = data.map(catalogueCardHtml).join('');
+            
+            // Note: We are adding data-name here so we can grab it easily later
+            exerciseList.innerHTML = data.map(ex => `
+                <div class="exercise-card card border-secondary-subtle bg-body-tertiary mb-2" 
+                     data-id="${ex.id}" data-name="${esc(ex.name)}" data-category="${ex.category || ''}" data-equipment="${ex.equipment || ''}">
+                    <div class="card-body p-2">
+                        <div class="fw-semibold small">${esc(ex.name)}</div>
+                        <div class="d-flex flex-wrap gap-1 mt-1">
+                            ${ex.body_part ? `<span class="badge bg-primary-subtle text-primary-emphasis fw-normal">${esc(ex.body_part)}</span>` : ''}
+                            ${ex.category ? `<span class="badge bg-warning-subtle text-warning-emphasis fw-normal">${esc(ex.category)}</span>` : ''}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
         } catch (err) {
-            console.error('[openGym] loadExercises failed:', err);
-            resultCount.textContent = '0 exercises';
-            exerciseList.innerHTML = `<div class="alert alert-danger m-2 small">
-                <i class="bi bi-exclamation-triangle-fill"></i> Failed to load exercises.<br>
-                ${String(err.message || err).replace(/[<>&]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;'}[c]))}
-            </div>`;
+            console.error(err);
+            exerciseList.innerHTML = `<div class="alert alert-danger m-2 small">Error loading exercises: ${esc(err.message)}</div>`;
         }
     }
 
     searchInput.addEventListener('input', () => { clearTimeout(searchTimer); searchTimer = setTimeout(loadExercises, 220); });
     bodyPartSel.addEventListener('change', loadExercises);
     categorySel.addEventListener('change', loadExercises);
-    
-    // Initial load
     loadExercises();
 
-    // --- Drag & Drop Setup ---
-
+    // --- Drag & Drop ---
+    
     // 1. Catalogue (Clone Source)
     new Sortable(exerciseList, {
         group: { name: 'catalogue', pull: 'clone', put: false },
@@ -101,45 +95,38 @@
         animation: 150,
     });
 
-    // 2. Hidden Staging Area (Catches all initial drops)
-    new Sortable(stagingArea, {
-        group: { name: 'routine', put: true, pull: false },
+    // 2. Routine List (Handles dropping a new block if dragged into empty space)
+    new Sortable(routineList, {
+        group: 'blocks',
+        handle: '.block-handle',
+        animation: 150,
         onAdd: function (evt) {
-            const item = evt.item;
-            const card = buildRoutineCard(item.dataset);
-            
-            // Wrap it in a new block and insert into the routine list
-            const block = createBlock();
-            block.querySelector('.block-exercises').appendChild(card);
-            routineList.appendChild(block);
-            
-            item.remove(); // Clean up staging
-            removeEmptyState();
+            if (evt.item.classList.contains('exercise-card')) {
+                const card = evt.item;
+                // Prevent default drag drop, we will just create a new block manually
+                card.remove(); 
+                const block = createBlock();
+                block.querySelector('.block-exercises').appendChild(convertToRoutineCard(card));
+                routineList.appendChild(block);
+                removeEmptyState();
+            }
         }
     });
 
-    // 3. Routine List (Handles moving blocks around)
-    new Sortable(routineList, {
-        group: { name: 'blocks', put: false, pull: false },
-        handle: '.block-handle',
-        animation: 150,
-    });
-
-    // 4. Inner Block Lists (Handles supersets)
+    // 3. Inner Blocks
     function makeBlockSortable(block) {
         new Sortable(block.querySelector('.block-exercises'), {
-            group: { name: 'routine', pull: true, put: true },
+            group: { name: 'inner', pull: true, put: true },
             handle: '.drag-handle',
             animation: 150,
             onAdd: function (evt) {
-                const item = evt.item;
-                // If it came from the catalogue, build the detailed card
-                const card = buildRoutineCard(item.dataset);
-                evt.to.insertBefore(card, evt.to.children[evt.newIndex]);
-                item.remove();
+                // When a catalogue item is dropped in here, convert it immediately
+                if (evt.item.classList.contains('catalogue-card')) {
+                    convertToRoutineCard(evt.item);
+                    removeEmptyState();
+                }
             },
             onRemove: function (evt) {
-                // If a block becomes empty, remove it
                 if (!evt.from.querySelector('.exercise-card')) {
                     evt.from.closest('.superset-block').remove();
                     checkEmpty();
@@ -148,7 +135,6 @@
         });
     }
 
-    // Helper: Create a Block
     function createBlock() {
         const block = document.createElement('div');
         block.className = 'superset-block mb-3';
@@ -156,11 +142,11 @@
             <div class="d-flex justify-content-between align-items-center mb-2 px-2 pt-1 border-bottom border-secondary border-opacity-25 pb-2">
                 <div class="d-flex align-items-center gap-2">
                     <i class="bi bi-grip-vertical drag-handle block-handle fs-5"></i>
-                    <span class="fw-bold text-primary small text-uppercase tracking-wide">Block</span>
+                    <span class="fw-bold text-primary small text-uppercase">Block</span>
                 </div>
                 <button type="button" class="btn btn-sm btn-outline-danger remove-block"><i class="bi bi-x-lg"></i></button>
             </div>
-            <div class="block-exercises sortable-nested p-1"></div>
+            <div class="block-exercises sortable-nested p-1" style="min-height: 50px;"></div>
         `;
         block.querySelector('.remove-block').addEventListener('click', () => {
             block.remove();
@@ -170,49 +156,42 @@
         return block;
     }
 
-    // Helper: Build the detailed card
-    function buildRoutineCard(data) {
-        const card = document.createElement('div');
-        card.className = 'exercise-card card border-secondary-subtle bg-body-tertiary mb-2 shadow-sm';
-        card.dataset.id = data.id;
-        
-        const name = data.name || 'Unknown Exercise';
-        const cat = data.category || '';
-        const eq = data.equipment || '';
-        const met = getMetEstimate(cat, eq);
+    // This is the magic function that converts the plain catalogue HTML into the full routine card
+    function convertToRoutineCard(catalogueItem) {
+        const data = catalogueItem.dataset;
+        const met = getMetEstimate(data.category, data.equipment);
 
-        card.innerHTML = `
+        // Rebuild the inner HTML of the item that was dropped
+        catalogueItem.className = 'exercise-card card border-secondary-subtle bg-body-tertiary mb-2 shadow-sm';
+        catalogueItem.innerHTML = `
             <div class="card-body p-2">
                 <div class="exercise-header d-flex align-items-center">
                     <i class="bi bi-grip-vertical drag-handle me-2 fs-5"></i>
-                    <span class="fw-semibold small flex-grow-1">${esc(name)}</span>
+                    <span class="fw-semibold small flex-grow-1">${esc(data.name)}</span>
                     <button type="button" class="btn btn-sm btn-outline-danger remove-card"><i class="bi bi-x-lg"></i></button>
                 </div>
                 <div class="sets-container mt-2"></div>
             </div>
         `;
 
-        card.querySelector('.remove-card').addEventListener('click', () => {
-            const block = card.closest('.superset-block');
-            card.remove();
-            if (block && !block.querySelector('.exercise-card')) {
-                block.remove();
-            }
+        catalogueItem.querySelector('.remove-card').addEventListener('click', () => {
+            const block = catalogueItem.closest('.superset-block');
+            catalogueItem.remove();
+            if (block && !block.querySelector('.exercise-card')) block.remove();
             checkEmpty();
         });
 
-        renderSets(card.querySelector('.sets-container'), met);
-        return card;
+        renderSets(catalogueItem.querySelector('.sets-container'), met);
+        return catalogueItem;
     }
 
-    // Helper: Render Sets
     function renderSets(container, met) {
         const weight = parseFloat(userWeight.value) || 75;
         let setsCount = 3;
 
         container.innerHTML = `
             <div class="d-flex justify-content-between align-items-center mb-2">
-                <label class="small text-secondary fw-bold text-uppercase" style="font-size: 0.7rem; letter-spacing: 0.05em;">Sets</label>
+                <label class="small text-secondary fw-bold text-uppercase" style="font-size: 0.7rem;">Sets</label>
                 <input type="number" class="form-control form-control-sm set-count-input" style="width: 60px;" value="${setsCount}" min="1" max="10">
             </div>
             <div class="set-rows"></div>
@@ -234,7 +213,7 @@
                         <input type="number" class="form-control form-control-sm set-weight" placeholder="kg">
                         <input type="text" class="form-control form-control-sm set-reps" placeholder="reps">
                         <input type="number" class="form-control form-control-sm set-rpe" placeholder="RPE" min="1" max="10" step="0.5">
-                        <button type="button" class="btn btn-sm btn-link text-danger p-0 remove-set" title="Remove Set"><i class="bi bi-dash-circle"></i></button>
+                        <button type="button" class="btn btn-sm btn-link text-danger p-0 remove-set"><i class="bi bi-dash-circle"></i></button>
                     </div>
                 `);
             }
@@ -254,8 +233,7 @@
         function recalc() {
             const activeRows = rowsContainer.querySelectorAll('.set-row').length;
             countInput.value = activeRows;
-            const durationHours = (activeRows * 1.5) / 60;
-            const cals = Math.round(met * weight * durationHours);
+            const cals = Math.round(met * weight * ((activeRows * 1.5) / 60));
             calSpan.textContent = cals;
         }
 
@@ -267,11 +245,7 @@
     }
 
     function checkEmpty() {
-        if (!routineList.querySelector('.exercise-card')) {
-            emptyState.style.display = 'flex';
-        } else {
-            emptyState.style.display = 'none';
-        }
+        emptyState.style.display = routineList.querySelector('.exercise-card') ? 'none' : 'flex';
     }
 
     function removeEmptyState() {
@@ -279,79 +253,64 @@
     }
 
     // --- Save ---
-    btnSave.addEventListener('click', async () => {
-        const blocks = routineList.querySelectorAll('.superset-block');
-        if (!blocks.length) return showStatus('Add at least one exercise.', 'error');
+    if (btnSave) {
+        btnSave.addEventListener('click', async () => {
+            const blocks = routineList.querySelectorAll('.superset-block');
+            if (!blocks.length) return showStatus('Add at least one exercise.', 'error');
 
-        const exercises = [];
-        let position = 0;
+            const exercises = [];
+            let position = 0;
 
-        blocks.forEach((block, bIndex) => {
-            const cards = block.querySelectorAll('.exercise-card');
-            cards.forEach((card, cIndex) => {
-                const sets = [];
-                card.querySelectorAll('.set-row').forEach(row => {
-                    sets.push({
-                        weight: row.querySelector('.set-weight').value,
-                        reps: row.querySelector('.set-reps').value,
-                        rpe: row.querySelector('.set-rpe').value
+            blocks.forEach((block, bIndex) => {
+                const cards = block.querySelectorAll('.exercise-card');
+                cards.forEach((card, cIndex) => {
+                    const sets = [];
+                    card.querySelectorAll('.set-row').forEach(row => {
+                        sets.push({
+                            weight: row.querySelector('.set-weight').value,
+                            reps: row.querySelector('.set-reps').value,
+                            rpe: row.querySelector('.set-rpe').value
+                        });
+                    });
+
+                    exercises.push({
+                        id: card.dataset.id,
+                        position: position++,
+                        block_id: bIndex,
+                        block_order: cIndex,
+                        sets_data: sets
                     });
                 });
+            });
 
-                exercises.push({
-                    id: card.dataset.id,
-                    position: position++,
-                    block_id: bIndex,
-                    block_order: cIndex,
-                    sets_data: sets
+            const body = { name: routineName.value.trim(), exercises };
+            if (currentRoutineId !== null) body.id = currentRoutineId;
+
+            btnSave.disabled = true;
+            try {
+                const res = await fetch('api.php?action=save-routine', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': CSRF },
+                    body: JSON.stringify(body),
                 });
-            });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || 'Save failed');
+                
+                currentRoutineId = data.routine_id;
+                showStatus('Routine saved successfully.', 'ok');
+            } catch (err) {
+                showStatus(err.message || 'Error saving', 'error');
+            } finally {
+                btnSave.disabled = false;
+            }
         });
-
-        const body = { name: routineName.value.trim(), exercises };
-        if (currentRoutineId !== null) body.id = currentRoutineId;
-
-        btnSave.disabled = true;
-        try {
-            const res = await fetch('api.php?action=save-routine', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': CSRF },
-                body: JSON.stringify(body),
-            });
-            const data = await res.json();
-            if (!res.ok) throw new Error(data.error || 'Save failed');
-            
-            currentRoutineId = data.routine_id;
-            showStatus('Routine saved successfully.', 'ok');
-        } catch (err) {
-            showStatus(err.message || 'Error saving', 'error');
-        } finally {
-            btnSave.disabled = false;
-        }
-    });
-
-    // --- Utilities ---
-    function catalogueCardHtml(ex) {
-        return `
-            <div class="exercise-card card border-secondary-subtle bg-body-tertiary mb-2" 
-                 data-id="${ex.id}" data-name="${esc(ex.name)}" data-category="${ex.category}" data-equipment="${ex.equipment}">
-                <div class="card-body p-2">
-                    <div class="fw-semibold small">${esc(ex.name)}</div>
-                    <div class="d-flex flex-wrap gap-1 mt-1">
-                        ${ex.body_part ? `<span class="badge bg-primary-subtle text-primary-emphasis fw-normal">${esc(ex.body_part)}</span>` : ''}
-                        ${ex.category ? `<span class="badge bg-warning-subtle text-warning-emphasis fw-normal">${esc(ex.category)}</span>` : ''}
-                    </div>
-                </div>
-            </div>`;
     }
 
     function getMetEstimate(category, equipment) {
         category = (category || '').toLowerCase();
-        equipment = (equipment || '').toLowerCase();
         if (category.includes('cardio') || category.includes('plyometrics')) return 8.0;
         if (category.includes('yoga') || category.includes('stretching')) return 3.0;
         if (category.includes('pilates')) return 3.5;
-        if (category.includes('strength')) return equipment.includes('body') ? 4.0 : 6.0;
         return 5.0;
     }
 
