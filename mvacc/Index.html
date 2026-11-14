@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>MV Accounting | Professional Accounting, Tax & Payroll Services</title>
+     <meta name="description"
+          content="MV Accounting provides efficient, professional accounting and tax services for companies, CCs, Trusts and individuals — VAT, payroll, financial statements, independent reviews, income tax and secretarial services.">
+     <meta name="keywords"
+          content="accounting, tax services, VAT, payroll, financial statements, independent review, income tax, company registration, MV Accounting">
+     <meta name="author" content="MV Accounting">
+     <meta name="robots" content="index, follow">
+     <link rel="canonical" href="https://www.mvaccounting.co.za/">
+
+     <!-- Theme -->
+     <meta name="theme-color" content="#5092af">
+     <link rel="icon" type="image/png" href="https://dmarksproject.co.za/mvacc/MV_logo.png">
+     <link rel="apple-touch-icon" href="https://dmarksproject.co.za/mvacc/MV_logo.png">
+
+     <!-- Open Graph -->
+     <meta property="og:type" content="website">
+     <meta property="og:site_name" content="MV Accounting">
+     <meta property="og:title" content="MV Accounting | Professional Accounting, Tax & Payroll Services">
+     <meta property="og:description"
+          content="Efficient, professional accounting and tax services for companies, CCs, Trusts and individuals.">
+     <meta property="og:image" content="https://dmarksproject.co.za/mvacc/MV_logo.png">
+     <meta property="og:url" content="https://www.mvaccounting.co.za/">
+     <meta property="og:locale" content="en_ZA">
+
+     <!-- Twitter / X Card -->
+     <meta name="twitter:card" content="summary_large_image">
+     <meta name="twitter:title" content="MV Accounting | Professional Accounting, Tax & Payroll Services">
+     <meta name="twitter:description"
+          content="Efficient, professional accounting and tax services for companies, CCs, Trusts and individuals.">
+     <meta name="twitter:image" content="https://dmarksproject.co.za/mvacc/MV_logo.png">
+
+     <!-- Structured data -->
+     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AccountingService",
+  "name": "MV Accounting",
+  "image": "https://dmarksproject.co.za/mvacc/MV_logo.png",
+  "url": "https://www.mvaccounting.co.za/",
+  "telephone": "+27-00-000-0000",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "PLACEHOLDER STREET ADDRESS",
+    "addressLocality": "PLACEHOLDER CITY",
+    "addressRegion": "PLACEHOLDER PROVINCE",
+    "postalCode": "0000",
+    "addressCountry": "ZA"
+  }
+}
+</script>
+
+     <!-- Bootstrap 5.2.x -->
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" rel="stylesheet">
+     <!-- Icons -->
+     <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+     <!-- Fonts -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+     <style>
+          :root {
+               --mv-teal: #5092af;
+               --mv-teal-dark: #3d7690;
+               --mv-teal-light: #dcebf0;
+               --mv-ink: #0f0f0f;
+               --mv-white: #ffffff;
+               --mv-off: #f7fafb;
+          }
+
+          * {
+               scroll-behavior: smooth;
+          }
+
+          body {
+               font-family: 'Inter', sans-serif;
+               color: var(--mv-ink);
+               background: var(--mv-white);
+               overflow-x: hidden;
+          }
+
+          h1,
+          h2,
+          h3,
+          h4,
+          .brand-font {
+               font-family: 'Fraunces', serif;
+          }
+
+          a {
+               text-decoration: none;
+          }
+
+          ::selection {
+               background: var(--mv-teal);
+               color: #fff;
+          }
+
+          /* ---------- Scrollbar accent ---------- */
+          ::-webkit-scrollbar {
+               width: 10px;
+          }
+
+          ::-webkit-scrollbar-track {
+               background: var(--mv-off);
+          }
+
+          ::-webkit-scrollbar-thumb {
+               background: var(--mv-teal);
+               border-radius: 10px;
+          }
+
+          /* ---------- Navbar ---------- */
+          .navbar {
+               background: rgba(255, 255, 255, 0.85);
+               backdrop-filter: blur(10px);
+               -webkit-backdrop-filter: blur(10px);
+               border-bottom: 1px solid rgba(15, 15, 15, 0.06);
+               transition: box-shadow .3s ease, padding .3s ease;
+               padding-top: 1rem;
+               padding-bottom: 1rem;
+          }
+
+          .navbar.scrolled {
+               box-shadow: 0 6px 24px rgba(15, 15, 15, 0.06);
+               padding-top: .55rem;
+               padding-bottom: .55rem;
+          }
+
+          .navbar-brand img {
+               height: 120px;
+               transition: height .3s ease;
+          }
+
+          .navbar.scrolled .navbar-brand img {
+               height: 100px;
+          }
+
+          .nav-link {
+               position: relative;
+               color: var(--mv-ink) !important;
+               font-weight: 500;
+               margin: 0 .05rem;
+               padding: .04rem .2rem !important;
+          }
+
+          .nav-link::after {
+               content: "";
+               position: absolute;
+               left: 0;
+               bottom: 0;
+               width: 0%;
+               height: 2px;
+               background: var(--mv-teal);
+               transition: width .3s ease;
+          }
+
+          .nav-link:hover::after,
+          .nav-link.active::after {
+               width: 100%;
+          }
+
+          .btn-mv {
+               background: var(--mv-teal);
+               border: 1px solid var(--mv-teal);
+               color: #fff;
+               font-weight: 600;
+               padding: .6rem 1.4rem;
+               border-radius: 50px;
+               position: relative;
+               overflow: hidden;
+               z-index: 1;
+               transition: color .35s ease, border-color .35s ease, transform .25s ease;
+          }
+
+          .btn-mv::before {
+               content: "";
+               position: absolute;
+               inset: 0;
+               background: var(--mv-ink);
+               transform: translateX(-101%);
+               transition: transform .35s ease;
+               z-index: -1;
+          }
+
+          .btn-mv:hover {
+               color: #fff;
+               transform: translateY(-2px);
+          }
+
+          .btn-mv:hover::before {
+               transform: translateX(0);
+          }
+
+          .btn-outline-mv {
+               background: transparent;
+               border: 1.5px solid var(--mv-ink);
+               color: var(--mv-ink);
+               font-weight: 600;
+               padding: .6rem 1.4rem;
+               border-radius: 50px;
+               transition: all .3s ease;
+          }
+
+          .btn-outline-mv:hover {
+               background: var(--mv-ink);
+               color: #fff;
+               transform: translateY(-2px);
+          }
+
+          /* ---------- Hero ---------- */
+          .hero {
+               min-height: 100vh;
+               display: flex;
+               align-items: center;
+               position: relative;
+               background:
+                    radial-gradient(circle at 85% 15%, rgba(80, 146, 175, 0.15), transparent 45%),
+                    radial-gradient(circle at 10% 90%, rgba(80, 146, 175, 0.12), transparent 40%),
+                    var(--mv-white);
+               padding-top: 6rem;
+               overflow: hidden;
+          }
+
+          /* animated ledger lines - the signature motif */
+          .ledger-lines {
+               position: absolute;
+               inset: 0;
+               z-index: 0;
+               pointer-events: none;
+               opacity: .5;
+          }
+
+          .ledger-lines span {
+               position: absolute;
+               left: 0;
+               right: 0;
+               height: 1px;
+               background: linear-gradient(90deg, transparent, rgba(80, 146, 175, 0.35), transparent);
+               transform: scaleX(0);
+               transform-origin: left;
+               animation: drawline 2.4s ease forwards;
+          }
+
+          @keyframes drawline {
+               to {
+                    transform: scaleX(1);
+               }
+          }
+
+          .hero-eyebrow {
+               letter-spacing: .18em;
+               text-transform: uppercase;
+               font-size: .78rem;
+               font-weight: 700;
+               color: var(--mv-teal-dark);
+               display: inline-flex;
+               align-items: center;
+               gap: .6rem;
+          }
+
+          .hero-eyebrow::before {
+               content: "";
+               width: 30px;
+               height: 2px;
+               background: var(--mv-teal);
+               display: inline-block;
+          }
+
+          .hero h1 {
+               font-size: clamp(2.4rem, 5vw, 4rem);
+               font-weight: 600;
+               line-height: 1.08;
+               margin: 1rem 0 1.4rem;
+          }
+
+          .hero h1 .accent {
+               color: var(--mv-teal);
+          }
+
+          .hero p.lead-copy {
+               font-size: 1.15rem;
+               color: #3a3a3a;
+               max-width: 560px;
+          }
+
+          .hero-figure {
+               position: relative;
+          }
+
+          .hero-card {
+               background: #fff;
+               border: 1px solid rgba(15, 15, 15, .08);
+               border-radius: 20px;
+               padding: 2rem;
+               box-shadow: 0 30px 60px -20px rgba(15, 15, 15, .15);
+               animation: floaty 6s ease-in-out infinite;
+          }
+
+          @keyframes floaty {
+
+               0%,
+               100% {
+                    transform: translateY(0px);
+               }
+
+               50% {
+                    transform: translateY(-14px);
+               }
+          }
+
+          .hero-card .stat-row {
+               display: flex;
+               justify-content: space-between;
+               align-items: center;
+               padding: .85rem 0;
+               border-bottom: 1px dashed rgba(15, 15, 15, .12);
+          }
+
+          .hero-card .stat-row:last-child {
+               border-bottom: none;
+          }
+
+          .hero-card .stat-row .dots {
+               flex: 1;
+               border-bottom: 1px dotted rgba(15, 15, 15, .25);
+               margin: 0 .75rem;
+               height: 1px;
+          }
+
+          .scroll-cue {
+               position: absolute;
+               bottom: 2rem;
+               left: 50%;
+               transform: translateX(-50%);
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               gap: .4rem;
+               color: var(--mv-teal-dark);
+               font-size: .75rem;
+               letter-spacing: .14em;
+               text-transform: uppercase;
+               font-weight: 600;
+          }
+
+          .scroll-cue .line {
+               width: 1px;
+               height: 36px;
+               background: linear-gradient(var(--mv-teal), transparent);
+               animation: scrolldown 1.8s ease infinite;
+          }
+
+          @keyframes scrolldown {
+               0% {
+                    transform: scaleY(0);
+                    transform-origin: top;
+               }
+
+               50% {
+                    transform: scaleY(1);
+                    transform-origin: top;
+               }
+
+               51% {
+                    transform: scaleY(1);
+                    transform-origin: bottom;
+               }
+
+               100% {
+                    transform: scaleY(0);
+                    transform-origin: bottom;
+               }
+          }
+
+          /* ---------- Section basics ---------- */
+          section {
+               padding: 6.5rem 0;
+               position: relative;
+          }
+
+          .section-off {
+               background: var(--mv-off);
+          }
+
+          .section-eyebrow {
+               letter-spacing: .18em;
+               text-transform: uppercase;
+               font-size: .75rem;
+               font-weight: 700;
+               color: var(--mv-teal-dark);
+          }
+
+          .section-title {
+               font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+               font-weight: 600;
+               margin-top: .5rem;
+               position: relative;
+               display: inline-block;
+          }
+
+          .section-title .underline {
+               display: block;
+               width: 70px;
+               height: 3px;
+               background: var(--mv-teal);
+               margin-top: .9rem;
+               border-radius: 3px;
+               transform: scaleX(0);
+               transform-origin: left;
+               transition: transform .6s ease;
+          }
+
+          .reveal.in-view .section-title .underline {
+               transform: scaleX(1);
+          }
+
+          /* ---------- Reveal on scroll ---------- */
+          .reveal {
+               opacity: 0;
+               transform: translateY(36px);
+               transition: opacity .7s cubic-bezier(.2, .7, .3, 1), transform .7s cubic-bezier(.2, .7, .3, 1);
+          }
+
+          .reveal.in-view {
+               opacity: 1;
+               transform: translateY(0);
+          }
+
+          .reveal-delay-1.in-view {
+               transition-delay: .08s;
+          }
+
+          .reveal-delay-2.in-view {
+               transition-delay: .16s;
+          }
+
+          .reveal-delay-3.in-view {
+               transition-delay: .24s;
+          }
+
+          .reveal-delay-4.in-view {
+               transition-delay: .32s;
+          }
+
+          .reveal-delay-5.in-view {
+               transition-delay: .4s;
+          }
+
+          /* ---------- About ---------- */
+          .about-badge {
+               width: 64px;
+               height: 64px;
+               border-radius: 16px;
+               background: var(--mv-teal-light);
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               color: var(--mv-teal-dark);
+               font-size: 1.6rem;
+               margin-bottom: 1.2rem;
+               transition: transform .35s ease, background .35s ease;
+          }
+
+          .about-point:hover .about-badge {
+               transform: rotate(-6deg) scale(1.06);
+               background: var(--mv-teal);
+               color: #fff;
+          }
+
+          /* ---------- Services ---------- */
+          .service-card {
+               background: #fff;
+               border: 1px solid rgba(15, 15, 15, .08);
+               border-radius: 18px;
+               padding: 2rem 1.8rem;
+               height: 100%;
+               position: relative;
+               overflow: hidden;
+               transition: transform .4s cubic-bezier(.2, .7, .3, 1), box-shadow .4s ease, border-color .4s ease;
+          }
+
+          .service-card::before {
+               content: "";
+               position: absolute;
+               top: 0;
+               left: 0;
+               width: 100%;
+               height: 4px;
+               background: var(--mv-teal);
+               transform: scaleX(0);
+               transform-origin: left;
+               transition: transform .45s ease;
+          }
+
+          .service-card:hover {
+               transform: translateY(-10px);
+               box-shadow: 0 24px 48px -20px rgba(15, 15, 15, .18);
+               border-color: transparent;
+          }
+
+          .service-card:hover::before {
+               transform: scaleX(1);
+          }
+
+          .service-icon {
+               width: 54px;
+               height: 54px;
+               border-radius: 14px;
+               background: var(--mv-teal-light);
+               color: var(--mv-teal-dark);
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               font-size: 1.4rem;
+               margin-bottom: 1.2rem;
+               transition: background .4s ease, color .4s ease, transform .4s ease;
+          }
+
+          .service-card:hover .service-icon {
+               background: var(--mv-teal);
+               color: #fff;
+               transform: rotate(8deg);
+          }
+
+          .service-card h3 {
+               font-size: 1.15rem;
+               font-weight: 600;
+               margin-bottom: .6rem;
+          }
+
+          .service-card p {
+               color: #4a4a4a;
+               font-size: .94rem;
+               margin-bottom: 0;
+          }
+
+          /* ---------- Process ---------- */
+          .process-item {
+               display: flex;
+               gap: 1.4rem;
+               padding: 1.6rem 0;
+               border-bottom: 1px solid rgba(15, 15, 15, .08);
+          }
+
+          .process-item:last-child {
+               border-bottom: none;
+          }
+
+          .process-num {
+               font-family: 'Fraunces', serif;
+               font-size: 1.6rem;
+               color: var(--mv-teal);
+               font-weight: 600;
+               min-width: 3rem;
+          }
+
+          /* ---------- Why us / stats strip ---------- */
+          .stat-strip {
+               background: var(--mv-ink);
+               color: #fff;
+               border-radius: 22px;
+               padding: 3rem 2rem;
+          }
+
+          .stat-strip .stat-num {
+               font-family: 'Fraunces', serif;
+               font-size: 2.6rem;
+               font-weight: 600;
+               color: var(--mv-teal);
+          }
+
+          .stat-strip .stat-label {
+               font-size: .85rem;
+               color: rgba(255, 255, 255, .7);
+               text-transform: uppercase;
+               letter-spacing: .08em;
+          }
+
+          /* ---------- Contact ---------- */
+          .contact-card {
+               background: #fff;
+               border: 1px solid rgba(15, 15, 15, .08);
+               border-radius: 20px;
+               padding: 2.4rem;
+               box-shadow: 0 24px 48px -24px rgba(15, 15, 15, .15);
+          }
+
+          .contact-line {
+               display: flex;
+               align-items: center;
+               gap: 1rem;
+               padding: .9rem 0;
+               border-bottom: 1px dashed rgba(15, 15, 15, .12);
+               color: var(--mv-ink);
+               transition: transform .3s ease, color .3s ease;
+          }
+
+          .contact-line:last-child {
+               border-bottom: none;
+          }
+
+          .contact-line:hover {
+               transform: translateX(6px);
+               color: var(--mv-teal-dark);
+          }
+
+          .contact-line i {
+               width: 42px;
+               height: 42px;
+               border-radius: 12px;
+               background: var(--mv-teal-light);
+               color: var(--mv-teal-dark);
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               flex-shrink: 0;
+          }
+
+          .form-control {
+               border-radius: 12px;
+               border: 1px solid rgba(15, 15, 15, .15);
+               padding: .75rem 1rem;
+          }
+
+          .form-control:focus {
+               border-color: var(--mv-teal);
+               box-shadow: 0 0 0 .2rem rgba(80, 146, 175, .2);
+          }
+
+          /* ---------- Footer ---------- */
+          footer {
+               background: var(--mv-ink);
+               color: rgba(255, 255, 255, .75);
+               padding: 3rem 0 1.6rem;
+          }
+
+          footer a {
+               color: rgba(255, 255, 255, .75);
+               transition: color .25s ease;
+          }
+
+          footer a:hover {
+               color: var(--mv-teal);
+          }
+
+          footer .footer-brand img {
+               height: 100px;
+               filter: brightness(0) invert(1);
+          }
+
+          .social-icon {
+               width: 50px;
+               height: 50px;
+               border-radius: 50%;
+               border: 1px solid rgba(255, 255, 255, .2);
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               transition: all .3s ease;
+          }
+
+          .social-icon:hover {
+               background: var(--mv-teal);
+               border-color: var(--mv-teal);
+               transform: translateY(-3px);
+          }
+
+          /* Back to top */
+          #backToTop {
+               position: fixed;
+               bottom: 24px;
+               right: 24px;
+               width: 48px;
+               height: 48px;
+               border-radius: 50%;
+               background: var(--mv-teal);
+               color: #fff;
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               box-shadow: 0 10px 24px rgba(80, 146, 175, .4);
+               opacity: 0;
+               pointer-events: none;
+               transform: translateY(12px);
+               transition: all .35s ease;
+               z-index: 999;
+               border: none;
+          }
+
+          #backToTop.show {
+               opacity: 1;
+               pointer-events: auto;
+               transform: translateY(0);
+          }
+
+          #backToTop:hover {
+               background: var(--mv-ink);
+          }
+
+          @media (prefers-reduced-motion: reduce) {
+               * {
+                    animation: none !important;
+                    transition: none !important;
+               }
+          }
+
+          @media (max-width: 767.98px) {
+               section {
+                    padding: 4.2rem 0;
+               }
+
+               .hero {
+                    padding-top: 7rem;
+                    text-align: center;
+               }
+
+               .hero-eyebrow {
+                    justify-content: center;
+               }
+
+               .hero p.lead-copy {
+                    margin-left: auto;
+                    margin-right: auto;
+               }
+          }
+     </style>
+</head>
+
+<body>
+
+     <!-- ===================== NAVBAR ===================== -->
+     <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+          <div class="container">
+               <a class="navbar-brand" href="#top">
+                    <img src="MV_logo.png" alt="MV Accounting logo">
+               </a>
+               <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+                    aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="bi bi-list fs-1" style="color:var(--mv-ink);"></i>
+               </button>
+               <div class="collapse navbar-collapse" id="navMenu">
+                    <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+                         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                         <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                         <li class="nav-item"><a class="nav-link" href="#process">Process</a></li>
+                         <li class="nav-item"><a class="nav-link" href="#why">Why Us</a></li>
+                         <li class="nav-item ms-lg-2">
+                              <a class="btn btn-mv" href="#contact">Get In Touch</a>
+                         </li>
+                    </ul>
+               </div>
+          </div>
+     </nav>
+
+     <!-- ===================== HERO ===================== -->
+     <header class="hero" id="top">
+          <div class="ledger-lines">
+               <span style="top:22%; animation-delay:.1s;"></span>
+               <span style="top:42%; animation-delay:.35s;"></span>
+               <span style="top:62%; animation-delay:.6s;"></span>
+               <span style="top:82%; animation-delay:.85s;"></span>
+          </div>
+          <div class="container position-relative">
+               <div class="row align-items-center gy-5">
+                    <div class="col-lg-6">
+                         <span class="hero-eyebrow">Accounting &amp; Tax Specialists</span>
+                         <h1>Numbers handled with <span class="accent">precision</span>, compliance you can rely on.
+                         </h1>
+                         <p class="lead-copy">
+                              MV Accounting provides efficient, professional accounting and tax services for
+                              companies, CCs, Trusts and individuals — built around accuracy, deadlines,
+                              and a clear line of communication from the people doing the work.
+                         </p>
+                         <div class="d-flex flex-wrap gap-3 mt-4">
+                              <a href="#contact" class="btn btn-mv btn-lg">Request a Consultation</a>
+                              <a href="#services" class="btn btn-outline-mv btn-lg">Our Services</a>
+                         </div>
+                    </div>
+                    <div class="col-lg-6">
+                         <div class="hero-figure">
+                              <div class="hero-card">
+                                   <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <span class="fw-semibold" style="font-family:'Fraunces',serif;">Compliance
+                                             Snapshot</span>
+                                        <i class="bi bi-clipboard-check"
+                                             style="color:var(--mv-teal); font-size:1.3rem;"></i>
+                                   </div>
+                                   <div class="stat-row"><span>VAT Submission</span><span class="dots"></span><span
+                                             class="fw-semibold" style="color:var(--mv-teal-dark);">Filed</span></div>
+                                   <div class="stat-row"><span>Payroll Run</span><span class="dots"></span><span
+                                             class="fw-semibold" style="color:var(--mv-teal-dark);">Reconciled</span>
+                                   </div>
+                                   <div class="stat-row"><span>AFS Draft</span><span class="dots"></span><span
+                                             class="fw-semibold" style="color:var(--mv-teal-dark);">Ready</span></div>
+                                   <div class="stat-row"><span>Income Tax</span><span class="dots"></span><span
+                                             class="fw-semibold" style="color:var(--mv-teal-dark);">On Track</span>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+          <div class="scroll-cue"><span class="line"></span>Scroll</div>
+     </header>
+
+     <!-- ===================== ABOUT ===================== -->
+     <section id="about">
+          <div class="container">
+               <div class="row align-items-center gy-5">
+                    <div class="col-lg-5 reveal">
+                         <span class="section-eyebrow">Who We Are</span>
+                         <h2 class="section-title">Built for businesses that need their books handled properly<span
+                                   class="underline"></span></h2>
+                         <p class="mt-4 text-secondary" style="font-size:1.03rem;">
+                              We work with companies, close corporations, trusts and individuals who
+                              want their accounting and tax matters handled efficiently, correctly and
+                              on time — without the back-and-forth. From day-to-day compliance to annual
+                              statutory reporting, our approach is practical, thorough and personal.
+                         </p>
+                    </div>
+                    <div class="col-lg-7">
+                         <div class="row g-4">
+                              <div class="col-sm-6 about-point reveal reveal-delay-1">
+                                   <div class="about-badge"><i class="bi bi-briefcase"></i></div>
+                                   <h3 class="h5 fw-semibold">Entity Coverage</h3>
+                                   <p class="text-secondary mb-0">Companies, CCs, Trusts and individuals — all under one
+                                        roof, one point of contact.</p>
+                              </div>
+                              <div class="col-sm-6 about-point reveal reveal-delay-2">
+                                   <div class="about-badge"><i class="bi bi-clock-history"></i></div>
+                                   <h3 class="h5 fw-semibold">Deadline-Driven</h3>
+                                   <p class="text-secondary mb-0">SARS and CIPC deadlines tracked and met, so penalties
+                                        and interest don't happen.</p>
+                              </div>
+                              <div class="col-sm-6 about-point reveal reveal-delay-3">
+                                   <div class="about-badge"><i class="bi bi-shield-check"></i></div>
+                                   <h3 class="h5 fw-semibold">Accuracy First</h3>
+                                   <p class="text-secondary mb-0">Every reconciliation and return is checked before it
+                                        leaves our hands.</p>
+                              </div>
+                              <div class="col-sm-6 about-point reveal reveal-delay-4">
+                                   <div class="about-badge"><i class="bi bi-person-lines-fill"></i></div>
+                                   <h3 class="h5 fw-semibold">Personal Service</h3>
+                                   <p class="text-secondary mb-0">Direct access to the person managing your file — not a
+                                        call centre queue.</p>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </section>
+
+     <!-- ===================== SERVICES ===================== -->
+     <section id="services" class="section-off">
+          <div class="container">
+               <div class="text-center mb-5 reveal">
+                    <span class="section-eyebrow">What We Do</span>
+                    <h2 class="section-title">Full-service accounting, tax and secretarial support<span
+                              class="underline"></span></h2>
+                    <p class="text-secondary mt-3 mx-auto" style="max-width:640px;">
+                         Every service is handled in-house, so nothing gets lost between departments —
+                         from monthly VAT to annual financial statements and company registrations.
+                    </p>
+               </div>
+
+               <div class="row g-4">
+                    <div class="col-md-6 col-lg-4 reveal reveal-delay-1">
+                         <div class="service-card">
+                              <div class="service-icon"><i class="bi bi-receipt-cutoff"></i></div>
+                              <h3>VAT Calculations &amp; Submissions</h3>
+                              <p>Accurate monthly or bi-monthly VAT201 calculations, reconciled against your records and
+                                   submitted to SARS on time, every time.</p>
+                         </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 reveal reveal-delay-2">
+                         <div class="service-card">
+                              <div class="service-icon"><i class="bi bi-cash-coin"></i></div>
+                              <h3>Payroll</h3>
+                              <p>End-to-end payroll processing — payslips, PAYE, UIF and SDL — so your staff are paid
+                                   correctly and on time, every month.</p>
+                         </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 reveal reveal-delay-3">
+                         <div class="service-card">
+                              <div class="service-icon"><i class="bi bi-arrow-repeat"></i></div>
+                              <h3>Payroll Reconciliations</h3>
+                              <p>Full reconciliation of payroll accounts and statutory submissions, catching
+                                   discrepancies before they become SARS queries.</p>
+                         </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 reveal reveal-delay-1">
+                         <div class="service-card">
+                              <div class="service-icon"><i class="bi bi-file-earmark-bar-graph"></i></div>
+                              <h3>Annual Financial Statements</h3>
+                              <p>Compliant, well-presented annual financial statements prepared for companies, CCs and
+                                   Trusts, ready for review or filing.</p>
+                         </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 reveal reveal-delay-2">
+                         <div class="service-card">
+                              <div class="service-icon"><i class="bi bi-search"></i></div>
+                              <h3>Independent Reviews</h3>
+                              <p>Independent review engagements carried out to the required standard, giving
+                                   stakeholders confidence in your financials.</p>
+                         </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 reveal reveal-delay-3">
+                         <div class="service-card">
+                              <div class="service-icon"><i class="bi bi-file-earmark-text"></i></div>
+                              <h3>Income Tax Returns</h3>
+                              <p>Individual and corporate income tax returns prepared and submitted accurately, with
+                                   attention to legitimate deductions.</p>
+                         </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 reveal reveal-delay-1">
+                         <div class="service-card">
+                              <div class="service-icon"><i class="bi bi-building-add"></i></div>
+                              <h3>Secretarial Services</h3>
+                              <p>Company registrations, CIPC annual returns and general company secretarial support
+                                   handled from start to finish.</p>
+                         </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 reveal reveal-delay-2">
+                         <div class="service-card">
+                              <div class="service-icon"><i class="bi bi-bank"></i></div>
+                              <h3>Trust Administration</h3>
+                              <p>Bookkeeping, tax compliance and reporting for Trusts, kept aligned with trustee and
+                                   beneficiary obligations.</p>
+                         </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 reveal reveal-delay-3">
+                         <div class="service-card">
+                              <div class="service-icon"><i class="bi bi-plus-circle"></i></div>
+                              <h3>And Much More</h3>
+                              <p>Bookkeeping, management accounts, SARS dispute resolution and ad-hoc advisory — get in
+                                   touch to discuss what you need.</p>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </section>
+
+     <!-- ===================== PROCESS ===================== -->
+     <section id="process">
+          <div class="container">
+               <div class="row gy-5">
+                    <div class="col-lg-5 reveal">
+                         <span class="section-eyebrow">How It Works</span>
+                         <h2 class="section-title">Getting started is straightforward<span class="underline"></span>
+                         </h2>
+                         <p class="text-secondary mt-3">
+                              A simple, transparent onboarding process — from first contact
+                              to a fully compliant set of books.
+                         </p>
+                         <a href="#contact" class="btn btn-mv mt-2">Start the Conversation</a>
+                    </div>
+                    <div class="col-lg-7 reveal reveal-delay-1">
+                         <div class="process-item">
+                              <div class="process-num">01</div>
+                              <div>
+                                   <h3 class="h5 fw-semibold mb-1">Initial Consultation</h3>
+                                   <p class="text-secondary mb-0">We discuss your entity type, current compliance status
+                                        and what you need handled.</p>
+                              </div>
+                         </div>
+                         <div class="process-item">
+                              <div class="process-num">02</div>
+                              <div>
+                                   <h3 class="h5 fw-semibold mb-1">Scope &amp; Onboarding</h3>
+                                   <p class="text-secondary mb-0">We confirm services required and get access set up
+                                        with SARS, CIPC and your records.</p>
+                              </div>
+                         </div>
+                         <div class="process-item">
+                              <div class="process-num">03</div>
+                              <div>
+                                   <h3 class="h5 fw-semibold mb-1">Ongoing Processing</h3>
+                                   <p class="text-secondary mb-0">VAT, payroll and reconciliations are processed on a
+                                        set monthly schedule.</p>
+                              </div>
+                         </div>
+                         <div class="process-item">
+                              <div class="process-num">04</div>
+                              <div>
+                                   <h3 class="h5 fw-semibold mb-1">Reporting &amp; Filing</h3>
+                                   <p class="text-secondary mb-0">Annual financial statements, reviews and tax returns
+                                        are prepared, signed off and filed.</p>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </section>
+
+     <!-- ===================== WHY US / STATS ===================== -->
+     <section id="why" class="section-off">
+          <div class="container">
+               <div class="stat-strip reveal">
+                    <div class="row text-center g-4">
+                         <div class="col-6 col-md-3">
+                              <div class="stat-num" data-count="15">0</div>
+                              <div class="stat-label">Years Combined Experience</div>
+                         </div>
+                         <div class="col-6 col-md-3">
+                              <div class="stat-num" data-count="200">0</div>
+                              <div class="stat-label">Clients Served</div>
+                         </div>
+                         <div class="col-6 col-md-3">
+                              <div class="stat-num" data-count="100">0</div>
+                              <div class="stat-label">% SARS Deadlines Met</div>
+                         </div>
+                         <div class="col-6 col-md-3">
+                              <div class="stat-num" data-count="8">0</div>
+                              <div class="stat-label">Core Services Offered</div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </section>
+
+     <!-- ===================== CONTACT ===================== -->
+     <section id="contact">
+          <div class="container">
+               <div class="text-center mb-5 reveal">
+                    <span class="section-eyebrow">Get In Touch</span>
+                    <h2 class="section-title">Let's talk about your accounting needs<span class="underline"></span></h2>
+               </div>
+
+               <div class="row g-4 gy-5">
+                    <div class="col-lg-5 reveal reveal-delay-1">
+                         <div class="contact-card h-100">
+                              <h3 class="h5 fw-semibold mb-4">Contact Details</h3>
+
+                              <a href="tel:+27000000000" class="contact-line">
+                                   <i class="bi bi-telephone-fill"></i>
+                                   <div>
+                                        <div class="small text-secondary">Call Us</div>
+                                        <div class="fw-semibold">+27 (0)00 000 0000</div>
+                                   </div>
+                              </a>
+
+                              <a href="mailto:info@mvaccounting.co.za" class="contact-line">
+                                   <i class="bi bi-envelope-fill"></i>
+                                   <div>
+                                        <div class="small text-secondary">Email Us</div>
+                                        <div class="fw-semibold">info@mvaccounting.co.za</div>
+                                   </div>
+                              </a>
+
+                              <a href="https://wa.me/27000000000" target="_blank" rel="noopener" class="contact-line">
+                                   <i class="bi bi-whatsapp"></i>
+                                   <div>
+                                        <div class="small text-secondary">WhatsApp</div>
+                                        <div class="fw-semibold">+27 (0)00 000 0000</div>
+                                   </div>
+                              </a>
+
+                              <a href="https://maps.google.com/?q=PLACEHOLDER+ADDRESS" target="_blank" rel="noopener"
+                                   class="contact-line">
+                                   <i class="bi bi-geo-alt-fill"></i>
+                                   <div>
+                                        <div class="small text-secondary">Visit Us</div>
+                                        <div class="fw-semibold">PLACEHOLDER STREET, PLACEHOLDER CITY</div>
+                                   </div>
+                              </a>
+
+                              <div class="contact-line" style="cursor:default;">
+                                   <i class="bi bi-clock-fill"></i>
+                                   <div>
+                                        <div class="small text-secondary">Office Hours</div>
+                                        <div class="fw-semibold">Mon – Fri: 08:00 – 17:00</div>
+                                   </div>
+                              </div>
+
+                              <div class="d-flex gap-2 mt-4">
+                                   <a href="#" target="_blank" rel="noopener" class="social-icon"><i
+                                             class="bi bi-facebook"></i></a>
+                                   <a href="#" target="_blank" rel="noopener" class="social-icon"><i
+                                             class="bi bi-linkedin"></i></a>
+                                   <a href="#" target="_blank" rel="noopener" class="social-icon"><i
+                                             class="bi bi-instagram"></i></a>
+                              </div>
+                         </div>
+                    </div>
+
+                    <div class="col-lg-7 reveal reveal-delay-2">
+                         <div class="contact-card h-100">
+                              <h3 class="h5 fw-semibold mb-4">Send a Message</h3>
+                              <form action="#" method="POST" novalidate>
+                                   <div class="row g-3">
+                                        <div class="col-md-6">
+                                             <label class="form-label small fw-semibold" for="fname">Full Name</label>
+                                             <input type="text" class="form-control" id="fname" name="name"
+                                                  placeholder="Jane Dlamini" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                             <label class="form-label small fw-semibold" for="femail">Email
+                                                  Address</label>
+                                             <input type="email" class="form-control" id="femail" name="email"
+                                                  placeholder="jane@example.com" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                             <label class="form-label small fw-semibold" for="fphone">Phone
+                                                  Number</label>
+                                             <input type="tel" class="form-control" id="fphone" name="phone"
+                                                  placeholder="+27 00 000 0000">
+                                        </div>
+                                        <div class="col-md-6">
+                                             <label class="form-label small fw-semibold" for="fservice">Service
+                                                  Needed</label>
+                                             <select class="form-control form-select" id="fservice" name="service">
+                                                  <option selected>Select a service…</option>
+                                                  <option>VAT Calculations &amp; Submissions</option>
+                                                  <option>Payroll</option>
+                                                  <option>Payroll Reconciliations</option>
+                                                  <option>Annual Financial Statements</option>
+                                                  <option>Independent Reviews</option>
+                                                  <option>Income Tax Returns</option>
+                                                  <option>Secretarial Services</option>
+                                                  <option>Other</option>
+                                             </select>
+                                        </div>
+                                        <div class="col-12">
+                                             <label class="form-label small fw-semibold" for="fmessage">Message</label>
+                                             <textarea class="form-control" id="fmessage" name="message" rows="4"
+                                                  placeholder="Tell us a bit about what you need…" required></textarea>
+                                        </div>
+                                        <div class="col-12">
+                                             <button type="submit" class="btn btn-mv btn-lg w-100 w-md-auto">
+                                                  <i class="bi bi-send-fill me-2"></i>Send Message
+                                             </button>
+                                        </div>
+                                   </div>
+                              </form>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </section>
+
+     <!-- ===================== FOOTER ===================== -->
+     <footer>
+          <div class="container">
+               <div class="row gy-4 align-items-start">
+                    <div class="col-lg-4">
+                         <a href="#top" class="footer-brand d-inline-block mb-3">
+                              <img src="MV_logo.png" alt="MV Accounting logo">
+                         </a>
+                         <p class="small mb-0">Efficient, professional accounting and tax services for companies, CCs,
+                              Trusts and individuals.</p>
+                    </div>
+                    <div class="col-lg-2 col-6">
+                         <h4 class="h6 text-white fw-semibold mb-3">Navigate</h4>
+                         <ul class="list-unstyled small d-flex flex-column gap-2">
+                              <li><a href="#about">About</a></li>
+                              <li><a href="#services">Services</a></li>
+                              <li><a href="#process">Process</a></li>
+                              <li><a href="#contact">Contact</a></li>
+                         </ul>
+                    </div>
+                    <div class="col-lg-3 col-6">
+                         <h4 class="h6 text-white fw-semibold mb-3">Services</h4>
+                         <ul class="list-unstyled small d-flex flex-column gap-2">
+                              <li><a href="#services">VAT Submissions</a></li>
+                              <li><a href="#services">Payroll</a></li>
+                              <li><a href="#services">Financial Statements</a></li>
+                              <li><a href="#services">Income Tax Returns</a></li>
+                         </ul>
+                    </div>
+                    <div class="col-lg-3">
+                         <h4 class="h6 text-white fw-semibold mb-3">Legal</h4>
+                         <ul class="list-unstyled small d-flex flex-column gap-2">
+                              <li><a href="#">Privacy Policy</a></li>
+                              <li><a href="#">Terms of Service</a></li>
+                              <li><a href="#">POPIA Compliance</a></li>
+                         </ul>
+                    </div>
+               </div>
+               <hr class="border-secondary my-4 opacity-25">
+               <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 small">
+                    <span>&copy; <span id="year"></span> MV Accounting. All rights reserved.</span>
+                    <span>Registered with SAIT / SAIPA — Practice No. PLACEHOLDER</span>
+               </div>
+          </div>
+     </footer>
+
+     <button id="backToTop" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
+
+     <!-- Bootstrap 5.2.x bundle -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js"></script>
+     <script>
+          document.getElementById('year').textContent = new Date().getFullYear();
+
+          // Navbar scroll state
+          const nav = document.getElementById('mainNav');
+          const backToTop = document.getElementById('backToTop');
+          window.addEventListener('scroll', () => {
+               const scrolled = window.scrollY > 40;
+               nav.classList.toggle('scrolled', scrolled);
+               backToTop.classList.toggle('show', window.scrollY > 500);
+          });
+          backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+          // Collapse mobile menu on link click
+          document.querySelectorAll('#navMenu .nav-link, #navMenu .btn').forEach(link => {
+               link.addEventListener('click', () => {
+                    const collapse = bootstrap.Collapse.getInstance(document.getElementById('navMenu'));
+                    if (collapse) collapse.hide();
+               });
+          });
+
+          // Active link highlight on scroll
+          const sections = document.querySelectorAll('section[id], header[id]');
+          const navLinks = document.querySelectorAll('.nav-link');
+          const spy = new IntersectionObserver((entries) => {
+               entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                         navLinks.forEach(l => l.classList.remove('active'));
+                         const active = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+                         if (active) active.classList.add('active');
+                    }
+               });
+          }, { rootMargin: '-45% 0px -50% 0px' });
+          sections.forEach(s => spy.observe(s));
+
+          // Scroll reveal
+          const revealEls = document.querySelectorAll('.reveal');
+          const revealObserver = new IntersectionObserver((entries) => {
+               entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                         entry.target.classList.add('in-view');
+                         revealObserver.unobserve(entry.target);
+                    }
+               });
+          }, { threshold: 0.15 });
+          revealEls.forEach(el => revealObserver.observe(el));
+
+          // Animated stat counters
+          const counters = document.querySelectorAll('.stat-num');
+          const counterObserver = new IntersectionObserver((entries) => {
+               entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                         const el = entry.target;
+                         const target = parseInt(el.dataset.count, 10);
+                         let current = 0;
+                         const step = Math.max(1, Math.ceil(target / 60));
+                         const tick = () => {
+                              current += step;
+                              if (current >= target) { el.textContent = target; return; }
+                              el.textContent = current;
+                              requestAnimationFrame(tick);
+                         };
+                         tick();
+                         counterObserver.unobserve(el);
+                    }
+               });
+          }, { threshold: 0.5 });
+          counters.forEach(c => counterObserver.observe(c));
+
+          // Demo form submit (no backend wired up)
+          document.querySelector('#contact form').addEventListener('submit', function (e) {
+               e.preventDefault();
+               const btn = this.querySelector('button[type="submit"]');
+               const original = btn.innerHTML;
+               btn.innerHTML = '<i class="bi bi-check2 me-2"></i>Message Sent';
+               btn.disabled = true;
+               setTimeout(() => { btn.innerHTML = original; btn.disabled = false; this.reset(); }, 2500);
+          });
+     </script>
+</body>
+
+</html>
