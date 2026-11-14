@@ -25,14 +25,14 @@
     const exerciseList = $('exercise-list');
     const routineList  = $('routine-list');
     const emptyState   = $('empty-state');
+    const stagingArea  = $('staging-area');
+    
     const searchInput  = $('search');
     const bodyPartSel  = $('filter-bodypart');
     const categorySel  = $('filter-category');
     const resultCount  = $('result-count');
     const routineName  = $('routine-name');
-    const loadSelect   = $('load-routine');
     const btnSave      = $('btn-save');
-    const btnDelete    = $('btn-delete');
     const statusEl     = $('status');
     const userWeight   = $('user-weight');
 
@@ -66,8 +66,8 @@
     categorySel.addEventListener('change', loadExercises);
     loadExercises();
 
-    // --- Drag & Drop ---
-    
+    // --- Drag & Drop Setup ---
+
     // 1. Catalogue (Clone Source)
     new Sortable(exerciseList, {
         group: { name: 'catalogue', pull: 'clone', put: false },
@@ -75,44 +75,43 @@
         animation: 150,
     });
 
-    // 2. Routine List (Handles Blocks)
-    new Sortable(routineList, {
-        group: 'blocks',
-        handle: '.block-handle',
-        animation: 150,
+    // 2. Hidden Staging Area (Catches all initial drops)
+    new Sortable(stagingArea, {
+        group: { name: 'routine', put: true, pull: false },
         onAdd: function (evt) {
-            // If we dragged an exercise directly into the main list (not a block)
-            if (evt.item.classList.contains('exercise-card')) {
-                const card = evt.item;
-                // Remove it from the DOM immediately, we will rebuild it properly
-                card.remove(); 
-                
-                // Create a new block and put the card in it
-                const newBlock = createBlock();
-                const exerciseContainer = newBlock.querySelector('.block-exercises');
-                exerciseContainer.appendChild(buildRoutineCard(card.dataset));
-                routineList.appendChild(newBlock);
-                
-                removeEmptyState();
-                checkEmpty();
-            }
+            const item = evt.item;
+            // Build a new routine card from the dropped catalogue item
+            const card = buildRoutineCard(item.dataset);
+            
+            // Wrap it in a new block and insert into the routine list
+            const block = createBlock();
+            block.querySelector('.block-exercises').appendChild(card);
+            routineList.appendChild(block);
+            
+            item.remove(); // Clean up staging
+            removeEmptyState();
         }
     });
 
-    // 3. Inner Block Lists (Handles exercises inside a block)
+    // 3. Routine List (Handles moving blocks around)
+    new Sortable(routineList, {
+        group: { name: 'blocks', put: false, pull: false }, // Blocks can only be sorted within themselves
+        handle: '.block-handle',
+        animation: 150,
+    });
+
+    // 4. Inner Block Lists (Handles supersets)
     function makeBlockSortable(block) {
         new Sortable(block.querySelector('.block-exercises'), {
-            group: { name: 'inner-exercises', pull: true, put: true },
+            group: { name: 'routine', pull: true, put: true },
             handle: '.drag-handle',
             animation: 150,
             onAdd: function (evt) {
-                // If we dragged from the catalogue into an existing block
-                if (evt.from === exerciseList) {
-                    const newCard = buildRoutineCard(evt.item.dataset);
-                    evt.item.remove(); // remove the cloned catalogue item
-                    evt.to.insertBefore(newCard, evt.to.children[evt.newIndex]);
-                    removeEmptyState();
-                }
+                const item = evt.item;
+                // If it came from the catalogue, build the detailed card
+                const card = buildRoutineCard(item.dataset);
+                evt.to.insertBefore(card, evt.to.children[evt.newIndex]);
+                item.remove();
             },
             onRemove: function (evt) {
                 // If a block becomes empty, remove it
@@ -124,15 +123,15 @@
         });
     }
 
-    // Helper: Create a Superset Block
+    // Helper: Create a Block
     function createBlock() {
         const block = document.createElement('div');
         block.className = 'superset-block mb-3';
         block.innerHTML = `
-            <div class="d-flex justify-content-between align-items-center mb-2 px-2 pt-1">
+            <div class="d-flex justify-content-between align-items-center mb-2 px-2 pt-1 border-bottom border-secondary border-opacity-25 pb-2">
                 <div class="d-flex align-items-center gap-2">
-                    <i class="bi bi-grip-vertical drag-handle block-handle"></i>
-                    <span class="fw-bold text-primary small text-uppercase">Block</span>
+                    <i class="bi bi-grip-vertical drag-handle block-handle fs-5"></i>
+                    <span class="fw-bold text-primary small text-uppercase tracking-wide">Block</span>
                 </div>
                 <button type="button" class="btn btn-sm btn-outline-danger remove-block"><i class="bi bi-x-lg"></i></button>
             </div>
@@ -146,21 +145,22 @@
         return block;
     }
 
-    // Helper: Build the detailed card with sets/weight/RPE
+    // Helper: Build the detailed card
     function buildRoutineCard(data) {
         const card = document.createElement('div');
-        card.className = 'exercise-card card border-secondary-subtle bg-body-tertiary mb-2';
+        card.className = 'exercise-card card border-secondary-subtle bg-body-tertiary mb-2 shadow-sm';
         card.dataset.id = data.id;
-        card.dataset.category = data.category || '';
-        card.dataset.equipment = data.equipment || '';
-
-        const met = getMetEstimate(data.category, data.equipment);
+        
+        const name = data.name || 'Unknown Exercise';
+        const cat = data.category || '';
+        const eq = data.equipment || '';
+        const met = getMetEstimate(cat, eq);
 
         card.innerHTML = `
             <div class="card-body p-2">
                 <div class="exercise-header d-flex align-items-center">
-                    <i class="bi bi-grip-vertical drag-handle me-2"></i>
-                    <span class="fw-semibold small flex-grow-1">${esc(data.name)}</span>
+                    <i class="bi bi-grip-vertical drag-handle me-2 fs-5"></i>
+                    <span class="fw-semibold small flex-grow-1">${esc(name)}</span>
                     <button type="button" class="btn btn-sm btn-outline-danger remove-card"><i class="bi bi-x-lg"></i></button>
                 </div>
                 <div class="sets-container mt-2"></div>
@@ -170,7 +170,9 @@
         card.querySelector('.remove-card').addEventListener('click', () => {
             const block = card.closest('.superset-block');
             card.remove();
-            if (block && !block.querySelector('.exercise-card')) block.remove();
+            if (block && !block.querySelector('.exercise-card')) {
+                block.remove();
+            }
             checkEmpty();
         });
 
@@ -178,14 +180,14 @@
         return card;
     }
 
-    // Helper: Render the sets inputs
+    // Helper: Render Sets
     function renderSets(container, met) {
         const weight = parseFloat(userWeight.value) || 75;
         let setsCount = 3;
 
         container.innerHTML = `
             <div class="d-flex justify-content-between align-items-center mb-2">
-                <label class="small text-secondary fw-bold text-uppercase" style="font-size: 0.7rem;">Sets</label>
+                <label class="small text-secondary fw-bold text-uppercase" style="font-size: 0.7rem; letter-spacing: 0.05em;">Sets</label>
                 <input type="number" class="form-control form-control-sm set-count-input" style="width: 60px;" value="${setsCount}" min="1" max="10">
             </div>
             <div class="set-rows"></div>
@@ -227,9 +229,7 @@
         function recalc() {
             const activeRows = rowsContainer.querySelectorAll('.set-row').length;
             countInput.value = activeRows;
-            
-            // MET calculation: MET * Weight(kg) * Hours
-            const durationHours = (activeRows * 1.5) / 60; // approx 1.5 mins per set
+            const durationHours = (activeRows * 1.5) / 60;
             const cals = Math.round(met * weight * durationHours);
             calSpan.textContent = cals;
         }
@@ -253,7 +253,7 @@
         emptyState.style.display = 'none';
     }
 
-    // --- Save Routine ---
+    // --- Save ---
     btnSave.addEventListener('click', async () => {
         const blocks = routineList.querySelectorAll('.superset-block');
         if (!blocks.length) return showStatus('Add at least one exercise.', 'error');
@@ -297,7 +297,6 @@
             if (!res.ok) throw new Error(data.error || 'Save failed');
             
             currentRoutineId = data.routine_id;
-            btnDelete.hidden = false;
             showStatus('Routine saved successfully.', 'ok');
         } catch (err) {
             showStatus(err.message || 'Error saving', 'error');
@@ -306,7 +305,7 @@
         }
     });
 
-    // --- Helpers ---
+    // --- Utilities ---
     function catalogueCardHtml(ex) {
         return `
             <div class="exercise-card card border-secondary-subtle bg-body-tertiary mb-2" 

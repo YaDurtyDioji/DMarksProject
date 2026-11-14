@@ -106,5 +106,7 @@ $filters = get_filter_options();
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="assets/app.js"></script>
+<!-- Hidden staging area for drag-and-drop -->
+<div id="staging-area" style="display:none;"></div>
 </body>
 </html>
