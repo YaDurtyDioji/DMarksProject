@@ -88,13 +88,15 @@ $filters = get_filter_options();
                     <p class="text-secondary small mb-3">
                         Drag exercises here. To make a <strong>Superset</strong>, drag one exercise onto the card of another. Use the <i class="bi bi-grip-vertical"></i> handle to reorder.
                     </p>
+                    <!-- Drop zone container -->
                     <div id="routine-list" class="routine-list p-2">
-                        <div class="empty-state">
+                        <div id="empty-state" class="empty-state">
                             <i class="bi bi-plus-circle"></i>
                             <div class="fw-semibold">Drag exercises here</div>
+                            <div class="small text-muted">Drag one exercise onto another to create a superset</div>
                         </div>
+                        <!-- Blocks will be inserted here -->
                     </div>
-                    <div id="status" role="status"></div>
                 </div>
             </div>
         </div>
