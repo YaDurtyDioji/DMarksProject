@@ -1,25 +1,8 @@
 (() => {
     'use strict';
 
-    const CSRF = document.querySelector('meta[name=csrf]').content;
+    const CSRF = document.querySelector('meta[name=csrf]')?.content || '';
     const $ = id => document.getElementById(id);
-
-    // --- Theme Toggle ---
-    const themeBtn = $('theme-toggle');
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    document.documentElement.setAttribute('data-bs-theme', savedTheme);
-    updateThemeIcon(savedTheme);
-
-    themeBtn.addEventListener('click', () => {
-        const next = document.documentElement.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-bs-theme', next);
-        localStorage.setItem('theme', next);
-        updateThemeIcon(next);
-    });
-
-    function updateThemeIcon(theme) {
-        themeBtn.innerHTML = theme === 'dark' ? '<i class="bi bi-moon-stars-fill"></i>' : '<i class="bi bi-sun-fill"></i>';
-    }
 
     // --- Elements ---
     const exerciseList = $('exercise-list');
@@ -36,6 +19,33 @@
     const statusEl     = $('status');
     const userWeight   = $('user-weight');
 
+    // SAFETY CHECK
+    if (!exerciseList || !routineList || !searchInput || !resultCount || !stagingArea) {
+        console.error("Missing essential HTML elements on the page. Check index.php IDs.");
+        return; 
+    }
+
+    // --- Theme Toggle ---
+    const themeBtn = $('theme-toggle');
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-bs-theme', savedTheme);
+    updateThemeIcon(savedTheme);
+
+    if (themeBtn) {
+        themeBtn.addEventListener('click', () => {
+            const next = document.documentElement.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-bs-theme', next);
+            localStorage.setItem('theme', next);
+            updateThemeIcon(next);
+        });
+    }
+
+    function updateThemeIcon(theme) {
+        if (themeBtn) {
+            themeBtn.innerHTML = theme === 'dark' ? '<i class="bi bi-moon-stars-fill"></i>' : '<i class="bi bi-sun-fill"></i>';
+        }
+    }
+
     let currentRoutineId = null;
     let searchTimer = null;
 
@@ -48,7 +58,16 @@
             category: categorySel.value,
         });
         try {
-            const data = await (await fetch(`api.php?${params}`)).json();
+            const res = await fetch(`api.php?${params}`);
+            if (!res.ok) throw new Error('Network response was not ok');
+            
+            const data = await res.json();
+            
+            // Guard against bootstrap.php sending an {error: "..."} response
+            if (!Array.isArray(data)) {
+                throw new Error(data?.error || 'Unexpected API response');
+            }
+
             resultCount.textContent = `${data.length.toLocaleString()} exercises`;
 
             if (!data.length) {
@@ -57,13 +76,20 @@
             }
             exerciseList.innerHTML = data.map(catalogueCardHtml).join('');
         } catch (err) {
-            exerciseList.innerHTML = `<div class="alert alert-danger m-0">Error loading exercises.</div>`;
+            console.error('[openGym] loadExercises failed:', err);
+            resultCount.textContent = '0 exercises';
+            exerciseList.innerHTML = `<div class="alert alert-danger m-2 small">
+                <i class="bi bi-exclamation-triangle-fill"></i> Failed to load exercises.<br>
+                ${String(err.message || err).replace(/[<>&]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;'}[c]))}
+            </div>`;
         }
     }
 
     searchInput.addEventListener('input', () => { clearTimeout(searchTimer); searchTimer = setTimeout(loadExercises, 220); });
     bodyPartSel.addEventListener('change', loadExercises);
     categorySel.addEventListener('change', loadExercises);
+    
+    // Initial load
     loadExercises();
 
     // --- Drag & Drop Setup ---
@@ -80,7 +106,6 @@
         group: { name: 'routine', put: true, pull: false },
         onAdd: function (evt) {
             const item = evt.item;
-            // Build a new routine card from the dropped catalogue item
             const card = buildRoutineCard(item.dataset);
             
             // Wrap it in a new block and insert into the routine list
@@ -95,7 +120,7 @@
 
     // 3. Routine List (Handles moving blocks around)
     new Sortable(routineList, {
-        group: { name: 'blocks', put: false, pull: false }, // Blocks can only be sorted within themselves
+        group: { name: 'blocks', put: false, pull: false },
         handle: '.block-handle',
         animation: 150,
     });

@@ -48,18 +48,23 @@ $filters = get_filter_options();
                 </div>
                 <div class="card-body pb-2 d-flex flex-column gap-2">
                     <input id="search" type="search" class="form-control form-control-sm" placeholder="Search exercises…">
+                    
                     <select id="filter-bodypart" class="form-select form-select-sm">
                         <option value="">All body parts</option>
                         <?php foreach ($filters['bodyParts'] as $bp): ?>
                             <option value="<?= htmlspecialchars($bp) ?>"><?= htmlspecialchars(ucfirst($bp)) ?></option>
                         <?php endforeach; ?>
                     </select>
+                    
+                    <!-- Make sure this ID is exactly "filter-category" -->
                     <select id="filter-category" class="form-select form-select-sm">
-                        <option value="">All categories (Yoga, Sports...)</option>
+                        <option value="">All categories</option>
                         <?php foreach ($filters['categories'] as $cat): ?>
                             <option value="<?= htmlspecialchars($cat) ?>"><?= htmlspecialchars(ucfirst($cat)) ?></option>
                         <?php endforeach; ?>
                     </select>
+                    
+                    <!-- Make sure this ID is exactly "result-count" -->
                     <p id="result-count" class="text-secondary small mb-0"></p>
                 </div>
                 <div id="exercise-list" class="px-2 pb-2"></div>
@@ -88,25 +93,25 @@ $filters = get_filter_options();
                     <p class="text-secondary small mb-3">
                         Drag exercises here. To make a <strong>Superset</strong>, drag one exercise onto the card of another. Use the <i class="bi bi-grip-vertical"></i> handle to reorder.
                     </p>
-                    <!-- Drop zone container -->
                     <div id="routine-list" class="routine-list p-2">
                         <div id="empty-state" class="empty-state">
                             <i class="bi bi-plus-circle"></i>
                             <div class="fw-semibold">Drag exercises here</div>
                             <div class="small text-muted">Drag one exercise onto another to create a superset</div>
                         </div>
-                        <!-- Blocks will be inserted here -->
                     </div>
+                    <div id="status" role="status"></div>
                 </div>
             </div>
         </div>
     </div>
 </main>
 
+<!-- Hidden staging area for drag-and-drop -->
+<div id="staging-area" style="display:none;"></div>
+
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="assets/app.js"></script>
-<!-- Hidden staging area for drag-and-drop -->
-<div id="staging-area" style="display:none;"></div>
 </body>
 </html>
