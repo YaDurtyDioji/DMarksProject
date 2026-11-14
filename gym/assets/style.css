@@ -1,0 +1,152 @@
+/* ---------- Base ---------- */
+body { min-height: 100vh; }
+code { color: var(--bs-code-color); }
+
+/* ---------- Nav brand ---------- */
+.navbar-brand .brand-gradient {
+  background: linear-gradient(135deg, #818cf8, #c084fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ---------- Exercise catalogue ---------- */
+#exercise-list {
+  max-height: 65vh;
+  overflow-y: auto;
+  padding-right: .25rem;
+}
+
+/* Cards (both catalogue and routine) */
+.exercise-card {
+  cursor: grab;
+  user-select: none;
+  transition: box-shadow .15s ease, transform .1s ease, border-color .15s ease;
+}
+.exercise-card:hover {
+  box-shadow: 0 .35rem .75rem rgba(0,0,0,.25);
+  transform: translateY(-1px);
+  border-color: var(--bs-primary) !important;
+}
+.exercise-card:active { cursor: grabbing; }
+
+/* SortableJS feedback */
+.sortable-ghost { opacity: .35; }
+.sortable-chosen { transform: scale(1.02); box-shadow: 0 .5rem 1rem rgba(0,0,0,.35); }
+
+/* ---------- Routine drop zone ---------- */
+.routine-list {
+  min-height: 240px;
+  border: 2px dashed var(--bs-border-color);
+  border-radius: .75rem;
+  padding: .75rem;
+  transition: border-color .2s ease, background .2s ease;
+}
+.routine-list:has(.exercise-card) {
+  border-style: solid;
+  border-color: transparent;
+  padding: 0;
+}
+
+/* ---------- Empty state ---------- */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: 3rem 1rem;
+  color: var(--bs-secondary-color);
+  text-align: center;
+}
+.empty-state i { font-size: 2.5rem; opacity: .5; }
+
+/* ---------- Sets / reps / rest row ---------- */
+.set-rep {
+  display: flex;
+  gap: .75rem;
+  flex-wrap: wrap;
+  padding-top: .75rem;
+  margin-top: .75rem;
+  border-top: 1px solid var(--bs-border-color);
+}
+.set-rep .form-control { width: 85px; }
+.set-rep label { font-size: .72rem; text-transform: uppercase; letter-spacing: .04em; }
+
+/* ---------- Remove button visibility ---------- */
+.exercise-card .remove-card {
+  opacity: .4;
+  transition: opacity .15s ease;
+}
+.exercise-card:hover .remove-card,
+.exercise-card:focus-within .remove-card { opacity: 1; }
+
+/* ---------- Auth pages ---------- */
+.auth-bg {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(99,102,241,.18), transparent 45%),
+    radial-gradient(circle at 80% 80%, rgba(236,72,153,.10), transparent 45%);
+}
+.auth-icon {
+  width: 64px; height: 64px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border-radius: 1rem;
+  color: #fff;
+  font-size: 1.75rem;
+  box-shadow: 0 .5rem 1.5rem rgba(99,102,241,.4);
+}
+
+/* ---------- Setup page ---------- */
+.setup-icon {
+  width: 72px; height: 72px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border-radius: 1rem;
+  color: #fff;
+  font-size: 2rem;
+  box-shadow: 0 .5rem 1.5rem rgba(99,102,241,.4);
+}
+
+/* Add to the bottom of your existing style.css */
+.superset-block {
+    background: rgba(99, 102, 241, 0.05);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: 0.75rem;
+    padding: 0.5rem;
+    position: relative;
+}
+.superset-label {
+    position: absolute;
+    top: -10px;
+    left: 12px;
+    background: #818cf8;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 4px;
+    z-index: 10;
+}
+.drag-handle {
+    cursor: grab;
+    color: var(--bs-secondary-color);
+    padding: 0 8px;
+}
+.drag-handle:active { cursor: grabbing; }
+.set-row {
+    display: grid;
+    grid-template-columns: 30px 1fr 1fr 1fr 30px;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 4px;
+}
+.set-row input { padding: 4px 8px; font-size: 0.85rem; }
+.set-row .set-num { font-size: 0.8rem; color: var(--bs-secondary-color); font-weight: bold; text-align: center; }
+.exercise-card { cursor: default; }
+.exercise-header { cursor: grab; }
