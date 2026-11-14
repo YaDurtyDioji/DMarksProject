@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INSY6212W - Ultimate Glossary & Formulas</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --bg-color: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            padding-top: 70px; /* Space for fixed navbar */
+        }
+
+        /* Navbar & Search */
+        .navbar {
+            background: linear-gradient(135deg, #0d6efd, #0dcaf0);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .navbar-brand {
+            font-weight: 700;
+            color: white !important;
+        }
+        .search-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+        }
+        .search-container i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+        }
+        .search-container input {
+            padding-left: 45px;
+            border-radius: 50px;
+            border: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            height: 45px;
+        }
+
+        /* Glossary Cards */
+        .glossary-item {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--primary-color);
+            transition: transform 0.2s;
+        }
+        .glossary-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .glossary-term {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #212529;
+            margin-bottom: 5px;
+        }
+        .glossary-category {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #6c757d;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .glossary-def {
+            font-size: 0.95rem;
+            color: #495057;
+            margin-bottom: 0;
+        }
+
+        /* Formulas */
+        .formula-card {
+            background: #212529;
+            color: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .formula-title {
+            font-size: 1.2rem;
+            color: #0dcaf0;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .formula-math {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.3rem;
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 15px;
+            border: 1px dashed #0dcaf0;
+        }
+        .formula-desc {
+            font-size: 0.9rem;
+            color: #adb5bd;
+        }
+
+        /* No Results Message */
+        #noResults {
+            display: none;
+            text-align: center;
+            padding: 50px;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><i class="fas fa-book-open me-2"></i>INSY6212W Glossary</a>
+            <div class="d-flex w-100 justify-content-end">
+                <div class="search-container me-3">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" class="form-control" placeholder="Search terms, definitions, or formulas...">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        
+        <div class="text-center mb-5">
+            <h1 class="display-5 fw-bold text-primary">Master Glossary & Formulas</h1>
+            <p class="lead text-muted">Every term, concept, and formula you need for the closed-book exam. Type in the search bar to filter instantly.</p>
+        </div>
+
+        <!-- FORMULAS SECTION -->
+        <section id="formulas-section">
+            <h2 class="border-bottom pb-2 mb-4 text-primary"><i class="fas fa-calculator me-2"></i>Formulas</h2>
+            <div class="row">
+                <!-- Schedule Formulas -->
+                <div class="col-md-6 formula-item" data-search="earliest finish ef schedule forward pass">
+                    <div class="formula-card">
+                        <div class="formula-title">Earliest Finish (EF)</div>
+                        <div class="formula-math">EF = ES + Duration</div>
+                        <div class="formula-desc">Calculated during the Forward Pass. The earliest time an activity can finish.</div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 formula-item" data-search="latest start ls schedule backward pass">
+                    <div class="formula-card">
+                        <div class="formula-title">Latest Start (LS)</div>
+                        <div class="formula-math">LS = LF - Duration</div>
+                        <div class="formula-desc">Calculated during the Backward Pass. The latest an activity can start without delaying the project.</div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 formula-item" data-search="total slack float schedule">
+                    <div class="formula-card">
+                        <div class="formula-title">Total Slack (Float)</div>
+                        <div class="formula-math">Slack = LF - EF &nbsp; OR &nbsp; Slack = LS - ES</div>
+                        <div class="formula-desc">The amount of time an activity can be delayed without delaying the entire project. Critical path activities have zero slack.</div>
+                    </div>
+                </div>
+
+                <!-- Earned Value Formulas -->
+                <div class="col-md-6 formula-item" data-search="cost performance index cpi earned value">
+                    <div class="formula-card">
+                        <div class="formula-title">Cost Performance Index (CPI)</div>
+                        <div class="formula-math">CPI = CEV / CAC</div>
+                        <div class="formula-desc">Efficiency of cost use. Below 1.0 = over budget. Above 1.0 = under budget.</div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 formula-item" data-search="cost variance cv earned value">
+                    <div class="formula-card">
+                        <div class="formula-title">Cost Variance (CV)</div>
+                        <div class="formula-math">CV = CEV - CAC</div>
+                        <div class="formula-desc">Negative = over budget. Positive = under budget. Zero = exactly on budget.</div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 formula-item" data-search="forecasted cost at completion fcac eac earned value">
+                    <div class="formula-card">
+                        <div class="formula-title">Forecasted Cost at Completion (FCAC/EAC)</div>
+                        <div class="formula-math">FCAC = TBC / CPI</div>
+                        <div class="formula-desc">Forecasts total final cost assuming current cost efficiency continues.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="my-5">
+
+        <!-- GLOSSARY SECTION -->
+        <section id="glossary-section">
+            <h2 class="border-bottom pb-2 mb-4 text-primary"><i class="fas fa-list-ul me-2"></i>Glossary of Terms</h2>
+            
+            <div id="glossary-container">
+                
+                <!-- LU1 & General -->
+                <div class="glossary-item filter-item" data-search="project operation temporary unique endeavor">
+                    <span class="glossary-category">LU1: Introduction</span>
+                    <div class="glossary-term">Project</div>
+                    <p class="glossary-def">A temporary endeavor undertaken to create a unique product, service, or result. It has a defined beginning and end, distinguishing it from ongoing operations.</p>
+                </div>
+
+                <div class="glossary-item filter-item" data-search="operation ongoing repetitive">
+                    <span class="glossary-category">LU1: Introduction</span>
+                    <div class="glossary-term">Operations</div>
+                    <p class="glossary-def">Ongoing, repetitive activities that sustain the organization (e.g., daily customer service or factory production), as opposed to a temporary project.</p>
+                </div>
+
+                <div class="glossary-item filter-item" data-search="triple constraint scope time cost">
+                    <span class="glossary-category">LU1: Introduction</span>
+                    <div class="glossary-term">Triple Constraint</div>
+                    <p class="glossary-def">The traditional balance of Scope, Time, and Cost. A change in one constraint typically requires a change in the others to maintain project quality.</p>
+                </div>
+
+                <div class="glossary-item filter-item" data-search="stakeholder sponsor customer engagement">
+                    <span class="glossary-category">LU1: Introduction</span>
+                    <div class="glossary-term">Stakeholder</div>
+                    <p class="glossary-def">An individual, group, or organization that can affect, be affected by, or perceive itself to be affected by a project decision or outcome.</p>
+                </div>
+
+                <div class="glossary-item filter-item" data-search="project life cycle initiating planning performing closing">
+                    <span class="glossary-category">LU1: Introduction</span>
+                    <div class="glossary-term">Project Life Cycle</div>
+                    <p class="glossary-def">The four standard phases a project passes through: Initiating, Planning, Performing, and Closing.</p>
+                </div>
+
+                <div class="glossary-item filter-item" data-search="value pmbok outcomes benefits">
+                    <span class="glossary-category">PMBOK 7</span>
+                    <div class="glossary-term">Value (PMBOK 7)</div>
+                    <p class="glossary-def">The worth or usefulness of a project. PMBOK 7 emphasizes that completing a deliverable is not enough if it does not produce the intended benefit (outcome) that justified the project.</p>
+                </div>
+
+                <!-- LU2 -->
+                <div class="glossary-item filter-item" data-search="project charter authorization document">
+                    <span class="glossary-category">LU2: Selection</span>
+                    <div class="glossary-term">Project Charter</div>
+                    <p class="glossary-def">A high-level document issued by the sponsor that formally authorizes the project, commits funding, and outlines the objective, deliverables, risks, and milestone schedule.</p>
+                </div>
+
+                <div class="glossary-item filter-item" data-search="request for proposal rfp solicitation contractor">
+                    <span class="glossary-category">LU2: Selection</span>
+                    <div class="glossary-term">Request for Proposal (RFP)</div>
+                    <p class="glossary-def">A formal document issued by a customer to potential contractors that defines project requirements and asks them to submit proposals (solutions, schedules, and pricing).</p>
+                </div>
+
+                <!-- LU3 -->
+                <div class="glossary-item filter-item" data-search="bid no bid decision contractor rfp">
+                    <span class="glossary-category">LU3: Proposals</span>
+                    <div class="glossary-term">Bid/No-Bid Decision</div>
+                    <p class="glossary-def">The contractor's assessment of whether responding to an RFP is strategically, financially, and operationally sensible before investing in a proposal.</p>
+                </div>
+
+                <div class="glossary-item filter-item" data-search="fixed price contract risk customer contractor">
+                    <span class="glossary-category">LU3: Proposals</span>
+                    <div class="glossary-term">Fixed-Price Contract</div>
+                    <p class="glossary-def">A contract where the price is locked in. The contractor carries the risk of cost overruns. Best for well-defined projects with low uncertainty.</p>
+                </div>
+
+                <div class="glossary-item filter-item" data-search="cost reimbursement contract risk customer contractor">
+                    <span class="glossary-category">LU3: Proposals</span>
+                    <div class="glossary-term">Cost-Reimbursement Contract</div>
+                    <p class="glossary-def">A contract where the customer pays all allowable actual costs plus a fee. The customer carries the risk of cost overruns. Best for high-risk or uncertain projects (e.g., R&D).</p>
+                </div>
+
+                <div class="glossary-item filter-item" data-search="statement of work sow scope">
+                    <span class="glossary-category">LU4: Scope</span>
+                    <div class="glossary-term">Statement of Work (SOW)</div>
+                    <p class="glossary-def">A document that defines the major tasks and work the contractor must perform. It clarifies what is included in the scope to prevent misunderstandings.</p>
+                </div>
+
+                <!-- LU4 -->
+                <div class="glossary-item filter-item" data-search="smart objective specific measurable achievable realistic time">
+                    <span class="glossary-category">LU4: Scope</span>
+                    <div class="glossary-term">SMART Objective</div>
+                    <p class="glossary-def">A project objective that is Specific, Measurable, Achievable, Relevant/Realistic, and Time-bound.</p>
+                </div>
+
+                <div class="glossary-item filter-item" data-search="scope creep unapproved changes">
+                    <span class="glossary-category">LU4: Scope</span>
+                    <div class="glossary-term">Scope Creep</div>
+                    <p class="glossary-def">The uncontrolled expansion of project scope without adjusting the budget or schedule. Often occurs through small, unapproved additions by the customer.</p>
+                </div>
+
+                <div class="glossary-item filter-item" data-search="work breakdown structure wbs hierarchy work package">
+                    <span class="glossary-category">LU4: Scope</span>
+                    <div class="glossary-term">Work Breakdown Structure (WBS)</div>
+                    <p class="glossary-def">A deliverable-oriented hierarchical decomposition of the total project scope. The lowest level is the <strong>Work Package</strong>, where costs and durations are estimated.</p>
+                </div>
+
+                <div class="glossary-item filter-item" data-search="responsibility assignment matrix ram raci primary support">
+                    <span class="glossary-category">LU4: Scope</span>
+                    <div class="glossary-term">Responsibility Assignment Matrix (RAM)</div>
+                    <p class="glossary-def">A chart linking WBS items to team members. Uses "P" for Primary responsibility (the person in charge) and "S" for Support. Only one "P" per work package.</p>
+                </div>
+
+                <div class="glossary-item filter-item" data-search="laddering repetitive tasks schedule">
+                    <span class="glossary-category">LU4: Sequence</span>
+                    <div class="glossary-term">Laddering</div>
+                    <p class="glossary-def">A scheduling technique for repetitive work (e.g., painting multiple rooms) where a following activity can begin on an earlier completed portion before the preceding activity has finished everywhere.</p>
+                </div>
+
+                <!-- LU5 -->
+                <div class="glossary-item filter-item" data-search="pmis project management information system microsoft project jira">
+                    <span class="glossary-category">LU5: PMIS</span>
+                    <div class="glossary-term">Project Management Information System (PMIS)</div>
+                    <p class="glossary-def">Software tools (like MS Project, Jira, Asana) used to plan, schedule, track resources, and report on project progress. It automates complex recalculations.</p>
+                </div>
+
+                <!-- LU6 -->
+                <div class="glossary-item filter-item" data-search="critical path longest duration zero slack">
+                    <span class="glossary-category">LU6: Schedule</span>
+                    <div class="glossary-term">Critical Path</div>
+                    <p class="glossary-def">The longest-duration path through the network diagram. It determines the shortest possible project duration. Activities on this path have zero slack; any delay here delays the whole project.</p>
+                </div>
+
+                <div class="glossary-item filter-item" data-search="resource leveling smoothing deadline fixed">
+                    <span class="glossary-category">LU6: Resources</span>
+                    <div class="glossary-term">Resource Leveling (Smoothing)</div>
+                    <p class="glossary-def">A technique used when the project deadline is fixed. The PM delays non-critical tasks (using their slack) to reduce peaks and fluctuations in resource demand, keeping resource usage even.</p>
+                </div>
+
+                <div class="glossary-item filter-item" data-search="resource limited scheduling fixed resources extend deadline">
+                    <span class="glossary-category">LU6: Resources</span>
+                    <div class="glossary-term">Resource-Limited Scheduling</div>
+                    <p class="glossary-def">A technique used when the quantity of available resources is fixed. If there aren't enough resources to do tasks in parallel, the project completion date will be extended to stay within limits.</p>
+                </div>
+
+                <!-- LU7 -->
+                <div class="glossary-item filter-item" data-search="cumulative earned value cev budgeted cost of work performed">
+                    <span class="glossary-category">LU7: Costs</span>
+                    <div class="glossary-term">Cumulative Earned Value (CEV)</div>
+                    <p class="glossary-def">The budgeted value of the work actually completed up to a specific point in time. (Also called EV or BCWP).</p>
+                </div>
+
+                <div class="glossary-item filter-item" data-search="cumulative actual cost cac actual spent">
+                    <span class="glossary-category">LU7: Costs</span>
+                    <div class="glossary-term">Cumulative Actual Cost (CAC)</div>
+                    <p class="glossary-def">The actual amount of money spent to perform the work up to a specific point in time.</p>
+                </div>
+
+                <!-- LU8 -->
+                <div class="glossary-item filter-item" data-search="risk threat opportunity uncertainty">
+                    <span class="glossary-category">LU8: Risk</span>
+                    <div class="glossary-term">Risk</div>
+                    <p class="glossary-def">An uncertain event or condition that, if it occurs, has a positive (opportunity) or negative (threat) effect on the project objectives.</p>
+                </div>
+
+                <div class="glossary-item filter-item" data-search="risk avoidance avoid change plan">
+                    <span class="glossary-category">LU8: Risk</span>
+                    <div class="glossary-term">Risk Avoidance</div>
+                    <p class="glossary-def">Changing the project plan or conditions so that the threat is completely eliminated (e.g., moving a construction site away from a flood zone).</p>
+                </div>
+
+                <div class="glossary-item filter-item" data-search="risk mitigation mitigate reduce impact">
+                    <span class="glossary-category">LU8: Risk</span>
+                    <div class="glossary-term">Risk Mitigation</div>
+                    <p class="glossary-def">Taking action to reduce the likelihood and/or the impact of a threat (e.g., buying fire extinguishers).</p>
+                </div>
+
+                <div class="glossary-item filter-item" data-search="risk assessment matrix likelihood impact">
+                    <span class="glossary-category">LU8: Risk</span>
+                    <div class="glossary-term">Risk Assessment Matrix</div>
+                    <p class="glossary-def">A tool that combines the Likelihood (probability) of a risk and its Impact (severity) to help the PM prioritize which risks need immediate attention.</p>
+                </div>
+
+                <!-- LU9 -->
+                <div class="glossary-item filter-item" data-search="lessons learned closing knowledge base">
+                    <span class="glossary-category">LU9: Closing</span>
+                    <div class="glossary-term">Lessons Learned</div>
+                    <p class="glossary-def">Knowledge gained during a project (both successes and mistakes) that is documented at closing to improve performance on future projects.</p>
+                </div>
+
+                <!-- Agile & Scrum -->
+                <div class="glossary-item filter-item" data-search="agile manifesto adaptive requirements iterations">
+                    <span class="glossary-category">Agile</span>
+                    <div class="glossary-term">Agile Methodology</div>
+                    <p class="glossary-def">An iterative approach to project management (often software dev) that focuses on delivering working increments quickly, embracing changing requirements, and continuous customer feedback.</p>
+                </div>
+
+                <div class="glossary-item filter-item" data-search="agile principles customer satisfaction working software">
+                    <span class="glossary-category">Agile</span>
+                    <div class="glossary-term">Agile Principles</div>
+                    <p class="glossary-def">Core values from the Agile Manifesto. Key examples: 1. Satisfy the customer through early delivery. 2. Welcome changing requirements. 3. Deliver working software frequently. 4. Business people and developers work together daily.</p>
+                </div>
+
+                <div class="glossary-item filter-item" data-search="scrum master facilitator servant leader">
+                    <span class="glossary-category">Agile</span>
+                    <div class="glossary-term">Scrum Master</div>
+                    <p class="glossary-def">A servant-leader role in Scrum. They do not manage the team; instead, they remove obstacles (impediments) and facilitate Scrum ceremonies to ensure the team can perform effectively.</p>
+                </div>
+
+                <div class="glossary-item filter-item" data-search="sprint iteration timebox scrum">
+                    <span class="glossary-category">Agile</span>
+                    <div class="glossary-term">Sprint (Iteration)</div>
+                    <p class="glossary-def">A short, fixed timebox (usually 1-4 weeks) in Scrum during which a specific set of features from the Product Backlog is developed and made ready for review.</p>
+                </div>
+
+                <div class="glossary-item filter-item" data-search="product backlog scrum requirements list">
+                    <span class="glossary-category">Agile</span>
+                    <div class="glossary-term">Product Backlog</div>
+                    <p class="glossary-def">An ordered, prioritized list of all requirements, features, and user stories for a product, maintained by the Product Owner.</p>
+                </div>
+
+                <div class="glossary-item filter-item" data-search="kanban visual board wip limit">
+                    <span class="glossary-category">Agile</span>
+                    <div class="glossary-term">Kanban</div>
+                    <p class="glossary-def">A visual Agile framework (using boards and cards) that helps teams visualize workflow, limit Work-In-Progress (WIP), and maximize efficiency. It does not require fixed-length sprints like Scrum.</p>
+                </div>
+
+                <!-- Organizational Structures -->
+                <div class="glossary-item filter-item" data-search="functional organizational structure silo standard products">
+                    <span class="glossary-category">Org Structure</span>
+                    <div class="glossary-term">Functional Organizational Structure</div>
+                    <p class="glossary-def">Groups individuals by discipline (e.g., Marketing, Engineering). Best for standard products. The PM has limited authority, and communication flows up/down the functional hierarchy.</p>
+                </div>
+
+                <div class="glossary-item filter-item" data-search="autonomous projectized organizational structure dedicated resources">
+                    <span class="glossary-category">Org Structure</span>
+                    <div class="glossary-term">Autonomous (Projectized) Organizational Structure</div>
+                    <p class="glossary-def">Each project operates as its own independent entity with dedicated full-time resources. The PM has full authority. Highly responsive to customers, but can be cost-inefficient.</p>
+                </div>
+
+                <div class="glossary-item filter-item" data-search="matrix organizational structure hybrid dual reporting">
+                    <span class="glossary-category">Org Structure</span>
+                    <div class="glossary-term">Matrix Organizational Structure</div>
+                    <p class="glossary-def">A hybrid of functional and projectized. Team members report to both a functional manager (home department) and a project manager. Balances resource efficiency with project focus.</p>
+                </div>
+
+                <div class="glossary-item filter-item" data-search="pmo project management office oversight">
+                    <span class="glossary-category">Org Structure</span>
+                    <div class="glossary-term">Project Management Office (PMO)</div>
+                    <p class="glossary-def">An organizational unit that standardizes project management processes, provides templates/training, and oversees multiple projects to ensure strategic alignment.</p>
+                </div>
+
+            </div>
+            
+            <!-- No Results Message -->
+            <div id="noResults">
+                <i class="fas fa-search fa-3x mb-3 text-muted"></i>
+                <h3>No terms found</h3>
+                <p>Try searching for a different keyword (e.g., "risk", "CPI", "scrum").</p>
+            </div>
+        </section>
+
+        <footer class="text-center mt-5 mb-5 text-muted">
+            <p>INSY6212W Exam Prep &copy; 2024. Good luck with your studies!</p>
+        </footer>
+
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Search Functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const glossaryItems = document.querySelectorAll('.filter-item');
+            const formulaItems = document.querySelectorAll('.formula-item');
+            const noResults = document.getElementById('noResults');
+            const formulasSection = document.getElementById('formulas-section');
+            const glossarySection = document.getElementById('glossary-section');
+
+            searchInput.addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase().trim();
+                let visibleCount = 0;
+
+                // Filter Glossary Items
+                glossaryItems.forEach(item => {
+                    const searchData = item.getAttribute('data-search').toLowerCase();
+                    const textContent = item.textContent.toLowerCase();
+                    
+                    if (searchData.includes(searchTerm) || textContent.includes(searchTerm)) {
+                        item.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                // Filter Formula Items
+                formulaItems.forEach(item => {
+                    const searchData = item.getAttribute('data-search').toLowerCase();
+                    const textContent = item.textContent.toLowerCase();
+                    
+                    if (searchData.includes(searchTerm) || textContent.includes(searchTerm)) {
+                        item.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                // Hide entire sections if empty
+                if (searchTerm !== '') {
+                    const visibleFormulas = Array.from(formulaItems).some(item => item.style.display !== 'none');
+                    const visibleGlossary = Array.from(glossaryItems).some(item => item.style.display !== 'none');
+                    
+                    formulasSection.style.display = visibleFormulas ? 'block' : 'none';
+                    glossarySection.style.display = visibleGlossary ? 'block' : 'none';
+                } else {
+                    // Show everything if search is cleared
+                    formulasSection.style.display = 'block';
+                    glossarySection.style.display = 'block';
+                    visibleCount = 1; // prevent noResults from showing
+                }
+
+                // Show/Hide "No Results"
+                if (visibleCount === 0) {
+                    noResults.style.display = 'block';
+                } else {
+                    noResults.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
