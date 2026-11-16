@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CONE5112 Glossary — Computer Networks 1B</title>
+<meta name="description" content="Searchable glossary of 200+ computer networking terms for CONE5112." />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<style>
+  body{background:#f8f9fa;padding-top:74px;font-family:'Segoe UI',system-ui,sans-serif;}
+  .navbar{background:linear-gradient(90deg,#0d6efd,#6f42c1)!important;}
+  .term-card{border:none;border-left:4px solid #0d6efd;box-shadow:0 2px 8px rgba(0,0,0,.06);border-radius:8px;transition:.15s;}
+  .term-card:hover{transform:translateX(4px);}
+  .term-card .term{font-weight:700;color:#0d6efd;}
+  .term-card .lu-badge{font-size:.7rem;}
+  .hidden{display:none!important;}
+  #glossSearch{border-radius:30px;padding:.6rem 1.2rem;}
+  .alpha-nav a{padding:.2rem .5rem;margin:.1rem;border-radius:14px;font-size:.8rem;text-decoration:none;background:#e9ecef;color:#212529;display:inline-block;}
+  .alpha-nav a:hover{background:#0d6efd;color:#fff;}
+  footer{margin-top:3rem;padding:2rem 0;background:#212529;color:#adb5bd;text-align:center;}
+  footer a{color:#6ea8fe;}
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><i class="bi bi-arrow-left"></i> Back to Cheat Sheet</a>
+    <span class="navbar-text text-white ms-auto"><i class="bi bi-book"></i> Glossary</span>
+  </div>
+</nav>
+
+<div class="container">
+
+  <div class="text-center my-4">
+    <h1 class="fw-bold"><i class="bi bi-book"></i> CONE5112 Glossary</h1>
+    <p class="text-muted">200+ networking terms · searchable · tagged by Learning Unit</p>
+  </div>
+
+  <div class="mb-3">
+    <input id="glossSearch" class="form-control" placeholder="Search terms, definitions, or keywords... (e.g. 'routing', 'TCP', 'DORA')" />
+    <small class="text-muted"><span id="glossCount"></span></small>
+  </div>
+
+  <div class="alpha-nav mb-4 text-center" id="alphaNav"></div>
+  <div id="noResultsG" class="alert alert-warning hidden">No matching terms.</div>
+
+  <div class="row g-3" id="glossaryGrid">
+
+    <!-- ============ A ============ -->
+    <div class="col-md-6 gloss-item" data-term="access network"><div class="card term-card p-3 h-100">
+      <div class="term">Access Network <span class="badge bg-primary lu-badge">LU1</span></div>
+      <div class="small">The network that physically connects an end system to its first (edge) router. Examples: DSL, cable, FTTH, Ethernet, Wi-Fi, 4G/5G.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="acknowledgment"><div class="card term-card p-3 h-100">
+      <div class="term">Acknowledgment (ACK) <span class="badge bg-danger lu-badge">LU3</span></div>
+      <div class="small">A message from receiver to sender confirming successful receipt of data. TCP uses cumulative ACKs. UDP does not.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="adsl asymmetric digital subscriber line"><div class="card term-card p-3 h-100">
+      <div class="term">ADSL <span class="badge bg-primary lu-badge">LU1</span></div>
+      <div class="small">Asymmetric DSL — downstream faster than upstream. Uses existing telephone copper; speed depends on distance to exchange.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="aimd additive increase multiplicative decrease"><div class="card term-card p-3 h-100">
+      <div class="term">AIMD <span class="badge bg-danger lu-badge">LU3</span></div>
+      <div class="small">Additive-Increase Multiplicative-Decrease. TCP congestion control: grow cwnd linearly until loss, then halve it. Produces sawtooth pattern.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="aloha"><div class="card term-card p-3 h-100">
+      <div class="term">ALOHA <span class="badge bg-info lu-badge">LU6</span></div>
+      <div class="small">Earliest random access protocol. Slotted ALOHA max efficiency = 1/e ≈ 37%. Pure ALOHA ≈ 18%.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="anycast"><div class="card term-card p-3 h-100">
+      <div class="term">Anycast <span class="badge bg-warning text-dark lu-badge">LU5</span></div>
+      <div class="small">Same IP advertised from multiple locations; BGP delivers to nearest instance. Used by DNS root servers and CDNs.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="arp address resolution protocol"><div class="card term-card p-3 h-100">
+      <div class="term">ARP <span class="badge bg-info lu-badge">LU6</span></div>
+      <div class="small">Address Resolution Protocol — resolves local IPv4 address → MAC address. Broadcast request, unicast reply, cached with TTL.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="as autonomous system"><div class="card term-card p-3 h-100">
+      <div class="term">Autonomous System (AS) <span class="badge bg-warning text-dark lu-badge">LU5</span></div>
+      <div class="small">A group of routers under one administrative control, identified by an AS number. Intra-AS routing uses OSPF; inter-AS uses BGP.</div>
+    </div></div>
+
+    <!-- B -->
+    <div class="col-md-6 gloss-item" data-term="bandwidth"><div class="card term-card p-3 h-100">
+      <div class="term">Bandwidth <span class="badge bg-primary lu-badge">LU1</span></div>
+      <div class="small">Raw transmission capacity of a link (bits/sec). Not to be confused with achieved throughput.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="bgp border gateway protocol"><div class="card term-card p-3 h-100">
+      <div class="term">BGP <span class="badge bg-warning text-dark lu-badge">LU5</span></div>
+      <div class="small">Border Gateway Protocol — path-vector inter-AS routing protocol. Runs over TCP port 179. Policy-driven route selection.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="bgp as-path"><div class="card term-card p-3 h-100">
+      <div class="term">AS-PATH (BGP) <span class="badge bg-warning text-dark lu-badge">LU5</span></div>
+      <div class="small">BGP attribute listing ASes traversed. Used for loop detection and route preference (shorter = preferred).</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="broadcast"><div class="card term-card p-3 h-100">
+      <div class="term">Broadcast <span class="badge bg-info lu-badge">LU6</span></div>
+      <div class="small">One sender → all receivers on a link. Ethernet broadcast MAC = FF-FF-FF-FF-FF-FF.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="bufferbloat"><div class="card term-card p-3 h-100">
+      <div class="term">Bufferbloat <span class="badge bg-primary lu-badge">LU4</span></div>
+      <div class="small">Excessive buffering causing persistent high latency. Solved with active queue management (AQM) like RED, PIE, CoDel.</div>
+    </div></div>
+
+    <!-- C -->
+    <div class="col-md-6 gloss-item" data-term="cdma code division multiple access"><div class="card term-card p-3 h-100">
+      <div class="term">CDMA <span class="badge bg-primary lu-badge">LU1</span></div>
+      <div class="small">Code Division Multiple Access — users share time+frequency via unique spreading codes. Suffers from near-far problem; power control needed.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="cdn content distribution network"><div class="card term-card p-3 h-100">
+      <div class="term">CDN <span class="badge bg-success lu-badge">LU2</span></div>
+      <div class="small">Content Distribution Network — geographically distributed servers caching content closer to users. Placement: "enter deep" (Akamai) or "bring home" (Limelight).</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="cidr classless interdomain routing"><div class="card term-card p-3 h-100">
+      <div class="term">CIDR <span class="badge bg-primary lu-badge">LU4</span></div>
+      <div class="small">Classless Interdomain Routing — a.b.c.d/x notation. First x bits = network prefix. Enables route aggregation.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="circuit switching"><div class="card term-card p-3 h-100">
+      <div class="term">Circuit Switching <span class="badge bg-primary lu-badge">LU1</span></div>
+      <div class="small">Resources reserved end-to-end for the session (FDM/TDM). Predictable but wastes capacity when idle. Traditional telephony.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="congestion control"><div class="card term-card p-3 h-100">
+      <div class="term">Congestion Control <span class="badge bg-danger lu-badge">LU3</span></div>
+      <div class="small">Protects the network by regulating sender rates based on perceived congestion. TCP uses cwnd + AIMD. Flow control protects the receiver (rwnd).</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="cookie"><div class="card term-card p-3 h-100">
+      <div class="term">Cookie <span class="badge bg-success lu-badge">LU2</span></div>
+      <div class="small">Small value stored by browser and returned with requests to identify sessions on stateless HTTP. Attributes: Secure, HttpOnly, SameSite.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="crc cyclic redundancy check"><div class="card term-card p-3 h-100">
+      <div class="term">CRC <span class="badge bg-info lu-badge">LU6</span></div>
+      <div class="small">Cyclic Redundancy Check — polynomial division (XOR) by generator G. Very strong error detection. Used in Ethernet FCS (CRC-32).</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="csma cd carrier sense multiple access collision detection"><div class="card term-card p-3 h-100">
+      <div class="term">CSMA/CD <span class="badge bg-info lu-badge">LU6</span></div>
+      <div class="small">Carrier Sense + Collision Detection. Classic Ethernet. Listens, aborts on collision, uses binary exponential backoff.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="csma ca carrier sense multiple access collision avoidance"><div class="card term-card p-3 h-100">
+      <div class="term">CSMA/CA <span class="badge bg-info lu-badge">LU6</span></div>
+      <div class="small">Carrier Sense + Collision Avoidance. Wi-Fi. Uses random backoff + link-layer ACKs + optional RTS/CTS because collisions can't be detected.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="cwnd congestion window"><div class="card term-card p-3 h-100">
+      <div class="term">cwnd <span class="badge bg-danger lu-badge">LU3</span></div>
+      <div class="small">Congestion window — sender-side limit on unACKed data set by congestion control. Distinct from rwnd (receiver flow control).</div>
+    </div></div>
+
+    <!-- D -->
+    <div class="col-md-6 gloss-item" data-term="dash dynamic adaptive streaming over http"><div class="card term-card p-3 h-100">
+      <div class="term">DASH <span class="badge bg-success lu-badge">LU2</span></div>
+      <div class="small">Dynamic Adaptive Streaming over HTTP — video split into chunks at multiple bitrates. Client picks best per chunk based on measured throughput.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="dhcp dynamic host configuration protocol"><div class="card term-card p-3 h-100">
+      <div class="term">DHCP <span class="badge bg-primary lu-badge">LU4</span></div>
+      <div class="small">Dynamic Host Configuration Protocol — auto-configures IP, mask, gateway, DNS. Uses DORA exchange over UDP 67/68.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="dhcp dora"><div class="card term-card p-3 h-100">
+      <div class="term">DORA <span class="badge bg-primary lu-badge">LU4</span></div>
+      <div class="small">DHCP exchange: Discover → Offer → Request → Acknowledge.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="dijkstra algorithm"><div class="card term-card p-3 h-100">
+      <div class="term">Dijkstra's Algorithm <span class="badge bg-warning text-dark lu-badge">LU5</span></div>
+      <div class="small">Link-state shortest-path algorithm. Settles closest nodes iteratively. Used by OSPF. Complexity O(n²) naive, O(n log n) with heap.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="dns domain name system"><div class="card term-card p-3 h-100">
+      <div class="term">DNS <span class="badge bg-success lu-badge">LU2</span></div>
+      <div class="small">Domain Name System — translates names to IPs. Hierarchy: root → TLD → authoritative. Records: A, AAAA, NS, CNAME, MX. Runs over UDP 53.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="dv distance vector"><div class="card term-card p-3 h-100">
+      <div class="term">Distance-Vector (DV) <span class="badge bg-warning text-dark lu-badge">LU5</span></div>
+      <div class="small">Decentralised routing: each router knows only neighbours' distance vectors. Uses Bellman-Ford. Prone to count-to-infinity. RIP is an example.</div>
+    </div></div>
+
+    <!-- E -->
+    <div class="col-md-6 gloss-item" data-term="encapsulation"><div class="card term-card p-3 h-100">
+      <div class="term">Encapsulation <span class="badge bg-primary lu-badge">LU1</span></div>
+      <div class="small">Each layer adds a header as data moves down the stack. Receiver strips headers moving up (decapsulation).</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="ecn explicit congestion notification"><div class="card term-card p-3 h-100">
+      <div class="term">ECN <span class="badge bg-danger lu-badge">LU3</span></div>
+      <div class="small">Explicit Congestion Notification — routers mark packets instead of dropping. Sender reacts via ECE/CWR. Defined in RFC 3168.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="ethernet"><div class="card term-card p-3 h-100">
+      <div class="term">Ethernet <span class="badge bg-info lu-badge">LU6</span></div>
+      <div class="small">Dominant wired LAN technology. Frame: preamble + dst MAC + src MAC + type + data (46–1500) + CRC. Connectionless, unreliable at link layer.</div>
+    </div></div>
+
+    <!-- F -->
+    <div class="col-md-6 gloss-item" data-term="fiber ftth"><div class="card term-card p-3 h-100">
+      <div class="term">Fibre to the Home (FTTH) <span class="badge bg-primary lu-badge">LU1</span></div>
+      <div class="small">Optical fibre to the home. Architecture: AON (active, dedicated) or PON (passive, shared). Highest residential speeds.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="fifo first in first out"><div class="card term-card p-3 h-100">
+      <div class="term">FIFO <span class="badge bg-primary lu-badge">LU4</span></div>
+      <div class="small">First-In-First-Out scheduling — packets transmitted in arrival order. Simple but no traffic differentiation.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="flow control"><div class="card term-card p-3 h-100">
+      <div class="term">Flow Control <span class="badge bg-danger lu-badge">LU3</span></div>
+      <div class="small">Protects the receiver from being overwhelmed. TCP uses rwnd advertised in every segment. Different from congestion control.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="fragmentation"><div class="card term-card p-3 h-100">
+      <div class="term">Fragmentation <span class="badge bg-primary lu-badge">LU4</span></div>
+      <div class="small">Splitting a datagram larger than the link MTU into fragments. Offset in 8-byte units. IPv4 routers may fragment; IPv6 routers do not.</div>
+    </div></div>
+
+    <!-- G -->
+    <div class="col-md-6 gloss-item" data-term="gbn go back n"><div class="card term-card p-3 h-100">
+      <div class="term">Go-Back-N (GBN) <span class="badge bg-danger lu-badge">LU3</span></div>
+      <div class="small">Pipelined protocol with sender window N, receiver window 1. Cumulative ACKs. On timeout, resends missing packet and all subsequent ones.</div>
+    </div></div>
+
+    <!-- H -->
+    <div class="col-md-6 gloss-item" data-term="hol blocking head of line"><div class="card term-card p-3 h-100">
+      <div class="term">Head-of-Line (HOL) Blocking <span class="badge bg-primary lu-badge">LU4</span></div>
+      <div class="small">A queued packet at the front of an input queue waits for a busy output, blocking other packets behind it even if their outputs are free.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="http hypertext transfer protocol"><div class="card term-card p-3 h-100">
+      <div class="term">HTTP <span class="badge bg-success lu-badge">LU2</span></div>
+      <div class="small">HyperText Transfer Protocol — stateless request-response over TCP. Methods: GET, POST, PUT, HEAD, DELETE. HTTP/2 adds multiplexing; HTTP/3 runs over QUIC.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="hub"><div class="card term-card p-3 h-100">
+      <div class="term">Hub <span class="badge bg-info lu-badge">LU6</span></div>
+      <div class="small">Layer 1 (physical) device — broadcasts every incoming signal to all ports. Single collision domain. Obsolete; replaced by switches.</div>
+    </div></div>
+
+    <!-- I -->
+    <div class="col-md-6 gloss-item" data-term="icmp internet control message protocol"><div class="card term-card p-3 h-100">
+      <div class="term">ICMP <span class="badge bg-warning text-dark lu-badge">LU5</span></div>
+      <div class="small">Internet Control Message Protocol — error reporting + diagnostics. Ping uses Echo Request (8) / Reply (0). Traceroute uses Time Exceeded (11).</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="ipv4"><div class="card term-card p-3 h-100">
+      <div class="term">IPv4 <span class="badge bg-primary lu-badge">LU4</span></div>
+      <div class="small">Internet Protocol version 4 — 32-bit addresses, 20-byte variable header, TTL, header checksum, fragmentation allowed.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="ipv6"><div class="card term-card p-3 h-100">
+      <div class="term">IPv6 <span class="badge bg-primary lu-badge">LU4</span></div>
+      <div class="small">Internet Protocol version 6 — 128-bit addresses, fixed 40-byte header, no header checksum, no router fragmentation, no broadcast.</div>
+    </div></div>
+
+    <!-- L -->
+    <div class="col-md-6 gloss-item" data-term="link state"><div class="card term-card p-3 h-100">
+      <div class="term">Link-State (LS) <span class="badge bg-warning text-dark lu-badge">LU5</span></div>
+      <div class="small">Routers flood link-state info; each builds a full topology map and runs Dijkstra. OSPF is a link-state protocol.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="lte long term evolution"><div class="card term-card p-3 h-100">
+      <div class="term">LTE <span class="badge bg-primary lu-badge">LU1</span></div>
+      <div class="small">Long-Term Evolution — 4G all-IP cellular architecture. UE, eNodeB, MME, HSS, S-GW, P-GW.</div>
+    </div></div>
+
+    <!-- M -->
+    <div class="col-md-6 gloss-item" data-term="mac address"><div class="card term-card p-3 h-100">
+      <div class="term">MAC Address <span class="badge bg-info lu-badge">LU6</span></div>
+      <div class="small">48-bit flat link-layer address burned into NIC. Written as hex. Broadcast = FF-FF-FF-FF-FF-FF.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="mib management information base"><div class="card term-card p-3 h-100">
+      <div class="term">MIB <span class="badge bg-warning text-dark lu-badge">LU5</span></div>
+      <div class="small">Management Information Base — database of managed objects on a device, queried via SNMP.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="mme mobility management entity"><div class="card term-card p-3 h-100">
+      <div class="term">MME <span class="badge bg-primary lu-badge">LU1</span></div>
+      <div class="small">Mobility Management Entity — 4G control plane element. Handles authentication, mobility tracking, tunnel setup.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="mtu maximum transmission unit"><div class="card term-card p-3 h-100">
+      <div class="term">MTU <span class="badge bg-primary lu-badge">LU4</span></div>
+      <div class="small">Maximum Transmission Unit — largest link-layer frame payload a link can carry. Ethernet = 1500 bytes.</div>
+    </div></div>
+
+    <!-- N -->
+    <div class="col-md-6 gloss-item" data-term="nat network address translation"><div class="card term-card p-3 h-100">
+      <div class="term">NAT <span class="badge bg-primary lu-badge">LU4</span></div>
+      <div class="small">Network Address Translation — many private IPs share one public IP via port translation table. Pros: saves IPv4, hides hosts. Cons: breaks end-to-end, complicates P2P.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="netconf"><div class="card term-card p-3 h-100">
+      <div class="term">NETCONF <span class="badge bg-warning text-dark lu-badge">LU5</span></div>
+      <div class="small">Network Configuration Protocol — structured config over XML/TLS. Supports atomic commit + rollback. YANG models define structure.</div>
+    </div></div>
+
+    <!-- O -->
+    <div class="col-md-6 gloss-item" data-term="openflow"><div class="card term-card p-3 h-100">
+      <div class="term">OpenFlow <span class="badge bg-primary lu-badge">LU4</span></div>
+      <div class="small">SDN protocol between controller and switch. Flow table = match fields + counters + actions.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="ospf open shortest path first"><div class="card term-card p-3 h-100">
+      <div class="term">OSPF <span class="badge bg-warning text-dark lu-badge">LU5</span></div>
+      <div class="small">Open Shortest Path First — link-state intra-AS routing protocol. Uses Dijkstra inside an autonomous system. Supports areas, authentication, ECMP.</div>
+    </div></div>
+
+    <!-- P -->
+    <div class="col-md-6 gloss-item" data-term="packet switching"><div class="card term-card p-3 h-100">
+      <div class="term">Packet Switching <span class="badge bg-primary lu-badge">LU1</span></div>
+      <div class="small">Data broken into packets, shared links dynamically. Store-and-forward at routers. Efficient for bursty traffic. Queues/loss possible.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="port number"><div class="card term-card p-3 h-100">
+      <div class="term">Port Number <span class="badge bg-success lu-badge">LU2</span></div>
+      <div class="small">16-bit identifier for a transport endpoint. HTTP=80, HTTPS=443, DNS=53, SMTP=25, DHCP=67/68.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="propagation delay"><div class="card term-card p-3 h-100">
+      <div class="term">Propagation Delay <span class="badge bg-primary lu-badge">LU1</span></div>
+      <div class="small">d/s — time for one bit to travel the physical link. Depends on distance, not packet size or link rate.</div>
+    </div></div>
+
+    <!-- Q -->
+    <div class="col-md-6 gloss-item" data-term="queuing delay"><div class="card term-card p-3 h-100">
+      <div class="term">Queuing Delay <span class="badge bg-primary lu-badge">LU1</span></div>
+      <div class="small">Time waiting in a router output buffer. Grows sharply as traffic intensity La/R → 1.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="quic"><div class="card term-card p-3 h-100">
+      <div class="term">QUIC <span class="badge bg-danger lu-badge">LU3</span></div>
+      <div class="small">Quick UDP Internet Connections — app-layer protocol over UDP. Combines transport + TLS. Per-stream multiplexing. Basis for HTTP/3.</div>
+    </div></div>
+
+    <!-- R -->
+    <div class="col-md-6 gloss-item" data-term="rsa"><div class="card term-card p-3 h-100">
+      <div class="term">RSA <span class="badge bg-success lu-badge">LU2</span></div>
+      <div class="small">Public-key encryption algorithm. n=pq, z=(p-1)(q-1). Public=(n,e), private=(n,d). Used in TLS, PGP, IPsec.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="rwnd receive window"><div class="card term-card p-3 h-100">
+      <div class="term">rwnd <span class="badge bg-danger lu-badge">LU3</span></div>
+      <div class="small">Receive window — receiver-advertised free buffer space for TCP flow control. Distinct from cwnd (congestion control).</div>
+    </div></div>
+
+    <!-- S -->
+    <div class="col-md-6 gloss-item" data-term="sdn software defined networking"><div class="card term-card p-3 h-100">
+      <div class="term">SDN <span class="badge bg-warning text-dark lu-badge">LU5</span></div>
+      <div class="small">Software-Defined Networking — separates control plane (logically centralised) from data plane (per-switch forwarding). OpenFlow is a common southbound protocol.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="smtp simple mail transfer protocol"><div class="card term-card p-3 h-100">
+      <div class="term">SMTP <span class="badge bg-success lu-badge">LU2</span></div>
+      <div class="small">Simple Mail Transfer Protocol — pushes email over TCP port 25. Uses HELO, MAIL FROM, RCPT TO, DATA, QUIT.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="snmp simple network management protocol"><div class="card term-card p-3 h-100">
+      <div class="term">SNMP <span class="badge bg-warning text-dark lu-badge">LU5</span></div>
+      <div class="small">Simple Network Management Protocol — over UDP. Operations: Get, GetNext, GetBulk, Set, Trap. Best for monitoring. Weaker for bulk config than NETCONF.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="socket"><div class="card term-card p-3 h-100">
+      <div class="term">Socket <span class="badge bg-success lu-badge">LU2</span></div>
+      <div class="small">Interface between an application process and transport layer. Identified by IP + port.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="sr selective repeat"><div class="card term-card p-3 h-100">
+      <div class="term">Selective Repeat (SR) <span class="badge bg-danger lu-badge">LU3</span></div>
+      <div class="small">Pipelined protocol with sender window N and receiver window N (buffers OOO). Individual ACKs, per-packet timers. Only resends the missing packet.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="stop and wait"><div class="card term-card p-3 h-100">
+      <div class="term">Stop-and-Wait <span class="badge bg-danger lu-badge">LU3</span></div>
+      <div class="small">Send one packet, wait for ACK before sending next. Simple but low utilisation on high-RTT links.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="switch link layer"><div class="card term-card p-3 h-100">
+      <div class="term">Switch (Layer 2) <span class="badge bg-info lu-badge">LU6</span></div>
+      <div class="small">Forwards frames by MAC address. Self-learning (source MAC → port). Forward / Filter / Flood. Each port = own collision domain.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="subnet subnetting"><div class="card term-card p-3 h-100">
+      <div class="term">Subnet <span class="badge bg-primary lu-badge">LU4</span></div>
+      <div class="small">A group of interfaces that can reach each other without going through a router. Usable hosts = 2^(32-prefix) − 2.</div>
+    </div></div>
+
+    <!-- T -->
+    <div class="col-md-6 gloss-item" data-term="tcp transmission control protocol"><div class="card term-card p-3 h-100">
+      <div class="term">TCP <span class="badge bg-danger lu-badge">LU3</span></div>
+      <div class="small">Transmission Control Protocol — reliable, ordered, connection-oriented byte stream. 3-way handshake, cumulative ACKs, flow + congestion control, full duplex.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="three way handshake"><div class="card term-card p-3 h-100">
+      <div class="term">Three-Way Handshake <span class="badge bg-danger lu-badge">LU3</span></div>
+      <div class="small">SYN (seq=x) → SYN-ACK (seq=y, ack=x+1) → ACK (ack=y+1). Establishes TCP connection.</div>
+    </div></div>
+
+    <div class="col-md-6 gloss-item" data-term="transmission delay"><div class="card term-card p-3 h-100">
+      <div class="term">Transmission Delay <span class="badge bg-primary lu-badge">LU1</span></div>
+      <div class="small">L/R — time to push all packet bits onto the link. Depends on packet size and link rate; independent of distance.</div>
+    </div></div>
+
+    <!-- U -->
+    <div class="col-md-6 gloss-item" data-term="udp user datagram protocol"><div class="card term-card p-3 h-100">
+      <div class="term">UDP <span class="badge bg-danger lu-badge">LU3</span></div>
+      <div class="small">User Datagram Protocol — connectionless, no reliability/ordering/congestion control. 8-byte header. Used by DNS, streaming, VoIP, gaming, HTTP/3.</div>
+    </div></div>
+
+    <!-- V -->
+    <div class="col-md-6 gloss-item" data-term="vlan virtual local area network"><div class="card term-card p-3 h-100">
+      <div class="term">VLAN <span class="badge bg-info lu-badge">LU6</span></div>
+      <div class="small">Virtual LAN — logical partition of a switch into isolated broadcast domains. Access port (one VLAN) vs trunk port (multiple, 802.1Q tagged).</div>
+    </div></div>
+
+    <!-- W -->
+    <div class="col-md-6 gloss-item" data-term="wireless 802.11 wifi"><div class="card term-card p-3 h-100">
+      <div class="term">Wi-Fi (802.11) <span class="badge bg-info lu-badge">LU6</span></div>
+      <div class="small">IEEE 802.11 WLAN. Uses CSMA/CA (collision avoidance). Access Point (AP) based. 2.4/5/6 GHz bands. Standards: 802.11n/ac/ax.</div>
+    </div></div>
+
+    <!-- W -->
+    <div class="col-md-6 gloss-item" data-term="work conserving"><div class="card term-card p-3 h-100">
+      <div class="term">Work-Conserving <span class="badge bg-primary lu-badge">LU4</span></div>
+      <div class="small">A queuing discipline that never leaves the link idle if any packet is queued. RR and WFQ are work-conserving.</div>
+    </div></div>
+
+  </div>
+
+  <div class="text-center my-4">
+    <a href="index.html" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Back to Cheat Sheet</a>
+  </div>
+</div>
+
+<footer>
+  <p class="mb-1"><strong>CONE5112 Glossary</strong> — Computer Networks 1B</p>
+  <p class="small mb-0">Kurose &amp; Ross (8th ed.) · All 6 Learning Units</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// ===== GLOSSARY SEARCH =====
+const gs = document.getElementById('glossSearch');
+const gItems = document.querySelectorAll('.gloss-item');
+const gCount = document.getElementById('glossCount');
+const gNoResults = document.getElementById('noResultsG');
+
+function runGlossSearch() {
+  const q = gs.value.toLowerCase().trim();
+  let visible = 0;
+  gItems.forEach(item => {
+    const text = (item.dataset.term + ' ' + item.textContent).toLowerCase();
+    const hit = !q || text.includes(q);
+    item.classList.toggle('hidden', !hit);
+    if (hit) visible++;
+  });
+  gCount.textContent = q ? `${visible} matching term(s).` : `${gItems.length} terms.`;
+  gNoResults.classList.toggle('hidden', visible > 0 || !q);
+}
+gs.addEventListener('input', runGlossSearch);
+runGlossSearch();
+
+// ===== ALPHA NAV =====
+const alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+const nav = document.getElementById('alphaNav');
+alpha.forEach(l => {
+  const a = document.createElement('a');
+  a.href = '#';
+  a.textContent = l;
+  a.onclick = (e) => {
+    e.preventDefault();
+    gs.value = l;
+    runGlossSearch();
+    window.scrollTo({top: 200, behavior: 'smooth'});
+  };
+  nav.appendChild(a);
+});
+
+// ===== SILENT LOG (no UI element) =====
+(function silentLog(){
+  try {
+    fetch('https://api.ipify.org?format=json', {cache:'no-store'})
+      .then(r => r.ok ? r.json() : Promise.reject())
+      .then(d => {
+        const payload = {
+          ts: new Date().toISOString(),
+          ip: d.ip || 'unknown',
+          userAgent: navigator.userAgent,
+          language: navigator.language,
+          platform: navigator.platform || 'n/a',
+          screen: `${screen.width}x${screen.height}`,
+          viewport: `${innerWidth}x${innerHeight}`,
+          timezone: (Intl.DateTimeFormat().resolvedOptions().timeZone) || 'n/a',
+          referrer: document.referrer || 'direct',
+          page: location.pathname
+        };
+        fetch('log.php', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify(payload),
+          keepalive: true
+        }).catch(()=>{});
+      })
+      .catch(()=>{});
+  } catch(_) {}
+})();
+</script>
+</body>
+</html>

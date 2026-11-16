@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gallery</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,sans-serif;background:#f4f6f9;color:#222}
+header{background:#212529;color:#fff;padding:16px 24px}
+header h1{margin:0;font-size:20px}
+.toolbar{padding:14px 24px;display:flex;flex-wrap:wrap;gap:8px}
+.toolbar button{padding:8px 14px;border:1px solid #ccc;background:#fff;border-radius:20px;cursor:pointer;font-size:14px}
+.toolbar button.active{background:#007bff;color:#fff;border-color:#007bff}
+#grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;padding:0 24px 40px}
+.item{background:#fff;border-radius:8px;overflow:hidden;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,.06);transition:transform .15s}
+.item:hover{transform:translateY(-2px)}
+.item img,.item video{width:100%;height:180px;object-fit:cover;display:block}
+.cap{padding:8px 10px;font-size:13px;color:#555}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);align-items:center;justify-content:center;padding:20px;z-index:10}
+.modal img,.modal video{max-width:92vw;max-height:88vh;border-radius:6px}
+.close{position:fixed;top:16px;right:20px;color:#fff;font-size:32px;cursor:pointer;user-select:none}
+</style>
+</head>
+<body>
+<header><h1>Gallery</h1></header>
+<div class="toolbar" id="cats"></div>
+<div id="grid"></div>
+<div class="modal" id="modal" onclick="closeModal()">
+  <span class="close" onclick="closeModal()">×</span>
+  <img id="modalImg" style="display:none">
+  <video id="modalVid" controls style="display:none"></video>
+</div>
+<script>
+(function(){
+  const catsEl = document.getElementById('cats');
+  const grid = document.getElementById('grid');
+  const modal = document.getElementById('modal');
+  const modalImg = document.getElementById('modalImg');
+  const modalVid = document.getElementById('modalVid');
+  let data = [];
+
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+
+  function makeTile(item){
+    const div = document.createElement('div');
+    div.className = 'item';
+    if (item.type === 'video') {
+      const v = document.createElement('video');
+      v.src = item.url;
+      v.muted = true;
+      v.preload = 'metadata';
+      div.appendChild(v);
+    } else {
+      const img = document.createElement('img');
+      img.src = item.url;
+      img.alt = item.caption || '';
+      img.loading = 'lazy';
+      div.appendChild(img);
+    }
+    if (item.caption) {
+      const c = document.createElement('div');
+      c.className = 'cap';
+      c.textContent = item.caption;
+      div.appendChild(c);
+    }
+    div.onclick = function(){ openModal(item); };
+    return div;
+  }
+
+  function render(items){
+    grid.innerHTML = '';
+    if (!items.length){ grid.innerHTML = '<p style="padding:20px">No items.</p>'; return; }
+    items.forEach(function(i){ grid.appendChild(makeTile(i)); });
+  }
+
+  function renderAll(){
+    const all = [];
+    data.forEach(function(c){ c.items.forEach(function(i){ all.push(i); }); });
+    render(all);
+  }
+
+  function renderCat(cat){ render(cat.items); }
+
+  function setActive(btn){
+    Array.from(catsEl.children).forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+  }
+
+  function openModal(item){
+    if (item.type === 'video'){
+      modalImg.style.display = 'none';
+      modalVid.style.display = 'block';
+      modalVid.src = item.url;
+      modalVid.play();
+    } else {
+      modalVid.style.display = 'none';
+      modalVid.pause();
+      modalImg.style.display = 'block';
+      modalImg.src = item.url;
+    }
+    modal.style.display = 'flex';
+  }
+  window.closeModal = function(){
+    modal.style.display = 'none';
+    modalVid.pause();
+  };
+
+  fetch('api.php?action=gallery')
+    .then(function(r){ return r.json(); })
+    .then(function(json){
+      data = json || [];
+      const allBtn = document.createElement('button');
+      allBtn.textContent = 'All';
+      allBtn.onclick = function(){ setActive(allBtn); renderAll(); };
+      catsEl.appendChild(allBtn);
+      data.forEach(function(c){
+        const b = document.createElement('button');
+        b.textContent = c.name;
+        b.onclick = function(){ setActive(b); renderCat(c); };
+        catsEl.appendChild(b);
+      });
+      setActive(allBtn);
+      renderAll();
+    })
+    .catch(function(err){ grid.innerHTML = '<p style="padding:20px">Error: ' + err.message + '</p>'; });
+})();
+</script>
+</body>
+</html>

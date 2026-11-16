@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Services</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,sans-serif;background:#f4f6f9;color:#222}
+header{background:#212529;color:#fff;padding:16px 24px}
+header h1{margin:0;font-size:20px}
+.layout{display:grid;grid-template-columns:240px 1fr;min-height:calc(100vh - 60px)}
+nav#menu{background:#fff;border-right:1px solid #e2e6ea;padding:14px}
+nav#menu a{display:block;padding:10px 12px;border-radius:6px;color:#333;text-decoration:none;margin-bottom:4px;font-size:14px}
+nav#menu a:hover{background:#f1f3f5}
+nav#menu a.active{background:#007bff;color:#fff}
+main#content{padding:24px}
+main#content h1{margin-top:0}
+main#content img{max-width:100%;border-radius:6px;margin:8px 8px 8px 0;max-height:320px}
+main#content video,main#content iframe{max-width:100%;border-radius:6px;margin:10px 0}
+.buttons{margin-top:16px}
+.buttons .btn{display:inline-block;padding:10px 18px;background:#007bff;color:#fff;text-decoration:none;border-radius:6px;margin:4px 8px 4px 0}
+.buttons .btn:hover{background:#0056b3}
+.gallery{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.gallery img{width:auto;height:180px;object-fit:cover;margin:0}
+@media(max-width:700px){.layout{grid-template-columns:1fr}nav#menu{border-right:none;border-bottom:1px solid #e2e6ea}}
+</style>
+</head>
+<body>
+<header><h1>Our Services</h1></header>
+<div class="layout">
+  <nav id="menu"></nav>
+  <main id="content"><p>Loading…</p></main>
+</div>
+<script>
+(function(){
+  const menu = document.getElementById('menu');
+  const content = document.getElementById('content');
+  let active = null;
+
+  function renderService(s) {
+    let html = '<h1>' + escapeHtml(s.menu_title) + '</h1>';
+    if (s.content_html) html += s.content_html;
+    if (s.video_url) {
+      const u = s.video_url;
+      if (/youtube\.com|youtu\.be/i.test(u)) {
+        const m = u.match(/(?:v=|youtu\.be\/)([\w-]{6,})/);
+        if (m) html += '<iframe width="640" height="360" src="https://www.youtube.com/embed/' + m[1] + '" frameborder="0" allowfullscreen></iframe>';
+      } else if (/vimeo\.com/i.test(u)) {
+        const m = u.match(/vimeo\.com\/(\d+)/);
+        if (m) html += '<iframe src="https://player.vimeo.com/video/' + m[1] + '" width="640" height="360" frameborder="0" allowfullscreen></iframe>';
+      } else {
+        html += '<video src="' + escapeAttr(u) + '" controls></video>';
+      }
+    }
+    if (s.images && s.images.length) {
+      html += '<div class="gallery">';
+      s.images.forEach(function(i){ html += '<img src="' + escapeAttr(i.url) + '" alt="' + escapeAttr(i.alt||'') + '">'; });
+      html += '</div>';
+    }
+    if (s.buttons && s.buttons.length) {
+      html += '<div class="buttons">';
+      s.buttons.forEach(function(b){ html += '<a class="btn" href="' + escapeAttr(b.href) + '">' + escapeHtml(b.text) + '</a>'; });
+      html += '</div>';
+    }
+    content.innerHTML = html;
+  }
+
+  function escapeHtml(s){ return String(s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  function escapeAttr(s){ return escapeHtml(s); }
+
+  fetch('api.php?action=services')
+    .then(function(r){ return r.json(); })
+    .then(function(services){
+      menu.innerHTML = '';
+      if (!services.length) { content.innerHTML = '<p>No services yet.</p>'; return; }
+      services.forEach(function(s){
+        const a = document.createElement('a');
+        a.href = '#';
+        a.textContent = s.menu_title;
+        a.onclick = function(e){
+          e.preventDefault();
+          if (active) active.classList.remove('active');
+          a.classList.add('active');
+          active = a;
+          renderService(s);
+        };
+        menu.appendChild(a);
+      });
+      const first = menu.querySelector('a');
+      if (first) first.click();
+    })
+    .catch(function(err){ content.innerHTML = '<p>Error loading services: ' + err.message + '</p>'; });
+})();
+</script>
+</body>
+</html>

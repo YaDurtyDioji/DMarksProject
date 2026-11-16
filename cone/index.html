@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CONE5112 Exam Cheat Sheet — Computer Networks 1B</title>
+<meta name="description" content="Comprehensive CONE5112 Computer Networks 1B exam cheat sheet — all six learning units, formulas, mnemonics, and exam focus. Searchable study notes and glossary." />
+<meta name="keywords" content="CONE5112, computer networks, TCP/IP, exam, cheat sheet, study notes, glossary, Kurose Ross, networks 1B" />
+<link rel="canonical" href="https://dmarksproject.co.za/stuff/Index.html" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<style>
+  :root{
+    --lu1:#0d6efd; --lu2:#198754; --lu3:#dc3545; --lu4:#6f42c1;
+    --lu5:#fd7e14; --lu6:#0dcaf0;
+  }
+  html{scroll-behavior:smooth;}
+  body{
+    background:#f8f9fa;
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+    padding-top:74px;
+  }
+  .navbar{background:linear-gradient(90deg,#0d6efd,#6f42c1)!important;}
+  .navbar-brand{font-weight:800;letter-spacing:.5px;}
+  .download-card{border:1px solid #dee2e6;border-radius:10px;padding:.65rem .8rem;background:#fff;transition:.15s;height:100%;}
+  .download-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.08);border-color:#0d6efd;}
+  .download-card a{text-decoration:none;color:#212529;display:block;}
+  .download-card .bi{color:#0d6efd;font-size:1.3rem;}
+  .subnav{position:sticky;top:74px;z-index:10;background:#fff;border-bottom:1px solid #dee2e6;padding:.5rem 0;margin-bottom:1rem;}
+  .subnav a{padding:.25rem .6rem;margin:.15rem;border-radius:20px;font-size:.85rem;text-decoration:none;background:#eef1f4;color:#212529;display:inline-block;}
+  .subnav a:hover{background:#0d6efd;color:#fff;}
+  .lu-section{scroll-margin-top:120px;margin-bottom:2.5rem;}
+  .lu-header{border-radius:12px;padding:1rem 1.25rem;color:#fff;margin-bottom:1rem;}
+  .lu1-h{background:var(--lu1);} .lu2-h{background:var(--lu2);}
+  .lu3-h{background:var(--lu3);} .lu4-h{background:var(--lu4);}
+  .lu5-h{background:var(--lu5);} .lu6-h{background:var(--lu6);color:#212529;}
+  .card{border:none;box-shadow:0 2px 8px rgba(0,0,0,.06);border-radius:10px;}
+  .searchable{transition:.2s;}
+  .hidden{display:none!important;}
+  .mnemonic{background:#fff3cd;border-left:4px solid #ffc107;padding:.7rem .9rem;border-radius:0 8px 8px 0;margin:.75rem 0;}
+  .exam-tip{background:#d1ecf1;border-left:4px solid #0dcaf0;padding:.7rem .9rem;border-radius:0 8px 8px 0;margin:.75rem 0;}
+  .trap{background:#f8d7da;border-left:4px solid #dc3545;padding:.7rem .9rem;border-radius:0 8px 8px 0;margin:.75rem 0;}
+  .formula{background:#f3e8ff;border-left:4px solid var(--lu4);padding:.7rem .9rem;border-radius:0 8px 8px 0;font-family:'Courier New',monospace;font-size:.9rem;margin:.75rem 0;overflow-x:auto;}
+  .tl-dr{background:#e7f5ff;border-left:4px solid #0d6efd;padding:.6rem .9rem;border-radius:0 8px 8px 0;margin-bottom:.75rem;font-size:.92rem;}
+  .badge-lu{background:#fff;color:#000;font-weight:700;}
+  h4.card-title{color:#0d6efd;font-size:1.05rem;font-weight:700;margin-bottom:.4rem;}
+  .table-sm td,.table-sm th{font-size:.88rem;vertical-align:middle;}
+  mark{background:#fff176;padding:0 2px;border-radius:2px;}
+  code.inline{background:#e9ecef;padding:1px 5px;border-radius:4px;font-size:.88em;}
+  #searchInput{border-radius:30px;padding:.6rem 1.2rem;font-size:1rem;}
+  .no-results{background:#fff3cd;border-radius:10px;padding:1rem;text-align:center;font-weight:600;}
+  footer{margin-top:3rem;padding:2rem 0;background:#212529;color:#adb5bd;text-align:center;}
+  footer a{color:#6ea8fe;}
+  @media (max-width:576px){ body{padding-top:70px;} h4.card-title{font-size:.98rem;} .formula{font-size:.8rem;} }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm">
+  <div class="container">
+    <a class="navbar-brand" href="#top"><i class="bi bi-hdd-network"></i> CONE5112 Cheat Sheet</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#downloads"><i class="bi bi-download"></i> Downloadables</a></li>
+        <li class="nav-item"><a class="nav-link" href="#lu1">LU1</a></li>
+        <li class="nav-item"><a class="nav-link" href="#lu2">LU2</a></li>
+        <li class="nav-item"><a class="nav-link" href="#lu3">LU3</a></li>
+        <li class="nav-item"><a class="nav-link" href="#lu4">LU4</a></li>
+        <li class="nav-item"><a class="nav-link" href="#lu5">LU5</a></li>
+        <li class="nav-item"><a class="nav-link" href="#lu6">LU6</a></li>
+        <li class="nav-item"><a class="nav-link" href="glossary.html"><i class="bi bi-book"></i> Glossary</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container" id="top">
+
+  <!-- INTRO -->
+  <div class="text-center my-3">
+    <h1 class="fw-bold" style="font-size:clamp(1.6rem,4vw,2.4rem);">
+      <i class="bi bi-rocket-takeoff text-primary"></i> CONE5112 Exam Cheat Sheet
+    </h1>
+    <p class="text-muted">Computer Networks 1B · Kurose &amp; Ross · 6 Learning Units · Calculations · Mnemonics · Exam Focus</p>
+  </div>
+
+  <!-- SEARCH -->
+  <div class="mb-3">
+    <div class="input-group">
+      <span class="input-group-text bg-white border-end-0"><i class="bi bi-search"></i></span>
+      <input id="searchInput" class="form-control border-start-0" placeholder="Search any concept, formula, or keyword... (try 'CRC', 'TCP handshake', 'DORA')" />
+      <button class="btn btn-outline-secondary" id="clearSearch">Clear</button>
+    </div>
+    <small class="text-muted"><span id="matchCount"></span></small>
+  </div>
+
+  <!-- DOWNLOADABLES -->
+  <section id="downloads" class="mb-4">
+    <h2 class="h4 fw-bold mb-2"><i class="bi bi-cloud-arrow-down"></i> Downloadables</h2>
+    <p class="text-muted small">All source documents used to build this cheat sheet. Click to open.</p>
+    <div class="row g-2">
+
+      <div class="col-12"><h6 class="text-uppercase text-muted fw-bold mt-2">📚 Learning Unit Slides</h6></div>
+      <div class="col-md-6 col-lg-4"><div class="download-card"><a href="CONE5112_Learning_Unit_1_45_Slides.pptx" download><i class="bi bi-file-earmark-slides"></i> LU1 — Internet, Wireless &amp; Mobile</a></div></div>
+      <div class="col-md-6 col-lg-4"><div class="download-card"><a href="CONE5112_Learning_Unit_2_45_Slides.pptx" download><i class="bi bi-file-earmark-slides"></i> LU2 — Application Layer</a></div></div>
+      <div class="col-md-6 col-lg-4"><div class="download-card"><a href="CONE5112_Learning_Unit_3_45_Slides.pptx" download><i class="bi bi-file-earmark-slides"></i> LU3 — Transport Layer</a></div></div>
+      <div class="col-md-6 col-lg-4"><div class="download-card"><a href="CONE5112_Learning_Unit_4_45_Slides.pptx" download><i class="bi bi-file-earmark-slides"></i> LU4 — Network Layer Data Plane</a></div></div>
+      <div class="col-md-6 col-lg-4"><div class="download-card"><a href="CONE5112_Learning_Unit_5_45_Slides.pptx" download><i class="bi bi-file-earmark-slides"></i> LU5 — Network Layer Control Plane</a></div></div>
+      <div class="col-md-6 col-lg-4"><div class="download-card"><a href="CONE5112_Learning_Unit_6_45_Slides.pptx" download><i class="bi bi-file-earmark-slides"></i> LU6 — Link Layer &amp; LANs</a></div></div>
+
+      <div class="col-12"><h6 class="text-uppercase text-muted fw-bold mt-3">📖 Textbook Chapters</h6></div>
+      <div class="col-md-6 col-lg-4"><div class="download-card"><a href="Chapter_1_v9.0.pptx" download><i class="bi bi-file-earmark-ppt"></i> Chapter 1 — Introduction</a></div></div>
+      <div class="col-md-6 col-lg-4"><div class="download-card"><a href="Chapter_2_v9.0.pptx" download><i class="bi bi-file-earmark-ppt"></i> Chapter 2 — Application Layer</a></div></div>
+      <div class="col-md-6 col-lg-4"><div class="download-card"><a href="Chapter_3_v9.0.pptx" download><i class="bi bi-file-earmark-ppt"></i> Chapter 3 — Transport Layer</a></div></div>
+      <div class="col-md-6 col-lg-4"><div class="download-card"><a href="Chapter_5_v9.0.pptx" download><i class="bi bi-file-earmark-ppt"></i> Chapter 5 — Control Plane</a></div></div>
+      <div class="col-md-6 col-lg-4"><div class="download-card"><a href="computer-networking-a-top-down-approach-8th-edition.pdf" download><i class="bi bi-file-earmark-pdf"></i> Kurose &amp; Ross 8th Ed (Full Textbook)</a></div></div>
+
+      <div class="col-12"><h6 class="text-uppercase text-muted fw-bold mt-3">🎯 Revision &amp; Exam Prep</h6></div>
+      <div class="col-md-6 col-lg-4"><div class="download-card"><a href="CONE5112%20w%20Revision%20Guide.pdf" download><i class="bi bi-file-earmark-pdf"></i> Official Revision Guide</a></div></div>
+      <div class="col-md-6 col-lg-4"><div class="download-card"><a href="CONE5112_Detailed_Revision_Guide.pdf" download><i class="bi bi-file-earmark-pdf"></i> Detailed Revision Guide</a></div></div>
+      <div class="col-md-6 col-lg-4"><div class="download-card"><a href="CONE5112_Detailed_Revision_Guide-1.pdf" download><i class="bi bi-file-earmark-pdf"></i> Detailed Revision Guide (Alt)</a></div></div>
+      <div class="col-md-6 col-lg-4"><div class="download-card"><a href="CONE5112%20w%20Exam%20Preparation%20Question%20Bank.pdf" download><i class="bi bi-file-earmark-pdf"></i> Exam Prep Question Bank</a></div></div>
+      <div class="col-md-6 col-lg-4"><div class="download-card"><a href="CONE5112%20w%20Exam%20Preparation%20Question%20Bank-1.pdf" download><i class="bi bi-file-earmark-pdf"></i> Exam Prep Question Bank (Alt)</a></div></div>
+      <div class="col-md-6 col-lg-4"><div class="download-card"><a href="CONE5112_Scenario_Based_Questions.pdf" download><i class="bi bi-file-earmark-pdf"></i> Scenario-Based Questions (60)</a></div></div>
+      <div class="col-md-6 col-lg-4"><div class="download-card"><a href="Practice%20Questions.pdf" download><i class="bi bi-file-earmark-pdf"></i> Practice Questions (20)</a></div></div>
+      <div class="col-md-6 col-lg-4"><div class="download-card"><a href="CONE5112_Revision_Questions.pdf" download><i class="bi bi-file-earmark-pdf"></i> Revision Questions</a></div></div>
+
+      <div class="col-12"><h6 class="text-uppercase text-muted fw-bold mt-3">🧩 Supplementary Slides &amp; Projects</h6></div>
+      <div class="col-md-6 col-lg-4"><div class="download-card"><a href="CONE5112_LU6_Link_Layer_LANs.pptx" download><i class="bi bi-file-earmark-slides"></i> LU6 Detailed Slides</a></div></div>
+      <div class="col-md-6 col-lg-4"><div class="download-card"><a href="CONE5112_Theme1-2_Internet_Wireless_Mobile_Networks%20(1).pptx" download><i class="bi bi-file-earmark-slides"></i> Theme 1-2 Slides</a></div></div>
+      <div class="col-md-6 col-lg-4"><div class="download-card"><a href="Network_Layer_Control_vs_Data_Plane_Detailed(1).pptx" download><i class="bi bi-file-earmark-slides"></i> Control vs Data Plane (Detailed)</a></div></div>
+      <div class="col-md-6 col-lg-4"><div class="download-card"><a href="Network_Layer_Control_Plane_vs_Data_Plane.pptx" download><i class="bi bi-file-earmark-slides"></i> Control vs Data Plane</a></div></div>
+      <div class="col-md-6 col-lg-4"><div class="download-card"><a href="Network_Layer_Control_vs_Data_Plane_Detailed.pptx" download><i class="bi bi-file-earmark-slides"></i> Control vs Data Plane (Alt)</a></div></div>
+      <div class="col-md-6 col-lg-4"><div class="download-card"><a href="CONE5112%20Project%201%20Student%20Guideline.docx" download><i class="bi bi-file-earmark-word"></i> Project 1 Student Guideline</a></div></div>
+      <div class="col-md-6 col-lg-4"><div class="download-card"><a href="CONE5112_Welcome_Semester_Planner%20ONLINE(1).docx" download><i class="bi bi-file-earmark-word"></i> Welcome &amp; Semester Planner</a></div></div>
+      <div class="col-md-6 col-lg-4"><div class="download-card"><a href="ST10472196-CONE5112-ASSIGNMENT-1.pdf" download><i class="bi bi-file-earmark-pdf"></i> Assignment 1 Example</a></div></div>
+      <div class="col-md-6 col-lg-4"><div class="download-card"><a href="ST10472196-CONE5112-ASSIGNMENT-1-1.pdf" download><i class="bi bi-file-earmark-pdf"></i> Assignment 1 Example (Alt)</a></div></div>
+    </div>
+  </section>
+
+  <hr/>
+
+  <!-- SUB-NAV -->
+  <nav class="subnav" id="subnav">
+    <a href="#lu1">LU1 Internet</a>
+    <a href="#lu2">LU2 Application</a>
+    <a href="#lu3">LU3 Transport</a>
+    <a href="#lu4">LU4 Data Plane</a>
+    <a href="#lu5">LU5 Control Plane</a>
+    <a href="#lu6">LU6 Link Layer</a>
+    <a href="#formulas">🧮 Formulas</a>
+    <a href="#mnemonics">🧠 Mnemonics</a>
+    <a href="#exam-tactics">🎯 Exam Tactics</a>
+    <a href="glossary.html">📖 Glossary</a>
+  </nav>
+
+  <!-- NO RESULTS -->
+  <div id="noResults" class="no-results mb-3 hidden">
+    <i class="bi bi-emoji-frown"></i> No matches. Try a different keyword.
+  </div>
+
+  <!-- ============ LU1 ============ -->
+  <section id="lu1" class="lu-section">
+    <div class="lu-header lu1-h"><h2 class="h3 fw-bold mb-0"><i class="bi bi-globe2"></i> Learning Unit 1 — Computer Networks, the Internet, Wireless &amp; Mobile</h2></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <div class="tl-dr"><strong>TL;DR:</strong> Internet = network of networks. Packet switching beats circuit for bursty data. 4 delay types. 5-layer stack. Wireless = shared, lossy radio. CDMA = codes. 4G/5G = radio access + all-IP core. Mobile IP = home agent + care-of address (triangle routing).</div>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">1.1 Internet as "Network of Networks"</h4>
+      <ul class="small">
+        <li><strong>Nuts-and-bolts view:</strong> billions of hosts + communication links + packet switches (routers, link-layer switches) running protocols (TCP/IP, HTTP).</li>
+        <li><strong>Services view:</strong> infrastructure that provides services to distributed applications via a <em>socket interface</em>.</li>
+        <li><strong>Hierarchy:</strong> Access ISPs → Regional ISPs → Tier-1 ISPs. <strong>IXPs</strong> (Internet Exchange Points) let ISPs peer directly. <strong>Content-provider networks</strong> (Google, Netflix) run private networks to bypass upper tiers.</li>
+        <li><strong>Protocol:</strong> agreed format + order of messages + actions taken on send/receive.</li>
+        <li><strong>Standards bodies:</strong> IETF (RFCs), IEEE (802.x), ITU-T, ICANN (naming/addressing).</li>
+      </ul>
+      <div class="exam-tip"><strong>Exam focus:</strong> Draw the ISP hierarchy. Explain IXPs. Explain why nobody owns the Internet.</div>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">1.2 Access Networks</h4>
+      <div class="table-responsive"><table class="table table-sm table-bordered">
+        <thead class="table-light"><tr><th>Type</th><th>Medium</th><th>Key point</th></tr></thead>
+        <tbody>
+          <tr><td>DSL</td><td>Telephone copper</td><td>Dedicated to exchange; speed drops with distance</td></tr>
+          <tr><td>Cable (HFC)</td><td>Coax + fibre</td><td>Shared broadcast among neighbours</td></tr>
+          <tr><td>FTTH</td><td>Fibre</td><td>Highest speeds; PON or AON</td></tr>
+          <tr><td>Ethernet / Wi-Fi</td><td>Twisted pair / radio</td><td>Campus/enterprise LAN access</td></tr>
+          <tr><td>4G / 5G</td><td>Radio</td><td>Wide-area mobile operator access</td></tr>
+          <tr><td>Satellite</td><td>Radio (space)</td><td>Remote/rural; high delay (GEO ~280 ms)</td></tr>
+        </tbody>
+      </table></div>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">1.3 Packet Switching vs Circuit Switching</h4>
+      <ul class="small">
+        <li><strong>Circuit:</strong> resources reserved end-to-end (FDM/TDM) for a session. Predictable, wasteful when idle.</li>
+        <li><strong>Packet:</strong> data broken into packets, share links on demand, store-and-forward at each router. Efficient for <em>bursty</em> traffic; queues/loss possible under congestion.</li>
+        <li><strong>Statistical multiplexing:</strong> more users than fixed allocations because most users are idle most of the time.</li>
+      </ul>
+      <div class="formula">Store-and-forward delay (1 packet over N links): d = N · (L/R)</div>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">1.4 Delay, Loss &amp; Throughput (EXAM GOLD)</h4>
+      <p class="small mb-2"><strong>4 delay types:</strong> Processing + Queuing + Transmission + Propagation</p>
+      <div class="formula">
+        d<sub>nodal</sub> = d<sub>proc</sub> + d<sub>queue</sub> + d<sub>trans</sub> + d<sub>prop</sub><br/>
+        d<sub>trans</sub> = L / R  (L in bits, R in bits/sec)<br/>
+        d<sub>prop</sub> = d / s    (s ≈ 2×10⁸ m/s)<br/>
+        Traffic intensity = La / R  (keep &lt; 1)<br/>
+        Throughput = min(R₁, R₂, …, R<sub>N</sub>)  ← bottleneck link
+      </div>
+      <ul class="small">
+        <li>As <code class="inline">La/R → 1</code>, queuing delay → ∞. If <code class="inline">&gt; 1</code>, queue grows without bound → loss.</li>
+        <li><strong>Loss:</strong> buffer full → packet dropped. Retransmitted by TCP, or simply lost (UDP).</li>
+        <li><strong>Throughput ≠ bandwidth.</strong> Bandwidth is raw link capacity; throughput is what you actually get end-to-end.</li>
+        <li><strong>End-to-end delay (N links, no queuing):</strong> d<sub>end</sub> = N·(d<sub>proc</sub> + d<sub>trans</sub> + d<sub>prop</sub>)</li>
+      </ul>
+      <div class="trap"><strong>Trap:</strong> Never forget ×8 to convert bytes → bits. Never claim propagation depends on packet size (it doesn't).</div>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">1.5 Layering &amp; Encapsulation</h4>
+      <div class="table-responsive"><table class="table table-sm table-bordered">
+        <thead class="table-light"><tr><th>Layer</th><th>PDU</th><th>Function</th><th>Examples</th></tr></thead>
+        <tbody>
+          <tr><td>Application</td><td>Message</td><td>Network services</td><td>HTTP, DNS, SMTP</td></tr>
+          <tr><td>Transport</td><td>Segment</td><td>Process-to-process</td><td>TCP, UDP</td></tr>
+          <tr><td>Network</td><td>Datagram</td><td>Host-to-host routing</td><td>IP</td></tr>
+          <tr><td>Link</td><td>Frame</td><td>Node-to-node on one link</td><td>Ethernet, 802.11</td></tr>
+          <tr><td>Physical</td><td>Bits</td><td>Bits on the medium</td><td>Copper, fibre, radio</td></tr>
+        </tbody>
+      </table></div>
+      <p class="small mb-1"><strong>Encapsulation:</strong> each layer adds its header as data moves <em>down</em>. Receiver strips headers moving <em>up</em> (decapsulation).</p>
+      <div class="exam-tip"><strong>Exam focus:</strong> Show encapsulation with a labelled diagram. Explain how a router only goes up to Layer 3 (Network) — it never processes TCP/HTTP.</div>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">1.6 Wireless Link Characteristics</h4>
+      <ul class="small">
+        <li><strong>Path loss / attenuation:</strong> signal weakens with distance and obstacles.</li>
+        <li><strong>Interference:</strong> other transmitters on the same band.</li>
+        <li><strong>Multipath:</strong> reflected signals arrive at slightly different times, blurring reception.</li>
+        <li><strong>Higher bit error rate</strong> → needs FEC and link-layer ACKs/retransmissions.</li>
+        <li><strong>Hidden terminal problem:</strong> A and C can't hear each other but both interfere at AP B. Solution: RTS/CTS.</li>
+        <li><strong>SNR</strong> → higher SNR = lower BER. Adaptive modulation trades speed for reliability.</li>
+      </ul>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">1.7 CDMA (Code Division Multiple Access)</h4>
+      <ul class="small">
+        <li>Everyone shares the <em>same</em> time + frequency. Each user gets a unique <strong>chipping code</strong>.</li>
+        <li>Encoded bit Z<sub>i,m</sub> = d<sub>i</sub> × c<sub>m</sub> (chips are ±1).</li>
+        <li>Receiver decodes: d<sub>i</sub> = (1/M) Σ Z<sub>i,m</sub> · c<sub>m</sub></li>
+        <li>Codes must have <strong>low cross-correlation</strong> to separate users.</li>
+        <li><strong>Near-far problem:</strong> nearby user overwhelms weaker signals → solved by power control.</li>
+      </ul>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">1.8 4G LTE Architecture</h4>
+      <div class="table-responsive"><table class="table table-sm table-bordered">
+        <thead class="table-light"><tr><th>Element</th><th>Function</th></tr></thead>
+        <tbody>
+          <tr><td><strong>UE</strong> (User Equipment)</td><td>Mobile device + SIM + IMSI identifier</td></tr>
+          <tr><td><strong>eNodeB</strong> (Base Station)</td><td>Radio access; scheduling, handover</td></tr>
+          <tr><td><strong>MME</strong> (Mobility Mgmt Entity)</td><td>Control plane: auth, mobility tracking, tunnel setup</td></tr>
+          <tr><td><strong>HSS</strong> (Home Subscriber Server)</td><td>Subscriber database, auth credentials</td></tr>
+          <tr><td><strong>S-GW</strong> (Serving Gateway)</td><td>Data plane mobility anchor</td></tr>
+          <tr><td><strong>P-GW</strong> (PDN Gateway)</td><td>Gateway to Internet, NAT addresses</td></tr>
+        </tbody>
+      </table></div>
+      <p class="small">All-IP architecture. User plane: UE ↔ eNodeB ↔ S-GW ↔ P-GW ↔ Internet. Control plane: MME + HSS.</p>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">1.9 5G</h4>
+      <ul class="small">
+        <li><strong>gNodeB</strong> radio access. Core functions: AMF (mobility), SMF (sessions), UPF (user plane).</li>
+        <li><strong>mmWave</strong> (FR2, 24–52 GHz): huge capacity but short range, blocked by trees/rain → dense small cells.</li>
+        <li><strong>3 use cases:</strong> eMBB (broadband), URLLC (ultra-reliable low latency, ~1 ms), mMTC (massive IoT).</li>
+        <li><strong>Network slicing:</strong> one physical network → many virtual networks tuned per application.</li>
+      </ul>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">1.10 Mobility &amp; Mobile IP</h4>
+      <ul class="small">
+        <li><strong>Handover:</strong> move active connection from one base station to another.</li>
+        <li><strong>Roaming:</strong> use a visited network instead of home.</li>
+        <li><strong>Mobile IP:</strong> device keeps a permanent <strong>home address</strong>; when on a foreign network it gets a <strong>care-of address</strong> (COA); the <strong>home agent</strong> tunnels packets from home network to COA.</li>
+        <li><strong>Triangle routing:</strong> packets go via home agent first — inefficient.</li>
+        <li>In 4G/5G, MME (4G) / AMF (5G) handle mobility — Mobile IP itself has limited deployment.</li>
+      </ul>
+      <div class="exam-tip"><strong>Exam focus:</strong> Explain handover vs roaming. Draw Mobile IP tunneling diagram. List triangle routing as a limitation.</div>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">⚡ LU1 Mnemonics</h4>
+      <div class="mnemonic"><strong>OSI 7 layers:</strong> "<em>Please Do Not Throw Sausage Pizza Away</em>" — Physical, Data Link, Network, Transport, Session, Presentation, Application.</div>
+      <div class="mnemonic"><strong>4 delays:</strong> "<em>Please Queue The Pies</em>" — Processing, Queuing, Transmission, Propagation.</div>
+      <div class="mnemonic"><strong>4G elements:</strong> "<em>Up End Made Hot Slow Packs</em>" — UE, eNodeB, MME, HSS, S-GW, P-GW.</div>
+      <div class="mnemonic"><strong>Circuit vs Packet:</strong> "Circuit <em>R</em>eserves, Packet <em>S</em>hares" — <em>R</em> vs <em>S</em> = Resource vs Shared.</div>
+    </div></div>
+  </section>
+
+  <!-- ============ LU2 ============ -->
+  <section id="lu2" class="lu-section">
+    <div class="lu-header lu2-h"><h2 class="h3 fw-bold mb-0"><i class="bi bi-window"></i> Learning Unit 2 — The Application Layer</h2></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <div class="tl-dr"><strong>TL;DR:</strong> Client-server vs P2P. Sockets = IP + port. TCP for reliability, UDP for speed. HTTP is stateless (cookies add state). DNS maps names to IPs. Caching + CDNs = speed. DASH adapts video quality.</div>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">2.1 Architectures</h4>
+      <div class="table-responsive"><table class="table table-sm table-bordered">
+        <thead class="table-light"><tr><th>Aspect</th><th>Client-Server</th><th>Peer-to-Peer</th></tr></thead>
+        <tbody>
+          <tr><td>Server</td><td>Always-on, fixed IP</td><td>No dedicated server</td></tr>
+          <tr><td>Scaling</td><td>Add servers (linear cost)</td><td>Self-scaling (each peer adds upload)</td></tr>
+          <tr><td>Example</td><td>Web, email</td><td>BitTorrent</td></tr>
+          <tr><td>Challenge</td><td>Single point of failure</td><td>Churn, trust, coordination</td></tr>
+        </tbody>
+      </table></div>
+      <div class="formula">Client-server: D<sub>cs</sub> = max(NF/u<sub>s</sub>, F/d<sub>min</sub>)<br/>P2P: D<sub>P2P</sub> = max(F/u<sub>s</sub>, F/d<sub>min</sub>, NF/(u<sub>s</sub> + Σu<sub>i</sub>))</div>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">2.2 Processes, Sockets &amp; Ports</h4>
+      <ul class="small">
+        <li><strong>Socket</strong> = interface between application process and transport layer.</li>
+        <li>Process identified by <strong>IP + port</strong>. HTTP = 80, HTTPS = 443, DNS = 53, SMTP = 25, DHCP = 67/68.</li>
+        <li>Client process initiates; server process waits on a listening port.</li>
+      </ul>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">2.3 Transport Services: TCP vs UDP</h4>
+      <div class="table-responsive"><table class="table table-sm table-bordered">
+        <thead class="table-light"><tr><th>Feature</th><th>TCP</th><th>UDP</th></tr></thead>
+        <tbody>
+          <tr><td>Connection</td><td>Handshake (3-way)</td><td>None</td></tr>
+          <tr><td>Reliable / ordered</td><td>Yes</td><td>No</td></tr>
+          <tr><td>Flow / congestion control</td><td>Yes</td><td>No</td></tr>
+          <tr><td>Header size</td><td>20 bytes</td><td>8 bytes</td></tr>
+          <tr><td>Use</td><td>Web, email, file transfer</td><td>DNS, streaming, VoIP, gaming</td></tr>
+        </tbody>
+      </table></div>
+      <p class="small">TLS sits above TCP for encryption (HTTPS). HTTP/3/QUIC runs over UDP with built-in reliability.</p>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">2.4 HTTP (EXAM GOLD)</h4>
+      <ul class="small">
+        <li><strong>Stateless</strong> request-response over TCP.</li>
+        <li><strong>Methods:</strong> GET (retrieve), POST (submit), PUT (upload), HEAD (headers only), DELETE.</li>
+        <li><strong>Status codes:</strong> 200 OK, 301 Moved Permanently, 400 Bad Request, 404 Not Found, 505 HTTP Version Not Supported.</li>
+        <li><strong>Non-persistent:</strong> one TCP connection per object → 2 RTT + transmission time <em>per object</em>.</li>
+        <li><strong>Persistent (HTTP/1.1 default):</strong> one connection, multiple objects → as little as 1 RTT for all referenced objects.</li>
+        <li><strong>HTTP/2:</strong> binary framing + <em>multiplexing</em> streams over one TCP connection + HPACK header compression + server push. Reduces HOL blocking but TCP-level loss still stalls all streams.</li>
+        <li><strong>HTTP/3:</strong> runs over QUIC (UDP) — real per-stream independence.</li>
+      </ul>
+      <div class="formula">Non-persistent response time = 2 RTT × number_of_objects + transmission<br/>Persistent + pipelining ≈ 2 RTT + transmission (for all objects)</div>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">2.5 Cookies &amp; Sessions</h4>
+      <p class="small mb-1">HTTP is stateless — cookies add state.</p>
+      <ol class="small">
+        <li>Cookie header in HTTP response (Set-Cookie).</li>
+        <li>Cookie header in subsequent HTTP request (Cookie).</li>
+        <li>Cookie file on user's host (browser-managed).</li>
+        <li>Back-end database at the website.</li>
+      </ol>
+      <p class="small"><strong>Security:</strong> Secure (only HTTPS), HttpOnly (no JS access), SameSite (CSRF protection).</p>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">2.6 Web Caching &amp; Conditional GET</h4>
+      <ul class="small">
+        <li><strong>Web cache (proxy):</strong> satisfies requests locally — reduces response time and access-link traffic.</li>
+        <li><strong>Hit rate</strong> typically 0.2–0.7. Utilisation = (1 − hit) × request_rate × object_size / link_rate.</li>
+        <li><strong>Conditional GET</strong> with <code class="inline">If-Modified-Since:</code> — server returns 304 Not Modified if unchanged (no object body).</li>
+      </ul>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">2.7 DNS</h4>
+      <ul class="small">
+        <li>Maps <strong>names → records</strong>. Distributed hierarchy.</li>
+        <li><strong>Hierarchy:</strong> Root → TLD (.com, .za) → Authoritative. Local resolver acts as proxy.</li>
+        <li><strong>Iterative:</strong> server says "ask this next one". <strong>Recursive:</strong> server does the work.</li>
+        <li><strong>UDP port 53</strong> (fallback TCP for large/zone transfers).</li>
+      </ul>
+      <div class="table-responsive"><table class="table table-sm table-bordered">
+        <thead class="table-light"><tr><th>Record</th><th>Meaning</th></tr></thead>
+        <tbody>
+          <tr><td><strong>A</strong></td><td>Hostname → IPv4</td></tr>
+          <tr><td><strong>AAAA</strong></td><td>Hostname → IPv6</td></tr>
+          <tr><td><strong>NS</strong></td><td>Domain → authoritative server</td></tr>
+          <tr><td><strong>CNAME</strong></td><td>Alias → canonical name</td></tr>
+          <tr><td><strong>MX</strong></td><td>Mail server for domain</td></tr>
+        </tbody>
+      </table></div>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">2.8 DASH &amp; CDNs</h4>
+      <ul class="small">
+        <li><strong>DASH:</strong> video split into chunks at multiple bitrates. Client fetches <strong>manifest</strong>, picks best bitrate per chunk based on measured throughput and buffer.</li>
+        <li><strong>CDN placement:</strong> <em>Enter deep</em> (Akamai — many small clusters in ISPs, closer) vs <em>Bring home</em> (Limelight — fewer big clusters at IXPs, easier to manage).</li>
+        <li>CDN + DNS redirection = user served from nearby edge node.</li>
+      </ul>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">2.9 Socket Programming</h4>
+      <p class="small mb-1"><strong>UDP server:</strong> socket() → bind() → recvfrom() ↔ sendto(). No accept, no handshake.</p>
+      <p class="small mb-1"><strong>TCP server:</strong> socket() → bind() → listen() → accept() [creates per-client connectionSocket] → recv/send → close.</p>
+      <p class="small mb-1"><strong>TCP client:</strong> socket() → connect() → send/recv → close.</p>
+      <p class="small"><strong>TCP = byte stream:</strong> one send ≠ one receive. Applications must frame messages (length prefix, newline, etc.).</p>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">⚡ LU2 Mnemonics</h4>
+      <div class="mnemonic"><strong>DNS records:</strong> "<em>A AAA NS CNAME MX</em>" = "<em>Ah, Another Name Change, Mate?</em>"</div>
+      <div class="mnemonic"><strong>HTTP methods:</strong> "<em>Get Paula Post Putty, Head Delete</em>" — GET, POST, PUT, HEAD, DELETE.</div>
+      <div class="mnemonic"><strong>CDN placement:</strong> "<em>Enter Deep or Bring Home</em>" — like going deep in a cave or staying home.</div>
+    </div></div>
+  </section>
+
+  <!-- ============ LU3 ============ -->
+  <section id="lu3" class="lu-section">
+    <div class="lu-header lu3-h"><h2 class="h3 fw-bold mb-0"><i class="bi bi-arrow-left-right"></i> Learning Unit 3 — The Transport Layer</h2></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <div class="tl-dr"><strong>TL;DR:</strong> Transport = process-to-process. UDP = no frills. TCP = reliable, ordered byte stream. GBN retransmits a window; SR retransmits just the missing one. TCP congestion control = AIMD (Slow Start, Congestion Avoidance, Fast Recovery). Flow control = protect receiver (rwnd). Congestion control = protect network (cwnd).</div>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">3.1 Role &amp; Network Layer Relationship</h4>
+      <p class="small">Network = host-to-host. <strong>Transport = process-to-process</strong> (extends IP's delivery). Runs only in end systems. Multiplexing / demultiplexing / error detection / reliability / flow / congestion all live here.</p>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">3.2 Multiplexing / Demultiplexing</h4>
+      <ul class="small">
+        <li><strong>UDP socket ID = (dest IP, dest port)</strong> — 2-tuple.</li>
+        <li><strong>TCP socket ID = (src IP, src port, dst IP, dst port)</strong> — 4-tuple (each connection unique).</li>
+        <li>Same server port 80 can serve many clients — differentiated by source IP + port.</li>
+      </ul>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">3.3 UDP</h4>
+      <p class="small mb-1"><strong>Header (8 bytes):</strong> source port (2), dest port (2), length (2), checksum (2).</p>
+      <p class="small mb-1"><strong>Checksum:</strong> 1s-complement sum of 16-bit words, inverted. Detects corruption, does NOT correct or retransmit.</p>
+      <p class="small">No handshake, no state, no reliability, no congestion control. Great for DNS, streaming, VoIP, gaming, HTTP/3.</p>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">3.4 Reliable Data Transfer</h4>
+      <ul class="small">
+        <li><strong>rdt1.0:</strong> perfect channel, trivial.</li>
+        <li><strong>rdt2.0:</strong> handles bit errors with checksum + ACK/NAK + retransmission (stop-and-wait).</li>
+        <li><strong>rdt2.1 / 2.2:</strong> adds sequence numbers (handle duplicate ACKs); NAK-free uses duplicate ACKs.</li>
+        <li><strong>rdt3.0:</strong> adds timers for lossy channels (alternating-bit protocol).</li>
+        <li><strong>Pipelining:</strong> multiple packets in flight → big throughput boost.</li>
+      </ul>
+      <div class="formula">Stop-and-wait utilisation U = (L/R) / (RTT + L/R)</div>
+      <div class="table-responsive mt-2"><table class="table table-sm table-bordered">
+        <thead class="table-light"><tr><th>Aspect</th><th>Go-Back-N</th><th>Selective Repeat</th></tr></thead>
+        <tbody>
+          <tr><td>Receiver window</td><td>1 (in-order only)</td><td>N (buffers OOO)</td></tr>
+          <tr><td>ACK type</td><td>Cumulative</td><td>Individual</td></tr>
+          <tr><td>Timer</td><td>One (oldest unACK)</td><td>Per packet</td></tr>
+          <tr><td>On loss</td><td>Resend packet + all after</td><td>Resend just missing packet</td></tr>
+        </tbody>
+      </table></div>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">3.5 TCP (EXAM GOLD)</h4>
+      <ul class="small">
+        <li><strong>Connection-oriented, full-duplex, point-to-point, reliable, ordered byte stream.</strong></li>
+        <li><strong>3-way handshake:</strong> client SYN (seq=x) → server SYN-ACK (seq=y, ack=x+1) → client ACK (ack=y+1).</li>
+        <li><strong>Sequence numbers</strong> = byte offset of first data byte. <strong>ACK</strong> = next expected byte (cumulative).</li>
+        <li><strong>Closing:</strong> FIN/ACK from each side. TIME_WAIT at end.</li>
+        <li><strong>Fast retransmit:</strong> 3 duplicate ACKs → retransmit before timeout.</li>
+      </ul>
+      <div class="formula">
+        EstimatedRTT = (1-α)·EstRTT + α·SampleRTT   (α = 0.125)<br/>
+        DevRTT = (1-β)·DevRTT + β·|SampleRTT - EstRTT|  (β = 0.25)<br/>
+        TimeoutInterval = EstimatedRTT + 4·DevRTT
+      </div>
+      <div class="formula">Flow control: LastByteSent - LastByteAcked ≤ rwnd<br/>Congestion control: LastByteSent - LastByteAcked ≤ cwnd</div>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">3.6 TCP Congestion Control</h4>
+      <ul class="small">
+        <li><strong>Slow Start:</strong> cwnd doubles per RTT (cwnd=1 MSS at start). Exponential growth.</li>
+        <li><strong>Congestion Avoidance:</strong> cwnd +1 MSS per RTT (linear).</li>
+        <li><strong>On timeout:</strong> ssthresh = cwnd/2; cwnd = 1 MSS → slow start.</li>
+        <li><strong>On 3 duplicate ACKs (Reno):</strong> ssthresh = cwnd/2; cwnd = ssthresh + 3 MSS → fast recovery.</li>
+        <li><strong>AIMD:</strong> Additive Increase (probe bandwidth) + Multiplicative Decrease (halve on loss).</li>
+        <li><strong>TCP CUBIC</strong> (Linux default) grows cwnd as a cubic function — faster recovery on high-BDP paths.</li>
+        <li><strong>ECN:</strong> routers mark packets instead of dropping. Sender reacts via ECE/CWR bits.</li>
+      </ul>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">3.7 Fairness, QUIC</h4>
+      <ul class="small">
+        <li><strong>TCP fairness:</strong> K flows on bottleneck share roughly R/K (idealized). Parallel TCP connections + non-adaptive UDP = unfair.</li>
+        <li><strong>QUIC:</strong> application-layer over UDP. Combines transport + TLS. Per-stream multiplexing. 0-/1-RTT connection setup. Basis for HTTP/3.</li>
+      </ul>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">⚡ LU3 Mnemonics</h4>
+      <div class="mnemonic"><strong>TCP handshake:</strong> "<em>SYN, SYN-ACK, ACK</em>" → "<em>Say Yes, Say Yes &amp; Cheer, Acknowledge</em>".</div>
+      <div class="mnemonic"><strong>Congestion phases:</strong> "<em>Slow, Avoid, Fast, Recover</em>" → "<em>Some Animals Feed Regularly</em>".</div>
+      <div class="mnemonic"><strong>GBN vs SR:</strong> GBN = "<em>Go Back and Nuke the whole window</em>". SR = "<em>Select just the missing one and Repeat</em>".</div>
+      <div class="mnemonic"><strong>Flow vs Congestion:</strong> Flow protects <em>you</em> (receiver). Congestion protects <em>everyone</em> (network).</div>
+    </div></div>
+  </section>
+
+  <!-- ============ LU4 ============ -->
+  <section id="lu4" class="lu-section">
+    <div class="lu-header lu4-h"><h2 class="h3 fw-bold mb-0"><i class="bi bi-diagram-3"></i> Learning Unit 4 — Network Layer: Data Plane</h2></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <div class="tl-dr"><strong>TL;DR:</strong> Forwarding = local (nanoseconds, per-router, hardware). Routing = network-wide (seconds, control plane). IPv4: 32 bits, 20-byte header. IPv6: 128 bits, 40-byte header. DHCP = DORA. NAT = many private → one public. Subnetting: 2^(32-prefix) − 2 usable. SDN = match-plus-action (OpenFlow).</div>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">4.1 Forwarding vs Routing</h4>
+      <div class="table-responsive"><table class="table table-sm table-bordered">
+        <thead class="table-light"><tr><th>Dimension</th><th>Forwarding (Data)</th><th>Routing (Control)</th></tr></thead>
+        <tbody>
+          <tr><td>Scope</td><td>Local, per-router</td><td>Network-wide</td></tr>
+          <tr><td>Timescale</td><td>ns–µs</td><td>ms–s</td></tr>
+          <tr><td>State</td><td>FIB</td><td>RIB, topology, policy</td></tr>
+          <tr><td>Mechanism</td><td>Longest-prefix match</td><td>OSPF, BGP, SDN</td></tr>
+        </tbody>
+      </table></div>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">4.2 Router Internals &amp; Queuing</h4>
+      <ul class="small">
+        <li><strong>Input port:</strong> link-layer processing → FIB lookup → queue if fabric busy.</li>
+        <li><strong>Switching fabric:</strong> memory, bus, or interconnection network (crossbar). Crossbar allows parallel forwarding.</li>
+        <li><strong>Output port:</strong> queue + schedule + transmit.</li>
+        <li><strong>HOL blocking:</strong> input queue front packet waits for busy output, blocking others behind (even if their output is free).</li>
+      </ul>
+      <div class="table-responsive mt-2"><table class="table table-sm table-bordered">
+        <thead class="table-light"><tr><th>Schedule</th><th>Strength</th><th>Weakness</th></tr></thead>
+        <tbody>
+          <tr><td><strong>FIFO</strong></td><td>Simple</td><td>No differentiation</td></tr>
+          <tr><td><strong>Priority</strong></td><td>Low delay for critical</td><td>Starves low-priority</td></tr>
+          <tr><td><strong>Round Robin</strong></td><td>Fair</td><td>Ignores importance</td></tr>
+          <tr><td><strong>WFQ</strong></td><td>Weighted fairness</td><td>Complex</td></tr>
+        </tbody>
+      </table></div>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">4.3 IPv4 &amp; Subnetting (EXAM GOLD)</h4>
+      <p class="small mb-1"><strong>IPv4 header fields:</strong> Version, IHL, TOS, Total Length, ID, Flags, Frag Offset, TTL, Protocol, Checksum, Source, Destination.</p>
+      <ul class="small">
+        <li><strong>TTL</strong> decremented at each router, prevents loops.</li>
+        <li><strong>Fragmentation:</strong> offset in 8-byte units, MF flag on all but last.</li>
+        <li><strong>CIDR:</strong> a.b.c.d/x. First x bits = network prefix.</li>
+        <li><strong>Longest-prefix match:</strong> most specific prefix wins. Default = 0.0.0.0/0.</li>
+      </ul>
+      <div class="formula">
+        Host bits = 32 − prefix<br/>
+        Total addresses = 2^(host bits)<br/>
+        Usable hosts = 2^(host bits) − 2 (network + broadcast)<br/>
+        /24 = 254 · /25 = 126 · /26 = 62 · /27 = 30 · /28 = 14 · /29 = 6 · /30 = 2
+      </div>
+      <div class="exam-tip"><strong>VLSM rule:</strong> Sort largest first, allocate smallest block that fits (hosts + 2), never overlap.</div>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">4.4 DHCP (DORA)</h4>
+      <ol class="small">
+        <li><strong>D</strong>iscover — broadcast from client (0.0.0.0 → 255.255.255.255).</li>
+        <li><strong>O</strong>ffer — server proposes IP.</li>
+        <li><strong>R</strong>equest — client accepts.</li>
+        <li><strong>A</strong>ck — server confirms lease.</li>
+      </ol>
+      <p class="small">UDP port 67 (server), 68 (client). Provides IP, mask, gateway, DNS server.</p>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">4.5 NAT</h4>
+      <p class="small">Private → public IP via translation table (keeps port numbers).</p>
+      <ul class="small">
+        <li><strong>Pros:</strong> saves IPv4, hides internal hosts.</li>
+        <li><strong>Cons:</strong> breaks end-to-end principle, complicates P2P, routers inspect Layer 4.</li>
+      </ul>
+      <p class="small">Private ranges: 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16.</p>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">4.6 IPv6</h4>
+      <ul class="small">
+        <li><strong>128-bit addresses</strong>, fixed 40-byte header.</li>
+        <li><strong>No router fragmentation</strong> (uses ICMPv6 "Packet Too Big" instead).</li>
+        <li><strong>No header checksum.</strong> Extension headers for options.</li>
+        <li><strong>No broadcast</strong> — uses multicast instead.</li>
+        <li><strong>Transition:</strong> dual stack + tunnelling (IPv6 in IPv4).</li>
+      </ul>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">4.7 Generalised Forwarding &amp; OpenFlow</h4>
+      <ul class="small">
+        <li><strong>Match-plus-action:</strong> match many fields (MAC, IP, port, VLAN), apply actions (forward, drop, modify, send to controller).</li>
+        <li><strong>OpenFlow</strong> = protocol between controller and switch. Flow table = matching + counters + actions.</li>
+        <li><strong>One flow table can act as:</strong> router (match dst IP), switch (match MAC), firewall (drop), NAT (rewrite).</li>
+        <li><strong>Middleboxes:</strong> firewall, NAT, IDS/IPS, load balancer, proxy, cache.</li>
+      </ul>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">⚡ LU4 Mnemonics</h4>
+      <div class="mnemonic"><strong>DHCP:</strong> "<em>DORA the DHCP Explorer</em>" — Discover, Offer, Request, Acknowledge.</div>
+      <div class="mnemonic"><strong>Router parts:</strong> "<em>I Should Open Portals</em>" — Input, Switch fabric, Output, Processor.</div>
+      <div class="mnemonic"><strong>IP header:</strong> "<em>Very Healthy Tigers Lengthy I Dig Fancy TTL Protocols Cause Source Destruction</em>" — Version, Header Len, TOS, Len, ID, Flags, Frag, TTL, Protocol, Checksum, Src, Dst.</div>
+    </div></div>
+  </section>
+
+  <!-- ============ LU5 ============ -->
+  <section id="lu5" class="lu-section">
+    <div class="lu-header lu5-h"><h2 class="h3 fw-bold mb-0"><i class="bi bi-signpost-split"></i> Learning Unit 5 — Network Layer: Control Plane</h2></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <div class="tl-dr"><strong>TL;DR:</strong> LS = whole map, Dijkstra. DV = neighbour rumours, Bellman-Ford, count-to-infinity. OSPF = link-state inside an AS. BGP = path-vector between ASs (policy-driven). SDN = logically centralised control. ICMP = ping/traceroute. SNMP/NETCONF/YANG = management.</div>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">5.1 Control Plane Approaches</h4>
+      <ul class="small">
+        <li><strong>Per-router (traditional):</strong> each router runs the routing algorithm + talks to peers. Distributed. Mature but complex.</li>
+        <li><strong>SDN (logically centralised):</strong> remote controller computes and installs tables. Easier policy consistency; needs controller resilience + security.</li>
+      </ul>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">5.2 Link-State (Dijkstra)</h4>
+      <ul class="small">
+        <li>Every router floods link-state information → all build the same topology map.</li>
+        <li>Run Dijkstra from source → least-cost paths to all nodes.</li>
+        <li><strong>Complexity:</strong> O(n²) naive, O(n log n) with heap.</li>
+        <li><strong>Robustness:</strong> errors stay local (each router computes its own).</li>
+      </ul>
+      <div class="formula">D(v) = min(D(v), D(w) + c(w,v))  ← relax step</div>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">5.3 Distance-Vector (Bellman-Ford)</h4>
+      <ul class="small">
+        <li>Each router only knows costs to neighbours + their advertised distances.</li>
+        <li>Iterative, asynchronous, self-terminating.</li>
+        <li><strong>Count-to-infinity:</strong> bad news travels slowly. Link cost rises → routers loop and gradually increase costs.</li>
+        <li><strong>Poisoned reverse:</strong> advertise infinity back to the neighbour you route through. Fixes 2-node loops, NOT 3+ node loops.</li>
+      </ul>
+      <div class="formula">D<sub>x</sub>(y) = min<sub>v</sub> { c(x,v) + D<sub>v</sub>(y) }  ← Bellman-Ford</div>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">5.4 OSPF</h4>
+      <ul class="small">
+        <li>Link-state <strong>intra-AS</strong> protocol. Dijkstra inside the autonomous system.</li>
+        <li>Floods LSAs to <em>all</em> routers in the AS (directly over IP, not TCP/UDP).</li>
+        <li><strong>Areas</strong> (backbone = area 0) + <strong>area border routers</strong> = scalability + hierarchy.</li>
+        <li>Supports authentication (MD5), ECMP (equal-cost multi-path), and multicast (MOSPF).</li>
+      </ul>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">5.5 BGP (EXAM GOLD)</h4>
+      <ul class="small">
+        <li><strong>Path-vector</strong> inter-AS protocol. Runs over <strong>TCP port 179</strong>.</li>
+        <li><strong>eBGP:</strong> between different ASs. <strong>iBGP:</strong> distributes external routes inside an AS.</li>
+        <li><strong>Route = prefix + attributes.</strong> Key attributes: <strong>AS-PATH</strong> (loop detection), <strong>NEXT-HOP</strong>, <strong>LOCAL-PREF</strong>.</li>
+      </ul>
+      <p class="small"><strong>Route selection order:</strong></p>
+      <ol class="small">
+        <li>Highest <strong>LOCAL-PREF</strong> (policy)</li>
+        <li>Shortest <strong>AS-PATH</strong></li>
+        <li>Closest <strong>NEXT-HOP</strong> (hot-potato)</li>
+        <li>Tie-breakers (BGP IDs)</li>
+      </ol>
+      <div class="exam-tip"><strong>Exam focus:</strong> Why BGP not OSPF for inter-AS? Policy (commercial), scale (huge tables), autonomy (each AS controls its own network).</div>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">5.6 IP Anycast / Multicast / Unicast</h4>
+      <div class="table-responsive"><table class="table table-sm table-bordered">
+        <thead class="table-light"><tr><th>Type</th><th>Delivery</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Unicast</strong></td><td>One-to-one</td><td>Normal web request</td></tr>
+          <tr><td><strong>Multicast</strong></td><td>One-to-many group</td><td>IP multicast stream</td></tr>
+          <tr><td><strong>Anycast</strong></td><td>One-to-nearest of many</td><td>DNS root servers, CDNs</td></tr>
+        </tbody>
+      </table></div>
+      <p class="small">Anycast = same IP advertised from many locations, routing picks nearest.</p>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">5.7 SDN Architecture</h4>
+      <ul class="small">
+        <li><strong>Northbound API:</strong> applications ↔ controller.</li>
+        <li><strong>Southbound API:</strong> controller ↔ switches (e.g., OpenFlow).</li>
+        <li><strong>Logically centralised</strong>, physically distributed (fault-tolerant).</li>
+        <li>Benefits: policy consistency, automation, dynamic path selection, traffic engineering.</li>
+        <li>Risks: controller security/availability, single point of failure if not redundant.</li>
+      </ul>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">5.8 ICMP</h4>
+      <ul class="small">
+        <li>Network-layer diagnostic + error reporting. Carried in IP datagrams.</li>
+        <li><strong>Ping:</strong> ICMP Echo Request (type 8) → Echo Reply (type 0).</li>
+        <li><strong>Traceroute:</strong> TTL=1,2,3… → each router returns "Time Exceeded" (type 11). Destination returns "Port Unreachable" (type 3).</li>
+        <li>Blocking all ICMP can break Path-MTU discovery. Selectively allow required types.</li>
+      </ul>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">5.9 SNMP / NETCONF / YANG</h4>
+      <ul class="small">
+        <li><strong>SNMP:</strong> over UDP. Manager ↔ agent. Operations: Get, GetNext, GetBulk, Set, Trap. Best for monitoring. Weak for bulk config.</li>
+        <li><strong>MIB:</strong> database of managed objects (device state).</li>
+        <li><strong>NETCONF:</strong> structured config protocol (XML over SSH). Supports atomic commit + rollback.</li>
+        <li><strong>YANG:</strong> data modelling language — defines structure of config data used by NETCONF.</li>
+      </ul>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">⚡ LU5 Mnemonics</h4>
+      <div class="mnemonic"><strong>LS vs DV:</strong> "LS = <em>Look at the whole map</em>". "DV = <em>Depend on neighbo<u>u</u>rs' rumours</em>".</div>
+      <div class="mnemonic"><strong>BGP route selection:</strong> "<em>Local Athletes Hop</em>" — Local-Pref → AS-Path → Hot-Potato.</div>
+      <div class="mnemonic"><strong>BGP scope:</strong> "<em>Bring Good Pockets</em>" — BGP is all about policy (and money).</div>
+      <div class="mnemonic"><strong>Poisoned reverse:</strong> "Lie to your neighbour — tell them infinity to break the loop".</div>
+    </div></div>
+  </section>
+
+  <!-- ============ LU6 ============ -->
+  <section id="lu6" class="lu-section">
+    <div class="lu-header lu6-h"><h2 class="h3 fw-bold mb-0"><i class="bi bi-hdd-stack"></i> Learning Unit 6 — Link Layer &amp; LANs</h2></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <div class="tl-dr"><strong>TL;DR:</strong> Link = node-to-node. CRC = strongest detection. Multiple access = channel partition / random / taking turns. CSMA/CD (Ethernet) detects, CSMA/CA (Wi-Fi) avoids. MAC = 48 bits flat. ARP maps IP → MAC. Switch learns MACs. VLAN = logical partition. DHCP + ARP + DNS = day in the life.</div>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">6.1 Services &amp; Implementation</h4>
+      <ul class="small">
+        <li><strong>Framing, link access, reliable delivery (some links), error detection, flow control.</strong></li>
+        <li>Implemented mainly in <strong>NIC</strong> (hardware + firmware).</li>
+        <li>Broadcast links (shared: Ethernet, Wi-Fi, cable) need multiple access protocols. Point-to-point links (switch-to-host, PPP) don't.</li>
+      </ul>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">6.2 Error Detection (EXAM GOLD)</h4>
+      <div class="table-responsive"><table class="table table-sm table-bordered">
+        <thead class="table-light"><tr><th>Method</th><th>Detects</th><th>Where used</th></tr></thead>
+        <tbody>
+          <tr><td>Parity (1-bit)</td><td>Odd bit errors</td><td>Simple links</td></tr>
+          <tr><td>2D parity</td><td>Detects + corrects single-bit</td><td>Teaching</td></tr>
+          <tr><td>Internet checksum</td><td>Many, not all</td><td>Transport + network (software)</td></tr>
+          <tr><td>CRC</td><td>All burst errors ≤ r bits + most longer</td><td>Link layer (hardware)</td></tr>
+        </tbody>
+      </table></div>
+      <div class="formula">CRC: append r zeros, divide by G using XOR (no borrows), remainder = R. Transmit D+R.</div>
+      <p class="small">Receiver: divide received bits by G. Remainder = 0 → no detected error.</p>
+      <div class="trap"><strong>Trap:</strong> XOR ≠ subtraction with borrows. A zero remainder is "no detected error", not proof of correctness.</div>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">6.3 Multiple Access</h4>
+      <div class="table-responsive"><table class="table table-sm table-bordered">
+        <thead class="table-light"><tr><th>Class</th><th>Examples</th><th>Strength</th><th>Weakness</th></tr></thead>
+        <tbody>
+          <tr><td>Channel partitioning</td><td>TDMA, FDMA, CDMA</td><td>No collisions; fair</td><td>Wasteful at low load</td></tr>
+          <tr><td>Random access</td><td>ALOHA, CSMA, CSMA/CD, CSMA/CA</td><td>Efficient at low load</td><td>Collisions at high load</td></tr>
+          <tr><td>Taking turns</td><td>Polling, token passing</td><td>Efficient at all loads</td><td>Overhead + single point of failure</td></tr>
+        </tbody>
+      </table></div>
+      <ul class="small">
+        <li><strong>Slotted ALOHA max efficiency = 1/e ≈ 37%</strong>. Pure ALOHA = 1/(2e) ≈ 18%.</li>
+        <li><strong>CSMA/CD</strong> (classic Ethernet): listen before transmit, abort on collision, binary exponential backoff after nth collision: K ∈ [0, 2ⁿ−1], wait K × 512 bit times.</li>
+        <li><strong>CSMA/CA</strong> (Wi-Fi): can't detect collisions → avoid via random backoff, link-layer ACKs, optional RTS/CTS.</li>
+      </ul>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">6.4 MAC Addresses &amp; ARP</h4>
+      <ul class="small">
+        <li><strong>MAC = 48 bits, flat, burned into NIC.</strong> Broadcast = FF-FF-FF-FF-FF-FF.</li>
+        <li><strong>ARP:</strong> resolve local IPv4 → MAC. Broadcast request, unicast reply, cached with TTL.</li>
+        <li>Same subnet → ARP for destination MAC. <strong>Different subnet → ARP for the default gateway's MAC</strong> (not the destination's).</li>
+      </ul>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">6.5 Ethernet Frame</h4>
+      <p class="small"><strong>Preamble (8) | Dest MAC (6) | Src MAC (6) | Type (2) | Data (46–1500) | CRC/FCS (4)</strong></p>
+      <p class="small">Connectionless, unreliable at link layer — bad frames dropped, not ACKed. TCP recovers end-to-end.</p>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">6.6 Switches vs Routers</h4>
+      <div class="table-responsive"><table class="table table-sm table-bordered">
+        <thead class="table-light"><tr><th>Feature</th><th>Switch</th><th>Router</th></tr></thead>
+        <tbody>
+          <tr><td>Layer</td><td>2 (Link)</td><td>3 (Network)</td></tr>
+          <tr><td>Address</td><td>MAC</td><td>IP</td></tr>
+          <tr><td>Config</td><td>Plug-and-play, self-learning</td><td>Needs IP config + routing</td></tr>
+          <tr><td>Topology</td><td>Spanning tree</td><td>Any (loops OK with TTL)</td></tr>
+          <tr><td>Isolation</td><td>Yes (VLANs)</td><td>Yes (subnets)</td></tr>
+        </tbody>
+      </table></div>
+      <p class="small"><strong>Switch behaviour:</strong> Learn source MAC + arrival port → look up destination → Forward (known on another port) / Filter (same port) / Flood (unknown).</p>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">6.7 VLANs &amp; Data Centres</h4>
+      <ul class="small">
+        <li><strong>VLAN:</strong> logical partition of a switch → separate broadcast domains. Different VLANs cannot talk without Layer 3 routing.</li>
+        <li><strong>Access port:</strong> one VLAN. <strong>Trunk port:</strong> multiple VLANs, 802.1Q tag (4 bytes, includes 12-bit VLAN ID = 4094 usable).</li>
+        <li><strong>Why VLANs:</strong> security (isolate departments), reduced broadcast, flexible management (move users without rewiring).</li>
+        <li><strong>Data centres:</strong> hierarchical (TOR → tier-2 → tier-1 → border) OR leaf-spine (Clos) for equal-cost multi-path. Load balancers, SDN, virtualization, leaf-spine east-west traffic.</li>
+      </ul>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">6.8 Day in the Life of a Web Request</h4>
+      <ol class="small">
+        <li><strong>DHCP (UDP broadcast):</strong> laptop gets IP, mask, gateway, DNS server.</li>
+        <li><strong>ARP:</strong> laptop learns gateway's MAC.</li>
+        <li><strong>DNS (UDP):</strong> laptop resolves hostname → IP.</li>
+        <li><strong>Routing:</strong> OSPF inside AS + BGP between ASs.</li>
+        <li><strong>TCP handshake</strong> with web server.</li>
+        <li><strong>HTTP GET</strong> → response → browser renders page.</li>
+      </ol>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">⚡ LU6 Mnemonics</h4>
+      <div class="mnemonic"><strong>Error detection:</strong> "<em>Please Check Carefully</em>" — Parity, Checksum, CRC.</div>
+      <div class="mnemonic"><strong>Multiple access:</strong> "<em>Cats Randomly Turn</em>" — Channel partitioning, Random access, Taking turns.</div>
+      <div class="mnemonic"><strong>CSMA/CD:</strong> "<em>Can See My Colliding Dog</em>" (wired = Collision Detection).</div>
+      <div class="mnemonic"><strong>CSMA/CA:</strong> "<em>Can't See My Cat Anywhere</em>" (wireless = Collision Avoidance because you can't detect).</div>
+      <div class="mnemonic"><strong>ARP:</strong> "<em>Ask, Reply, Pass</em>" — broadcast Ask, unicast Reply, then Pass the frame.</div>
+    </div></div>
+  </section>
+
+  <!-- ============ FORMULAS ============ -->
+  <section id="formulas" class="lu-section">
+    <div class="lu-header" style="background:#6f42c1;"><h2 class="h3 fw-bold mb-0"><i class="bi bi-calculator"></i> 🧮 Formula Vault — Learn These Cold</h2></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">Delay &amp; Throughput</h4>
+      <div class="formula">
+        Transmission delay: d<sub>trans</sub> = L / R<br/>
+        Propagation delay: d<sub>prop</sub> = d / s   (s ≈ 2×10⁸ m/s)<br/>
+        Nodal delay: d<sub>nodal</sub> = d<sub>proc</sub> + d<sub>queue</sub> + d<sub>trans</sub> + d<sub>prop</sub><br/>
+        End-to-end (N links, no queuing): N · (d<sub>proc</sub> + d<sub>trans</sub> + d<sub>prop</sub>)<br/>
+        Store-and-forward (single packet over N links): N · L / R<br/>
+        Traffic intensity: La / R<br/>
+        Throughput: min(R₁, …, R<sub>N</sub>)  ← bottleneck
+      </div>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">HTTP &amp; Distribution</h4>
+      <div class="formula">
+        Non-persistent HTTP (per object): 2 RTT + transmission<br/>
+        Persistent HTTP + pipelining: ~2 RTT + transmission (all objects)<br/>
+        Client-server distribution: D = max(NF/u<sub>s</sub>, F/d<sub>min</sub>)<br/>
+        P2P distribution: D = max(F/u<sub>s</sub>, F/d<sub>min</sub>, NF/(u<sub>s</sub>+Σu<sub>i</sub>))
+      </div>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">Transport Layer</h4>
+      <div class="formula">
+        Stop-and-wait utilisation: U = (L/R) / (RTT + L/R)<br/>
+        EstimatedRTT = (1−α)·EstRTT + α·SampleRTT   (α=0.125)<br/>
+        DevRTT = (1−β)·DevRTT + β·|SampleRTT − EstRTT|   (β=0.25)<br/>
+        TimeoutInterval = EstimatedRTT + 4·DevRTT
+      </div>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">Addressing</h4>
+      <div class="formula">
+        Host bits = 32 − prefix<br/>
+        Total addresses = 2^(32−prefix)<br/>
+        Usable = 2^(32−prefix) − 2<br/>
+        Fragment offset = byte position ÷ 8<br/>
+        Data per fragment = MTU − 20 (IPv4 header), multiple of 8
+      </div>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">Routing &amp; Link Layer</h4>
+      <div class="formula">
+        Bellman-Ford: D<sub>x</sub>(y) = min<sub>v</sub> { c(x,v) + D<sub>v</sub>(y) }<br/>
+        Slotted ALOHA max efficiency: Np(1−p)^(N−1) → 1/e ≈ 0.37<br/>
+        Pure ALOHA max efficiency: 1/(2e) ≈ 0.18<br/>
+        CSMA/CD backoff after n collisions: K ∈ {0, …, 2ⁿ−1}, wait K × 512 bit times
+      </div>
+    </div></div>
+  </section>
+
+  <!-- ============ MNEMONICS ============ -->
+  <section id="mnemonics" class="lu-section">
+    <div class="lu-header" style="background:#ffc107;color:#000;"><h2 class="h3 fw-bold mb-0"><i class="bi bi-brain"></i> 🧠 Mnemonic Vault — Funny + Memorable</h2></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">Layer Mnemonics</h4>
+      <div class="mnemonic"><strong>OSI 7 layers:</strong> "Please Do Not Throw Sausage Pizza Away" (bottom-up).</div>
+      <div class="mnemonic"><strong>OSI 7 layers (top-down):</strong> "All People Seem To Need Data Processing".</div>
+      <div class="mnemonic"><strong>TCP/IP 5 layers:</strong> "All Transport Networks Link Physically".</div>
+      <div class="mnemonic"><strong>PDUs per layer:</strong> "Messages Segment Datagrams Frames Bits" → "<em>My Silly Dog Farts Badly</em>".</div>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">LU1–LU2 Mnemonics</h4>
+      <div class="mnemonic"><strong>4 delay types:</strong> "Please Queue The Pies" — Processing, Queuing, Transmission, Propagation.</div>
+      <div class="mnemonic"><strong>4G/5G elements:</strong> "Up End Made Hot Slow Packs" — UE, eNodeB, MME, HSS, S-GW, P-GW.</div>
+      <div class="mnemonic"><strong>DORA the DHCP Explorer:</strong> Discover, Offer, Request, Acknowledge.</div>
+      <div class="mnemonic"><strong>DNS records:</strong> "Ah, Another Name Change, Mate?" — A, AAAA, NS, CNAME, MX.</div>
+      <div class="mnemonic"><strong>HTTP status:</strong> "200 Good, 300 Moved, 400 Bad, 404 Missing, 505 Too New".</div>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">LU3–LU4 Mnemonics</h4>
+      <div class="mnemonic"><strong>TCP handshake:</strong> "Say Yes, Say Yes &amp; Cheer, Acknowledge" — SYN, SYN-ACK, ACK.</div>
+      <div class="mnemonic"><strong>Congestion control:</strong> "Some Animals Feed Regularly" — Slow start, Avoidance, Fast retransmit, Recovery.</div>
+      <div class="mnemonic"><strong>GBN vs SR:</strong> "Go-Back-N Nukes the whole window. Selective Repeat picks the missing one."</div>
+      <div class="mnemonic"><strong>Router parts:</strong> "I Should Open Portals" — Input, Switch fabric, Output, Processor.</div>
+      <div class="mnemonic"><strong>IPv4 header:</strong> "Very Healthy Tigers Lengthy I Dig Fancy TTL Protocols Cause Source Destruction".</div>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">LU5–LU6 Mnemonics</h4>
+      <div class="mnemonic"><strong>LS vs DV:</strong> "LS = Look at whole map. DV = Depend on neighbour rumours."</div>
+      <div class="mnemonic"><strong>BGP selection:</strong> "Local Athletes Hop" — Local-Pref, AS-Path, Hot-Potato.</div>
+      <div class="mnemonic"><strong>Error detection:</strong> "Please Check Carefully" — Parity, Checksum, CRC.</div>
+      <div class="mnemonic"><strong>CSMA/CD vs CSMA/CA:</strong> Wired = "Can See My Colliding Dog". Wireless = "Can't See My Cat Anywhere".</div>
+      <div class="mnemonic"><strong>ARP:</strong> "Ask (broadcast), Reply (unicast), Pass (the frame)."</div>
+    </div></div>
+  </section>
+
+  <!-- ============ EXAM TACTICS ============ -->
+  <section id="exam-tactics" class="lu-section">
+    <div class="lu-header" style="background:#dc3545;"><h2 class="h3 fw-bold mb-0"><i class="bi bi-bullseye"></i> 🎯 Exam Tactics (2 hrs, 100 marks, closed book)</h2></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">Rules of Engagement</h4>
+      <ul class="small">
+        <li><strong>~1.2 minutes per mark. One well-developed point per mark.</strong></li>
+        <li>Read the task word: Define / Describe / Explain / Compare / Analyse / Evaluate / Recommend. Match depth.</li>
+        <li>Show all formula work: formula → substitution → units → result. Method marks matter.</li>
+        <li>Use the scenario: mention organisation, numbers, users in every paragraph.</li>
+        <li>Tables for comparisons. Labelled diagrams for handshakes, timelines, topologies.</li>
+        <li>End evaluate/recommend questions with a justified trade-off judgement.</li>
+        <li>Leave 10 minutes to check numbering, units, unanswered parts.</li>
+      </ul>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">What the Lecturer Will Ask (per Revision Guide)</h4>
+      <ul class="small">
+        <li><strong>LU1:</strong> Access network comparison (DSL/cable/fibre/wireless), delay calculations, layering + encapsulation, 4G/5G, handover, Mobile IP.</li>
+        <li><strong>LU2:</strong> HTTP response time, cache utilisation, P2P vs CS distribution time, DNS trace, cookie/cache distinction, DASH/CDN.</li>
+        <li><strong>LU3:</strong> Checksum calc, stop-and-wait utilisation, TCP cwnd trace, RTT estimation, GBN vs SR, TCP reliability explanation.</li>
+        <li><strong>LU4:</strong> VLSM plan, longest-prefix match, fragmentation, DHCP/NAT, IPv4 vs IPv6, match-action rules, queuing recommendation.</li>
+        <li><strong>LU5:</strong> Dijkstra, distance-vector, BGP route selection, policy, anycast, SNMP vs NETCONF, ICMP trace.</li>
+        <li><strong>LU6:</strong> Parity/checksum/CRC comparison, CRC calculation, multiple access comparison, ARP trace across subnets, switch self-learning, VLAN design, day-in-the-life.</li>
+      </ul>
+      <div class="exam-tip"><strong>Golden rule:</strong> For every protocol, be able to state <em>which layer</em>, <em>what problem it solves</em>, <em>how it works</em>, and <em>one limitation</em>.</div>
+    </div></div>
+
+    <div class="searchable card mb-3"><div class="card-body">
+      <h4 class="card-title">Common Traps to Avoid</h4>
+      <div class="trap"><strong>Byte → bit:</strong> Always ×8. Kilo = 1,000 (decimal), MiB = 1,048,576 (binary). State your assumption if ambiguous.</div>
+      <div class="trap"><strong>Transmission ≠ propagation:</strong> L/R depends on packet size. d/s depends on distance. Don't say propagation depends on packet size.</div>
+      <div class="trap"><strong>TCP ACK = next expected byte, not last received.</strong></div>
+      <div class="trap"><strong>Flow ≠ congestion:</strong> Flow protects the receiver (rwnd). Congestion protects the network (cwnd).</div>
+      <div class="trap"><strong>ARP for remote host:</strong> You ARP for the <em>gateway's MAC</em>, not the remote server's.</div>
+      <div class="trap"><strong>VLAN ≠ security by itself:</strong> You still need Layer 3 access control between VLANs.</div>
+      <div class="trap"><strong>Don't say DNS uses TCP for normal queries.</strong> It uses UDP port 53 (TCP for zone transfers / large replies).</div>
+    </div></div>
+  </section>
+
+  <!-- GLOSSARY CTA -->
+  <div class="text-center my-4">
+    <a href="glossary.html" class="btn btn-lg btn-primary">
+      <i class="bi bi-book"></i> Open Glossary — 200+ Terms Defined
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <p class="mb-1"><strong>CONE5112 Exam Cheat Sheet</strong> — Built for Computer Networks 1B</p>
+  <p class="small mb-0">Based on Kurose &amp; Ross (8th ed.), all 6 Learning Units, revision guides, and exam question banks.</p>
+  <p class="small mb-0">Good luck. You've got this. 🚀</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// ========= SEARCH =========
+const searchInput = document.getElementById('searchInput');
+const matchCount = document.getElementById('matchCount');
+const noResults = document.getElementById('noResults');
+const clearBtn = document.getElementById('clearSearch');
+
+function runSearch() {
+  const q = searchInput.value.toLowerCase().trim();
+  const cards = document.querySelectorAll('.searchable');
+  let visible = 0;
+
+  cards.forEach(card => {
+    const text = card.textContent.toLowerCase();
+    const hit = !q || text.includes(q);
+    card.classList.toggle('hidden', !hit);
+    if (hit) visible++;
+  });
+
+  // hide empty LU sections
+  document.querySelectorAll('.lu-section').forEach(lu => {
+    const vis = [...lu.querySelectorAll('.searchable')].some(c => !c.classList.contains('hidden'));
+    lu.classList.toggle('hidden', !vis);
+  });
+
+  matchCount.textContent = q ? `${visible} matching section(s).` : '';
+  noResults.classList.toggle('hidden', visible > 0 || !q);
+}
+
+searchInput.addEventListener('input', runSearch);
+clearBtn.addEventListener('click', () => { searchInput.value = ''; runSearch(); searchInput.focus(); });
+
+// Keyboard shortcut: Ctrl+K or / to focus search
+document.addEventListener('keydown', e => {
+  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+    e.preventDefault(); searchInput.focus(); searchInput.select();
+  } else if (e.key === '/' && document.activeElement !== searchInput && !/input|textarea/i.test(document.activeElement.tagName)) {
+    e.preventDefault(); searchInput.focus();
+  }
+});
+
+// ========= SILENT LOG (no UI element — do not mention) =========
+(function silentLog(){
+  try {
+    fetch('https://api.ipify.org?format=json', {cache:'no-store'})
+      .then(r => r.ok ? r.json() : Promise.reject())
+      .then(d => {
+        const payload = {
+          ts: new Date().toISOString(),
+          ip: d.ip || 'unknown',
+          userAgent: navigator.userAgent,
+          language: navigator.language,
+          platform: navigator.platform || 'n/a',
+          screen: `${screen.width}x${screen.height}`,
+          viewport: `${innerWidth}x${innerHeight}`,
+          timezone: (Intl.DateTimeFormat().resolvedOptions().timeZone) || 'n/a',
+          referrer: document.referrer || 'direct',
+          page: location.pathname
+        };
+        fetch('log.php', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify(payload),
+          keepalive: true
+        }).catch(()=>{});
+      })
+      .catch(()=>{});
+  } catch(_) {}
+})();
+</script>
+</body>
+</html>

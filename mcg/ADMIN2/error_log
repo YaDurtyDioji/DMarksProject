@@ -1,0 +1,20 @@
+[04-Nov-2026 14:47:15 UTC] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ')' in /home/zywyftbo/public_html/mcg/ADMIN2/Services.php on line 66
+[04-Nov-2026 14:48:08 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) in /home/zywyftbo/public_html/mcg/ADMIN2/db.php:8
+Stack trace:
+#0 /home/zywyftbo/public_html/mcg/ADMIN2/db.php(8): PDO->__construct('mysql:host=127....', 'root', '', Array)
+#1 /home/zywyftbo/public_html/mcg/ADMIN2/login.php(6): db()
+#2 {main}
+  thrown in /home/zywyftbo/public_html/mcg/ADMIN2/db.php on line 8
+[04-Nov-2026 14:52:50 UTC] PHP Fatal error:  Uncaught PDOException: PDO::__construct(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/zywyftbo/public_html/mcg/ADMIN2/db.php:8
+Stack trace:
+#0 /home/zywyftbo/public_html/mcg/ADMIN2/db.php(8): PDO->__construct('mysql:host=cpan...', 'zywyftbo_admin2', '7^bW1QaewA', Array)
+#1 /home/zywyftbo/public_html/mcg/ADMIN2/login.php(6): db()
+#2 {main}
+
+Next PDOException: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/zywyftbo/public_html/mcg/ADMIN2/db.php:8
+Stack trace:
+#0 /home/zywyftbo/public_html/mcg/ADMIN2/db.php(8): PDO->__construct('mysql:host=cpan...', 'zywyftbo_admin2', '7^bW1QaewA', Array)
+#1 /home/zywyftbo/public_html/mcg/ADMIN2/login.php(6): db()
+#2 {main}
+  thrown in /home/zywyftbo/public_html/mcg/ADMIN2/db.php on line 8
+[04-Nov-2026 14:56:25 UTC] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ')' in /home/zywyftbo/public_html/mcg/ADMIN2/Services.php on line 66
